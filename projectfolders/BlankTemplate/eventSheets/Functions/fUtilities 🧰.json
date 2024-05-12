@@ -1,0 +1,119 @@
+{
+	"name": "fUtilities 🧰",
+	"events": [
+		{
+			"functionName": "toggleFullscreen",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 886938183459389,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-fullscreen",
+							"objectClass": "Browser",
+							"sid": 673139129491414
+						}
+					],
+					"actions": [
+						{
+							"id": "cancel-fullscreen",
+							"objectClass": "Browser",
+							"sid": 460028958641810
+						}
+					],
+					"sid": 783256117940843
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 240506212898677
+						}
+					],
+					"actions": [
+						{
+							"id": "request-fullscreen",
+							"objectClass": "Browser",
+							"sid": 332860445881325,
+							"parameters": {
+								"mode": "stretch-letterbox-scale",
+								"navigation-ui": "hide"
+							}
+						}
+					],
+					"sid": 678419407173315
+				}
+			]
+		},
+		{
+			"functionName": "mapValue",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "oldValue",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 290320810502483
+				},
+				{
+					"name": "oldRangeMin",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 128645604443553
+				},
+				{
+					"name": "oldRangeMax",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 208697590330768
+				},
+				{
+					"name": "newRangeMin",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 402742176822800
+				},
+				{
+					"name": "newRangeMax",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 876741298571593
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 660127848899638,
+					"parameters": {
+						"value": "min(max((oldValue - oldRangeMin) * (newRangeMax - newRangeMin) / (oldRangeMax - oldRangeMin) + newRangeMin, newRangeMin) , newRangeMax)"
+					}
+				}
+			],
+			"sid": 363416407062200
+		}
+	],
+	"sid": 622480337843055
+}

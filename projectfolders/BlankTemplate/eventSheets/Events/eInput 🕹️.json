@@ -1,0 +1,57 @@
+{
+	"name": "eInput 🕹️",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Utilities",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 219312570234922,
+							"parameters": {
+								"key": 70
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "toggleFullscreen",
+							"sid": 239315765673846
+						}
+					],
+					"sid": 533709159474755
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 785074816425152,
+							"parameters": {
+								"key": 82
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "reload",
+							"objectClass": "Browser",
+							"sid": 989406000455497
+						}
+					],
+					"sid": 890686327235109
+				}
+			],
+			"sid": 353368192783443
+		}
+	],
+	"sid": 708055557732005
+}
