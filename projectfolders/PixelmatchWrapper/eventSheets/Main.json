@@ -1,0 +1,146 @@
+{
+	"name": "Main",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Canvases",
+					"sid": 792215498459302
+				}
+			],
+			"actions": [
+				{
+					"id": "fill-rect",
+					"objectClass": "Canvases",
+					"sid": 261468091358383,
+					"parameters": {
+						"left": "0",
+						"top": "0",
+						"right": "Self.Width",
+						"bottom": "Self.Height",
+						"color": "rgba(0, 0, 0, 100)"
+					}
+				}
+			],
+			"sid": 733905762547153
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "ButtonPaste",
+					"sid": 361885946222279
+				}
+			],
+			"actions": [
+				{
+					"id": "paste-object",
+					"objectClass": "Canvases",
+					"sid": 363150954631325,
+					"parameters": {
+						"object": "Drawables",
+						"effects": "with-effects"
+					}
+				}
+			],
+			"sid": 192405897343118
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "ButtonCompare",
+					"sid": 890392871046055
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "PIXELMATCH_startComparison",
+					"sid": 916831132750893,
+					"parameters": [
+						"Canvas1.UID",
+						"Canvas2.UID",
+						"\"onComparisonSuccess\"",
+						"\"onComparisonFail\""
+					]
+				}
+			],
+			"sid": 116222981495235
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "ButtonReload",
+					"sid": 586084500967665
+				}
+			],
+			"actions": [
+				{
+					"id": "reload",
+					"objectClass": "Browser",
+					"sid": 989406000455497
+				}
+			],
+			"sid": 890686327235109
+		},
+		{
+			"functionName": "onComparisonSuccess",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "mismatchingPixelCount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 776231900426320
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "alert",
+					"objectClass": "Browser",
+					"sid": 886032482574515,
+					"parameters": {
+						"message": "\"Mismatching pixel count: \" & mismatchingPixelCount"
+					}
+				}
+			],
+			"sid": 141410153996968
+		},
+		{
+			"functionName": "onComparisonFail",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "alert",
+					"objectClass": "Browser",
+					"sid": 345035956487208,
+					"parameters": {
+						"message": "\"Image comparison failed.\""
+					}
+				}
+			],
+			"sid": 877254630323666
+		}
+	],
+	"sid": 680353853616029
+}

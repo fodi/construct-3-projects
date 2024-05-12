@@ -1,0 +1,12 @@
+{
+	"name": "Canvases",
+	"plugin-id": "DrawingCanvas",
+	"sid": 642625136334076,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Canvas2",
+		"Canvas1"
+	]
+}

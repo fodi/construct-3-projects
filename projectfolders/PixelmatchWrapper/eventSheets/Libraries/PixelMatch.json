@@ -1,0 +1,57 @@
+{
+	"name": "PixelMatch",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Call this function with the UIDs of the drawing canvas objects to begin the comparison"
+		},
+		{
+			"functionName": "PIXELMATCH_startComparison",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "canvasUID1",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 184575929054708
+				},
+				{
+					"name": "canvasUID2",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 116521363048140
+				},
+				{
+					"name": "successFunctionName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 945428346583224
+				},
+				{
+					"name": "failFunctionName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 941508728342211
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "const successFunctionName = localVars.successFunctionName;\nconst failFunctionName = localVars.failFunctionName;\n\ntry {\n\tconst ci1 = runtime.getInstanceByUid(localVars.canvasUID1);\n\tconst ci2 = runtime.getInstanceByUid(localVars.canvasUID2);\n\tconst ipd1 = await ci1.getImagePixelData();\n\tconst ipd2 = await ci2.getImagePixelData();\n\tconst mpc = pixelmatch(ipd1.data, ipd2.data, null, ipd1.width, ipd1.height);\n\truntime.callFunction(successFunctionName, mpc);\n} catch(error) {\n\tconsole.error(\"[PIXELMATCH_startComparison] Something went wrong:\");\n\tconsole.error(error);\n\truntime.callFunction(failFunctionName);\n}"
+				}
+			],
+			"sid": 977210229571688
+		}
+	],
+	"sid": 532851598779082
+}

@@ -1,0 +1,1 @@
+import pixelmatch from './vendor/pixelmatch/pixelmatch-5.3.0.module.js';

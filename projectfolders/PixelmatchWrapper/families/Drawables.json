@@ -1,0 +1,11 @@
+{
+	"name": "Drawables",
+	"plugin-id": "Sprite",
+	"sid": 425880233634710,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Sprite"
+	]
+}
