@@ -1,0 +1,259 @@
+{
+	"name": "aCamera 🎥",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "init",
+			"objectClass": "3DCamera",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "look-parallel-to-layout",
+					"objectClass": "3DCamera",
+					"sid": 934274267846590,
+					"parameters": {
+						"cam-x": "PlayerCamera.X",
+						"cam-y": "PlayerCamera.Y",
+						"cam-z": "PlayerCamera.ZElevation",
+						"look-angle": "Player.Angle"
+					}
+				},
+				{
+					"id": "rotate-camera",
+					"objectClass": "3DCamera",
+					"sid": 691122528407875,
+					"parameters": {
+						"rotate-x": "-3DCamera.CameraXRotation",
+						"rotate-y": "-3DCamera.CameraYRotation + 90",
+						"min-polar-angle": "C_3DCameraPolarAngleMin",
+						"max-polar-angle": "C_3DCameraPolarAngleMax"
+					}
+				}
+			],
+			"sid": 184329805210303
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "3DCamera",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "3DCamera",
+					"sid": 258713116563349,
+					"parameters": {
+						"x": "PlayerCamera.X",
+						"y": "PlayerCamera.Y",
+						"z": "PlayerCamera.ZElevation",
+						"which": "camera"
+					}
+				},
+				{
+					"id": "Raycast",
+					"objectClass": "PlayerCamera",
+					"sid": 277193330598615,
+					"behaviorType": "Cannon3DPhysics",
+					"parameters": {
+						"tag": "\"\"",
+						"fromX": "3DCamera.CameraX",
+						"fromY": "3DCamera.CameraY",
+						"fromZ": "3DCamera.CameraZ",
+						"toX": "3DCamera.CameraX + C_PlayerRaycastDistance * cos(3DCamera.CameraXRotation) * sin(3DCamera.CameraYRotation)",
+						"toY": "3DCamera.CameraY + C_PlayerRaycastDistance * sin(3DCamera.CameraXRotation) * sin(3DCamera.CameraYRotation)",
+						"toZ": "3DCamera.CameraZ + C_PlayerRaycastDistance * cos(3DCamera.CameraYRotation)",
+						"collisionFilterGroup": "-1",
+						"collisionFilterMask": "-1",
+						"skipBackfaces": false,
+						"mode": "closest"
+					}
+				},
+				{
+					"id": "parse",
+					"objectClass": "RaycastJSON",
+					"sid": 895130585791508,
+					"parameters": {
+						"data": "PlayerCamera.Cannon3DPhysics.RaycastResultAsJSON"
+					}
+				}
+			],
+			"sid": 760930254724332,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-value",
+							"objectClass": "RaycastJSON",
+							"sid": 777774575298505,
+							"parameters": {
+								"path": "\"hasHit\"",
+								"cmp": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "Raycasting",
+							"sid": 686274639009062,
+							"parameters": {
+								"unique-id": "RaycastJSON.Get(\"hitUID\")"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "Raycasting",
+							"sid": 863479620109125,
+							"parameters": {
+								"color": "rgbEx(120, 120, 120)"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Raycasting",
+							"sid": 646979378683461,
+							"parameters": {
+								"instance-variable": "isFocused",
+								"value": "true"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 409008103167828,
+							"parameters": {
+								"variable": "FocusedUID",
+								"value": "Raycasting.UID"
+							}
+						}
+					],
+					"sid": 776404452827835
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 609992893425271
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "Raycasting",
+							"sid": 279904176642098,
+							"parameters": {
+								"color": "rgbEx(100, 100, 100)"
+							}
+						}
+					],
+					"sid": 254991480172388
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Raycasting",
+							"sid": 965554891961685,
+							"parameters": {
+								"instance-variable": "isFocused"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 394939003989124,
+							"parameters": {
+								"object": "Raycasting",
+								"expression": "Raycasting.UID",
+								"comparison": 1,
+								"value": "FocusedUID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "Raycasting",
+							"sid": 489470778819620,
+							"parameters": {
+								"color": "rgbEx(100, 100, 100)"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Raycasting",
+							"sid": 690003628263954,
+							"parameters": {
+								"instance-variable": "isFocused",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 472397313756630
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "rotate",
+			"objectClass": "3DCamera",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "rotateX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 281236741897274
+				},
+				{
+					"name": "rotateY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 297643729080710
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "rotate-camera",
+					"objectClass": "3DCamera",
+					"sid": 274174455537777,
+					"parameters": {
+						"rotate-x": "rotateX",
+						"rotate-y": "rotateY",
+						"min-polar-angle": "C_3DCameraPolarAngleMin",
+						"max-polar-angle": "C_3DCameraPolarAngleMax"
+					}
+				}
+			],
+			"sid": 735051685955006
+		}
+	],
+	"sid": 585378618033530
+}

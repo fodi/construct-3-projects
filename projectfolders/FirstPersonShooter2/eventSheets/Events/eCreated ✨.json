@@ -1,0 +1,64 @@
+{
+	"name": "eCreated ✨",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Spawner",
+					"sid": 695726387657272
+				}
+			],
+			"actions": [
+				{
+					"customAction": "init",
+					"objectClass": "Spawner",
+					"sid": 279334724994322
+				}
+			],
+			"sid": 149123707742490
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Obstacles",
+					"sid": 204283107223874
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "Obstacles",
+					"sid": 984250820923113,
+					"behaviorType": "Solid",
+					"parameters": {
+						"state": "enabled"
+					}
+				}
+			],
+			"sid": 286997007969013
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Player",
+					"sid": 351634329970370
+				}
+			],
+			"actions": [
+				{
+					"customAction": "init",
+					"objectClass": "Player",
+					"sid": 849857349330892
+				}
+			],
+			"sid": 211977274544090
+		}
+	],
+	"sid": 397755584574739
+}

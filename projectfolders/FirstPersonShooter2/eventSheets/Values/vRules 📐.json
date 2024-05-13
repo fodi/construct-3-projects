@@ -1,0 +1,46 @@
+{
+	"name": "vRules 📐",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "R_MouseLookSensitivityX",
+			"type": "number",
+			"initialValue": "0.1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 228162804280032
+		},
+		{
+			"eventType": "variable",
+			"name": "R_MouseLookSensitivityY",
+			"type": "number",
+			"initialValue": "0.1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 266972375880080
+		},
+		{
+			"eventType": "variable",
+			"name": "R_GamepadLookSensitivityX",
+			"type": "number",
+			"initialValue": "0.02",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 253066302634262
+		},
+		{
+			"eventType": "variable",
+			"name": "R_GamepadLookSensitivityY",
+			"type": "number",
+			"initialValue": "0.02",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 725269885685579
+		}
+	],
+	"sid": 550192479475364
+}

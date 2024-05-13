@@ -1,0 +1,75 @@
+{
+	"name": "aSpawner 🎇",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "init",
+			"objectClass": "Spawner",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 317584141253456,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Spawner",
+							"sid": 762417295454070,
+							"parameters": {
+								"animation": "OT_Player"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "spawn",
+							"objectClass": "Player",
+							"sid": 736681661687304,
+							"parameters": [
+								"Spawner.X",
+								"Spawner.Y",
+								"Spawner.ZElevation"
+							]
+						}
+					],
+					"sid": 349120645175362
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Spawner",
+							"sid": 835714580725906,
+							"parameters": {
+								"animation": "OT_Enemies"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "spawn",
+							"objectClass": "Enemies",
+							"sid": 893775036390944,
+							"parameters": [
+								"Spawner.X",
+								"Spawner.Y",
+								"Spawner.ZElevation"
+							]
+						}
+					],
+					"sid": 213113808637989
+				}
+			]
+		}
+	],
+	"sid": 598700967285154
+}

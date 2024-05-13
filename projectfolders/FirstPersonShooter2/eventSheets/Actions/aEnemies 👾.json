@@ -1,0 +1,80 @@
+{
+	"name": "aEnemies 👾",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "Enemies",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 747047443190534
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 601893303522130
+				},
+				{
+					"name": "z",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 683239152007733
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 835199278784582,
+					"parameters": {
+						"object-to-create": "Enemies",
+						"layer": "LAYER_3D",
+						"x": "x",
+						"y": "y",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-z-elevation",
+					"objectClass": "Enemies",
+					"sid": 820338882442627,
+					"parameters": {
+						"z": "z"
+					}
+				}
+			],
+			"sid": 795887025432368
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "Enemies",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 184330578020014
+		}
+	],
+	"sid": 878190083165609
+}

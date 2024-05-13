@@ -1,0 +1,706 @@
+{
+	"name": "aPlayer 🧬",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 401426098068854
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 433018332615737
+				},
+				{
+					"name": "z",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 578908834591130
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 732445053923232,
+					"parameters": {
+						"object-to-create": "Player",
+						"layer": "LAYER_3D",
+						"x": "x",
+						"y": "y",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-z-elevation",
+					"objectClass": "Player",
+					"sid": 580923139547310,
+					"parameters": {
+						"z": "z"
+					}
+				}
+			],
+			"sid": 750225996456285
+		},
+		{
+			"aceType": "action",
+			"aceName": "init",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-solid-collision-filter",
+					"objectClass": "Player",
+					"sid": 747078727490918,
+					"parameters": {
+						"mode": "inclusive",
+						"tags": "\"Player\""
+					}
+				}
+			],
+			"sid": 718006307208869
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"customAction": "tick_movementXY",
+					"objectClass": "Player",
+					"sid": 535720614317348
+				},
+				{
+					"customAction": "tick_movementZ",
+					"objectClass": "Player",
+					"sid": 139302389974435
+				}
+			],
+			"sid": 462387528715146
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_movementXY",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-angle",
+					"objectClass": "Player",
+					"sid": 234725400252517,
+					"parameters": {
+						"angle": "3DCamera.CameraXRotation"
+					}
+				}
+			],
+			"sid": 467998488605255,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "movementInputVectorX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 995416679346864
+				},
+				{
+					"eventType": "variable",
+					"name": "movementInputVectorY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 632707685211587
+				},
+				{
+					"eventType": "variable",
+					"name": "shouldMove",
+					"type": "boolean",
+					"initialValue": "false",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 332893718549944
+				},
+				{
+					"eventType": "variable",
+					"name": "movementAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 145490471911349
+				},
+				{
+					"eventType": "comment",
+					"text": "Handle digital input"
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 286522240070119,
+							"parameters": {
+								"variable": "movementInputVectorX",
+								"value": "Player.input_digital_moveRight - Player.input_digital_moveLeft"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 335459711732144,
+							"parameters": {
+								"variable": "movementInputVectorY",
+								"value": "Player.input_digital_moveBackward - Player.input_digital_moveForward"
+							}
+						}
+					],
+					"sid": 406742967719652
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 768402342358320,
+							"parameters": {
+								"variable": "movementInputVectorX",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 997573637019162,
+							"parameters": {
+								"variable": "movementInputVectorY",
+								"comparison": 1,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 437959832204204,
+							"parameters": {
+								"variable": "movementAngle",
+								"value": "((angle(0, 0, movementInputVectorX, movementInputVectorY) + 360) % 360) + 90"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 133984959882125,
+							"parameters": {
+								"variable": "shouldMove",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 104670103005223,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Handle analog input"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 182805494669415,
+							"parameters": {
+								"instance-variable": "input_analog_move",
+								"comparison": 1,
+								"value": "NOTHING"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 529131199281566,
+							"parameters": {
+								"variable": "movementAngle",
+								"value": "Player.input_analog_move"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 585879770958742,
+							"parameters": {
+								"variable": "shouldMove",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 801883713344947
+				},
+				{
+					"eventType": "comment",
+					"text": "Move player if needed"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 136163765433616,
+							"parameters": {
+								"variable": "shouldMove"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-vector-x",
+							"objectClass": "Player",
+							"sid": 877595324148676,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"vector-x": "cos(Player.Angle + movementAngle) * Player.8Direction.MaxSpeed"
+							}
+						},
+						{
+							"id": "set-vector-y",
+							"objectClass": "Player",
+							"sid": 224054896769148,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"vector-y": "sin(Player.Angle + movementAngle) * Player.8Direction.MaxSpeed"
+							}
+						}
+					],
+					"sid": 293591499220813
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_movementZ",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Handle player movement on the Z axis. Always accelerate the player downwards according to the force of gravity, and move the player according to the current speed on the Z axis (the [i]dz[/i] variable)."
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Player",
+					"sid": 762432495763020,
+					"parameters": {
+						"instance-variable": "deltaZ",
+						"value": "GravityZ * dt"
+					}
+				},
+				{
+					"id": "set-z-elevation",
+					"objectClass": "Player",
+					"sid": 561745744150354,
+					"parameters": {
+						"z": "Self.ZElevation + Player.deltaZ"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Obstacles",
+					"sid": 154935020789569,
+					"disabled": true,
+					"behaviorType": "Solid",
+					"parameters": {
+						"state": "disabled"
+					}
+				},
+				{
+					"id": "set-tags",
+					"objectClass": "Obstacles",
+					"sid": 695416681448035,
+					"behaviorType": "Solid",
+					"parameters": {
+						"tags": "\"\""
+					}
+				}
+			],
+			"sid": 530621753931730,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "todo_nth prevent player from jumping into stuff above?"
+				},
+				{
+					"eventType": "comment",
+					"text": "Handle the player landing on the ground. If the player is falling, they are overlapping a 3D shape in 2D, and the player's Z elevation is also within the Z height of the 3D shape, then the player should land on it. Note the detection counts anywhere in the top 5 units on the Z axis as landing on the 3D shape. This is because falling can step several units per frame, so the player could fall in a range of locations within the 3D shape. By handling a fairly large range and snapping the player back to the top of the shape, the result is the player reliably lands exactly on top of the shape."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 369308960682485,
+							"parameters": {
+								"instance-variable": "deltaZ",
+								"comparison": 2,
+								"value": "0"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "Player",
+							"sid": 212337165476784,
+							"parameters": {
+								"object": "Obstacles"
+							}
+						},
+						{
+							"id": "compare-z-elevation",
+							"objectClass": "Obstacles",
+							"sid": 935445428498848,
+							"parameters": {
+								"which": "z-elevation",
+								"comparison": 5,
+								"z-elevation": "Player.ZElevation - Self.ZHeight"
+							}
+						},
+						{
+							"id": "compare-z-elevation",
+							"objectClass": "Obstacles",
+							"sid": 415083227152141,
+							"parameters": {
+								"which": "z-elevation",
+								"comparison": 3,
+								"z-elevation": "Player.ZElevation - Self.ZHeight + 5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 597387615689094,
+							"parameters": {
+								"instance-variable": "deltaZ",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 458138452309267,
+							"parameters": {
+								"instance-variable": "previousZ",
+								"value": "Player.ZElevation"
+							}
+						},
+						{
+							"id": "set-z-elevation",
+							"objectClass": "Player",
+							"sid": 636658675890226,
+							"parameters": {
+								"z": "Obstacles.ZElevation + Obstacles.ZHeight"
+							}
+						}
+					],
+					"sid": 513190470017176,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Note the [i]PlayerOnGround[/i] flag has not been updated yet - it's still left as the value from the previous tick. So if the player was on the ground last tick, and they are snapping up to a new Z elevation at least 0.5 units higher than before, then the player is moving up a step. Normally this would snap the camera up which would look unnatural. To improve how this looks, instead smoothly tween the PlayerCam object's Z elevation up to where the player has moved."
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Player",
+									"sid": 709136125207712,
+									"parameters": {
+										"instance-variable": "isOnGround"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 971304976373597,
+									"parameters": {
+										"instance-variable": "previousZ",
+										"comparison": 3,
+										"value": "Player.ZElevation - 0.5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "stop-all-tweens",
+									"objectClass": "PlayerCamera",
+									"sid": 409221251943797,
+									"behaviorType": "Tween"
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "PlayerCamera",
+									"sid": 833990173233147,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_Falling",
+										"property": "offsetZElevation",
+										"end-value": "Player.ZElevation + C_ZElevation_PlayerCamera",
+										"time": "0.1",
+										"ease": "easeoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 476208960201229
+						},
+						{
+							"eventType": "comment",
+							"text": "Now set the [i]PlayerOnGround[/i] flag to indicate the player is standing on the ground."
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Player",
+									"sid": 567607846220231,
+									"parameters": {
+										"instance-variable": "isOnGround",
+										"value": "true"
+									}
+								}
+							],
+							"sid": 177138925629606
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "If the previous event didn't run, clear the [i]PlayerOnGround[/i] flag to indicate the player is not standing on the ground (i.e. they are in the air)."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 521459228069286
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 362742096509543,
+							"parameters": {
+								"instance-variable": "isOnGround",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 187671343254104
+				},
+				{
+					"eventType": "comment",
+					"text": "If the player falls off the level, reposition them back to the start."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 346981163242999,
+							"parameters": {
+								"instance-variable": "isOnGround"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-z-elevation",
+							"objectClass": "Player",
+							"sid": 130530514106686,
+							"parameters": {
+								"which": "z-elevation",
+								"comparison": 2,
+								"z-elevation": "C_ZElevation_Abyss"
+							}
+						},
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Spawner",
+							"sid": 818213565965488,
+							"parameters": {
+								"animation": "OT_Player"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Player",
+							"sid": 157273140874747
+						},
+						{
+							"customAction": "spawn",
+							"objectClass": "Player",
+							"sid": 394555838181343,
+							"parameters": [
+								"Spawner.X",
+								"Spawner.Y",
+								"Spawner.ZElevation"
+							]
+						}
+					],
+					"sid": 646079442825976
+				},
+				{
+					"eventType": "comment",
+					"text": "When not tweening the PlayerCam Z elevation, just follow the player's Z elevation exactly."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-playing",
+							"objectClass": "PlayerCamera",
+							"sid": 941331058781567,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "TWEEN_Falling"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-z-elevation",
+							"objectClass": "PlayerCamera",
+							"sid": 296955064463628,
+							"parameters": {
+								"z": "Player.ZElevation + C_ZElevation_PlayerCamera"
+							}
+						}
+					],
+					"sid": 882690629100758
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-z-elevation",
+							"objectClass": "Obstacles",
+							"sid": 173483006227219,
+							"parameters": {
+								"which": "z-elevation",
+								"comparison": 4,
+								"z-elevation": "Player.ZElevation - Self.ZHeight + 1"
+							}
+						},
+						{
+							"id": "compare-z-elevation",
+							"objectClass": "Obstacles",
+							"sid": 918732693325908,
+							"parameters": {
+								"which": "z-elevation",
+								"comparison": 3,
+								"z-elevation": "Player.ZElevation"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Obstacles",
+							"sid": 527654076052801,
+							"disabled": true,
+							"behaviorType": "Solid",
+							"parameters": {
+								"state": "enabled"
+							}
+						},
+						{
+							"id": "set-tags",
+							"objectClass": "Obstacles",
+							"sid": 196069034609375,
+							"behaviorType": "Solid",
+							"parameters": {
+								"tags": "\"Player\""
+							}
+						}
+					],
+					"sid": 731954224521387
+				}
+			]
+		}
+	],
+	"sid": 950840338472059
+}

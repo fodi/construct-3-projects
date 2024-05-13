@@ -1,0 +1,17 @@
+{
+	"name": "Obstacles",
+	"plugin-id": "Shape3D",
+	"sid": 934763321558048,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 170106503403011
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Obstacle"
+	]
+}

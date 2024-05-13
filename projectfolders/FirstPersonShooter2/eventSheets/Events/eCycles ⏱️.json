@@ -1,0 +1,51 @@
+{
+	"name": "eCycles ⏱️",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 934409235030864
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "initLevel",
+					"sid": 935426248210738
+				},
+				{
+					"customAction": "init",
+					"objectClass": "3DCamera",
+					"sid": 846884380236997
+				}
+			],
+			"sid": 106853073142729
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 992338639004231
+				}
+			],
+			"actions": [
+				{
+					"customAction": "tick",
+					"objectClass": "Player",
+					"sid": 678966669868452
+				},
+				{
+					"customAction": "tick",
+					"objectClass": "3DCamera",
+					"sid": 557998734631406
+				}
+			],
+			"sid": 464017789630187
+		}
+	],
+	"sid": 918958308783690
+}

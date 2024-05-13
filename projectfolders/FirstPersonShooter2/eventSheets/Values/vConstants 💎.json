@@ -1,0 +1,56 @@
+{
+	"name": "vConstants 💎",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "C_3DCameraPolarAngleMin",
+			"type": "number",
+			"initialValue": "20",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 336506298438209
+		},
+		{
+			"eventType": "variable",
+			"name": "C_3DCameraPolarAngleMax",
+			"type": "number",
+			"initialValue": "160",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 329161656877465
+		},
+		{
+			"eventType": "variable",
+			"name": "C_ZElevation_Abyss",
+			"type": "number",
+			"initialValue": "-200",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 158506906669624
+		},
+		{
+			"eventType": "variable",
+			"name": "C_ZElevation_PlayerCamera",
+			"type": "number",
+			"initialValue": "10",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 329415755639650
+		},
+		{
+			"eventType": "variable",
+			"name": "C_PlayerRaycastDistance",
+			"type": "number",
+			"initialValue": "1000",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 747387873024884
+		}
+	],
+	"sid": 344291072955141
+}

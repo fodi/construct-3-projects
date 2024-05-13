@@ -1,0 +1,36 @@
+{
+	"name": "vState ♻️",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "PlayerJumpStrength",
+			"type": "number",
+			"initialValue": "3",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 301002393437530
+		},
+		{
+			"eventType": "variable",
+			"name": "GravityZ",
+			"type": "number",
+			"initialValue": "3.5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 609027682255383
+		},
+		{
+			"eventType": "variable",
+			"name": "FocusedUID",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 152796041472439
+		}
+	],
+	"sid": 756444675677784
+}

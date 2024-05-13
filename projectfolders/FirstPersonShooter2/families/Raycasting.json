@@ -1,0 +1,25 @@
+{
+	"name": "Raycasting",
+	"plugin-id": "Shape3D",
+	"sid": 178712986058765,
+	"instanceVariables": [
+		{
+			"name": "isFocused",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 122174491222368
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "mikal_cannon_3d_physics",
+			"name": "Cannon3DPhysics",
+			"sid": 842470903563226
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Obstacle"
+	]
+}

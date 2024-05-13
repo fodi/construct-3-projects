@@ -1,0 +1,153 @@
+{
+	"name": "Player",
+	"plugin-id": "Sprite",
+	"sid": 413576748752854,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "previousZ",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 468755134238236
+		},
+		{
+			"name": "deltaZ",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 808332482756592
+		},
+		{
+			"name": "isOnGround",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 527577804011129
+		},
+		{
+			"name": "input_digital_moveForward",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 864567195720949
+		},
+		{
+			"name": "input_digital_moveBackward",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 537101432606759
+		},
+		{
+			"name": "input_digital_moveLeft",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 512714803543633
+		},
+		{
+			"name": "input_digital_moveRight",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 362548069710680
+		},
+		{
+			"name": "input_analog_move",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 189594813707445
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction",
+			"sid": 615870200447762
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 41,
+						"height": 41,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1252983,
+						"collisionPoly": {
+							"points": [
+								0.3902439024390244,
+								0,
+								0.6097560975609756,
+								0,
+								0.6829268292682927,
+								0.024390243902439025,
+								0.7804878048780488,
+								0.07317073170731707,
+								0.926829268292683,
+								0.21951219512195122,
+								0.975609756097561,
+								0.3170731707317073,
+								1,
+								0.3902439024390244,
+								1,
+								0.6097560975609756,
+								0.975609756097561,
+								0.6829268292682927,
+								0.926829268292683,
+								0.7804878048780488,
+								0.7804878048780488,
+								0.926829268292683,
+								0.6829268292682927,
+								0.975609756097561,
+								0.6097560975609756,
+								1,
+								0.3902439024390244,
+								1,
+								0.3170731707317073,
+								0.975609756097561,
+								0.21951219512195122,
+								0.926829268292683,
+								0.07317073170731707,
+								0.7804878048780488,
+								0.024390243902439025,
+								0.6829268292682927,
+								0,
+								0.6097560975609756,
+								0,
+								0.3902439024390244,
+								0.024390243902439025,
+								0.3170731707317073,
+								0.07317073170731707,
+								0.21951219512195122,
+								0.21951219512195122,
+								0.07317073170731707,
+								0.3170731707317073,
+								0.024390243902439025
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 834057314550860,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
