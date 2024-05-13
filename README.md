@@ -2,7 +2,7 @@
 This monorepo contains a bunch of Construct 3 projects I'd like to share with the community. Most of them are examples, some provide integrations with 3rd party libraries or services.
 
 ## Usage
-Clone the repo or [https://github.com/fodi/construct-3-projects/archive/refs/heads/main.zip](download the ZIP archive), then find the project you're looking for in the `projectfolders` folder. You can open it as a project folder in Construct 3, or you can ZIP its contents, change the extension to `c3p` and open it as a single file.
+Clone the repo or [download the ZIP archive](https://github.com/fodi/construct-3-projects/archive/refs/heads/main.zip), then find the project you're looking for in the `projectfolders` folder. You can open it as a project folder in Construct 3, or you can ZIP its contents, change the extension to `c3p` and open it as a single file.
 
 Note: the confusingly named `docs` folder actually contains the HTML5 exported versions of the projects, this is the root folder for the GitHub pages.
 
