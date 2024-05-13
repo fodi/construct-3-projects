@@ -1,0 +1,16 @@
+{
+	"name": "List",
+	"plugin-id": "List",
+	"sid": 169864206790902,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "role",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 537962966396537
+		}
+	],
+	"behaviorTypes": []
+}

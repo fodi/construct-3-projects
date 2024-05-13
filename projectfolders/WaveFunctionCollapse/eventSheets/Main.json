@@ -1,0 +1,758 @@
+{
+	"name": "Main",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Macros"
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Canvas",
+			"type": "string",
+			"initialValue": "Canvas",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 582502361265913
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Log",
+			"type": "string",
+			"initialValue": "Log",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 457961880828127
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Tilemap",
+			"type": "string",
+			"initialValue": "Tilemap",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 977466562061541
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_UI",
+			"type": "string",
+			"initialValue": "UI",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 985294161712125
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 971216570011756,
+					"parameters": {
+						"key": 87
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Camera",
+					"sid": 782793044363658,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "up"
+					}
+				}
+			],
+			"sid": 609601279467426
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 426568175671441,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Camera",
+					"sid": 508973029200456,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "left"
+					}
+				}
+			],
+			"sid": 285129299966039
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 125427101983365,
+					"parameters": {
+						"key": 83
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Camera",
+					"sid": 146930244660288,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "down"
+					}
+				}
+			],
+			"sid": 919135716669386
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 577627731240526,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Camera",
+					"sid": 186149045730470,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "right"
+					}
+				}
+			],
+			"sid": 386897965639811
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 282207777584347,
+					"parameters": {
+						"key": 67
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "toggleLayer",
+					"sid": 252152066188797,
+					"parameters": [
+						"LAYER_Canvas"
+					]
+				}
+			],
+			"sid": 661367107631692
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 895814552606037,
+					"parameters": {
+						"key": 85
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "toggleLayer",
+					"sid": 907362942727628,
+					"parameters": [
+						"LAYER_UI"
+					]
+				}
+			],
+			"sid": 392790958801141
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 202866588732663,
+					"parameters": {
+						"key": 76
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "toggleLayer",
+					"sid": 763706865024944,
+					"parameters": [
+						"LAYER_Log"
+					]
+				}
+			],
+			"sid": 149115825767872
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 647307236095427
+				},
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 170517458901735,
+					"parameters": {
+						"key": 82
+					}
+				},
+				{
+					"id": "on-clicked",
+					"objectClass": "Button",
+					"sid": 825242908741386
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "start",
+					"sid": 250917873219084
+				}
+			],
+			"sid": 231407606376581,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 356927565731396,
+					"parameters": {
+						"key": 81
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 355589314764071,
+					"parameters": {
+						"key": 109
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-scale",
+					"objectClass": "System",
+					"sid": 284098894282038,
+					"parameters": {
+						"layer": "LAYER_Tilemap",
+						"scale": "LayerScale(\"Tilemap\") - 0.1"
+					}
+				}
+			],
+			"sid": 174136389731158,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 353528096026091,
+					"parameters": {
+						"key": 69
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 945509271711614,
+					"parameters": {
+						"key": 107
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-scale",
+					"objectClass": "System",
+					"sid": 904309205188595,
+					"parameters": {
+						"layer": "LAYER_Tilemap",
+						"scale": "LayerScale(\"Tilemap\") + 0.1"
+					}
+				}
+			],
+			"sid": 306526708294602,
+			"isOrBlock": true
+		},
+		{
+			"functionName": "start",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 246890549120921,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "requestedInputImage",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 617626451768401
+				},
+				{
+					"eventType": "variable",
+					"name": "requestedInputPatternSize",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 475803893815998
+				},
+				{
+					"eventType": "variable",
+					"name": "requestedOutputWidth",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 680191971078933
+				},
+				{
+					"eventType": "variable",
+					"name": "requestedOutputHeight",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 525403703130520
+				},
+				{
+					"eventType": "variable",
+					"name": "requestedInputPeriodic",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 236861420217092
+				},
+				{
+					"eventType": "variable",
+					"name": "requestedOutputPeriodic",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 433082926240320
+				},
+				{
+					"eventType": "variable",
+					"name": "requestedSeedString",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 844065338808900
+				},
+				{
+					"eventType": "variable",
+					"name": "requestedSymmetryLevel",
+					"type": "number",
+					"initialValue": "8",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 369821676277483
+				},
+				{
+					"eventType": "variable",
+					"name": "requestedMaxAttempts",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 399089869985114
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "List",
+							"sid": 932271602442922,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "\"inputImage\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 597338610092367,
+							"parameters": {
+								"variable": "requestedInputImage",
+								"value": "List.SelectedText"
+							}
+						}
+					],
+					"sid": 995294399394212
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "TextInput",
+							"sid": 487846730708140,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "\"inputPatternSize\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 742233787259735,
+							"parameters": {
+								"variable": "requestedInputPatternSize",
+								"value": "int(TextInput.Text)"
+							}
+						}
+					],
+					"sid": 820487912890810
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "TextInput",
+							"sid": 506691724504130,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "\"outputWidth\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 127385308506512,
+							"parameters": {
+								"variable": "requestedOutputWidth",
+								"value": "int(TextInput.Text)"
+							}
+						}
+					],
+					"sid": 474412952913348
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "TextInput",
+							"sid": 911958520331818,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "\"outputHeight\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 778046709998501,
+							"parameters": {
+								"variable": "requestedOutputHeight",
+								"value": "int(TextInput.Text)"
+							}
+						}
+					],
+					"sid": 520105540199683
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "TextInput",
+							"sid": 139967056051767,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "\"seedString\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 339455648983216,
+							"parameters": {
+								"variable": "requestedSeedString",
+								"value": "TextInput.Text"
+							}
+						}
+					],
+					"sid": 880211484553793
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "List",
+							"sid": 116690728392588,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "\"periodicSettings\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 327319261282610,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-selected-item-text",
+									"objectClass": "List",
+									"sid": 322071328848693,
+									"parameters": {
+										"text-to-compare": "\"only input\"",
+										"case-sensitivity": "ignore-case"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 909201851951487,
+									"parameters": {
+										"variable": "requestedOutputPeriodic",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 905649342425513
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-selected-item-text",
+									"objectClass": "List",
+									"sid": 535508416771766,
+									"parameters": {
+										"text-to-compare": "\"only output\"",
+										"case-sensitivity": "ignore-case"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 786743651498597,
+									"parameters": {
+										"variable": "requestedInputPeriodic",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 210600138884833
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-selected-item-text",
+									"objectClass": "List",
+									"sid": 922715907652064,
+									"parameters": {
+										"text-to-compare": "\"neither\"",
+										"case-sensitivity": "ignore-case"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 992138700539305,
+									"parameters": {
+										"variable": "requestedInputPeriodic",
+										"value": "0"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 285252145073242,
+									"parameters": {
+										"variable": "requestedOutputPeriodic",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 993434922896418
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "SliderBar",
+							"sid": 539314820930081,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "\"symmetryLevel\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 835089817815241,
+							"parameters": {
+								"variable": "requestedSymmetryLevel",
+								"value": "SliderBar.Value"
+							}
+						}
+					],
+					"sid": 882755066134419
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "TextInput",
+							"sid": 166401775426563,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "\"maxAttempts\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 601594874139250,
+							"parameters": {
+								"variable": "requestedMaxAttempts",
+								"value": "int(TextInput.Text)"
+							}
+						}
+					],
+					"sid": 983535415629075
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "generateWFCMap",
+							"sid": 780647112692020,
+							"parameters": [
+								"requestedInputImage",
+								"requestedOutputWidth",
+								"requestedOutputHeight",
+								"requestedSeedString",
+								"requestedInputPatternSize",
+								"requestedInputPeriodic",
+								"requestedOutputPeriodic",
+								"requestedSymmetryLevel",
+								"requestedMaxAttempts"
+							]
+						},
+						{
+							"id": "set-size",
+							"objectClass": "DrawingCanvas",
+							"sid": 445894099583303,
+							"parameters": {
+								"width": "requestedOutputWidth",
+								"height": "requestedOutputHeight"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "DrawingCanvas",
+							"sid": 107550559513713,
+							"parameters": {
+								"x": "LayoutWidth",
+								"y": "0"
+							}
+						}
+					],
+					"sid": 915979574186507
+				}
+			]
+		}
+	],
+	"sid": 338214931636636
+}

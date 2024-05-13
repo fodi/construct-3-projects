@@ -1,0 +1,370 @@
+{
+	"name": "fWFC 🌊",
+	"events": [
+		{
+			"functionName": "generateWFCMap",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "inputImageName",
+					"type": "string",
+					"initialValue": "rooms",
+					"comment": "",
+					"sid": 842799722959007
+				},
+				{
+					"name": "outputWidth",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 991210527397923
+				},
+				{
+					"name": "outputHeight",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 792028933518805
+				},
+				{
+					"name": "seedString",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 383790872196510
+				},
+				{
+					"name": "inputPatternSize",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 532210315972629
+				},
+				{
+					"name": "isInputPeriodic",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 687876660511533
+				},
+				{
+					"name": "isOutputPeriodic",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 859177125156532
+				},
+				{
+					"name": "symmetryLevel",
+					"type": "number",
+					"initialValue": "8",
+					"comment": "",
+					"sid": 519176611578710
+				},
+				{
+					"name": "maxAttempts",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 921109301231140
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "generateWFCMap(runtime, localVars.inputImageName, localVars.outputWidth, localVars.outputHeight, localVars.seedString, localVars.inputPatternSize, localVars.isInputPeriodic > 0, localVars.isOutputPeriodic > 0, localVars.symmetryLevel, localVars.maxAttempts)"
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 670094771439213,
+					"parameters": {
+						"seconds": "0.1"
+					}
+				},
+				{
+					"callFunction": "mapToCanvas",
+					"sid": 897393157905169,
+					"parameters": [
+						"outputWidth",
+						"outputHeight"
+					]
+				},
+				{
+					"callFunction": "mapToTilemap",
+					"sid": 986468250926195,
+					"parameters": [
+						"outputWidth",
+						"outputHeight",
+						"8"
+					]
+				},
+				{
+					"callFunction": "logMessage",
+					"sid": 882856832637476,
+					"parameters": [
+						"\"[generateWFCMap] inputImageName = \" & inputImageName & \", outputWidth = \" & outputWidth & \", outputHeight = \" & outputHeight",
+						true
+					]
+				}
+			],
+			"sid": 257520774009069
+		},
+		{
+			"functionName": "onWFCMapGenerationFinished",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "result",
+					"type": "boolean",
+					"initialValue": "false",
+					"comment": "",
+					"sid": 552104429832589
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"callFunction": "logMessage",
+					"sid": 136079976508130,
+					"parameters": [
+						"\"[onWFCMapGenerationFinished] result: \" & (result ? \"success\" : \"fail\")",
+						true
+					]
+				}
+			],
+			"sid": 506231740615491
+		},
+		{
+			"functionName": "mapToCanvas",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "outputWidth",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 601049010284469
+				},
+				{
+					"name": "outputHeight",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 153895816400977
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "clear-canvas",
+					"objectClass": "DrawingCanvas",
+					"sid": 588771669441074,
+					"parameters": {
+						"color": "rgba(0, 0, 0, 0)"
+					}
+				}
+			],
+			"sid": 482752736886383,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 306321909701402,
+							"parameters": {
+								"name": "\"i\"",
+								"start-index": "0",
+								"end-index": "outputWidth - 1"
+							}
+						},
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 156366508149308,
+							"parameters": {
+								"name": "\"j\"",
+								"start-index": "0",
+								"end-index": "outputHeight - 1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "fill-rect",
+							"objectClass": "DrawingCanvas",
+							"sid": 338503120981850,
+							"parameters": {
+								"left": "loopindex(\"i\")",
+								"top": "loopindex(\"j\")",
+								"right": "loopindex(\"i\")+1",
+								"bottom": "loopindex(\"j\")+1",
+								"color": "int(MapArray.At((loopindex(\"j\") * outputWidth) + loopindex(\"i\")))"
+							}
+						}
+					],
+					"sid": 333682338299808
+				}
+			]
+		},
+		{
+			"functionName": "mapToTilemap",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "outputWidth",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 897137827919645
+				},
+				{
+					"name": "outputHeight",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 463276216128777
+				},
+				{
+					"name": "tileSize",
+					"type": "number",
+					"initialValue": "8",
+					"comment": "",
+					"sid": 498219391155634
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-size",
+					"objectClass": "Tilemap",
+					"sid": 384001755019948,
+					"parameters": {
+						"width": "outputWidth * tileSize",
+						"height": "outputHeight * tileSize"
+					}
+				},
+				{
+					"id": "erase-tile-range",
+					"objectClass": "Tilemap",
+					"sid": 499157504921702,
+					"parameters": {
+						"tile-x": "0",
+						"tile-y": "0",
+						"width": "Tilemap.Width / tileSize",
+						"height": "Tilemap.Height / tileSize"
+					}
+				}
+			],
+			"sid": 565904378882653,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 950530637738723,
+							"parameters": {
+								"name": "\"i\"",
+								"start-index": "0",
+								"end-index": "outputWidth - 1"
+							}
+						},
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 142350219825307,
+							"parameters": {
+								"name": "\"j\"",
+								"start-index": "0",
+								"end-index": "outputHeight - 1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 766033153136479,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 187450512818659,
+									"parameters": {
+										"first-value": "int(MapArray.At((loopindex(\"j\") * outputWidth) + loopindex(\"i\")))",
+										"comparison": 0,
+										"second-value": "-1023"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-tile",
+									"objectClass": "Tilemap",
+									"sid": 858770077543165,
+									"parameters": {
+										"tile-x": "loopindex(\"i\")",
+										"tile-y": "loopindex(\"j\")",
+										"tile": "0",
+										"state": "normal"
+									}
+								}
+							],
+							"sid": 995426028312545
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 491941973766318
+								}
+							],
+							"actions": [
+								{
+									"id": "set-tile",
+									"objectClass": "Tilemap",
+									"sid": 969869989161992,
+									"parameters": {
+										"tile-x": "loopindex(\"i\")",
+										"tile-y": "loopindex(\"j\")",
+										"tile": "1",
+										"state": "normal"
+									}
+								}
+							],
+							"sid": 901310056572703
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 935967940044871
+}
