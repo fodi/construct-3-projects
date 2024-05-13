@@ -1,0 +1,301 @@
+{
+	"name": "Main",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Specify channel (Twitch username) here"
+		},
+		{
+			"eventType": "variable",
+			"name": "channel",
+			"type": "string",
+			"initialValue": "PirateSoftware",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 249122727180384
+		},
+		{
+			"eventType": "comment",
+			"text": "State"
+		},
+		{
+			"eventType": "variable",
+			"name": "messagePrefix",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 549643636741131
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 206616445266995
+				}
+			],
+			"actions": [
+				{
+					"id": "connect",
+					"objectClass": "WebSocket",
+					"sid": 964604132022750,
+					"parameters": {
+						"url": "\"wss://irc-ws.chat.twitch.tv\"",
+						"protocol-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 671653973974661,
+					"parameters": {
+						"variable": "messagePrefix",
+						"value": "\" PRIVMSG #\" & channel & \" :\""
+					}
+				}
+			],
+			"sid": 336448849745627
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-opened",
+					"objectClass": "WebSocket",
+					"sid": 248264551199694
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "When the connection is open, log in anonymously"
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 924068418702420,
+					"parameters": {
+						"data": "\"PING\""
+					}
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 771653073785141,
+					"parameters": {
+						"data": "\"PASS lasermagnet\""
+					}
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 607051839491764,
+					"parameters": {
+						"data": "\"NICK justinfan\" & int(random(1000000000, 10000000000))"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "If you want to receive richer messages, uncomment these. More info here: https://dev.twitch.tv/docs/irc/capabilities/"
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 558386278371423,
+					"disabled": true,
+					"parameters": {
+						"data": "\"CAP REQ :twitch.tv/commands\""
+					}
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 334762794534928,
+					"disabled": true,
+					"parameters": {
+						"data": "\"CAP REQ :twitch.tv/membership\""
+					}
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 949520569365861,
+					"disabled": true,
+					"parameters": {
+						"data": "\"CAP REQ :twitch.tv/tags\""
+					}
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 308604694806719,
+					"parameters": {
+						"data": "\"JOIN #\" & channel"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Please note that there is no error or disconnect handling in this example"
+				}
+			],
+			"sid": 490228316826771
+		},
+		{
+			"eventType": "comment",
+			"text": "Append all incoming server messages to the LogEverything textarea"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-message",
+					"objectClass": "WebSocket",
+					"sid": 782779258218085
+				}
+			],
+			"actions": [
+				{
+					"id": "append-text",
+					"objectClass": "LogEverything",
+					"sid": 379518789712467,
+					"parameters": {
+						"text": "trim(WebSocket.MessageText) & newline"
+					}
+				},
+				{
+					"id": "scroll-to-bottom",
+					"objectClass": "LogEverything",
+					"sid": 418960445641913
+				}
+			],
+			"sid": 209455643614745,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Reply PONG to PING messages as specified here: https://dev.twitch.tv/docs/irc/"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 100525047733375,
+							"parameters": {
+								"first-value": "mid(WebSocket.MessageText, 0, 4)",
+								"comparison": 0,
+								"second-value": "\"PING\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "send-text",
+							"objectClass": "WebSocket",
+							"sid": 103085410362178,
+							"parameters": {
+								"data": "\"PONG\" & mid(WebSocket.MessageText, 4, -1)"
+							}
+						},
+						{
+							"id": "append-text",
+							"objectClass": "LogEverything",
+							"sid": 407352293352938,
+							"disabled": true,
+							"parameters": {
+								"text": "\"### Sending \" & \"PONG\" & mid(WebSocket.MessageText, 4, -1)"
+							}
+						}
+					],
+					"sid": 916435286975604
+				},
+				{
+					"eventType": "comment",
+					"text": "Try to parse chat messages"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 481943771217636
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 915527731617856,
+							"parameters": {
+								"first-value": "find(WebSocket.MessageText, messagePrefix)",
+								"comparison": 5,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "onChatMessage",
+							"sid": 167944925161730,
+							"parameters": [
+								"tokenat(tokenat(WebSocket.MessageText, 1, \"!\"), 0, \"@\")",
+								"trim(mid(WebSocket.MessageText, find(WebSocket.MessageText, messagePrefix) + len(messagePrefix), -1))"
+							]
+						}
+					],
+					"sid": 348673215216534
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Append chat messages to the LogMessages textarea"
+		},
+		{
+			"functionName": "onChatMessage",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "nick",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 472166673523751
+				},
+				{
+					"name": "message",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 304226415823973
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "append-text",
+					"objectClass": "LogMessages",
+					"sid": 204111346430344,
+					"parameters": {
+						"text": "nick & \": \" & message & newline"
+					}
+				},
+				{
+					"id": "scroll-to-bottom",
+					"objectClass": "LogMessages",
+					"sid": 627661697710549
+				}
+			],
+			"sid": 750614958191866
+		}
+	],
+	"sid": 518935745735795
+}
