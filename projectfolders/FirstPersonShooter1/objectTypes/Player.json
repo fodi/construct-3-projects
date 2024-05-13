@@ -1,0 +1,72 @@
+{
+	"name": "Player",
+	"plugin-id": "Sprite",
+	"sid": 507941329083518,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "focusedBoxUID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 859871565019965
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Car",
+			"name": "Car",
+			"sid": 315093064877529
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 40,
+						"height": 40,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2229073,
+						"collisionPoly": {
+							"points": [
+								0.15,
+								0.15,
+								0.45,
+								0,
+								0.85,
+								0.15,
+								1,
+								0.5,
+								0.85,
+								0.85,
+								0.5,
+								1,
+								0.15,
+								0.85,
+								0,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 240295965486312,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

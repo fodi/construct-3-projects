@@ -1,0 +1,954 @@
+{
+	"name": "Main",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "This template is licensed under the MIT license. You can find more templates and example projects here:\nhttps://github.com/fodi/construct-3-projects/\n\nCopyright (c) 2022-2024 Bence Fodor (Fodi)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE."
+		},
+		{
+			"eventType": "comment",
+			"text": "Rules - feel free to play around with them"
+		},
+		{
+			"eventType": "variable",
+			"name": "projectileSpeed",
+			"type": "number",
+			"initialValue": "400",
+			"comment": "The speed you would normally set in the Bullet behavior in a 2D game. This will be used to calculate movement speeds for the Bullet behavior (which moves the projectile on the X and Y axes) and the Tween behavior (which moves it on the Z axis).",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 932302144257597
+		},
+		{
+			"eventType": "variable",
+			"name": "projectileInvisibleTime",
+			"type": "number",
+			"initialValue": "0.07",
+			"comment": "Spawned projectiles will be invisible for this amount of seconds",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 284346279429813
+		},
+		{
+			"eventType": "variable",
+			"name": "bulletLifetime",
+			"type": "number",
+			"initialValue": "4",
+			"comment": "Spawned projectiles will be automatically destroyed after this amount of seconds",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 627980401558483
+		},
+		{
+			"eventType": "variable",
+			"name": "focusHelperSpeed",
+			"type": "number",
+			"initialValue": "4000",
+			"comment": "Focus helpers are similar to projectiles but they are invisible and are spawned every time the player moves or looks around. This is the speed that will be used to calculate movement speeds for the Bullet behavior (which moves the focus helper on the X and Y axes) and the Tween behavior (which moves it on the Z axis). Higher numbers mean more responsive but less precise focus.",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 180585033283326
+		},
+		{
+			"eventType": "variable",
+			"name": "focusHelperLifetime",
+			"type": "number",
+			"initialValue": "0.1",
+			"comment": "Spawned focus helpers will be automatically destroyed after this amount of seconds. Higher numbers cause worse performance and allow longer focus distances. Try to keep this as low as possible",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 420708905859242
+		},
+		{
+			"eventType": "variable",
+			"name": "focusHelperZOffset",
+			"type": "number",
+			"initialValue": "6",
+			"comment": "For some reason (not quite sure yet) offsetting the spawn location of focus helpers enhanced the UX (more precise selection)",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 298463371931193
+		},
+		{
+			"eventType": "variable",
+			"name": "focusMaxDistance",
+			"type": "number",
+			"initialValue": "120",
+			"comment": "An extra distance check (on the X/Y plane) is performed when setting a box as focused, this is the maximum allowed distance in pixels.",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 273468259039649
+		},
+		{
+			"eventType": "comment",
+			"text": "Macros"
+		},
+		{
+			"eventType": "variable",
+			"name": "NOTHING",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 618619721861365
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Main3D",
+			"type": "string",
+			"initialValue": "Main3D",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 280229678483827
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "3D Camera setup",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Initialize the 3D Camera"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 557433421616565
+						}
+					],
+					"actions": [
+						{
+							"id": "look-parallel-to-layout",
+							"objectClass": "3DCamera",
+							"sid": 619436829878916,
+							"parameters": {
+								"cam-x": "Player.X",
+								"cam-y": "Player.Y",
+								"cam-z": "Player.ZElevation",
+								"look-angle": "Player.Angle"
+							}
+						}
+					],
+					"sid": 546775512248104
+				},
+				{
+					"eventType": "comment",
+					"text": "Update the 3D Camera position, player angle and the info text at every tick"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 927473738104878
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "3DCamera",
+							"sid": 222631651559192,
+							"parameters": {
+								"x": "Player.X",
+								"y": "Player.Y",
+								"z": "Player.ZElevation",
+								"which": "camera"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Player",
+							"sid": 181605883273500,
+							"parameters": {
+								"angle": "3DCamera.CameraXRotation"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "UI_Text",
+							"sid": 634387421203558,
+							"parameters": {
+								"text": "StringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
+							}
+						}
+					],
+					"sid": 292149416704719
+				}
+			],
+			"sid": 855953163623077
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player controls",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Forward / backward movement (using the Car behavior)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 783858069582962,
+							"parameters": {
+								"key": 87
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 493715625016917,
+							"behaviorType": "Car",
+							"parameters": {
+								"control": "accelerate"
+							}
+						}
+					],
+					"sid": 901772674226841
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 785569100968016,
+							"parameters": {
+								"key": 83
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 628619983458374,
+							"behaviorType": "Car",
+							"parameters": {
+								"control": "brake"
+							}
+						}
+					],
+					"sid": 883762140538496
+				},
+				{
+					"eventType": "comment",
+					"text": "Strafe left / right movement (by moving the player object at a relative angle)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 519004364370564,
+							"parameters": {
+								"key": 65
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-at-angle",
+							"objectClass": "Player",
+							"sid": 188173877544051,
+							"parameters": {
+								"angle": "Player.Angle - 90",
+								"distance": "Player.Car.MaxSpeed * dt"
+							}
+						}
+					],
+					"sid": 233518668229174
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 292251590632396,
+							"parameters": {
+								"key": 68
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-at-angle",
+							"objectClass": "Player",
+							"sid": 810713004828582,
+							"parameters": {
+								"angle": "Player.Angle + 90",
+								"distance": "Player.Car.MaxSpeed * dt"
+							}
+						}
+					],
+					"sid": 213363480641763
+				},
+				{
+					"eventType": "comment",
+					"text": "Left click will request a pointer lock at first; subsequent clicks will fire projectiles"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 600964134466853,
+							"parameters": {
+								"mouse-button": "left",
+								"click-type": "clicked"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "request-pointer-lock",
+							"objectClass": "Mouse",
+							"sid": 632239259471400
+						}
+					],
+					"sid": 328799844323058,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "has-pointer-lock",
+									"objectClass": "Mouse",
+									"sid": 580393001973319
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "fireProjectile",
+									"sid": 549371929583670
+								}
+							],
+							"sid": 245958660463681
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Holding the right mouse button will fire projectiles constantly (this is intentionally not limited; feel free to set the project to a different framerate mode ;-)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 613985321045888,
+							"parameters": {
+								"mouse-button": "right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "fireProjectile",
+							"sid": 157084433301399
+						}
+					],
+					"sid": 995782495960255
+				},
+				{
+					"eventType": "comment",
+					"text": "Mouse look (just like in the First Person Platformer example) + fire a focus helper on mouse movement"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-movement",
+							"objectClass": "Mouse",
+							"sid": 960553665169033
+						}
+					],
+					"actions": [
+						{
+							"id": "rotate-camera",
+							"objectClass": "3DCamera",
+							"sid": 666679549638228,
+							"parameters": {
+								"rotate-x": "Mouse.MovementX / 10",
+								"rotate-y": "Mouse.MovementY / 10",
+								"min-polar-angle": "20",
+								"max-polar-angle": "160"
+							}
+						},
+						{
+							"callFunction": "fireFocusHelper",
+							"sid": 152862146080836
+						}
+					],
+					"sid": 346744763608990
+				}
+			],
+			"sid": 129547120342218
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Focusing nearby objects by looking at them",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "If the player is moving, fire a focus helper"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "Player",
+							"sid": 325744686309312,
+							"behaviorType": "Car"
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "fireFocusHelper",
+							"sid": 497030454111748
+						}
+					],
+					"sid": 119954761309965
+				},
+				{
+					"eventType": "comment",
+					"text": "If a focus helper hits a nearby box, destroy the focus helper and save the box UID as the currently focused one"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-step",
+							"objectClass": "FocusHelperProjectile",
+							"sid": 226669832324817,
+							"behaviorType": "Bullet"
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "FocusHelperProjectile",
+							"sid": 364219564979282,
+							"parameters": {
+								"object": "3DBox"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 164632962216811,
+							"parameters": {
+								"object": "3DBox"
+							}
+						},
+						{
+							"id": "is-between-values",
+							"objectClass": "System",
+							"sid": 812772460933680,
+							"parameters": {
+								"value": "FocusHelperProjectile.ZElevation",
+								"lower-bound": "3DBox.ZElevation",
+								"upper-bound": "3DBox.ZElevation + 3DBox.ZHeight"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "FocusHelperProjectile",
+							"sid": 370040751256394
+						}
+					],
+					"sid": 126968542016312,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 859067724662844,
+									"parameters": {
+										"first-value": "distance(Player.X, Player.Y, FocusHelperProjectile.X, FocusHelperProjectile.Y)",
+										"comparison": 2,
+										"second-value": "focusMaxDistance"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 454382590441554,
+									"parameters": {
+										"instance-variable": "focusedBoxUID",
+										"value": "3DBox.UID"
+									}
+								}
+							],
+							"sid": 810480569633877
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Highlight the focused box, remove highlight from all the other ones"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 378012025950463,
+							"parameters": {
+								"object": "3DBox"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 246023082502073,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "3DBox",
+									"sid": 542705180019283,
+									"parameters": {
+										"unique-id": "Player.focusedBoxUID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-default-color",
+									"objectClass": "3DBox",
+									"sid": 680353854604345,
+									"parameters": {
+										"color": "rgbEx(120, 120, 120)"
+									}
+								}
+							],
+							"sid": 919216979947504
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 263468160219079
+								}
+							],
+							"actions": [
+								{
+									"id": "set-default-color",
+									"objectClass": "3DBox",
+									"sid": 324899650148995,
+									"parameters": {
+										"color": "rgbEx(100, 100, 100)"
+									}
+								}
+							],
+							"sid": 182882088832568
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "If a focus helper reaches the end of its lifetime without hitting a box, cancel the focus"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-any-tweens-finished",
+							"objectClass": "FocusHelperProjectile",
+							"sid": 582715298152349,
+							"behaviorType": "Tween"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 132590755984601,
+							"parameters": {
+								"instance-variable": "focusedBoxUID",
+								"value": "NOTHING"
+							}
+						}
+					],
+					"sid": 678817055607681
+				},
+				{
+					"eventType": "comment",
+					"text": "This function spawns a focus helper and sets up its movement"
+				},
+				{
+					"functionName": "fireFocusHelper",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Spawn an invisible focus bullet (a Sprite) at the player's location (and with a matching angle)"
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "Player",
+							"sid": 787016153710501,
+							"parameters": {
+								"object": "FocusHelperProjectile",
+								"layer": "LAYER_Main3D",
+								"image-point": "0",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Set the initial Z elevation of the focus bullet"
+						},
+						{
+							"id": "set-z-elevation",
+							"objectClass": "FocusHelperProjectile",
+							"sid": 475496090682119,
+							"parameters": {
+								"z": "Player.ZElevation + focusHelperZOffset"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Set the speed of the Bullet behavior, which will move the focus helper on the X and Y axes"
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "FocusHelperProjectile",
+							"sid": 810221508582047,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "focusHelperSpeed * sin(3DCamera.CameraYRotation)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Using the Tween behavior move the focus helper on the Z axis and set it to expire after a while"
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "FocusHelperProjectile",
+							"sid": 631287419758115,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetZElevation",
+								"end-value": "focusHelperLifetime * (focusHelperSpeed * cos(3DCamera.CameraYRotation))",
+								"time": "focusHelperLifetime",
+								"ease": "default",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 762631879074159
+				}
+			],
+			"sid": 675265137057259
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Firing moving projectiles with mouse aim",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "If a projectile hits a box, stop it and make it green"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-step",
+							"objectClass": "3DProjectile",
+							"sid": 960582605392504,
+							"behaviorType": "Bullet"
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "3DBox",
+							"sid": 732924965966855,
+							"parameters": {
+								"object": "3DProjectile"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 896248635706498,
+							"parameters": {
+								"object": "3DProjectile"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 231463960705565,
+							"parameters": {
+								"object": "3DBox"
+							}
+						},
+						{
+							"id": "is-between-values",
+							"objectClass": "System",
+							"sid": 526041291803114,
+							"parameters": {
+								"value": "3DProjectile.ZElevation",
+								"lower-bound": "3DBox.ZElevation",
+								"upper-bound": "3DBox.ZElevation + 3DBox.ZHeight"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "3DProjectile",
+							"sid": 626083689374573,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "stop-all-tweens",
+							"objectClass": "3DProjectile",
+							"sid": 598382701347327,
+							"behaviorType": "Tween"
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "3DProjectile",
+							"sid": 439598859915451,
+							"parameters": {
+								"color": "rgbEx(100, 300, 100)"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "3DProjectile",
+							"sid": 459121115147016,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 367807591557673
+				},
+				{
+					"eventType": "comment",
+					"text": "If a projectile hits the ground, stop it and make it blue"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "3DProjectile",
+							"sid": 584246605587925,
+							"parameters": {
+								"object": "Ground"
+							}
+						},
+						{
+							"id": "compare-z-elevation",
+							"objectClass": "3DProjectile",
+							"sid": 422554942429126,
+							"parameters": {
+								"which": "z-elevation",
+								"comparison": 3,
+								"z-elevation": "0"
+							}
+						},
+						{
+							"id": "compare-z-elevation",
+							"objectClass": "3DProjectile",
+							"sid": 126410101441006,
+							"parameters": {
+								"which": "z-elevation",
+								"comparison": 4,
+								"z-elevation": "-3DProjectile.ZHeight"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "3DProjectile",
+							"sid": 749435012910807,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "stop-all-tweens",
+							"objectClass": "3DProjectile",
+							"sid": 958948409745830,
+							"behaviorType": "Tween"
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "3DProjectile",
+							"sid": 886359118990096,
+							"parameters": {
+								"color": "rgbEx(100, 100, 300)"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "3DProjectile",
+							"sid": 988525695543060,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 960359281908979
+				},
+				{
+					"eventType": "comment",
+					"text": "This function spawns a projectile and sets up its movement"
+				},
+				{
+					"functionName": "fireProjectile",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Spawn a projectile (3D Shape) at the player's location (and with a matching angle)"
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "Player",
+							"sid": 762841036295689,
+							"parameters": {
+								"object": "3DProjectile",
+								"layer": "LAYER_Main3D",
+								"image-point": "0",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Set the initial Z elevation of the bullet"
+						},
+						{
+							"id": "set-z-elevation",
+							"objectClass": "3DProjectile",
+							"sid": 648359700858196,
+							"parameters": {
+								"z": "Player.ZElevation"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Set the speed of the Bullet behavior, which will move the projectile on the X and Y axes"
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "3DProjectile",
+							"sid": 745740495930194,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "projectileSpeed * sin(3DCamera.CameraYRotation)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Using the Tween behavior move the bullet on the Z axis and set it to expire after a while"
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "3DProjectile",
+							"sid": 832871725130502,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetZElevation",
+								"end-value": "bulletLifetime * (projectileSpeed * cos(3DCamera.CameraYRotation))",
+								"time": "bulletLifetime",
+								"ease": "default",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Bullets are not visible initially (so they don't obscure the player's view); after a small delay, make them visible"
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 672652198901266,
+							"parameters": {
+								"seconds": "projectileInvisibleTime"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "3DProjectile",
+							"sid": 460043602927522,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 526658827025391
+				}
+			],
+			"sid": 980842628620472
+		}
+	],
+	"sid": 450210508060457
+}
