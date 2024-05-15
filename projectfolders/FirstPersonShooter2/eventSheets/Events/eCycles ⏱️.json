@@ -42,6 +42,14 @@
 					"customAction": "tick",
 					"objectClass": "3DCamera",
 					"sid": 557998734631406
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_Text",
+					"sid": 606859587373873,
+					"parameters": {
+						"text": "StringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
+					}
 				}
 			],
 			"sid": 464017789630187

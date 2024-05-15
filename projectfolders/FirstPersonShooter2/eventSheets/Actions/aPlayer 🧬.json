@@ -351,7 +351,7 @@
 				{
 					"id": "subtract-from-instvar",
 					"objectClass": "Player",
-					"sid": 762432495763020,
+					"sid": 226461833800371,
 					"parameters": {
 						"instance-variable": "deltaZ",
 						"value": "GravityZ * dt"
@@ -360,9 +360,9 @@
 				{
 					"id": "set-z-elevation",
 					"objectClass": "Player",
-					"sid": 561745744150354,
+					"sid": 651463019825498,
 					"parameters": {
-						"z": "Self.ZElevation + Player.deltaZ"
+						"z": "Self.ZElevation + (Player.deltaZ * dt)"
 					}
 				},
 				{

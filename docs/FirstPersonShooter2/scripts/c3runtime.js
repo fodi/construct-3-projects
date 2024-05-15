@@ -18787,6 +18787,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.solid.Acts.SetEnabled,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.System.Cnds.EveryTick,
+		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.System.Exps.stringsub,
+		C3.Plugins.System.Exps.fps,
+		C3.Plugins.System.Exps.cpuutilisation,
+		C3.Plugins.System.Exps.gpuutilisation,
+		C3.Plugins.System.Exps.objectcount,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.Browser.Acts.Reload,
@@ -19070,6 +19076,14 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			return () => f0("{0} FPS, {1}% CPU, {2}% GPU, {3} objects", f1(), Math.round((f2() * 100)), Math.round((f3() * 100)), f4());
+		},
 		() => "Utilities",
 		p => {
 			const n0 = p._GetNode(0);
@@ -19175,7 +19189,8 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
-			return () => (n0.ExpObject() + n1.ExpInstVar());
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => (n0.ExpObject() + (n1.ExpInstVar() * f2()));
 		},
 		p => {
 			const n0 = p._GetNode(0);
