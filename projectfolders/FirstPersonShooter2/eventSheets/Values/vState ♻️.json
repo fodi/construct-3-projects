@@ -30,6 +30,16 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 152796041472439
+		},
+		{
+			"eventType": "variable",
+			"name": "AdjustFov",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 309281070504741
 		}
 	],
 	"sid": 756444675677784

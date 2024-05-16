@@ -94,6 +94,98 @@
 			"sid": 760930254724332,
 			"children": [
 				{
+					"eventType": "variable",
+					"name": "fieldOfView_low",
+					"type": "number",
+					"initialValue": "45",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 510332044079565
+				},
+				{
+					"eventType": "variable",
+					"name": "fieldOfView_high",
+					"type": "number",
+					"initialValue": "65",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 441552493021052
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 868871855678953,
+							"parameters": {
+								"variable": "AdjustFov"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 729219788412485,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "fieldOfView_target",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 501794083006990
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 373560212579151,
+									"parameters": {
+										"variable": "fieldOfView_target",
+										"value": "Functions.mapValue(abs(Player.8Direction.Speed), 100, 200, fieldOfView_low, fieldOfView_high)"
+									}
+								},
+								{
+									"id": "set-field-of-view",
+									"objectClass": "3DCamera",
+									"sid": 298798715844342,
+									"parameters": {
+										"fov": "lerp(3DCamera.FieldOfView, fieldOfView_target, 3DCamera.FieldOfView < fieldOfView_target ? 0.04 : 0.1)"
+									}
+								}
+							],
+							"sid": 115621108227240
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 180505007149469
+						}
+					],
+					"actions": [
+						{
+							"id": "set-field-of-view",
+							"objectClass": "3DCamera",
+							"sid": 660379106830240,
+							"parameters": {
+								"fov": "fieldOfView_low"
+							}
+						}
+					],
+					"sid": 603789423200595
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{

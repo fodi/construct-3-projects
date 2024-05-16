@@ -1,0 +1,11 @@
+{
+	"name": "TexturesSP",
+	"plugin-id": "Sprite",
+	"sid": 786527182682665,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"txPattern1"
+	]
+}

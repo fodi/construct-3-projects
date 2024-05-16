@@ -24,7 +24,8 @@
 						"input_digital_moveBackward": 0,
 						"input_digital_moveLeft": 0,
 						"input_digital_moveRight": 0,
-						"input_analog_move": -1
+						"input_analog_move": -1,
+						"input_run": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -185,12 +186,12 @@
 						"face-top": true,
 						"face-bottom": true,
 						"z-tiling-factor": 8,
-						"object-back": 159462816089893,
-						"object-front": 159462816089893,
-						"object-left": 159462816089893,
-						"object-right": 159462816089893,
-						"object-top": 159462816089893,
-						"object-bottom": 159462816089893
+						"object-back": 182473130988218,
+						"object-front": 182473130988218,
+						"object-left": 182473130988218,
+						"object-right": 182473130988218,
+						"object-top": 182473130988218,
+						"object-bottom": 182473130988218
 					},
 					"uid": 13,
 					"instanceVariables": {},
@@ -260,6 +261,35 @@
 						"height": 16,
 						"originX": 0.5121951219512195,
 						"originY": 0.5121951219512195,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txPattern1",
+					"properties": {
+						"initially-visible": false,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": false,
+						"live-preview": false
+					},
+					"uid": 23,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 74,
+						"y": 48,
+						"width": 1.25,
+						"height": 1.25,
+						"originX": 8,
+						"originY": 8,
 						"color": [
 							1,
 							1,

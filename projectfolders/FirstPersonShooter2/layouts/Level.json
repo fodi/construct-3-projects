@@ -770,7 +770,7 @@
 						"font": "monospace",
 						"size": 16,
 						"line-height": 0,
-						"bold": false,
+						"bold": true,
 						"italic": false,
 						"color": [
 							1,
@@ -817,7 +817,7 @@
 						"font": "monospace",
 						"size": 16,
 						"line-height": 0,
-						"bold": false,
+						"bold": true,
 						"italic": false,
 						"color": [
 							1,
@@ -866,7 +866,7 @@
 				1,
 				1,
 				1,
-				1
+				0.8
 			],
 			"backgroundColor": [
 				1,
@@ -877,7 +877,7 @@
 			"isTransparent": true,
 			"parallaxX": 0,
 			"parallaxY": 0,
-			"scaleRate": 1,
+			"scaleRate": 0,
 			"forceOwnTexture": false,
 			"renderingMode": "2d",
 			"drawOrder": "z-order",

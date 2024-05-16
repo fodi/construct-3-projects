@@ -3,6 +3,10 @@
 	"events": [
 		{
 			"eventType": "comment",
+			"text": "TODO add JSON keys (JK_)?"
+		},
+		{
+			"eventType": "comment",
 			"text": "Basics"
 		},
 		{
@@ -48,6 +52,50 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 527891496111992
+		},
+		{
+			"eventType": "comment",
+			"text": "Input"
+		},
+		{
+			"eventType": "variable",
+			"name": "INPUT_Jump",
+			"type": "string",
+			"initialValue": "Jump",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 302677666658170
+		},
+		{
+			"eventType": "variable",
+			"name": "INPUT_Shoot",
+			"type": "string",
+			"initialValue": "Shoot",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 303384979284305
+		},
+		{
+			"eventType": "variable",
+			"name": "INPUT_Place",
+			"type": "string",
+			"initialValue": "Place",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 655424718517762
+		},
+		{
+			"eventType": "variable",
+			"name": "INPUT_Run",
+			"type": "string",
+			"initialValue": "Run",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 755383618454866
 		},
 		{
 			"eventType": "comment",
@@ -120,6 +168,20 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 344572825171967
+		},
+		{
+			"eventType": "comment",
+			"text": "Solid tags"
+		},
+		{
+			"eventType": "variable",
+			"name": "SOLID_Player",
+			"type": "string",
+			"initialValue": "Player",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 979928207598638
 		},
 		{
 			"eventType": "comment",

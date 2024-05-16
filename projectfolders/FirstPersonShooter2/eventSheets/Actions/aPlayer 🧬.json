@@ -76,10 +76,10 @@
 				{
 					"id": "set-solid-collision-filter",
 					"objectClass": "Player",
-					"sid": 747078727490918,
+					"sid": 748013811386489,
 					"parameters": {
 						"mode": "inclusive",
-						"tags": "\"Player\""
+						"tags": "SOLID_Player"
 					}
 				}
 			],
@@ -136,6 +136,34 @@
 			"sid": 467998488605255,
 			"children": [
 				{
+					"eventType": "comment",
+					"text": "Rules"
+				},
+				{
+					"eventType": "variable",
+					"name": "maxSpeed_walking",
+					"type": "number",
+					"initialValue": "100",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 979620543321599
+				},
+				{
+					"eventType": "variable",
+					"name": "maxSpeed_running",
+					"type": "number",
+					"initialValue": "180",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 473073843541214
+				},
+				{
+					"eventType": "comment",
+					"text": "State"
+				},
+				{
 					"eventType": "variable",
 					"name": "movementInputVectorX",
 					"type": "number",
@@ -177,7 +205,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Handle digital input"
+					"text": "Handle digital movement input"
 				},
 				{
 					"eventType": "block",
@@ -253,7 +281,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Handle analog input"
+					"text": "Handle analog movement input"
 				},
 				{
 					"eventType": "block",
@@ -293,6 +321,39 @@
 				},
 				{
 					"eventType": "comment",
+					"text": "Handle run input, if the player is on the ground"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 721039823949135,
+							"parameters": {
+								"instance-variable": "isOnGround"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Set max movement speed (walk or run)"
+						},
+						{
+							"id": "set-max-speed",
+							"objectClass": "Player",
+							"sid": 973284198500710,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"max-speed": "Player.input_run = YES ? maxSpeed_running : maxSpeed_walking"
+							}
+						}
+					],
+					"sid": 972163765421887
+				},
+				{
+					"eventType": "comment",
 					"text": "Move player if needed"
 				},
 				{
@@ -308,6 +369,10 @@
 						}
 					],
 					"actions": [
+						{
+							"type": "comment",
+							"text": "Set player movement vectors"
+						},
 						{
 							"id": "set-vector-x",
 							"objectClass": "Player",
@@ -366,16 +431,6 @@
 					}
 				},
 				{
-					"id": "set-enabled",
-					"objectClass": "Obstacles",
-					"sid": 154935020789569,
-					"disabled": true,
-					"behaviorType": "Solid",
-					"parameters": {
-						"state": "disabled"
-					}
-				},
-				{
 					"id": "set-tags",
 					"objectClass": "Obstacles",
 					"sid": 695416681448035,
@@ -389,7 +444,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "todo_nth prevent player from jumping into stuff above?"
+					"text": "TODO_NTH prevent player from jumping into obstacles above them"
 				},
 				{
 					"eventType": "comment",
@@ -678,26 +733,166 @@
 					],
 					"actions": [
 						{
-							"id": "set-enabled",
-							"objectClass": "Obstacles",
-							"sid": 527654076052801,
-							"disabled": true,
-							"behaviorType": "Solid",
-							"parameters": {
-								"state": "enabled"
-							}
-						},
-						{
 							"id": "set-tags",
 							"objectClass": "Obstacles",
-							"sid": 196069034609375,
+							"sid": 472913857552166,
 							"behaviorType": "Solid",
 							"parameters": {
-								"tags": "\"Player\""
+								"tags": "SOLID_Player"
 							}
 						}
 					],
 					"sid": 731954224521387
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "onInput",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "input",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 213249769353781
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 240554076708251,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 575548391616331,
+							"parameters": {
+								"variable": "input",
+								"comparison": 0,
+								"value": "INPUT_Jump"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 299816835171595,
+							"parameters": {
+								"instance-variable": "isOnGround"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 409190050225534,
+							"parameters": {
+								"instance-variable": "deltaZ",
+								"value": "PlayerJumpStrength"
+							}
+						}
+					],
+					"sid": 333600315362622
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 808493140176035
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 335137344794145,
+							"parameters": {
+								"variable": "input",
+								"comparison": 0,
+								"value": "INPUT_Place"
+							}
+						},
+						{
+							"id": "is-boolean-set",
+							"objectClass": "RaycastJSON",
+							"sid": 498776712802678,
+							"parameters": {
+								"path": "\"hasHit\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "spawn",
+							"objectClass": "3DProjectile",
+							"sid": 641075070203199,
+							"parameters": [
+								"RaycastJSON.Get(\"hitPointWorld.0\")",
+								"RaycastJSON.Get(\"hitPointWorld.1\")",
+								"RaycastJSON.Get(\"hitPointWorld.2\")",
+								"Player.Angle",
+								"-1",
+								"0",
+								"0",
+								"0",
+								"0",
+								"NOTHING",
+								"rgbEx(50, 50, 100)"
+							]
+						}
+					],
+					"sid": 750278559273444
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 964486306595513
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 401668573648633,
+							"parameters": {
+								"variable": "input",
+								"comparison": 0,
+								"value": "INPUT_Shoot"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "spawn",
+							"objectClass": "3DProjectile",
+							"sid": 761410283591932,
+							"parameters": [
+								"Player.X",
+								"Player.Y",
+								"3DCamera.CameraZ",
+								"Player.Angle",
+								"YES",
+								"RaycastJSON.Get(\"hasHit\")",
+								"RaycastJSON.Get(\"hitPointWorld.0\")",
+								"RaycastJSON.Get(\"hitPointWorld.1\")",
+								"RaycastJSON.Get(\"hitPointWorld.2\")",
+								"RaycastJSON.Get(\"distance\")",
+								"rgbEx(50, 50, 100)"
+							]
+						}
+					],
+					"sid": 293160741388592
 				}
 			]
 		}

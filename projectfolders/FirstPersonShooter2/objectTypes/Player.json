@@ -59,6 +59,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 189594813707445
+		},
+		{
+			"name": "input_run",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 991866332268720
 		}
 	],
 	"behaviorTypes": [

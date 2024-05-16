@@ -29,6 +29,19 @@
 						"mode": "enable",
 						"effect": "EFFECTS_Fog"
 					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 943765946689488,
+					"parameters": {
+						"object-to-create": "txPattern1",
+						"layer": "LAYER_UI",
+						"x": "-1000",
+						"y": "-1000",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
 				}
 			],
 			"sid": 106853073142729,
@@ -51,9 +64,9 @@
 						{
 							"id": "set-text",
 							"objectClass": "UI_Text",
-							"sid": 433387735492103,
+							"sid": 703189694649037,
 							"parameters": {
-								"text": "\"Build \" & projectversion & newline &\n\"WASD to move\" & newline &\r\n\"SPACE to jump\" & newline &\r\n\"LCLICK to shoot moving projectile\" & newline &\r\n\"RCLICK to place static projectile\""
+								"text": "\"[background=#000]\" & \"Build \" & projectversion & newline &\n\"WASD to move\" & newline &\r\n\"SPACE to jump\" & newline &\n\"SHIFT to run\" & newline &\r\n\"LCLICK to shoot moving projectile\" & newline &\r\n\"RCLICK to place static projectile\" & newline &\n\"F: toggle full screen, O: toggle field of view shenanigans\""
 							}
 						}
 					],
@@ -102,9 +115,9 @@
 						{
 							"id": "set-text",
 							"objectClass": "UI_Text",
-							"sid": 147904617973501,
+							"sid": 448400836903807,
 							"parameters": {
-								"text": "StringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
+								"text": "\"[background=#000]\" & StringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
 							}
 						}
 					],

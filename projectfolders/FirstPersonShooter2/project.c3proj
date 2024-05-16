@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 38802,
+	"savedWithRelease": 39100,
 	"name": "FirstPersonShooter2",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -70,6 +70,14 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "skymen_set_fov",
+			"name": "Set FOV",
+			"author": "skymen",
+			"bundled": false,
+			"version": "1.0.0.2"
+		},
+		{
 			"type": "behavior",
 			"id": "Bullet",
 			"name": "Bullet",
@@ -129,7 +137,8 @@
 			"Spawner",
 			"3DProjectile",
 			"Enemy1",
-			"PlayerCamera"
+			"PlayerCamera",
+			"SetFOV"
 		],
 		"subfolders": [
 			{
@@ -165,7 +174,9 @@
 				"name": "UI"
 			},
 			{
-				"items": [],
+				"items": [
+					"txPattern1"
+				],
 				"subfolders": [],
 				"name": "Textures"
 			}
@@ -177,7 +188,8 @@
 		"items": [
 			"Obstacles",
 			"Raycasting",
-			"Enemies"
+			"Enemies",
+			"TexturesSP"
 		],
 		"subfolders": []
 	},
@@ -342,7 +354,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "4",
+		"version": "5",
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
 		"authorWebsite": "https://lasermagnet.com",
@@ -378,7 +390,6 @@
 		"gpuPreference": "high-performance",
 		"scriptsType": "module",
 		"framerateMode": "vsync",
-		"compositingMode": "standard",
 		"sampling": "nearest",
 		"downscaling": "medium",
 		"renderingMode": "auto",

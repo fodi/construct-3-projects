@@ -1,0 +1,10 @@
+{
+	"name": "SetFOV",
+	"plugin-id": "skymen_set_fov",
+	"sid": 938836055755345,
+	"singleglobal-inst": {
+		"type": "SetFOV",
+		"properties": {},
+		"uid": 22
+	}
+}

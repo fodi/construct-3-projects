@@ -48,6 +48,30 @@
 						}
 					],
 					"sid": 890686327235109
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 160107259996677,
+							"parameters": {
+								"key": 86
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "toggle-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 559228275448186,
+							"parameters": {
+								"variable": "AdjustFov"
+							}
+						}
+					],
+					"sid": 431901682213902
 				}
 			],
 			"sid": 353368192783443
@@ -55,467 +79,6 @@
 		{
 			"eventType": "comment",
 			"text": "When the player left clicks, request pointer lock so they can easily look in any direction. Note this can only be done in a user-input event, and can't be done automatically on startup."
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-click",
-					"objectClass": "Mouse",
-					"sid": 893243303322548,
-					"parameters": {
-						"mouse-button": "left",
-						"click-type": "clicked"
-					}
-				}
-			],
-			"actions": [],
-			"sid": 354322161071620,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "has-pointer-lock",
-							"objectClass": "Mouse",
-							"sid": 571595195726533,
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"id": "request-pointer-lock",
-							"objectClass": "Mouse",
-							"sid": 969973606578883
-						}
-					],
-					"sid": 399732396363546
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 195782327626350
-						}
-					],
-					"actions": [
-						{
-							"customAction": "spawn",
-							"objectClass": "3DProjectile",
-							"sid": 761410283591932,
-							"parameters": [
-								"Player.X",
-								"Player.Y",
-								"3DCamera.CameraZ",
-								"Player.Angle",
-								"YES",
-								"RaycastJSON.Get(\"hasHit\")",
-								"RaycastJSON.Get(\"hitPointWorld.0\")",
-								"RaycastJSON.Get(\"hitPointWorld.1\")",
-								"RaycastJSON.Get(\"hitPointWorld.2\")",
-								"RaycastJSON.Get(\"distance\")",
-								"rgbEx(50, 50, 100)"
-							]
-						}
-					],
-					"sid": 426253807286998
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-click",
-					"objectClass": "Mouse",
-					"sid": 569318721916170,
-					"parameters": {
-						"mouse-button": "right",
-						"click-type": "clicked"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 589170383088787,
-					"parameters": {
-						"type": "log",
-						"message": "RaycastJSON.ToBeautifiedString"
-					}
-				}
-			],
-			"sid": 963642182547790,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-boolean-set",
-							"objectClass": "RaycastJSON",
-							"sid": 662169378313173,
-							"parameters": {
-								"path": "\"hasHit\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"customAction": "spawn",
-							"objectClass": "3DProjectile",
-							"sid": 311253879166617,
-							"parameters": [
-								"RaycastJSON.Get(\"hitPointWorld.0\")",
-								"RaycastJSON.Get(\"hitPointWorld.1\")",
-								"RaycastJSON.Get(\"hitPointWorld.2\")",
-								"Player.Angle",
-								"-1",
-								"0",
-								"0",
-								"0",
-								"0",
-								"NOTHING",
-								"rgbEx(50, 50, 100)"
-							]
-						}
-					],
-					"sid": 977220000789337
-				}
-			]
-		},
-		{
-			"eventType": "group",
-			"disabled": false,
-			"title": "Player movement",
-			"description": "",
-			"isActiveOnStart": true,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 134614499776761,
-							"parameters": {
-								"key": 87
-							}
-						},
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 251853556998250,
-							"parameters": {
-								"key": 38
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 407566610803198,
-							"parameters": {
-								"gamepad": "0",
-								"button": "d-pad-up"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 905496752753743,
-							"parameters": {
-								"instance-variable": "input_digital_moveForward",
-								"value": "YES"
-							}
-						}
-					],
-					"sid": 885189988125124,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 558606237755711
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 473835732258932,
-							"parameters": {
-								"instance-variable": "input_digital_moveForward",
-								"value": "NO"
-							}
-						}
-					],
-					"sid": 149007824613477
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 690886145076832,
-							"parameters": {
-								"key": 83
-							}
-						},
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 220210057222385,
-							"parameters": {
-								"key": 40
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 289392699496460,
-							"parameters": {
-								"gamepad": "0",
-								"button": "d-pad-down"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 393364529538717,
-							"parameters": {
-								"instance-variable": "input_digital_moveBackward",
-								"value": "YES"
-							}
-						}
-					],
-					"sid": 880037264373658,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 527372205892268
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 651613933234444,
-							"parameters": {
-								"instance-variable": "input_digital_moveBackward",
-								"value": "NO"
-							}
-						}
-					],
-					"sid": 568609320820935
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 487100893159068,
-							"parameters": {
-								"key": 65
-							}
-						},
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 126358728159441,
-							"parameters": {
-								"key": 37
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 371429177686410,
-							"parameters": {
-								"gamepad": "0",
-								"button": "d-pad-left"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 586427568445982,
-							"parameters": {
-								"instance-variable": "input_digital_moveLeft",
-								"value": "YES"
-							}
-						}
-					],
-					"sid": 993185731896849,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 293220110599371
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 943742593030502,
-							"parameters": {
-								"instance-variable": "input_digital_moveLeft",
-								"value": "NO"
-							}
-						}
-					],
-					"sid": 979987146854794
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 474658823580033,
-							"parameters": {
-								"key": 68
-							}
-						},
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 622055505868804,
-							"parameters": {
-								"key": 39
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 917763988843562,
-							"parameters": {
-								"gamepad": "0",
-								"button": "d-pad-right"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 281258448083778,
-							"parameters": {
-								"instance-variable": "input_digital_moveRight",
-								"value": "YES"
-							}
-						}
-					],
-					"sid": 626918196021980,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 582195846110711
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 806880146049685,
-							"parameters": {
-								"instance-variable": "input_digital_moveRight",
-								"value": "NO"
-							}
-						}
-					],
-					"sid": 265284133351088
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-axis",
-							"objectClass": "Gamepad",
-							"sid": 273800176733360,
-							"parameters": {
-								"gamepad": "0",
-								"axis": "left-analog-x-axis",
-								"comparison": 1,
-								"value": "0"
-							}
-						},
-						{
-							"id": "compare-axis",
-							"objectClass": "Gamepad",
-							"sid": 335116230138222,
-							"parameters": {
-								"gamepad": "0",
-								"axis": "left-analog-y-axis",
-								"comparison": 1,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 593717658888945,
-							"parameters": {
-								"instance-variable": "input_analog_move",
-								"value": "((angle(0, 0, Gamepad.Axis(0, 0), Gamepad.Axis(0, 1)) + 360) % 360) + 90"
-							}
-						}
-					],
-					"sid": 272928115175870
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 274172207734249
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 531209858200225,
-							"parameters": {
-								"instance-variable": "input_analog_move",
-								"value": "NOTHING"
-							}
-						}
-					],
-					"sid": 533030001380307
-				}
-			],
-			"sid": 709564742073164
 		},
 		{
 			"eventType": "group",
@@ -530,26 +93,26 @@
 						{
 							"id": "on-movement",
 							"objectClass": "Mouse",
-							"sid": 649672170317040
+							"sid": 468385966879671
 						},
 						{
 							"id": "has-pointer-lock",
 							"objectClass": "Mouse",
-							"sid": 304005903538226
+							"sid": 338585416027906
 						}
 					],
 					"actions": [
 						{
 							"customAction": "rotate",
 							"objectClass": "3DCamera",
-							"sid": 494107548498890,
+							"sid": 420982143345525,
 							"parameters": [
 								"Mouse.MovementX * R_MouseLookSensitivityX",
 								"Mouse.MovementY * R_MouseLookSensitivityY"
 							]
 						}
 					],
-					"sid": 999668573335076
+					"sid": 122050269672293
 				},
 				{
 					"eventType": "block",
@@ -557,7 +120,7 @@
 						{
 							"id": "compare-axis",
 							"objectClass": "Gamepad",
-							"sid": 261614531070366,
+							"sid": 957556536468155,
 							"parameters": {
 								"gamepad": "0",
 								"axis": "right-analog-x-axis",
@@ -568,7 +131,7 @@
 						{
 							"id": "compare-axis",
 							"objectClass": "Gamepad",
-							"sid": 349930982430564,
+							"sid": 429111592138938,
 							"parameters": {
 								"gamepad": "0",
 								"axis": "right-analog-y-axis",
@@ -581,18 +144,423 @@
 						{
 							"customAction": "rotate",
 							"objectClass": "3DCamera",
-							"sid": 470067081969666,
+							"sid": 631621908008251,
 							"parameters": [
 								"Gamepad.Axis(0, 2) * R_GamepadLookSensitivityX",
 								"Gamepad.Axis(0, 3) * R_GamepadLookSensitivityY"
 							]
 						}
 					],
-					"sid": 213663363630748,
+					"sid": 112904899346005,
 					"isOrBlock": true
 				}
 			],
-			"sid": 839498101103423
+			"sid": 802778489534392
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player movement",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Directional movement"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 570699556698622,
+							"parameters": {
+								"key": 87
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 263805296516497,
+							"parameters": {
+								"key": 38
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 697154166101209,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-up"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 427126663214257,
+							"parameters": {
+								"instance-variable": "input_digital_moveForward",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 476525830324126,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 403210940382472
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 306054350976506,
+							"parameters": {
+								"instance-variable": "input_digital_moveForward",
+								"value": "NO"
+							}
+						}
+					],
+					"sid": 250119613392962
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 768036248474967,
+							"parameters": {
+								"key": 83
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 749744547515632,
+							"parameters": {
+								"key": 40
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 839338194074472,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-down"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 809194198793880,
+							"parameters": {
+								"instance-variable": "input_digital_moveBackward",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 865421220701094,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 180873212857201
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 847339375140956,
+							"parameters": {
+								"instance-variable": "input_digital_moveBackward",
+								"value": "NO"
+							}
+						}
+					],
+					"sid": 504928373988193
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 377149678809509,
+							"parameters": {
+								"key": 65
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 376991226864832,
+							"parameters": {
+								"key": 37
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 435705794010596,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-left"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 946017578146843,
+							"parameters": {
+								"instance-variable": "input_digital_moveLeft",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 809796905420667,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 965202662760230
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 787939969843746,
+							"parameters": {
+								"instance-variable": "input_digital_moveLeft",
+								"value": "NO"
+							}
+						}
+					],
+					"sid": 703411402876647
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 805425772339087,
+							"parameters": {
+								"key": 68
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 609156208302590,
+							"parameters": {
+								"key": 39
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 118753931438662,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 491228565875834,
+							"parameters": {
+								"instance-variable": "input_digital_moveRight",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 105170722664392,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 926746485882566
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 603146438832259,
+							"parameters": {
+								"instance-variable": "input_digital_moveRight",
+								"value": "NO"
+							}
+						}
+					],
+					"sid": 846158531563739
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 349508392282753,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "left-analog-x-axis",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 333209278901651,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "left-analog-y-axis",
+								"comparison": 1,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 295425525444185,
+							"parameters": {
+								"instance-variable": "input_analog_move",
+								"value": "((angle(0, 0, Gamepad.Axis(0, 0), Gamepad.Axis(0, 1)) + 360) % 360) + 90"
+							}
+						}
+					],
+					"sid": 633010670556105
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 686569435672365
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 838913988237520,
+							"parameters": {
+								"instance-variable": "input_analog_move",
+								"value": "NOTHING"
+							}
+						}
+					],
+					"sid": 360080513437574
+				},
+				{
+					"eventType": "comment",
+					"text": "Running"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 142481650107856,
+							"parameters": {
+								"key": 16
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 528162997471810,
+							"parameters": {
+								"gamepad": "0",
+								"button": "left-shoulder-button"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 695420716779291,
+							"parameters": {
+								"gamepad": "0",
+								"button": "left-shoulder-trigger"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 676315024666434,
+							"parameters": {
+								"instance-variable": "input_run",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 207502872140654,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 767232357361341
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 345962804070255,
+							"parameters": {
+								"instance-variable": "input_run",
+								"value": "NO"
+							}
+						}
+					],
+					"sid": 874395655474035
+				}
+			],
+			"sid": 424680301218025
 		},
 		{
 			"eventType": "group",
@@ -602,12 +570,16 @@
 			"isActiveOnStart": true,
 			"children": [
 				{
+					"eventType": "comment",
+					"text": "Jumping"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
 							"id": "on-key-pressed",
 							"objectClass": "Keyboard",
-							"sid": 142184485020170,
+							"sid": 349149688510900,
 							"parameters": {
 								"key": 32
 							}
@@ -615,7 +587,7 @@
 						{
 							"id": "on-button-pressed",
 							"objectClass": "Gamepad",
-							"sid": 266823168360943,
+							"sid": 876571257628637,
 							"parameters": {
 								"gamepad": "0",
 								"button": "left-shoulder-button"
@@ -624,46 +596,154 @@
 						{
 							"id": "on-button-pressed",
 							"objectClass": "Gamepad",
-							"sid": 307402497823744,
+							"sid": 939291962563508,
 							"parameters": {
 								"gamepad": "0",
 								"button": "left-shoulder-trigger"
 							}
 						}
 					],
+					"actions": [
+						{
+							"customAction": "onInput",
+							"objectClass": "Player",
+							"sid": 563921400711561,
+							"parameters": [
+								"INPUT_Jump"
+							]
+						}
+					],
+					"sid": 500607186320232,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Placing static projectiles"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 692250454390660,
+							"parameters": {
+								"mouse-button": "right",
+								"click-type": "clicked"
+							}
+						},
+						{
+							"id": "on-button-pressed",
+							"objectClass": "Gamepad",
+							"sid": 700419515271975,
+							"parameters": {
+								"gamepad": "0",
+								"button": "right-shoulder-button"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "onInput",
+							"objectClass": "Player",
+							"sid": 974816886029205,
+							"parameters": [
+								"INPUT_Place"
+							]
+						}
+					],
+					"sid": 251994231380078,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Shooting moving projectiles"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 307106180474879,
+							"parameters": {
+								"mouse-button": "left",
+								"click-type": "clicked"
+							}
+						}
+					],
 					"actions": [],
-					"sid": 388215909252443,
+					"sid": 128039574418371,
 					"children": [
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "Player",
-									"sid": 564440400976848,
-									"parameters": {
-										"instance-variable": "isOnGround"
-									}
+									"id": "has-pointer-lock",
+									"objectClass": "Mouse",
+									"sid": 468465525217275,
+									"isInverted": true
 								}
 							],
 							"actions": [
 								{
-									"id": "set-instvar-value",
-									"objectClass": "Player",
-									"sid": 298300217975897,
-									"parameters": {
-										"instance-variable": "deltaZ",
-										"value": "PlayerJumpStrength"
-									}
+									"id": "request-pointer-lock",
+									"objectClass": "Mouse",
+									"sid": 609953787846323
 								}
 							],
-							"sid": 565486907778250
+							"sid": 586437185836735
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 400393819265409
+								}
+							],
+							"actions": [
+								{
+									"customAction": "onInput",
+									"objectClass": "Player",
+									"sid": 202434762240913,
+									"parameters": [
+										"INPUT_Shoot"
+									]
+								}
+							],
+							"sid": 735572612876579
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-button-pressed",
+							"objectClass": "Gamepad",
+							"sid": 988482607651683,
+							"parameters": {
+								"gamepad": "0",
+								"button": "right-shoulder-trigger"
+							}
 						}
 					],
-					"isOrBlock": true
+					"actions": [
+						{
+							"customAction": "onInput",
+							"objectClass": "Player",
+							"sid": 637517073992281,
+							"parameters": [
+								"INPUT_Shoot"
+							]
+						}
+					],
+					"sid": 243832875960607
 				}
 			],
-			"sid": 485542811822789
+			"sid": 962608671445218
 		}
 	],
 	"sid": 708055557732005

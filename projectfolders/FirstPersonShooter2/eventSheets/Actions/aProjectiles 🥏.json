@@ -191,7 +191,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "If raycast has hit, move projectile with Tween to the hit location"
+							"text": "If raycast has hit, move projectile with Tween (X, Y, Z) to the hit location"
 						},
 						{
 							"eventType": "block",
@@ -262,6 +262,10 @@
 								}
 							],
 							"sid": 855076586841651
+						},
+						{
+							"eventType": "comment",
+							"text": "If there is no raycast hit, move projectile with Bullet (X, Y) and Tween (Z) to hit location"
 						},
 						{
 							"eventType": "block",
@@ -337,13 +341,13 @@
 							"sid": 442301939954338
 						},
 						{
+							"eventType": "comment",
+							"text": "Bullets are not visible initially (so they don't obscure the player's view); after a small delay, make them visible"
+						},
+						{
 							"eventType": "block",
 							"conditions": [],
 							"actions": [
-								{
-									"type": "comment",
-									"text": "Bullets are not visible initially (so they don't obscure the player's view); after a small delay, make them visible"
-								},
 								{
 									"id": "wait",
 									"objectClass": "System",
