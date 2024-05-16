@@ -19,9 +19,47 @@
 					"customAction": "init",
 					"objectClass": "3DCamera",
 					"sid": 846884380236997
+				},
+				{
+					"id": "set-layer-effect-enabled",
+					"objectClass": "System",
+					"sid": 484881958513965,
+					"parameters": {
+						"layer": "LAYER_Main3D",
+						"mode": "enable",
+						"effect": "EFFECTS_Fog"
+					}
 				}
 			],
-			"sid": 106853073142729
+			"sid": 106853073142729,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Text",
+							"sid": 437792484022061,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Info"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "UI_Text",
+							"sid": 433387735492103,
+							"parameters": {
+								"text": "\"Build \" & projectversion & newline &\n\"WASD to move\" & newline &\r\n\"SPACE to jump\" & newline &\r\n\"LCLICK to shoot moving projectile\" & newline &\r\n\"RCLICK to place static projectile\""
+							}
+						}
+					],
+					"sid": 695532188073776
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -42,17 +80,60 @@
 					"customAction": "tick",
 					"objectClass": "3DCamera",
 					"sid": 557998734631406
-				},
-				{
-					"id": "set-text",
-					"objectClass": "UI_Text",
-					"sid": 606859587373873,
-					"parameters": {
-						"text": "StringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
-					}
 				}
 			],
-			"sid": 464017789630187
+			"sid": 464017789630187,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Text",
+							"sid": 256617964919828,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Dev"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "UI_Text",
+							"sid": 147904617973501,
+							"parameters": {
+								"text": "StringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
+							}
+						}
+					],
+					"sid": 694296567203674
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "If a projectile hits a box, stop it and make it green"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-step",
+					"objectClass": "3DProjectile",
+					"sid": 999011127736335,
+					"behaviorType": "Bullet"
+				}
+			],
+			"actions": [
+				{
+					"customAction": "step",
+					"objectClass": "3DProjectile",
+					"sid": 578942855142073
+				}
+			],
+			"sid": 344160414494699
 		}
 	],
 	"sid": 918958308783690

@@ -90,6 +90,37 @@
 						}
 					],
 					"sid": 399732396363546
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 195782327626350
+						}
+					],
+					"actions": [
+						{
+							"customAction": "spawn",
+							"objectClass": "3DProjectile",
+							"sid": 761410283591932,
+							"parameters": [
+								"Player.X",
+								"Player.Y",
+								"3DCamera.CameraZ",
+								"Player.Angle",
+								"YES",
+								"RaycastJSON.Get(\"hasHit\")",
+								"RaycastJSON.Get(\"hitPointWorld.0\")",
+								"RaycastJSON.Get(\"hitPointWorld.1\")",
+								"RaycastJSON.Get(\"hitPointWorld.2\")",
+								"RaycastJSON.Get(\"distance\")",
+								"rgbEx(50, 50, 100)"
+							]
+						}
+					],
+					"sid": 426253807286998
 				}
 			]
 		},
@@ -133,25 +164,22 @@
 					],
 					"actions": [
 						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 175205078265899,
-							"parameters": {
-								"object-to-create": "ProjectileTest",
-								"layer": "LAYER_3D",
-								"x": "RaycastJSON.Get(\"hitPointWorld.0\")",
-								"y": "RaycastJSON.Get(\"hitPointWorld.1\")",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-z-elevation",
-							"objectClass": "ProjectileTest",
-							"sid": 247423622291322,
-							"parameters": {
-								"z": "RaycastJSON.Get(\"hitPointWorld.2\")"
-							}
+							"customAction": "spawn",
+							"objectClass": "3DProjectile",
+							"sid": 311253879166617,
+							"parameters": [
+								"RaycastJSON.Get(\"hitPointWorld.0\")",
+								"RaycastJSON.Get(\"hitPointWorld.1\")",
+								"RaycastJSON.Get(\"hitPointWorld.2\")",
+								"Player.Angle",
+								"-1",
+								"0",
+								"0",
+								"0",
+								"0",
+								"NOTHING",
+								"rgbEx(50, 50, 100)"
+							]
 						}
 					],
 					"sid": 977220000789337

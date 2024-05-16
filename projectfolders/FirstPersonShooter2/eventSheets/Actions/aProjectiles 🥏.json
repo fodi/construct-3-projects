@@ -1,0 +1,446 @@
+{
+	"name": "aProjectiles 🥏",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "3DProjectile",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "initX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 586033151879592
+				},
+				{
+					"name": "initY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 295699553639547
+				},
+				{
+					"name": "initZ",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 577125866268044
+				},
+				{
+					"name": "initAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 792627611186939
+				},
+				{
+					"name": "isMoving",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"sid": 884832168320964
+				},
+				{
+					"name": "hasHit",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 221832434218162
+				},
+				{
+					"name": "hitX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 787361376244999
+				},
+				{
+					"name": "hitY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 653578330091426
+				},
+				{
+					"name": "hitZ",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 676727925435126
+				},
+				{
+					"name": "hitDistance",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"sid": 172444081274074
+				},
+				{
+					"name": "colorValue",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 963883325543842
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 564145905736805,
+					"parameters": {
+						"object-to-create": "3DProjectile",
+						"layer": "LAYER_Main3D",
+						"x": "initX",
+						"y": "initY",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-z-elevation",
+					"objectClass": "3DProjectile",
+					"sid": 249815072610291,
+					"parameters": {
+						"z": "initZ"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "3DProjectile",
+					"sid": 830489678203182,
+					"parameters": {
+						"angle": "initAngle"
+					}
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "3DProjectile",
+					"sid": 257478564368914,
+					"parameters": {
+						"color": "colorValue"
+					}
+				}
+			],
+			"sid": 677436209402336,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 162945927653793,
+							"parameters": {
+								"variable": "isMoving",
+								"comparison": 0,
+								"value": "YES"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "3DProjectile",
+							"sid": 542523787500589,
+							"behaviorType": "Tween",
+							"parameters": {
+								"mode": "enabled"
+							}
+						}
+					],
+					"sid": 860847582475058,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "projectileSpeed",
+							"type": "number",
+							"initialValue": "400",
+							"comment": "The speed you would normally set in the Bullet behavior in a 2D game. This will be used to calculate movement speeds for the Bullet behavior (which moves the projectile on the X and Y axes) and the Tween behavior (which moves it on the Z axis).",
+							"isStatic": false,
+							"isConstant": true,
+							"sid": 231810409724806
+						},
+						{
+							"eventType": "variable",
+							"name": "bulletLifetime",
+							"type": "number",
+							"initialValue": "4",
+							"comment": "Spawned projectiles will be automatically destroyed after this amount of seconds",
+							"isStatic": false,
+							"isConstant": true,
+							"sid": 303808262265424
+						},
+						{
+							"eventType": "variable",
+							"name": "projectileInvisibleTime",
+							"type": "number",
+							"initialValue": "0.1",
+							"comment": "Spawned projectiles will be invisible for this amount of seconds",
+							"isStatic": false,
+							"isConstant": true,
+							"sid": 199158483180175
+						},
+						{
+							"eventType": "comment",
+							"text": "If raycast has hit, move projectile with Tween to the hit location"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 555355158404700,
+									"parameters": {
+										"variable": "hasHit",
+										"comparison": 0,
+										"value": "YES"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 298580465513493,
+									"parameters": {
+										"type": "log",
+										"message": "\"hasHit! tween time: \" & (hitDistance / projectileSpeed)"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "3DProjectile",
+									"sid": 466041082414864,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_Position",
+										"property": "position",
+										"end-x": "hitX",
+										"end-y": "hitY",
+										"time": "hitDistance / projectileSpeed",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "3DProjectile",
+									"sid": 845583824114009,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_ZElevation",
+										"property": "offsetZElevation",
+										"end-value": "hitZ",
+										"time": "hitDistance / projectileSpeed",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "set-default-color",
+									"objectClass": "3DProjectile",
+									"sid": 824051802992425,
+									"parameters": {
+										"color": "rgbEx(0, 100, 0)"
+									}
+								}
+							],
+							"sid": 855076586841651
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 658350357597369
+								}
+							],
+							"actions": [
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 318934360490044,
+									"parameters": {
+										"type": "log",
+										"message": "\"noHit!\""
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "3DProjectile",
+									"sid": 282193876284096,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Set the speed of the Bullet behavior, which will move the projectile on the X and Y axes"
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "3DProjectile",
+									"sid": 518608661369646,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "projectileSpeed * sin(3DCamera.CameraYRotation)"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Using the Tween behavior move the bullet on the Z axis and set it to expire after a while"
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "3DProjectile",
+									"sid": 695502760126457,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_ZElevation",
+										"property": "offsetZElevation",
+										"end-value": "bulletLifetime * (projectileSpeed * cos(3DCamera.CameraYRotation))",
+										"time": "bulletLifetime",
+										"ease": "default",
+										"destroy-on-complete": "yes",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "set-default-color",
+									"objectClass": "3DProjectile",
+									"sid": 744165285587892,
+									"parameters": {
+										"color": "rgbEx(100, 0, 0)"
+									}
+								}
+							],
+							"sid": 442301939954338
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "Bullets are not visible initially (so they don't obscure the player's view); after a small delay, make them visible"
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 709343578255650,
+									"parameters": {
+										"seconds": "projectileInvisibleTime"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "3DProjectile",
+									"sid": 377491982855062,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 333001621156227
+						}
+					]
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "step",
+			"objectClass": "3DProjectile",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "3DObstacle",
+					"sid": 931343318076896,
+					"parameters": {
+						"object": "3DProjectile"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 980075753776170,
+					"parameters": {
+						"object": "3DProjectile"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 299777854286982,
+					"parameters": {
+						"object": "3DObstacle"
+					}
+				},
+				{
+					"id": "is-between-values",
+					"objectClass": "System",
+					"sid": 527850886830682,
+					"parameters": {
+						"value": "3DProjectile.ZElevation",
+						"lower-bound": "3DObstacle.ZElevation",
+						"upper-bound": "3DObstacle.ZElevation + 3DObstacle.ZHeight"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "3DProjectile",
+					"sid": 196474009778259,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"state": "disabled"
+					}
+				},
+				{
+					"id": "stop-all-tweens",
+					"objectClass": "3DProjectile",
+					"sid": 649809175147869,
+					"behaviorType": "Tween"
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "3DProjectile",
+					"sid": 184091845349402,
+					"parameters": {
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 958159519150879
+		}
+	],
+	"sid": 983035800452557
+}

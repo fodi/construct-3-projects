@@ -42,7 +42,7 @@
 					"sid": 732445053923232,
 					"parameters": {
 						"object-to-create": "Player",
-						"layer": "LAYER_3D",
+						"layer": "LAYER_Main3D",
 						"x": "x",
 						"y": "y",
 						"create-hierarchy": true,

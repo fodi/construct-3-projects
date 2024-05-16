@@ -3930,6 +3930,21 @@ err)}}};
 
 {
 self["C3_Shaders"] = {};
+self["C3_Shaders"]["fogexponential"] = {
+	glsl: "varying mediump vec2 vTex;\nuniform lowp sampler2D samplerFront;\nuniform mediump vec2 srcStart;\nuniform mediump vec2 srcEnd;\nuniform lowp sampler2D samplerDepth;\nuniform mediump vec2 destStart;\nuniform mediump vec2 destEnd;\nuniform mediump float zNear;\nuniform mediump float zFar;\nuniform lowp vec3 fogColor;\nuniform mediump float fogDensity;\nuniform mediump float nearDist;\nvoid main(void)\n{\nmediump float log2 = 1.442695;\nlowp vec4 front = texture2D(samplerFront, vTex);\nmediump vec2 tex = (vTex - srcStart) / (srcEnd - srcStart);\nmediump float depthSample = texture2D(samplerDepth, mix(destStart, destEnd, tex)).r;\nmediump float zLinear = zNear * zFar / (zFar + depthSample * (zNear - zFar));\nmediump float fogDist = max(zLinear - nearDist, 0.0);\nmediump float fogAmount = clamp(1.0 - exp2(-fogDensity * fogDensity * fogDist * fogDist * log2), 0.0, 1.0);\ngl_FragColor = mix(front, vec4(fogColor * front.a, front.a), fogAmount);\n}",
+	glslWebGL2: "",
+	wgsl: "%%SAMPLERFRONT_BINDING%% var samplerFront : sampler;\n%%TEXTUREFRONT_BINDING%% var textureFront : texture_2d<f32>;\n%%SAMPLERDEPTH_BINDING%% var samplerDepth : sampler;\n%%TEXTUREDEPTH_BINDING%% var textureDepth : texture_depth_2d;\nstruct ShaderParams {\nfogColor : vec3<f32>,\nfogDensity : f32,\nnearDist : f32\n};\n%%SHADERPARAMS_BINDING%% var<uniform> shaderParams : ShaderParams;\n%%FRAGMENTINPUT_STRUCT%%\n%%FRAGMENTOUTPUT_STRUCT%%\n%%C3PARAMS_STRUCT%%\nconst log_2 = 1.442695;\n@fragment\nfn main(input : FragmentInput) -> FragmentOutput\n{\nvar front : vec4<f32> = textureSample(textureFront, samplerFront, input.fragUV);\nvar depthSample : f32 = textureSample(textureDepth, samplerDepth, c3_getDepthUV(input.fragPos.xy, textureDepth));\nvar zLinear : f32 = c3_linearizeDepth(depthSample);\nvar fogDist = max(zLinear - shaderParams.nearDist, 0.0);\nvar fogAmount : f32 = clamp(1.0 - exp2(-shaderParams.fogDensity * shaderParams.fogDensity * fogDist * fogDist * log_2), 0.0, 1.0);\nvar output : FragmentOutput;\noutput.color = mix(front, vec4<f32>(shaderParams.fogColor * front.a, front.a), fogAmount);\nreturn output;\n}",
+	blendsBackground: false,
+	usesDepth: true,
+	extendBoxHorizontal: 0,
+	extendBoxVertical: 0,
+	crossSampling: false,
+	mustPreDraw: false,
+	preservesOpaqueness: false,
+	supports3dDirectRendering: false,
+	animated: false,
+	parameters: [["fogColor",0,"color"],["fogDensity",0,"percent"],["nearDist",0,"float"]]
+};
 
 }
 
@@ -18786,29 +18801,35 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Cnds.OnCreated,
 		C3.Behaviors.solid.Acts.SetEnabled,
 		C3.Plugins.System.Cnds.OnLayoutStart,
-		C3.Plugins.System.Cnds.EveryTick,
+		C3.Plugins.System.Acts.SetLayerEffectEnabled,
+		C3.Plugins.Text.Cnds.CompareInstanceVar,
 		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.System.Exps.projectversion,
+		C3.Plugins.System.Cnds.EveryTick,
 		C3.Plugins.System.Exps.stringsub,
 		C3.Plugins.System.Exps.fps,
 		C3.Plugins.System.Exps.cpuutilisation,
 		C3.Plugins.System.Exps.gpuutilisation,
 		C3.Plugins.System.Exps.objectcount,
+		C3.Behaviors.Bullet.Cnds.OnStep,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.Browser.Acts.Reload,
 		C3.Plugins.Mouse.Cnds.OnClick,
 		C3.Plugins.Mouse.Cnds.HasPointerLock,
 		C3.Plugins.Mouse.Acts.RequestPointerLock,
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.Sprite.Exps.X,
+		C3.Plugins.Sprite.Exps.Y,
+		C3.Plugins.Camera3D.Exps.CameraZ,
+		C3.Plugins.Sprite.Exps.Angle,
+		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.Browser.Acts.ConsoleLog,
 		C3.Plugins.Json.Exps.ToBeautifiedString,
 		C3.Plugins.Json.Cnds.IsBooleanSet,
-		C3.Plugins.System.Acts.CreateObject,
-		C3.Plugins.Json.Exps.Get,
-		C3.Plugins.Shape3D.Acts.SetZElevation,
 		C3.Plugins.Keyboard.Cnds.IsKeyDown,
 		C3.Plugins.gamepad.Cnds.IsButtonDown,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
-		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.gamepad.Cnds.CompareAxis,
 		C3.Plugins.gamepad.Exps.Axis,
 		C3.Plugins.Mouse.Cnds.OnMovement,
@@ -18825,6 +18846,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
 		C3.Plugins.System.Exps.min,
 		C3.Plugins.System.Exps.max,
+		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Sprite.Acts.SetZElevation,
 		C3.Plugins.Sprite.Acts.SetSolidCollisionFilter,
 		C3.Plugins.Sprite.Acts.SetAngle,
@@ -18835,7 +18857,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Behaviors.EightDir.Acts.SetVectorX,
-		C3.Plugins.Sprite.Exps.Angle,
 		C3.Behaviors.EightDir.Exps.MaxSpeed,
 		C3.Behaviors.EightDir.Acts.SetVectorY,
 		C3.Plugins.Sprite.Acts.SubInstanceVar,
@@ -18852,8 +18873,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareZElevation,
 		C3.Plugins.Sprite.Cnds.IsAnimPlaying,
 		C3.Plugins.Sprite.Acts.Destroy,
-		C3.Plugins.Sprite.Exps.X,
-		C3.Plugins.Sprite.Exps.Y,
 		C3.Behaviors.Tween.Cnds.IsPlaying,
 		C3.Plugins.Camera3D.Acts.LookParallelToLayout,
 		C3.Plugins.Camera3D.Acts.RotateCamera,
@@ -18862,7 +18881,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.mikal_cannon_3d_physics.Acts.Raycast,
 		C3.Plugins.Camera3D.Exps.CameraX,
 		C3.Plugins.Camera3D.Exps.CameraY,
-		C3.Plugins.Camera3D.Exps.CameraZ,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Behaviors.mikal_cannon_3d_physics.Exps.RaycastResultAsJSON,
 		C3.Plugins.Json.Cnds.CompareValue,
@@ -18871,7 +18889,18 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Acts.SetBoolInstanceVar,
 		C3.Plugins.Shape3D.Exps.UID,
 		C3.Plugins.Shape3D.Cnds.IsBoolInstanceVarSet,
-		C3.Plugins.System.Cnds.PickByComparison
+		C3.Plugins.System.Cnds.PickByComparison,
+		C3.Plugins.Shape3D.Acts.SetZElevation,
+		C3.Plugins.Shape3D.Acts.SetAngle,
+		C3.Behaviors.Tween.Acts.SetEnabled,
+		C3.Behaviors.Tween.Acts.TweenTwoProperties,
+		C3.Behaviors.Bullet.Acts.SetEnabled,
+		C3.Behaviors.Bullet.Acts.SetSpeed,
+		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.Shape3D.Acts.SetVisible,
+		C3.Plugins.Shape3D.Cnds.IsOverlapping,
+		C3.Plugins.System.Cnds.ForEach,
+		C3.Plugins.System.Cnds.CompareBetween
 	];
 };
 self.C3_JsPropNameTable = [
@@ -18886,7 +18915,7 @@ self.C3_JsPropNameTable = [
 	{role: 0},
 	{UI_Text: 0},
 	{isFocused: 0},
-	{Obstacle: 0},
+	{"3DObstacle": 0},
 	{Crosshair: 0},
 	{previousZ: 0},
 	{deltaZ: 0},
@@ -18899,10 +18928,10 @@ self.C3_JsPropNameTable = [
 	{"8Direction": 0},
 	{Player: 0},
 	{Spawner: 0},
-	{ProjectileTest: 0},
 	{Bullet: 0},
-	{Enemy1: 0},
 	{Tween: 0},
+	{"3DProjectile": 0},
+	{Enemy1: 0},
 	{Cannon3DPhysics: 0},
 	{PlayerCamera: 0},
 	{Solid: 0},
@@ -18920,19 +18949,22 @@ self.C3_JsPropNameTable = [
 	{NOTHING: 0},
 	{NO: 0},
 	{YES: 0},
-	{LAYER_3D: 0},
+	{EFFECTS_Fog: 0},
+	{LAYER_Main3D: 0},
 	{LAYER_UI: 0},
 	{OT_Player: 0},
 	{OT_Enemies: 0},
+	{ROLE_Dev: 0},
+	{ROLE_Info: 0},
 	{TWEEN_Falling: 0},
+	{TWEEN_Position: 0},
+	{TWEEN_ZElevation: 0},
 	{ANIM_Animation1: 0},
 	{DIR_UP: 0},
 	{DIR_Down: 0},
 	{DIR_Left: 0},
 	{DIR_Right: 0},
-	{EFFECTS_Effect1: 0},
 	{LAYER_Main: 0},
-	{ROLE_Role1: 0},
 	{SIGNAL_Signal1: 0},
 	{TEMPLATE_Template1: 0},
 	{TIMER_Timer1: 0},
@@ -18954,7 +18986,21 @@ self.C3_JsPropNameTable = [
 	{shouldMove: 0},
 	{movementAngle: 0},
 	{rotateX: 0},
-	{rotateY: 0}
+	{rotateY: 0},
+	{projectileSpeed: 0},
+	{bulletLifetime: 0},
+	{projectileInvisibleTime: 0},
+	{initX: 0},
+	{initY: 0},
+	{initZ: 0},
+	{initAngle: 0},
+	{isMoving: 0},
+	{hasHit: 0},
+	{hitX: 0},
+	{hitY: 0},
+	{hitZ: 0},
+	{hitDistance: 0},
+	{colorValue: 0}
 ];
 
 self.InstanceType = {
@@ -18966,11 +19012,11 @@ self.InstanceType = {
 	Mouse: class extends self.IInstance {},
 	RaycastJSON: class extends self.IJSONInstance {},
 	UI_Text: class extends self.ITextInstance {},
-	Obstacle: class extends self.I3DShapeInstance {},
+	_3DObstacle: class extends self.I3DShapeInstance {},
 	Crosshair: class extends self.ISpriteInstance {},
 	Player: class extends self.ISpriteInstance {},
 	Spawner: class extends self.ISpriteInstance {},
-	ProjectileTest: class extends self.I3DShapeInstance {},
+	_3DProjectile: class extends self.I3DShapeInstance {},
 	Enemy1: class extends self.ISpriteInstance {},
 	PlayerCamera: class extends self.ISpriteInstance {},
 	Obstacles: class extends self.I3DShapeInstance {},
@@ -19076,6 +19122,14 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
+		() => "Main3D",
+		() => "Fog",
+		() => "Info",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => ((((((((("Build " + f0()) + "\n") + "WASD to move") + "\n") + "SPACE to jump") + "\n") + "LCLICK to shoot moving projectile") + "\n") + "RCLICK to place static projectile");
+		},
+		() => "Dev",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -19089,8 +19143,15 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
-		() => "hasHit",
-		() => "3D",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0();
+		},
+		() => 1,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject("hasHit");
+		},
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject("hitPointWorld.0");
@@ -19099,20 +19160,24 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject("hitPointWorld.1");
 		},
-		() => "",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject("hitPointWorld.2");
 		},
-		() => "Player movement",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject("distance");
+		},
+		() => -140746079339519,
+		() => "hasHit",
+		() => -1,
 		() => 0,
-		() => 1,
+		() => "Player movement",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (((C3.toDegrees(C3.angleTo(0, 0, f0(0, 0), f1(0, 1))) + 360) % 360) + 90);
 		},
-		() => -1,
 		() => "Player look",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -19134,10 +19199,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0();
-		},
 		() => "#ObjectTemplates",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -19154,6 +19215,7 @@ self.C3_ExpressionFuncs = [
 			return () => f0(f1((((v2.GetValue() - v3.GetValue()) * ((v4.GetValue() - v5.GetValue()) / (v6.GetValue() - v7.GetValue()))) + v8.GetValue()), v9.GetValue()), v10.GetValue());
 		},
 		() => "Templates",
+		() => "",
 		() => "Player",
 		p => {
 			const n0 = p._GetNode(0);
@@ -19260,7 +19322,29 @@ self.C3_ExpressionFuncs = [
 		},
 		() => -337570673406975,
 		() => -281492157629439,
-		() => "Enemies"
+		() => "Enemies",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and("hasHit! tween time: ", (v0.GetValue() / 400));
+		},
+		() => "Position",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() / 400);
+		},
+		() => "ZElevation",
+		() => -17179870207,
+		() => "noHit!",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (400 * Math.sin(C3.toRadians(f0())));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (4 * (400 * Math.cos(C3.toRadians(f0()))));
+		},
+		() => 4,
+		() => -281474976711679
 ];
 
 

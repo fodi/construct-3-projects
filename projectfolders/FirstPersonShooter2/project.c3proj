@@ -111,16 +111,23 @@
 			"name": "Solid",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "fogexponential",
+			"name": "Fog (exponential)",
+			"author": "Scirra",
+			"bundled": false
 		}
 	],
 	"uniqueId": "yvkam1laji5",
 	"objectTypes": {
 		"items": [
-			"Obstacle",
+			"3DObstacle",
 			"Crosshair",
 			"Player",
 			"Spawner",
-			"ProjectileTest",
+			"3DProjectile",
 			"Enemy1",
 			"PlayerCamera"
 		],
@@ -156,6 +163,11 @@
 				],
 				"subfolders": [],
 				"name": "UI"
+			},
+			{
+				"items": [],
+				"subfolders": [],
+				"name": "Textures"
 			}
 		]
 	},
@@ -220,7 +232,8 @@
 					"aEnemies 👾",
 					"aPlayer 🧬",
 					"aCamera 🎥",
-					"aSpawner 🎇"
+					"aSpawner 🎇",
+					"aProjectiles 🥏"
 				],
 				"subfolders": [],
 				"name": "Actions"
@@ -329,12 +342,12 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "3",
+		"version": "4",
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
 		"authorWebsite": "https://lasermagnet.com",
 		"appId": "",
-		"pixelRounding": true,
+		"pixelRounding": false,
 		"zAxisScale": "regular",
 		"fov": 0.7853981633974483,
 		"useLoaderLayout": false,

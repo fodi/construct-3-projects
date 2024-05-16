@@ -12,6 +12,6 @@
 	],
 	"effectTypes": [],
 	"members": [
-		"Obstacle"
+		"3DObstacle"
 	]
 }

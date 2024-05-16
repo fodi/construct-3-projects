@@ -37,13 +37,27 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "Effects"
+		},
+		{
+			"eventType": "variable",
+			"name": "EFFECTS_Fog",
+			"type": "string",
+			"initialValue": "Fog",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 527891496111992
+		},
+		{
+			"eventType": "comment",
 			"text": "Layers"
 		},
 		{
 			"eventType": "variable",
-			"name": "LAYER_3D",
+			"name": "LAYER_Main3D",
 			"type": "string",
-			"initialValue": "3D",
+			"initialValue": "Main3D",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -85,6 +99,30 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "Roles"
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Dev",
+			"type": "string",
+			"initialValue": "Dev",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 221285569346628
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Info",
+			"type": "string",
+			"initialValue": "Info",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 344572825171967
+		},
+		{
+			"eventType": "comment",
 			"text": "Tweens"
 		},
 		{
@@ -96,6 +134,26 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 595706100996443
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_Position",
+			"type": "string",
+			"initialValue": "Position",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 680222717519482
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_ZElevation",
+			"type": "string",
+			"initialValue": "ZElevation",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 290102336475467
 		},
 		{
 			"eventType": "group",
@@ -164,20 +222,6 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Effects"
-				},
-				{
-					"eventType": "variable",
-					"name": "EFFECTS_Effect1",
-					"type": "string",
-					"initialValue": "Effect1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 440839480306403
-				},
-				{
-					"eventType": "comment",
 					"text": "Layers"
 				},
 				{
@@ -189,20 +233,6 @@
 					"isStatic": false,
 					"isConstant": true,
 					"sid": 498473122161421
-				},
-				{
-					"eventType": "comment",
-					"text": "Roles"
-				},
-				{
-					"eventType": "variable",
-					"name": "ROLE_Role1",
-					"type": "string",
-					"initialValue": "Role1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 414734682659046
 				},
 				{
 					"eventType": "comment",

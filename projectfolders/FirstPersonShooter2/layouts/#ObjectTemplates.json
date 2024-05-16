@@ -173,7 +173,7 @@
 					}
 				},
 				{
-					"type": "ProjectileTest",
+					"type": "3DProjectile",
 					"properties": {
 						"shape": "box",
 						"z-height": 2,
@@ -185,16 +185,33 @@
 						"face-top": true,
 						"face-bottom": true,
 						"z-tiling-factor": 8,
-						"object-back": -1,
-						"object-front": -1,
-						"object-left": -1,
-						"object-right": -1,
-						"object-top": -1,
-						"object-bottom": -1
+						"object-back": 159462816089893,
+						"object-front": 159462816089893,
+						"object-left": 159462816089893,
+						"object-right": 159462816089893,
+						"object-top": 159462816089893,
+						"object-bottom": 159462816089893
 					},
 					"uid": 13,
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Bullet": {
+							"properties": {
+								"speed": 0,
+								"acceleration": 0,
+								"gravity": 0,
+								"bounce-off-solids": false,
+								"set-angle": true,
+								"step": true,
+								"enabled": false
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": false
+							}
+						}
+					},
 					"world": {
 						"x": 48,
 						"y": 26,

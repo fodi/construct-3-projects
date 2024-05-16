@@ -1,10 +1,21 @@
 {
-	"name": "ProjectileTest",
+	"name": "3DProjectile",
 	"plugin-id": "Shape3D",
 	"sid": 621887094022117,
 	"isGlobal": false,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 870675352263549
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 220381300268929
+		}
+	],
 	"effectTypes": [],
 	"animations": {
 		"items": [
