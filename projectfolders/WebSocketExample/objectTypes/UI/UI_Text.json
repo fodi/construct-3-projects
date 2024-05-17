@@ -1,0 +1,17 @@
+{
+	"name": "UI_Text",
+	"plugin-id": "Text",
+	"sid": 115820249296249,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "role",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 343749901036220
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

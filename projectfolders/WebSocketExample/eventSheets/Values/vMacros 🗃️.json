@@ -1,0 +1,80 @@
+{
+	"name": "vMacros 🗃️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Roles"
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Connect",
+			"type": "string",
+			"initialValue": "Connect",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 323381842936462
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Disconnect",
+			"type": "string",
+			"initialValue": "Disconnect",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 502753628703375
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Log",
+			"type": "string",
+			"initialValue": "Log",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 639204355741905
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Message",
+			"type": "string",
+			"initialValue": "Message",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 670895297474894
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Send",
+			"type": "string",
+			"initialValue": "Send",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 435650975422864
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_ServerURL",
+			"type": "string",
+			"initialValue": "ServerURL",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 939134261791939
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_WebSocketStatus",
+			"type": "string",
+			"initialValue": "WebSocketStatus",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 970015562037487
+		}
+	],
+	"sid": 951438315375945
+}

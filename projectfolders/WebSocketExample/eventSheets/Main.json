@@ -1,0 +1,544 @@
+{
+	"name": "Main",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Refresh state on start and at short intervals"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 691567100751900
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "refreshState",
+					"sid": 877054739934658
+				}
+			],
+			"sid": 174609653519606
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 810885738768111,
+					"parameters": {
+						"interval-seconds": "0.1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "refreshState",
+					"sid": 258216470313792
+				}
+			],
+			"sid": 388275133707104
+		},
+		{
+			"eventType": "comment",
+			"text": "Handle button clicks"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "UI_Button",
+					"sid": 211967008586833
+				}
+			],
+			"actions": [],
+			"sid": 641507782141480,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button",
+							"sid": 706939723509702,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Connect"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_TextInput",
+							"sid": 998571587373572,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_ServerURL"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "connect",
+							"objectClass": "WebSocket",
+							"sid": 775748484968813,
+							"parameters": {
+								"url": "UI_TextInput.Text",
+								"protocol-optional": "\"\""
+							}
+						}
+					],
+					"sid": 207425367077571
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 388425725222966
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button",
+							"sid": 471822618894602,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Disconnect"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "close",
+							"objectClass": "WebSocket",
+							"sid": 516475227165088
+						}
+					],
+					"sid": 808747772116247
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 336539708311206
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button",
+							"sid": 941248769859205,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Send"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_TextInput",
+							"sid": 701704203986872,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Message"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 750165661216196,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-open",
+									"objectClass": "WebSocket",
+									"sid": 316289756260429
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "logMessage",
+									"sid": 900399859755360,
+									"parameters": [
+										"\"Sending text message: \" & UI_TextInput.Text"
+									]
+								},
+								{
+									"id": "send-text",
+									"objectClass": "WebSocket",
+									"sid": 208237332460313,
+									"parameters": {
+										"data": "UI_TextInput.Text"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "UI_TextInput",
+									"sid": 518585379994494,
+									"parameters": {
+										"text": "\"\""
+									}
+								}
+							],
+							"sid": 949905142991774
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 300263597196969
+								}
+							],
+							"actions": [
+								{
+									"id": "alert",
+									"objectClass": "Browser",
+									"sid": 977695484436336,
+									"parameters": {
+										"message": "\"Can't send message, because WebSocket connection is not open.\""
+									}
+								}
+							],
+							"sid": 520077285180874
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Handle WebSocket events"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-opened",
+					"objectClass": "WebSocket",
+					"sid": 643840162187057
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "logMessage",
+					"sid": 577031633143942,
+					"parameters": [
+						"\"Connection opened.\""
+					]
+				}
+			],
+			"sid": 475862113088798
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-closed",
+					"objectClass": "WebSocket",
+					"sid": 956590429036894
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "logMessage",
+					"sid": 526986772075438,
+					"parameters": [
+						"\"Conenction closed with code \" & WebSocket.CloseCode &\", reason: \" & WebSocket.CloseReason"
+					]
+				}
+			],
+			"sid": 241243268265838
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-error",
+					"objectClass": "WebSocket",
+					"sid": 454186738951089
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "logMessage",
+					"sid": 899348863198970,
+					"parameters": [
+						"\"WebSocket error: \" & WebSocket.ErrorMsg"
+					]
+				}
+			],
+			"sid": 261686337678923
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-message",
+					"objectClass": "WebSocket",
+					"sid": 412170201155090
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "logMessage",
+					"sid": 748662526684713,
+					"parameters": [
+						"\"Received text message: \" & WebSocket.MessageText"
+					]
+				}
+			],
+			"sid": 523584391669732
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-binary-message",
+					"objectClass": "WebSocket",
+					"sid": 507095840393981,
+					"parameters": {
+						"receive-to": "BinaryData"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "logMessage",
+					"sid": 450835847544327,
+					"parameters": [
+						"\"Received binary message (\" & BinaryData.ByteLength & \" bytes).\""
+					]
+				}
+			],
+			"sid": 771598942700216
+		},
+		{
+			"eventType": "comment",
+			"text": "Functions"
+		},
+		{
+			"functionName": "logMessage",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "message",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 423162709303020
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "UI_TextInput",
+					"sid": 249264400608564,
+					"parameters": {
+						"instance-variable": "role",
+						"comparison": 0,
+						"value": "ROLE_Log"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "append-text",
+					"objectClass": "UI_TextInput",
+					"sid": 624681243000509,
+					"parameters": {
+						"text": "newline & message"
+					}
+				},
+				{
+					"id": "scroll-to-bottom",
+					"objectClass": "UI_TextInput",
+					"sid": 417938308060594
+				}
+			],
+			"sid": 977368538590706
+		},
+		{
+			"functionName": "refreshState",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 775174833355625,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "webSocketStatus",
+					"type": "string",
+					"initialValue": "[b]Status:[/b]",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 239801166007281
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-supported",
+							"objectClass": "WebSocket",
+							"sid": 258107937853893
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 851636502503207,
+							"parameters": {
+								"variable": "webSocketStatus",
+								"value": "newline & \"✔️ WebSocket supported\""
+							}
+						}
+					],
+					"sid": 993485125841736
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 176353980470669
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 435017928597181,
+							"parameters": {
+								"variable": "webSocketStatus",
+								"value": "newline & \"❌ WebSocket not supported\""
+							}
+						}
+					],
+					"sid": 571627678640048
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-connecting",
+							"objectClass": "WebSocket",
+							"sid": 502867460603542
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 550964944050266,
+							"parameters": {
+								"variable": "webSocketStatus",
+								"value": "newline & \"⌛ Connecting to WebSocket server\""
+							}
+						}
+					],
+					"sid": 395910391633371
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 135142974757133
+						},
+						{
+							"id": "is-open",
+							"objectClass": "WebSocket",
+							"sid": 911512628419599
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 599862893630400,
+							"parameters": {
+								"variable": "webSocketStatus",
+								"value": "newline & \"✔️ Connected to WebSocket server\""
+							}
+						}
+					],
+					"sid": 813103109069232
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 676141884387507
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 432556342849733,
+							"parameters": {
+								"variable": "webSocketStatus",
+								"value": "newline & \"❌ WebSocket server not connected\""
+							}
+						}
+					],
+					"sid": 365327647868890
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Text",
+							"sid": 586479416831502,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_WebSocketStatus"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "UI_Text",
+							"sid": 560269082553172,
+							"parameters": {
+								"text": "webSocketStatus"
+							}
+						}
+					],
+					"sid": 527090800478953
+				}
+			]
+		}
+	],
+	"sid": 682282146543289
+}

@@ -1,0 +1,16 @@
+{
+	"name": "UI_Button",
+	"plugin-id": "Button",
+	"sid": 828576160962441,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "role",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 646908211875056
+		}
+	],
+	"behaviorTypes": []
+}
