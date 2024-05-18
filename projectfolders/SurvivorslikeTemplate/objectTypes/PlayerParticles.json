@@ -1,0 +1,21 @@
+{
+	"name": "PlayerParticles",
+	"plugin-id": "Particles",
+	"sid": 794197311490403,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 1,
+		"height": 1,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"imageSpriteId": 591197,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

@@ -1,0 +1,328 @@
+{
+	"name": "aPlayer 🧑",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "init",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Initialize the physics behaviour; set it to be fixed, framerate dependent mode (but dt will be factored in when applying force, so the game hopefully won't be framerate dependent) and disable gravity. "
+				},
+				{
+					"id": "set-world-gravity",
+					"objectClass": "Player",
+					"sid": 745098463788974,
+					"behaviorType": "Physics",
+					"parameters": {
+						"gravity": "0"
+					}
+				},
+				{
+					"id": "set-stepping-mode",
+					"objectClass": "Player",
+					"sid": 902519676238142,
+					"behaviorType": "Physics",
+					"parameters": {
+						"mode": "fixed"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "If you don't want the player to \"push away\" enemies, enable the following action."
+				},
+				{
+					"id": "enabledisable-collisions",
+					"objectClass": "Player",
+					"sid": 732651828525538,
+					"disabled": true,
+					"behaviorType": "Physics",
+					"parameters": {
+						"object": "Enemy",
+						"state": "disable"
+					}
+				}
+			],
+			"sid": 194082542609421
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 316544396039029,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Stop / move"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-children",
+							"objectClass": "Player",
+							"sid": 219313439403021,
+							"parameters": {
+								"child": "bbPlayer",
+								"which": "own"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 778100511508249,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "If there is no movement input, stop player and switch to idle animation"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 194591206492306,
+									"parameters": {
+										"instance-variable": "input_moveVectorX",
+										"comparison": 0,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 334350510222445,
+									"parameters": {
+										"instance-variable": "input_moveVectorY",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "stop",
+									"objectClass": "Player",
+									"sid": 939909782446474,
+									"behaviorType": "8Direction"
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "bbPlayer",
+									"sid": 503477452583644,
+									"parameters": {
+										"animation": "ANIM_Idle",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 108193104089660
+						},
+						{
+							"eventType": "comment",
+							"text": "Otherwise move player and switch to running animation"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 385753247059483
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "bbPlayer",
+									"sid": 940656187764127,
+									"parameters": {
+										"animation": "ANIM_Running",
+										"from": "current-frame"
+									}
+								},
+								{
+									"id": "set-vector-x",
+									"objectClass": "Player",
+									"sid": 704123308213481,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"vector-x": "Self.input_moveVectorX"
+									}
+								},
+								{
+									"id": "set-vector-y",
+									"objectClass": "Player",
+									"sid": 345614168082851,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"vector-y": "Self.input_moveVectorY"
+									}
+								}
+							],
+							"sid": 314355414149150,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "Mirror player billboard based on (movement) angle"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-between-angles",
+											"objectClass": "Player",
+											"sid": 443308612555426,
+											"parameters": {
+												"first-angle": "95",
+												"second-angle": "265"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "bbPlayer",
+											"sid": 881914131947491,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-mirrored",
+											"objectClass": "bbPlayer",
+											"sid": 371381966875992,
+											"parameters": {
+												"state": "mirrored"
+											}
+										}
+									],
+									"sid": 788302882030094
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-between-angles",
+											"objectClass": "Player",
+											"sid": 284759387884680,
+											"parameters": {
+												"first-angle": "-85",
+												"second-angle": "85"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "bbPlayer",
+											"sid": 840133001678868
+										}
+									],
+									"actions": [
+										{
+											"id": "set-mirrored",
+											"objectClass": "bbPlayer",
+											"sid": 436567535661702,
+											"parameters": {
+												"state": "not-mirrored"
+											}
+										}
+									],
+									"sid": 300320233243780
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "If there are enemies close to the player (feel free to change the distance threshold), show some damage feedback"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 976336574415268,
+							"parameters": {
+								"object": "Enemy",
+								"expression": "distance(Player.X, Player.Y, Enemy.X, Enemy.Y)",
+								"comparison": 2,
+								"value": "Player.Width + 3"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "bbPlayer",
+							"sid": 786908616426479,
+							"parameters": {
+								"color": "rgbEx(100, 0, 0)"
+							}
+						},
+						{
+							"id": "set-rate",
+							"objectClass": "PlayerParticles",
+							"sid": 225324044455097,
+							"parameters": {
+								"rate": "100"
+							}
+						}
+					],
+					"sid": 262563823772657
+				},
+				{
+					"eventType": "comment",
+					"text": "If there are no enemies close to the player, turn of the damage feedback"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 423690966487821
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "bbPlayer",
+							"sid": 501197403976986,
+							"parameters": {
+								"color": "rgbEx(100, 100, 100)"
+							}
+						},
+						{
+							"id": "set-rate",
+							"objectClass": "PlayerParticles",
+							"sid": 396771191586049,
+							"parameters": {
+								"rate": "0"
+							}
+						}
+					],
+					"sid": 706982955551862
+				}
+			]
+		}
+	],
+	"sid": 336846342321076
+}

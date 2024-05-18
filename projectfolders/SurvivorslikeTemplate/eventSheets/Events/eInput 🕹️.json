@@ -1,0 +1,563 @@
+{
+	"name": "eInput 🕹️",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player controls",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-nth-touch-start",
+							"objectClass": "Touch",
+							"sid": 741408883858735,
+							"parameters": {
+								"touch-number": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "UI_TouchHelper",
+							"sid": 886155676484387,
+							"parameters": {
+								"x": "CanvasToLayerX(LAYER_UI, Touch.AbsoluteXAt(0), Touch.AbsoluteYAt(0))",
+								"y": "CanvasToLayerY(LAYER_UI, Touch.AbsoluteXAt(0), Touch.AbsoluteYAt(0))"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "UI_TouchHelper",
+							"sid": 194502600676173,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 854980656966090
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-nth-touch-end",
+							"objectClass": "Touch",
+							"sid": 348305743572905,
+							"parameters": {
+								"touch-number": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "UI_TouchHelper",
+							"sid": 856307793075615,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 463827642964527
+				},
+				{
+					"eventType": "comment",
+					"text": "Gamepad analog (variable speed)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 850492652947827,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "left-analog-x-axis",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 258861903497865,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "left-analog-y-axis",
+								"comparison": 1,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 181926752969515,
+							"parameters": {
+								"instance-variable": "input_moveVectorX",
+								"value": "Gamepad.Axis(0, 0) / 100 * Player.8Direction.MaxSpeed"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 809737927016532,
+							"parameters": {
+								"instance-variable": "input_moveVectorY",
+								"value": "Gamepad.Axis(0, 1) / 100 * Player.8Direction.MaxSpeed"
+							}
+						}
+					],
+					"sid": 918675450271757
+				},
+				{
+					"eventType": "comment",
+					"text": "Touch (max speed)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 312320150819045
+						},
+						{
+							"id": "has-nth-touch",
+							"objectClass": "Touch",
+							"sid": 756952025133254,
+							"parameters": {
+								"touch-number": "0"
+							}
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 117051115363773,
+							"parameters": {
+								"object": "UI_TouchHelper"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "UI_TouchHelper",
+							"sid": 537231958331579,
+							"parameters": {
+								"x": "CanvasToLayerX(LAYER_UI, Touch.AbsoluteXAt(0), Touch.AbsoluteYAt(0))",
+								"y": "CanvasToLayerY(LAYER_UI, Touch.AbsoluteXAt(0), Touch.AbsoluteYAt(0))"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 990668996085935,
+							"parameters": {
+								"instance-variable": "input_moveVectorX",
+								"value": "cos(UI_TouchHelper.Angle) * Player.8Direction.MaxSpeed"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 712970124439713,
+							"parameters": {
+								"instance-variable": "input_moveVectorY",
+								"value": "sin(UI_TouchHelper.Angle) * Player.8Direction.MaxSpeed"
+							}
+						}
+					],
+					"sid": 321640973772405
+				},
+				{
+					"eventType": "comment",
+					"text": "Keyboard / gamepad D-pad (max speed)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 550744325936576
+						}
+					],
+					"actions": [],
+					"sid": 459014080592499,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "vectorX",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 769506608038550
+						},
+						{
+							"eventType": "variable",
+							"name": "vectorY",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 990591589858693
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 393029864884909,
+									"parameters": {
+										"key": 87
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 212620401008134,
+									"parameters": {
+										"key": 38
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 489091235548135,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-up"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 969194310742431,
+									"parameters": {
+										"variable": "vectorY",
+										"value": "-1"
+									}
+								}
+							],
+							"sid": 438381710678011,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 805955412776570,
+									"parameters": {
+										"key": 83
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 500721071306161,
+									"parameters": {
+										"key": 40
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 583917246015084,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-down"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 976148388373252,
+									"parameters": {
+										"variable": "vectorY",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 152935972523671,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 828159089049784,
+									"parameters": {
+										"key": 65
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 548747744042377,
+									"parameters": {
+										"key": 37
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 297010399404149,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-left"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 669370620001040,
+									"parameters": {
+										"variable": "vectorX",
+										"value": "-1"
+									}
+								}
+							],
+							"sid": 921770411153215,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 812040901134711,
+									"parameters": {
+										"key": 68
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 658406814259915,
+									"parameters": {
+										"key": 39
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 371121969150964,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-right"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 497972596855875,
+									"parameters": {
+										"variable": "vectorX",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 290511351861516,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 715318720380294,
+									"parameters": {
+										"instance-variable": "input_moveVectorX",
+										"value": "vectorX * Player.8Direction.MaxSpeed"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 366347856247081,
+									"parameters": {
+										"instance-variable": "input_moveVectorY",
+										"value": "vectorY * Player.8Direction.MaxSpeed"
+									}
+								}
+							],
+							"sid": 142034434493024
+						}
+					]
+				}
+			],
+			"sid": 645775813486472
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Utilities",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Toggle full screen"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 899995301270425,
+							"parameters": {
+								"key": 70
+							}
+						},
+						{
+							"id": "on-button-pressed",
+							"objectClass": "Gamepad",
+							"sid": 982974355801128,
+							"parameters": {
+								"gamepad": "0",
+								"button": "back-view"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "toggleFullscreen",
+							"sid": 455748814831179
+						}
+					],
+					"sid": 869315598658073,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Restart level"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 416037563018196,
+							"parameters": {
+								"key": 82
+							}
+						},
+						{
+							"id": "on-button-pressed",
+							"objectClass": "Gamepad",
+							"sid": 129564935130266,
+							"parameters": {
+								"gamepad": "0",
+								"button": "start-menu"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "restartLevel",
+							"sid": 873795171780502
+						}
+					],
+					"sid": 360717403318165,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Spawn enemies"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-nth-touch",
+							"objectClass": "Touch",
+							"sid": 272730705517743,
+							"parameters": {
+								"touch-number": "1"
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 513211143767892,
+							"parameters": {
+								"key": 32
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 218298088073196,
+							"parameters": {
+								"gamepad": "0",
+								"button": "button-a"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 972577054997751,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 677507662826609,
+									"parameters": {
+										"interval-seconds": "0.1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "spawn",
+									"objectClass": "Enemy",
+									"sid": 164023997751058,
+									"parameters": [
+										"10",
+										"380"
+									]
+								}
+							],
+							"sid": 495435935257475
+						}
+					],
+					"isOrBlock": true
+				}
+			],
+			"sid": 834896624814928
+		}
+	],
+	"sid": 889601313122774
+}

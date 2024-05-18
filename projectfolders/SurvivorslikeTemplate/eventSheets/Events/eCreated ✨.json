@@ -1,0 +1,42 @@
+{
+	"name": "eCreated ✨",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Player",
+					"sid": 307464228334583
+				}
+			],
+			"actions": [
+				{
+					"customAction": "init",
+					"objectClass": "Player",
+					"sid": 706347337347579
+				}
+			],
+			"sid": 537152134765967
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Enemy",
+					"sid": 875330319876926
+				}
+			],
+			"actions": [
+				{
+					"customAction": "init",
+					"objectClass": "Enemy",
+					"sid": 855054105834831
+				}
+			],
+			"sid": 479039445749444
+		}
+	],
+	"sid": 773680664888633
+}

@@ -1,0 +1,27 @@
+{
+	"name": "Players",
+	"plugin-id": "Sprite",
+	"sid": 326334426997397,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction",
+			"sid": 959031300720878
+		},
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 888094615454861
+		},
+		{
+			"behaviorId": "scrollto",
+			"name": "ScrollTo",
+			"sid": 938681596621913
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Player"
+	]
+}

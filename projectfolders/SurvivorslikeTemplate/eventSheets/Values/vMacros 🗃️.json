@@ -1,0 +1,64 @@
+{
+	"name": "vMacros 🗃️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Animations"
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Idle",
+			"type": "string",
+			"initialValue": "Idle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 413057413744923
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Running",
+			"type": "string",
+			"initialValue": "Running",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 289777438819945
+		},
+		{
+			"eventType": "comment",
+			"text": "Layers"
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Enemies",
+			"type": "string",
+			"initialValue": "Enemies",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 903283093672852
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Players",
+			"type": "string",
+			"initialValue": "Players",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 817121975770917
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_UI",
+			"type": "string",
+			"initialValue": "UI",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 397646469743634
+		}
+	],
+	"sid": 339345034615777
+}

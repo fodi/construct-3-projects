@@ -1,0 +1,30 @@
+{
+	"name": "fLevel 🎬",
+	"events": [
+		{
+			"functionName": "restartLevel",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "reset-global-variables",
+					"objectClass": "System",
+					"sid": 282636712416895
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 180766781888365
+				}
+			],
+			"sid": 642981453666450
+		}
+	],
+	"sid": 199525357220418
+}

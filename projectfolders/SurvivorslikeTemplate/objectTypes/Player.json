@@ -1,0 +1,149 @@
+{
+	"name": "Player",
+	"plugin-id": "Sprite",
+	"sid": 550722777022852,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "input_moveVectorX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 338061360829474
+		},
+		{
+			"name": "input_moveVectorY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 393422122499581
+		},
+		{
+			"name": "input_moveUp",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 241739353806025
+		},
+		{
+			"name": "input_moveDown",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 741451580820729
+		},
+		{
+			"name": "input_moveLeft",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 861161951475957
+		},
+		{
+			"name": "input_moveRight",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 860379954583718
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4784033,
+						"collisionPoly": {
+							"points": [
+								0.40625,
+								0,
+								0.59375,
+								0,
+								0.703125,
+								0.03125,
+								0.765625,
+								0.0625,
+								0.8125,
+								0.09375,
+								0.90625,
+								0.1875,
+								0.9375,
+								0.234375,
+								0.96875,
+								0.296875,
+								1,
+								0.40625,
+								1,
+								0.59375,
+								0.96875,
+								0.703125,
+								0.9375,
+								0.765625,
+								0.90625,
+								0.8125,
+								0.8125,
+								0.90625,
+								0.765625,
+								0.9375,
+								0.703125,
+								0.96875,
+								0.59375,
+								1,
+								0.40625,
+								1,
+								0.296875,
+								0.96875,
+								0.234375,
+								0.9375,
+								0.1875,
+								0.90625,
+								0.09375,
+								0.8125,
+								0.0625,
+								0.765625,
+								0.03125,
+								0.703125,
+								0,
+								0.59375,
+								0,
+								0.40625,
+								0.03125,
+								0.296875,
+								0.0625,
+								0.234375,
+								0.09375,
+								0.1875,
+								0.1875,
+								0.09375,
+								0.234375,
+								0.0625,
+								0.296875,
+								0.03125
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 434306219012931,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

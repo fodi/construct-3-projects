@@ -1,0 +1,270 @@
+{
+	"name": "aEnemies 👾",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "enemyCount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 229524555970399
+				},
+				{
+					"name": "distanceFromPlayer",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 980962786133539
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 576440471707697,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "randomAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 142325160994206
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 155297471697732,
+							"parameters": {
+								"name": "\"\"",
+								"start-index": "1",
+								"end-index": "enemyCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 124548145319385,
+							"parameters": {
+								"variable": "randomAngle",
+								"value": "random(0, 360)"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 440803962682354,
+							"parameters": {
+								"object-to-create": "Enemy",
+								"layer": "LAYER_Enemies",
+								"x": "Player.X + cos(randomAngle) * distanceFromPlayer",
+								"y": "Player.Y + sin(randomAngle) * distanceFromPlayer",
+								"create-hierarchy": true,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 732771717907022
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "init",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 307550390726031,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Randomize enemy billboard"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-children",
+							"objectClass": "Enemy",
+							"sid": 686322499370992,
+							"parameters": {
+								"child": "bbEnemy",
+								"which": "own"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "bbEnemy",
+							"sid": 574949530885153,
+							"parameters": {
+								"animation": "\"A\" & int(random(1, 6))",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 823369796343716
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 897438754228340,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-velocity",
+							"objectClass": "Enemy",
+							"sid": 933380759803655,
+							"behaviorType": "Physics",
+							"parameters": {
+								"x-component": "0",
+								"y-component": "0"
+							}
+						},
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "Enemy",
+							"sid": 222662477781349,
+							"parameters": {
+								"x": "Player.X",
+								"y": "Player.Y"
+							}
+						},
+						{
+							"id": "apply-force-at-angle",
+							"objectClass": "Enemy",
+							"sid": 917945923707033,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "Self.movementSpeed * dt",
+								"angle": "Self.Angle",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 666394505561357,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-between-angles",
+									"objectClass": "Enemy",
+									"sid": 447168934558306,
+									"parameters": {
+										"first-angle": "95",
+										"second-angle": "265"
+									}
+								},
+								{
+									"id": "pick-children",
+									"objectClass": "Enemy",
+									"sid": 961689874809642,
+									"parameters": {
+										"child": "bbEnemy",
+										"which": "own"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "bbEnemy",
+									"sid": 213686232531471,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "bbEnemy",
+									"sid": 663560751921605,
+									"parameters": {
+										"state": "mirrored"
+									}
+								}
+							],
+							"sid": 909390560104726
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-between-angles",
+									"objectClass": "Enemy",
+									"sid": 900371833900623,
+									"parameters": {
+										"first-angle": "-85",
+										"second-angle": "85"
+									}
+								},
+								{
+									"id": "pick-children",
+									"objectClass": "Enemy",
+									"sid": 138695312768805,
+									"parameters": {
+										"child": "bbEnemy",
+										"which": "own"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "bbEnemy",
+									"sid": 202915547321010
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "bbEnemy",
+									"sid": 208884050983505,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								}
+							],
+							"sid": 765665834335409
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 240390375744569
+}

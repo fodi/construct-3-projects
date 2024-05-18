@@ -1,0 +1,25 @@
+{
+	"name": "Enemies",
+	"plugin-id": "Sprite",
+	"sid": 705264944042784,
+	"instanceVariables": [
+		{
+			"name": "movementSpeed",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 795397683889511
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 225784563998666
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Enemy"
+	]
+}
