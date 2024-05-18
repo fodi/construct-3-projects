@@ -332,11 +332,7 @@
 					"uid": 4,
 					"instanceVariables": {
 						"input_moveVectorX": 0,
-						"input_moveVectorY": 0,
-						"input_moveUp": 0,
-						"input_moveDown": 0,
-						"input_moveLeft": 0,
-						"input_moveRight": 0
+						"input_moveVectorY": 0
 					},
 					"behaviors": {
 						"8Direction": {

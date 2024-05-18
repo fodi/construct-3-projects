@@ -4,7 +4,7 @@
 		{
 			"aceType": "action",
 			"aceName": "spawn",
-			"objectClass": "Enemy",
+			"objectClass": "Enemies",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -70,7 +70,7 @@
 							"objectClass": "System",
 							"sid": 440803962682354,
 							"parameters": {
-								"object-to-create": "Enemy",
+								"object-to-create": "Enemies",
 								"layer": "LAYER_Enemies",
 								"x": "Player.X + cos(randomAngle) * distanceFromPlayer",
 								"y": "Player.Y + sin(randomAngle) * distanceFromPlayer",
@@ -86,7 +86,7 @@
 		{
 			"aceType": "action",
 			"aceName": "init",
-			"objectClass": "Enemy",
+			"objectClass": "Enemies",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -107,7 +107,7 @@
 					"conditions": [
 						{
 							"id": "pick-children",
-							"objectClass": "Enemy",
+							"objectClass": "Enemies",
 							"sid": 686322499370992,
 							"parameters": {
 								"child": "bbEnemy",
@@ -133,7 +133,7 @@
 		{
 			"aceType": "action",
 			"aceName": "tick",
-			"objectClass": "Enemy",
+			"objectClass": "Enemies",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -151,7 +151,7 @@
 					"actions": [
 						{
 							"id": "set-velocity",
-							"objectClass": "Enemy",
+							"objectClass": "Enemies",
 							"sid": 933380759803655,
 							"behaviorType": "Physics",
 							"parameters": {
@@ -161,7 +161,7 @@
 						},
 						{
 							"id": "set-angle-toward-position",
-							"objectClass": "Enemy",
+							"objectClass": "Enemies",
 							"sid": 222662477781349,
 							"parameters": {
 								"x": "Player.X",
@@ -170,7 +170,7 @@
 						},
 						{
 							"id": "apply-force-at-angle",
-							"objectClass": "Enemy",
+							"objectClass": "Enemies",
 							"sid": 917945923707033,
 							"behaviorType": "Physics",
 							"parameters": {
@@ -187,7 +187,7 @@
 							"conditions": [
 								{
 									"id": "is-between-angles",
-									"objectClass": "Enemy",
+									"objectClass": "Enemies",
 									"sid": 447168934558306,
 									"parameters": {
 										"first-angle": "95",
@@ -196,7 +196,7 @@
 								},
 								{
 									"id": "pick-children",
-									"objectClass": "Enemy",
+									"objectClass": "Enemies",
 									"sid": 961689874809642,
 									"parameters": {
 										"child": "bbEnemy",
@@ -227,7 +227,7 @@
 							"conditions": [
 								{
 									"id": "is-between-angles",
-									"objectClass": "Enemy",
+									"objectClass": "Enemies",
 									"sid": 900371833900623,
 									"parameters": {
 										"first-angle": "-85",
@@ -236,7 +236,7 @@
 								},
 								{
 									"id": "pick-children",
-									"objectClass": "Enemy",
+									"objectClass": "Enemies",
 									"sid": 138695312768805,
 									"parameters": {
 										"child": "bbEnemy",

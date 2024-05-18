@@ -99,7 +99,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 181926752969515,
+							"sid": 894232351270241,
 							"parameters": {
 								"instance-variable": "input_moveVectorX",
 								"value": "Gamepad.Axis(0, 0) / 100 * Player.8Direction.MaxSpeed"
@@ -108,7 +108,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 809737927016532,
+							"sid": 260997131990148,
 							"parameters": {
 								"instance-variable": "input_moveVectorY",
 								"value": "Gamepad.Axis(0, 1) / 100 * Player.8Direction.MaxSpeed"
@@ -160,7 +160,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 990668996085935,
+							"sid": 297147951577024,
 							"parameters": {
 								"instance-variable": "input_moveVectorX",
 								"value": "cos(UI_TouchHelper.Angle) * Player.8Direction.MaxSpeed"
@@ -169,7 +169,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 712970124439713,
+							"sid": 168018398560304,
 							"parameters": {
 								"instance-variable": "input_moveVectorY",
 								"value": "sin(UI_TouchHelper.Angle) * Player.8Direction.MaxSpeed"
@@ -393,7 +393,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "Player",
-									"sid": 715318720380294,
+									"sid": 107940059419305,
 									"parameters": {
 										"instance-variable": "input_moveVectorX",
 										"value": "vectorX * Player.8Direction.MaxSpeed"
@@ -402,7 +402,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "Player",
-									"sid": 366347856247081,
+									"sid": 957649958745032,
 									"parameters": {
 										"instance-variable": "input_moveVectorY",
 										"value": "vectorY * Player.8Direction.MaxSpeed"
@@ -543,6 +543,7 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Enemy",
+									"customActionObjectClass": "Enemies",
 									"sid": 164023997751058,
 									"parameters": [
 										"10",

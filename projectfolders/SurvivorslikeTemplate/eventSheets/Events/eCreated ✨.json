@@ -14,6 +14,7 @@
 				{
 					"customAction": "init",
 					"objectClass": "Player",
+					"customActionObjectClass": "Players",
 					"sid": 706347337347579
 				}
 			],
@@ -32,6 +33,7 @@
 				{
 					"customAction": "init",
 					"objectClass": "Enemy",
+					"customActionObjectClass": "Enemies",
 					"sid": 855054105834831
 				}
 			],

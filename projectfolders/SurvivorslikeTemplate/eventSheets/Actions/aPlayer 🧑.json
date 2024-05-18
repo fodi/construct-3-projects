@@ -4,7 +4,7 @@
 		{
 			"aceType": "action",
 			"aceName": "init",
-			"objectClass": "Player",
+			"objectClass": "Players",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -20,7 +20,7 @@
 				},
 				{
 					"id": "set-world-gravity",
-					"objectClass": "Player",
+					"objectClass": "Players",
 					"sid": 745098463788974,
 					"behaviorType": "Physics",
 					"parameters": {
@@ -29,7 +29,7 @@
 				},
 				{
 					"id": "set-stepping-mode",
-					"objectClass": "Player",
+					"objectClass": "Players",
 					"sid": 902519676238142,
 					"behaviorType": "Physics",
 					"parameters": {
@@ -42,7 +42,7 @@
 				},
 				{
 					"id": "enabledisable-collisions",
-					"objectClass": "Player",
+					"objectClass": "Players",
 					"sid": 732651828525538,
 					"disabled": true,
 					"behaviorType": "Physics",
@@ -57,7 +57,7 @@
 		{
 			"aceType": "action",
 			"aceName": "tick",
-			"objectClass": "Player",
+			"objectClass": "Players",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -78,7 +78,7 @@
 					"conditions": [
 						{
 							"id": "pick-children",
-							"objectClass": "Player",
+							"objectClass": "Players",
 							"sid": 219313439403021,
 							"parameters": {
 								"child": "bbPlayer",
@@ -98,8 +98,8 @@
 							"conditions": [
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "Player",
-									"sid": 194591206492306,
+									"objectClass": "Players",
+									"sid": 748839171716841,
 									"parameters": {
 										"instance-variable": "input_moveVectorX",
 										"comparison": 0,
@@ -108,8 +108,8 @@
 								},
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "Player",
-									"sid": 334350510222445,
+									"objectClass": "Players",
+									"sid": 332081816656384,
 									"parameters": {
 										"instance-variable": "input_moveVectorY",
 										"comparison": 0,
@@ -120,7 +120,7 @@
 							"actions": [
 								{
 									"id": "stop",
-									"objectClass": "Player",
+									"objectClass": "Players",
 									"sid": 939909782446474,
 									"behaviorType": "8Direction"
 								},
@@ -161,8 +161,8 @@
 								},
 								{
 									"id": "set-vector-x",
-									"objectClass": "Player",
-									"sid": 704123308213481,
+									"objectClass": "Players",
+									"sid": 279732516940004,
 									"behaviorType": "8Direction",
 									"parameters": {
 										"vector-x": "Self.input_moveVectorX"
@@ -170,8 +170,8 @@
 								},
 								{
 									"id": "set-vector-y",
-									"objectClass": "Player",
-									"sid": 345614168082851,
+									"objectClass": "Players",
+									"sid": 336144472216006,
 									"behaviorType": "8Direction",
 									"parameters": {
 										"vector-y": "Self.input_moveVectorY"
@@ -189,7 +189,7 @@
 									"conditions": [
 										{
 											"id": "is-between-angles",
-											"objectClass": "Player",
+											"objectClass": "Players",
 											"sid": 443308612555426,
 											"parameters": {
 												"first-angle": "95",
@@ -220,7 +220,7 @@
 									"conditions": [
 										{
 											"id": "is-between-angles",
-											"objectClass": "Player",
+											"objectClass": "Players",
 											"sid": 284759387884680,
 											"parameters": {
 												"first-angle": "-85",
@@ -262,9 +262,9 @@
 							"sid": 976336574415268,
 							"parameters": {
 								"object": "Enemy",
-								"expression": "distance(Player.X, Player.Y, Enemy.X, Enemy.Y)",
+								"expression": "distance(Players.X, Players.Y, Enemy.X, Enemy.Y)",
 								"comparison": 2,
-								"value": "Player.Width + 3"
+								"value": "Players.Width + 3"
 							}
 						}
 					],

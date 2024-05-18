@@ -4658,6 +4658,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.fps,
 		C3.Plugins.Sprite.Exps.Count,
 		C3.Plugins.System.Exps.objectcount,
+		C3.Plugins.System.Exps.projectversion,
 		C3.Plugins.System.Acts.ResetGlobals,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.Browser.Cnds.IsFullscreen,
@@ -4676,10 +4677,6 @@ self.C3_JsPropNameTable = [
 	{bbPlayer: 0},
 	{input_moveVectorX: 0},
 	{input_moveVectorY: 0},
-	{input_moveUp: 0},
-	{input_moveDown: 0},
-	{input_moveLeft: 0},
-	{input_moveRight: 0},
 	{Player: 0},
 	{movementSpeed: 0},
 	{Enemy: 0},
@@ -4856,7 +4853,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => (n0.ExpInstVar() * f1());
+			return () => (n0.ExpInstVar_Family() * f1());
 		},
 		() => 95,
 		() => 265,
@@ -4866,7 +4863,7 @@ self.C3_ExpressionFuncs = [
 		() => "Running",
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
+			return () => n0.ExpInstVar_Family();
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -4923,7 +4920,8 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
 			const f2 = p._GetNode(2).GetBoundMethod();
-			return () => (and((and((and("[background=#000000]", f0()) + " FPS, "), n1.ExpObject()) + " enemies, "), f2()) + " objects");
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => ((((and((and((and("[background=#000000]", f0()) + " FPS, "), n1.ExpObject()) + " enemies, "), f2()) + " objects") + "\n") + "Build ") + f3());
 		}
 ];
 

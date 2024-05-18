@@ -2,7 +2,22 @@
 	"name": "Players",
 	"plugin-id": "Sprite",
 	"sid": 326334426997397,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "input_moveVectorX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 589445530714438
+		},
+		{
+			"name": "input_moveVectorY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 296307749150590
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "EightDir",

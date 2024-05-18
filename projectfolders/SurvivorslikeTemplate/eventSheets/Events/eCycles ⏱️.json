@@ -18,11 +18,13 @@
 				{
 					"customAction": "tick",
 					"objectClass": "Player",
+					"customActionObjectClass": "Players",
 					"sid": 807680881693695
 				},
 				{
 					"customAction": "tick",
 					"objectClass": "Enemy",
+					"customActionObjectClass": "Enemies",
 					"sid": 665911476388120
 				},
 				{
@@ -32,9 +34,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF",
-					"sid": 162015139616607,
+					"sid": 690323238917053,
 					"parameters": {
-						"text": "\"[background=#000000]\" & fps & \" FPS, \" & Enemy.Count & \" enemies, \" & objectcount & \" objects\""
+						"text": "\"[background=#000000]\" & fps & \" FPS, \" & Enemy.Count & \" enemies, \" & objectcount & \" objects\" & newline & \"Build \" & projectversion"
 					}
 				}
 			],
