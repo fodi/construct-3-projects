@@ -1,0 +1,296 @@
+{
+	"name": "Main 🌈",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 934409235030864
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 159734285504580,
+					"parameters": {
+						"variable": "firstSwatchX",
+						"value": "Swatch.X"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 467260379696035,
+					"parameters": {
+						"variable": "firstSwatchY",
+						"value": "Swatch.Y"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Swatch",
+					"sid": 971832780670252
+				}
+			],
+			"sid": 106853073142729
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "Button",
+					"sid": 254951202858512
+				}
+			],
+			"actions": [],
+			"sid": 372943583853721,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "colorValuesPSV",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 163964470077245
+				},
+				{
+					"eventType": "variable",
+					"name": "colorHex",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 561287466775347
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 396005752041336,
+							"parameters": {
+								"name": "\"\"",
+								"start-index": "0",
+								"end-index": "RegexMatchCount(UI_TextInput.Text, C_HexColorRegex, C_RegexFlags)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 715946227372764,
+							"parameters": {
+								"variable": "colorHex",
+								"value": "replace(trim(RegexMatchAt(UI_TextInput.Text, C_HexColorRegex, C_RegexFlags, loopindex)), \"#\", \"\")"
+							}
+						}
+					],
+					"sid": 469779965511623,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 981231567821608,
+									"parameters": {
+										"variable": "colorHex",
+										"comparison": 1,
+										"value": "\"\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 245128522593810,
+									"parameters": {
+										"variable": "colorValuesPSV",
+										"value": "colorValuesPSV & Functions.hex2color(colorHex) & \"|\""
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 466895630120071,
+									"parameters": {
+										"type": "log",
+										"message": "\"colorHex:\" & colorHex"
+									}
+								}
+							],
+							"sid": 816019990923926
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 433199697758310,
+							"parameters": {
+								"variable": "colorValuesPSV",
+								"value": "trim(colorValuesPSV)"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Swatch",
+							"sid": 322281983439530
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 146811599740428,
+							"parameters": {
+								"type": "log",
+								"message": "\"Colors: \" & colorValuesPSV"
+							}
+						}
+					],
+					"sid": 358738871517952
+				},
+				{
+					"eventType": "variable",
+					"name": "firstSwatchUID",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 177905514040358
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 297322254320837,
+							"parameters": {
+								"name": "\"\"",
+								"start-index": "0",
+								"end-index": "tokencount(colorValuesPSV, \"|\") - 2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 596388589151588,
+							"parameters": {
+								"type": "log",
+								"message": "\"Adding swatch #\" & loopindex &\" with color \" & tokenat(colorValuesPSV, loopindex, \"|\")"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 391780313455755,
+							"parameters": {
+								"object-to-create": "Swatch",
+								"layer": "0",
+								"x": "firstSwatchX + (loopindex % C_SwatchColumns) * 60",
+								"y": "firstSwatchY + (int(loopindex / C_SwatchColumns) % C_SwatchRows) * 60",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Swatch",
+							"sid": 118586522395096,
+							"parameters": {
+								"color": "int(tokenat(colorValuesPSV, loopindex, \"|\"))"
+							}
+						}
+					],
+					"sid": 196001264915897
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 474972064252863,
+					"parameters": {
+						"key": 70
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "toggleFullscreen",
+					"sid": 865045164569405
+				}
+			],
+			"sid": 210342933150963
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 692480773523530,
+					"parameters": {
+						"key": 82
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "reload",
+					"objectClass": "Browser",
+					"sid": 173671774704237
+				}
+			],
+			"sid": 652198849533769
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 507406037773543,
+					"parameters": {
+						"mouse-button": "right",
+						"click-type": "clicked",
+						"object-clicked": "Swatch"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "copy-text",
+					"objectClass": "Clipboard",
+					"sid": 449081017743994,
+					"parameters": {
+						"text": "str(Swatch.ColorValue)"
+					}
+				}
+			],
+			"sid": 705722661879428
+		}
+	],
+	"sid": 680353853616029
+}

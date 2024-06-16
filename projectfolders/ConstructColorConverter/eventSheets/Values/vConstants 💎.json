@@ -1,0 +1,46 @@
+{
+	"name": "vConstants 💎",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "C_HexColorRegex",
+			"type": "string",
+			"initialValue": "#?([a-f0-9]{6}|[a-f0-9]{3})",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 700164154786539
+		},
+		{
+			"eventType": "variable",
+			"name": "C_RegexFlags",
+			"type": "string",
+			"initialValue": "gim",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 928385676702143
+		},
+		{
+			"eventType": "variable",
+			"name": "C_SwatchColumns",
+			"type": "number",
+			"initialValue": "8",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 639785368034392
+		},
+		{
+			"eventType": "variable",
+			"name": "C_SwatchRows",
+			"type": "number",
+			"initialValue": "6",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 636356161247063
+		}
+	],
+	"sid": 344291072955141
+}

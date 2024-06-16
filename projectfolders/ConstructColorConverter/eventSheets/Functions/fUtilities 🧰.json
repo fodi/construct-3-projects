@@ -1,0 +1,127 @@
+{
+	"name": "fUtilities 🧰",
+	"events": [
+		{
+			"functionName": "toggleFullscreen",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 886938183459389,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-fullscreen",
+							"objectClass": "Browser",
+							"sid": 673139129491414
+						}
+					],
+					"actions": [
+						{
+							"id": "cancel-fullscreen",
+							"objectClass": "Browser",
+							"sid": 460028958641810
+						}
+					],
+					"sid": 783256117940843
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 240506212898677
+						}
+					],
+					"actions": [
+						{
+							"id": "request-fullscreen",
+							"objectClass": "Browser",
+							"sid": 332860445881325,
+							"parameters": {
+								"mode": "stretch-letterbox-scale",
+								"navigation-ui": "hide"
+							}
+						}
+					],
+					"sid": 678419407173315
+				}
+			]
+		},
+		{
+			"functionName": "hex2color",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "hex",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 933144219822134
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Function by R0J0hound"
+				},
+				{
+					"type": "comment",
+					"text": "https://www.construct.net/en/forum/construct-3/how-do-i-8/hex-colour-values-code-179603"
+				}
+			],
+			"sid": 896175762642813,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "C_HexDigits",
+					"type": "string",
+					"initialValue": "0123456789ABCDEF",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 981921287877454
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 807046016727473,
+							"parameters": {
+								"variable": "hex",
+								"value": "left(\"000000\", max(0, 6-len(hex)))"
+							}
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 625561878790553,
+							"parameters": {
+								"value": "rgbEx255(find(C_HexDigits, mid(hex,0,1))*16+find(C_HexDigits, mid(hex,1,1)), find(C_HexDigits, mid(hex,2,1))*16+find(C_HexDigits, mid(hex,3,1)), find(C_HexDigits, mid(hex,4,1))*16+find(C_HexDigits, mid(hex,5,1)))"
+							}
+						}
+					],
+					"sid": 489496154371939
+				}
+			]
+		}
+	],
+	"sid": 622480337843055
+}

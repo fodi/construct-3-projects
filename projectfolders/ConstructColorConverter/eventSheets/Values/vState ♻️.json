@@ -1,0 +1,36 @@
+{
+	"name": "vState ♻️",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "firstSwatchX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 116447555772007
+		},
+		{
+			"eventType": "variable",
+			"name": "firstSwatchY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 679718714021689
+		},
+		{
+			"eventType": "variable",
+			"name": "colorsPSV",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 909717176036630
+		}
+	],
+	"sid": 756444675677784
+}
