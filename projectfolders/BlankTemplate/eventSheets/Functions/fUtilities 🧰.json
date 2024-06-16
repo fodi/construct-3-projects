@@ -113,6 +113,172 @@
 				}
 			],
 			"sid": 363416407062200
+		},
+		{
+			"functionName": "objectNameExists",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "name",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 977797587973872
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "runtime.setReturnValue(runtime.objects[localVars[\"name\"]] ? 1 : 0)"
+				}
+			],
+			"sid": 985779994453727
+		},
+		{
+			"functionName": "volumePercentToDb",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "percent",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 552900222084880
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 378464548011383,
+					"parameters": {
+						"value": "-log10(100 / (percent)) * 33.2"
+					}
+				}
+			],
+			"sid": 875967104905781
+		},
+		{
+			"functionName": "berp",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "from",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 660941667729529
+				},
+				{
+					"name": "to",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 657549916212738
+				},
+				{
+					"name": "decay",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "useful range is 1 - 25",
+					"sid": 734892184369619
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "based on https://www.youtube.com/watch?v=LSNQuFEDOyQ"
+				},
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 643918058300636,
+					"parameters": {
+						"value": "to + (from - to) * exp(-decay * dt)"
+					}
+				}
+			],
+			"sid": 135747702409854
+		},
+		{
+			"functionName": "hex2color",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "hex",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 683275630346362
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Function by R0J0hound https://www.construct.net/en/forum/construct-3/how-do-i-8/hex-colour-values-code-179603"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 223438399487418,
+					"parameters": {
+						"variable": "hex",
+						"value": "left(\"000000\", max(0, 6-len(hex)))"
+					}
+				}
+			],
+			"sid": 180752882577265,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "C_HexDigits",
+					"type": "string",
+					"initialValue": "0123456789ABCDEF",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 535102081963566
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 196480844336830,
+							"parameters": {
+								"value": "rgbEx255(find(C_HexDigits, mid(hex,0,1))*16+find(C_HexDigits, mid(hex,1,1)), find(C_HexDigits, mid(hex,2,1))*16+find(C_HexDigits, mid(hex,3,1)), find(C_HexDigits, mid(hex,4,1))*16+find(C_HexDigits, mid(hex,5,1)))"
+							}
+						}
+					],
+					"sid": 117563489929905
+				}
+			]
 		}
 	],
 	"sid": 622480337843055
