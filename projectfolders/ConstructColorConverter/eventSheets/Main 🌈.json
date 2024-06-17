@@ -2,6 +2,10 @@
 	"name": "Main 🌈",
 	"events": [
 		{
+			"eventType": "comment",
+			"text": "todo check for possible unsafe int bug (eg. F6779C)"
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -49,6 +53,16 @@
 			"actions": [],
 			"sid": 372943583853721,
 			"children": [
+				{
+					"eventType": "variable",
+					"name": "colorsPSV",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 329819910234149
+				},
 				{
 					"eventType": "variable",
 					"name": "colorValuesPSV",
@@ -114,10 +128,10 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 245128522593810,
+									"sid": 256884986911661,
 									"parameters": {
-										"variable": "colorValuesPSV",
-										"value": "colorValuesPSV & Functions.hex2color(colorHex) & \"|\""
+										"variable": "colorsPSV",
+										"value": "colorsPSV & colorHex & \"|\""
 									}
 								},
 								{
@@ -141,119 +155,220 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 433199697758310,
+							"sid": 691328847095379,
 							"parameters": {
-								"variable": "colorValuesPSV",
-								"value": "trim(colorValuesPSV)"
-							}
-						},
-						{
-							"id": "destroy",
-							"objectClass": "Swatch",
-							"sid": 322281983439530
-						},
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 146811599740428,
-							"parameters": {
-								"type": "log",
-								"message": "\"Colors: \" & colorValuesPSV"
+								"variable": "colorsPSV",
+								"value": "trim(colorsPSV)"
 							}
 						}
 					],
 					"sid": 358738871517952
 				},
 				{
-					"eventType": "variable",
-					"name": "firstSwatchUID",
-					"type": "number",
-					"initialValue": "-1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 177905514040358
+					"eventType": "comment",
+					"text": "Make swatches"
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "for",
-							"objectClass": "System",
-							"sid": 297322254320837,
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button",
+							"sid": 927508997913211,
 							"parameters": {
-								"name": "\"\"",
-								"start-index": "0",
-								"end-index": "tokencount(colorValuesPSV, \"|\") - 2"
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_MakeSwatches"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 596388589151588,
-							"parameters": {
-								"type": "log",
-								"message": "\"Adding swatch #\" & loopindex &\" with color \" & tokenat(colorValuesPSV, loopindex, \"|\")"
-							}
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 647291300418443,
-							"parameters": {
-								"object-to-create": "Swatch",
-								"layer": "0",
-								"x": "firstSwatchX + (loopindex % C_SwatchColumns) * 60",
-								"y": "firstSwatchY + (int(loopindex / C_SwatchColumns) % C_SwatchRows) * 60",
-								"create-hierarchy": true,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-default-color",
+							"id": "destroy",
 							"objectClass": "Swatch",
-							"sid": 118586522395096,
-							"parameters": {
-								"color": "int(tokenat(colorValuesPSV, loopindex, \"|\"))"
-							}
+							"sid": 289041366965896
 						}
 					],
-					"sid": 196001264915897,
+					"sid": 577678301959289,
 					"children": [
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "pick-children",
-									"objectClass": "Swatch",
-									"sid": 620090480992903,
+									"id": "for",
+									"objectClass": "System",
+									"sid": 306684641104544,
 									"parameters": {
-										"child": "UI_TextInput",
-										"which": "own"
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "tokencount(colorsPSV, \"|\") - 2"
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-visible",
-									"objectClass": "UI_TextInput",
-									"sid": 641118126652065,
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 221454877761174,
 									"parameters": {
-										"visibility": "visible"
+										"object-to-create": "Swatch",
+										"layer": "0",
+										"x": "firstSwatchX + (loopindex % C_SwatchColumns) * 60",
+										"y": "firstSwatchY + (int(loopindex / C_SwatchColumns) % C_SwatchRows) * 60",
+										"create-hierarchy": true,
+										"template-name": "\"\""
 									}
 								},
 								{
-									"id": "set-text",
-									"objectClass": "UI_TextInput",
-									"sid": 804205675424348,
+									"id": "set-default-color",
+									"objectClass": "Swatch",
+									"sid": 182538913376221,
 									"parameters": {
-										"text": "Swatch.ColorValue"
+										"color": "int(Functions.hex2color(tokenat(colorsPSV, loopindex, \"|\")))"
 									}
 								}
 							],
-							"sid": 532071359566962
+							"sid": 960094746862510,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "Swatch",
+											"sid": 661914359131342,
+											"parameters": {
+												"child": "UI_TextInput",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "UI_TextInput",
+											"sid": 730514560274686,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "UI_TextInput",
+											"sid": 196003669827267,
+											"parameters": {
+												"text": "Swatch.ColorValue"
+											}
+										}
+									],
+									"sid": 376326451958276
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Copy constants"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 554501299119518
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button",
+							"sid": 876469829851762,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_CopyConstants"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 899972341377751,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "c3ClipboardConstants",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 562798244660537
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 253618876118176,
+									"parameters": {
+										"variable": "c3ClipboardConstants",
+										"value": "c3ClipboardConstants & \"{\"\"is-c3-clipboard-data\"\":true,\"\"type\"\":\"\"events\"\",\"\"items\"\":[\""
+									}
+								}
+							],
+							"sid": 290874137610272
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 896912919757069,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "tokencount(colorsPSV, \"|\") - 2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 800862906907259,
+									"parameters": {
+										"variable": "c3ClipboardConstants",
+										"value": "c3ClipboardConstants & \"{\"\"eventType\"\":\"\"variable\"\",\"\"name\"\":\"\"COLOR_\" & uppercase(tokenat(colorsPSV, loopindex, \"|\")) & \"\"\",\"\"type\"\":\"\"number\"\",\"\"initialValue\"\":\"\"\" & int(Functions.hex2color(tokenat(colorsPSV, loopindex, \"|\"))) & \"\"\",\"\"comment\"\":\"\"\"\",\"\"isStatic\"\":false,\"\"isConstant\"\":true},\""
+									}
+								}
+							],
+							"sid": 482564243696500
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 666033924305435,
+									"parameters": {
+										"variable": "c3ClipboardConstants",
+										"value": "left(c3ClipboardConstants, len(c3ClipboardConstants) - 1) & \"]}\""
+									}
+								},
+								{
+									"id": "copy-text",
+									"objectClass": "Clipboard",
+									"sid": 525956124090441,
+									"parameters": {
+										"text": "c3ClipboardConstants"
+									}
+								}
+							],
+							"sid": 972345153075228
 						}
 					]
 				}

@@ -4322,21 +4322,23 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.loopindex,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Browser.Acts.ConsoleLog,
+		C3.Plugins.Button.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Exps.tokencount,
-		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.Sprite.Acts.SetDefaultColor,
+		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.Sprite.Cnds.PickChildren,
 		C3.Plugins.TextBox.Acts.SetVisible,
 		C3.Plugins.TextBox.Acts.SetText,
 		C3.Plugins.Sprite.Exps.ColorValue,
+		C3.Plugins.System.Exps.uppercase,
+		C3.Plugins.Clipboard.Acts.CopyText,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.Browser.Acts.Reload,
 		C3.Plugins.Mouse.Cnds.OnObjectClicked,
-		C3.Plugins.Clipboard.Acts.CopyText,
 		C3.Plugins.Mouse.Cnds.IsOverObject,
-		C3.ScriptsInEvents["Main🌈_Event11_Act1"]
+		C3.ScriptsInEvents["Main🌈_Event16_Act1"]
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4354,14 +4356,16 @@ self.C3_JsPropNameTable = [
 	{hex: 0},
 	{firstSwatchX: 0},
 	{firstSwatchY: 0},
-	{colorsPSV: 0},
 	{C_HexColorRegex: 0},
 	{C_RegexFlags: 0},
 	{C_SwatchColumns: 0},
 	{C_SwatchRows: 0},
+	{ROLE_MakeSwatches: 0},
+	{ROLE_CopyConstants: 0},
+	{colorsPSV: 0},
 	{colorValuesPSV: 0},
 	{colorHex: 0},
-	{firstSwatchUID: 0}
+	{c3ClipboardConstants: 0}
 ];
 
 self.InstanceType = {
@@ -4524,9 +4528,8 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const v2 = p._GetNode(2).GetVar();
-			return () => (and(v0.GetValue(), f1(v2.GetValue())) + "|");
+			const v1 = p._GetNode(1).GetVar();
+			return () => ((v0.GetValue() + v1.GetValue()) + "|");
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4537,21 +4540,11 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => f0(v1.GetValue());
 		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => ("Colors: " + v0.GetValue());
-		},
+		() => "MakeSwatches",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
 			return () => (f0(v1.GetValue(), "|") - 2);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const v2 = p._GetNode(2).GetVar();
-			const f3 = p._GetNode(3).GetBoundMethod();
-			return () => ((and("Adding swatch #", f0()) + " with color ") + f1(v2.GetValue(), f3(), "|"));
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4567,9 +4560,39 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
-			const v2 = p._GetNode(2).GetVar();
-			const f3 = p._GetNode(3).GetBoundMethod();
-			return () => f0(f1(v2.GetValue(), f3(), "|"));
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			return () => f0(f1(f2(v3.GetValue(), f4(), "|")));
+		},
+		() => "CopyConstants",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() + "{\"is-c3-clipboard-data\":true,\"type\":\"events\",\"items\":[");
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			const f5 = p._GetNode(5).GetBoundMethod();
+			const f6 = p._GetNode(6).GetBoundMethod();
+			const f7 = p._GetNode(7).GetBoundMethod();
+			const v8 = p._GetNode(8).GetVar();
+			const f9 = p._GetNode(9).GetBoundMethod();
+			return () => (and((((v0.GetValue() + "{\"eventType\":\"variable\",\"name\":\"COLOR_") + f1(f2(v3.GetValue(), f4(), "|"))) + "\",\"type\":\"number\",\"initialValue\":\""), f5(f6(f7(v8.GetValue(), f9(), "|")))) + "\",\"comment\":\"\",\"isStatic\":false,\"isConstant\":true},");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
+			return () => (f0(v1.GetValue(), (f2(v3.GetValue()) - 1)) + "]}");
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => v0.GetValue();
 		},
 		p => {
 			const n0 = p._GetNode(0);

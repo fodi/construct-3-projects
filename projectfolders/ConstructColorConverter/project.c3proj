@@ -124,7 +124,8 @@
 			{
 				"items": [
 					"vState ♻️",
-					"vConstants 💎"
+					"vConstants 💎",
+					"vMacros 🗃️"
 				],
 				"subfolders": [],
 				"name": "Values"
@@ -242,7 +243,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "2",
+		"version": "3b",
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
 		"authorWebsite": "https://lasermagnet.com",

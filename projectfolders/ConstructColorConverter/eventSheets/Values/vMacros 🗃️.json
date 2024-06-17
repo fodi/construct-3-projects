@@ -1,0 +1,26 @@
+{
+	"name": "vMacros 🗃️",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "ROLE_MakeSwatches",
+			"type": "string",
+			"initialValue": "MakeSwatches",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 709665001077512
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_CopyConstants",
+			"type": "string",
+			"initialValue": "CopyConstants",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 202906114765837
+		}
+	],
+	"sid": 535780052511067
+}

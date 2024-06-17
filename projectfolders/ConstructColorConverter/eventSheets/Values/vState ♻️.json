@@ -20,16 +20,6 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 679718714021689
-		},
-		{
-			"eventType": "variable",
-			"name": "colorsPSV",
-			"type": "string",
-			"initialValue": "",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 909717176036630
 		}
 	],
 	"sid": 756444675677784
