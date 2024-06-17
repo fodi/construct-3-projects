@@ -42,7 +42,7 @@
 			"conditions": [
 				{
 					"id": "on-clicked",
-					"objectClass": "Button",
+					"objectClass": "UI_Button",
 					"sid": 254951202858512
 				}
 			],
@@ -79,7 +79,7 @@
 							"parameters": {
 								"name": "\"\"",
 								"start-index": "0",
-								"end-index": "RegexMatchCount(UI_TextInput.Text, C_HexColorRegex, C_RegexFlags)"
+								"end-index": "RegexMatchCount(UI_TextArea.Text, C_HexColorRegex, C_RegexFlags)"
 							}
 						}
 					],
@@ -90,7 +90,7 @@
 							"sid": 715946227372764,
 							"parameters": {
 								"variable": "colorHex",
-								"value": "replace(trim(RegexMatchAt(UI_TextInput.Text, C_HexColorRegex, C_RegexFlags, loopindex)), \"#\", \"\")"
+								"value": "replace(trim(RegexMatchAt(UI_TextArea.Text, C_HexColorRegex, C_RegexFlags, loopindex)), \"#\", \"\")"
 							}
 						}
 					],
@@ -201,13 +201,13 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 391780313455755,
+							"sid": 647291300418443,
 							"parameters": {
 								"object-to-create": "Swatch",
 								"layer": "0",
 								"x": "firstSwatchX + (loopindex % C_SwatchColumns) * 60",
 								"y": "firstSwatchY + (int(loopindex / C_SwatchColumns) % C_SwatchRows) * 60",
-								"create-hierarchy": false,
+								"create-hierarchy": true,
 								"template-name": "\"\""
 							}
 						},
@@ -220,7 +220,42 @@
 							}
 						}
 					],
-					"sid": 196001264915897
+					"sid": 196001264915897,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "Swatch",
+									"sid": 620090480992903,
+									"parameters": {
+										"child": "UI_TextInput",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "UI_TextInput",
+									"sid": 641118126652065,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "UI_TextInput",
+									"sid": 804205675424348,
+									"parameters": {
+										"text": "Swatch.ColorValue"
+									}
+								}
+							],
+							"sid": 532071359566962
+						}
+					]
 				}
 			]
 		},
@@ -271,7 +306,17 @@
 				{
 					"id": "on-object-clicked",
 					"objectClass": "Mouse",
-					"sid": 507406037773543,
+					"sid": 259405369118717,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "Swatch"
+					}
+				},
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 873477556303697,
 					"parameters": {
 						"mouse-button": "right",
 						"click-type": "clicked",
@@ -289,7 +334,37 @@
 					}
 				}
 			],
-			"sid": 705722661879428
+			"sid": 705722661879428,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 563725095639453,
+					"parameters": {
+						"object": "Swatch"
+					}
+				},
+				{
+					"id": "pick-children",
+					"objectClass": "Swatch",
+					"sid": 487104884663805,
+					"parameters": {
+						"child": "UI_TextInput",
+						"which": "own"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"script": "const el = runtime.objects.UI_TextInput.getPickedInstances()[0].getElement()\nel.focus()\nel.select()"
+				}
+			],
+			"sid": 988885808289024
 		}
 	],
 	"sid": 680353853616029

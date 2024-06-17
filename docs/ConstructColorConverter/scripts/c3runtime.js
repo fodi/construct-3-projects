@@ -4078,6 +4078,18 @@ ScreenWidth(){return this._screenWidth},ScreenHeight(){return this._screenHeight
 }
 
 {
+'use strict';{const C3=self.C3;C3.Plugins.Clipboard=class ClipboardPlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}}}{const C3=self.C3;C3.Plugins.Clipboard.Type=class ClipboardType extends C3.SDKTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}}}
+{const C3=self.C3;const DOM_COMPONENT_ID="clipboard";C3.Plugins.Clipboard.Instance=class ClipboardInstance extends C3.SDKInstanceBase{constructor(inst,properties){super(inst,DOM_COMPONENT_ID);this._copyResolve=null;this._requestPasteResolve=null;this._pastedText="";this._pastedBinaryArrayBuffer=null;this._pastedBinaryType="";this.AddDOMMessageHandlers([["copy-result",e=>this._OnCopyResult(e)],["request-paste-text-result",e=>this._OnRequestPasteTextResult(e)],["request-paste-binary-result",e=>this._OnRequestPasteBinaryResult(e)],
+["window-paste-text",e=>this._OnWindowPasteText(e)],["window-paste-binary",e=>this._OnWindowPasteBinary(e)]])}GetPastedText(){return this._pastedText}async _OnCopyResult(e){if(this._copyResolve){this._copyResolve();this._copyResolve=null}if(e["isOk"])await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnCopySuccess);else await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnCopyError)}async _OnRequestPasteTextResult(e){if(this._requestPasteResolve){this._requestPasteResolve();this._requestPasteResolve=
+null}if(e["isOk"]){this._pastedText=e["text"];await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteText)}else await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteError)}async _OnRequestPasteBinaryResult(e){if(this._requestPasteResolve){this._requestPasteResolve();this._requestPasteResolve=null}if(e["isOk"]){for(const [type,arrayBuffer]of e["binary"]){this._pastedBinaryType=type;this._pastedBinaryArrayBuffer=arrayBuffer;await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteBinary)}this._pastedBinaryType=
+"";this._pastedBinaryArrayBuffer=null}else await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteError)}async _OnWindowPasteText(e){this._pastedText=e["text"];await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteText)}async _OnWindowPasteBinary(e){this._pastedBinaryType=e["type"];this._pastedBinaryArrayBuffer=e["arrayBuffer"];await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteBinary);this._pastedBinaryType="";this._pastedBinaryArrayBuffer=null}}}
+{const C3=self.C3;C3.Plugins.Clipboard.Cnds={OnCopySuccess(){return true},OnCopyError(){return true},OnPasteText(){return true},OnPasteBinary(objectClass,type){if(!C3.equalsNoCase(this._pastedBinaryType,type))return false;if(!objectClass)return false;const inst=objectClass.GetFirstPicked(this._inst);if(!inst)return false;const sdkInst=inst.GetSdkInstance();sdkInst.SetArrayBufferCopy(this._pastedBinaryArrayBuffer);return true},OnPasteError(){return true}}}
+{const C3=self.C3;C3.Plugins.Clipboard.Acts={CopyText(text){this._PostToDOMMaybeSync("copy-text",{"text":text});return new Promise(resolve=>this._copyResolve=resolve)},CopyBinary(objectClass,type){if(!objectClass)return;const target=objectClass.GetFirstPicked(this._inst);if(!target)return;const sdkInst=target.GetSdkInstance();this._PostToDOMMaybeSync("copy-binary",{"arrayBuffer":sdkInst.GetArrayBufferReadOnly(),"type":type});return new Promise(resolve=>this._copyResolve=resolve)},RequestPasteText(){this._PostToDOMMaybeSync("request-paste-text");
+return new Promise(resolve=>this._requestPasteResolve=resolve)},RequestPasteBinary(){this._PostToDOMMaybeSync("request-paste-binary");return new Promise(resolve=>this._requestPasteResolve=resolve)}}}{const C3=self.C3;C3.Plugins.Clipboard.Exps={PastedText(){return this._pastedText}}};
+
+}
+
+{
 'use strict';{const C3=self.C3;C3.Plugins.Keyboard=class KeyboardPlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}}}
 {const C3=self.C3;const C3X=self.C3X;C3.Plugins.Keyboard.Type=class KeyboardType extends C3.SDKTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}GetScriptInterfaceClass(){return self.IKeyboardObjectType}};let keyboardObjectType=null;function GetKeyboardSdkInstance(){return keyboardObjectType.GetSingleGlobalInstance().GetSdkInstance()}self.IKeyboardObjectType=class IKeyboardObjectType extends self.IObjectClass{constructor(objectType){super(objectType);keyboardObjectType=
 objectType;objectType.GetRuntime()._GetCommonScriptInterfaces().keyboard=this}isKeyDown(keyOrCode){const keyboardInst=GetKeyboardSdkInstance();if(typeof keyOrCode==="string")return keyboardInst.IsKeyDown(keyOrCode);else if(typeof keyOrCode==="number")return keyboardInst.IsKeyCodeDown(keyOrCode);else throw new TypeError("expected string or number");}}}
@@ -4272,29 +4284,17 @@ ImagePointCount(){return this.GetImagePointCount()},ImageWidth(){return this.Get
 }
 
 {
-'use strict';{const C3=self.C3;C3.Plugins.Clipboard=class ClipboardPlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}}}{const C3=self.C3;C3.Plugins.Clipboard.Type=class ClipboardType extends C3.SDKTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}}}
-{const C3=self.C3;const DOM_COMPONENT_ID="clipboard";C3.Plugins.Clipboard.Instance=class ClipboardInstance extends C3.SDKInstanceBase{constructor(inst,properties){super(inst,DOM_COMPONENT_ID);this._copyResolve=null;this._requestPasteResolve=null;this._pastedText="";this._pastedBinaryArrayBuffer=null;this._pastedBinaryType="";this.AddDOMMessageHandlers([["copy-result",e=>this._OnCopyResult(e)],["request-paste-text-result",e=>this._OnRequestPasteTextResult(e)],["request-paste-binary-result",e=>this._OnRequestPasteBinaryResult(e)],
-["window-paste-text",e=>this._OnWindowPasteText(e)],["window-paste-binary",e=>this._OnWindowPasteBinary(e)]])}GetPastedText(){return this._pastedText}async _OnCopyResult(e){if(this._copyResolve){this._copyResolve();this._copyResolve=null}if(e["isOk"])await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnCopySuccess);else await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnCopyError)}async _OnRequestPasteTextResult(e){if(this._requestPasteResolve){this._requestPasteResolve();this._requestPasteResolve=
-null}if(e["isOk"]){this._pastedText=e["text"];await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteText)}else await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteError)}async _OnRequestPasteBinaryResult(e){if(this._requestPasteResolve){this._requestPasteResolve();this._requestPasteResolve=null}if(e["isOk"]){for(const [type,arrayBuffer]of e["binary"]){this._pastedBinaryType=type;this._pastedBinaryArrayBuffer=arrayBuffer;await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteBinary)}this._pastedBinaryType=
-"";this._pastedBinaryArrayBuffer=null}else await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteError)}async _OnWindowPasteText(e){this._pastedText=e["text"];await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteText)}async _OnWindowPasteBinary(e){this._pastedBinaryType=e["type"];this._pastedBinaryArrayBuffer=e["arrayBuffer"];await this.TriggerAsync(C3.Plugins.Clipboard.Cnds.OnPasteBinary);this._pastedBinaryType="";this._pastedBinaryArrayBuffer=null}}}
-{const C3=self.C3;C3.Plugins.Clipboard.Cnds={OnCopySuccess(){return true},OnCopyError(){return true},OnPasteText(){return true},OnPasteBinary(objectClass,type){if(!C3.equalsNoCase(this._pastedBinaryType,type))return false;if(!objectClass)return false;const inst=objectClass.GetFirstPicked(this._inst);if(!inst)return false;const sdkInst=inst.GetSdkInstance();sdkInst.SetArrayBufferCopy(this._pastedBinaryArrayBuffer);return true},OnPasteError(){return true}}}
-{const C3=self.C3;C3.Plugins.Clipboard.Acts={CopyText(text){this._PostToDOMMaybeSync("copy-text",{"text":text});return new Promise(resolve=>this._copyResolve=resolve)},CopyBinary(objectClass,type){if(!objectClass)return;const target=objectClass.GetFirstPicked(this._inst);if(!target)return;const sdkInst=target.GetSdkInstance();this._PostToDOMMaybeSync("copy-binary",{"arrayBuffer":sdkInst.GetArrayBufferReadOnly(),"type":type});return new Promise(resolve=>this._copyResolve=resolve)},RequestPasteText(){this._PostToDOMMaybeSync("request-paste-text");
-return new Promise(resolve=>this._requestPasteResolve=resolve)},RequestPasteBinary(){this._PostToDOMMaybeSync("request-paste-binary");return new Promise(resolve=>this._requestPasteResolve=resolve)}}}{const C3=self.C3;C3.Plugins.Clipboard.Exps={PastedText(){return this._pastedText}}};
-
-}
-
-{
 const C3 = self.C3;
 self.C3_GetObjectRefTable = function () {
 	return [
 		C3.Plugins.Browser,
+		C3.Plugins.Clipboard,
 		C3.Plugins.Keyboard,
 		C3.Plugins.Mouse,
 		C3.Plugins.Text,
 		C3.Plugins.TextBox,
 		C3.Plugins.Button,
 		C3.Plugins.Sprite,
-		C3.Plugins.Clipboard,
 		C3.Plugins.Browser.Cnds.IsFullscreen,
 		C3.Plugins.Browser.Acts.CancelFullScreen,
 		C3.Plugins.System.Cnds.Else,
@@ -4327,23 +4327,29 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.Sprite.Acts.SetDefaultColor,
+		C3.Plugins.Sprite.Cnds.PickChildren,
+		C3.Plugins.TextBox.Acts.SetVisible,
+		C3.Plugins.TextBox.Acts.SetText,
+		C3.Plugins.Sprite.Exps.ColorValue,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.Browser.Acts.Reload,
 		C3.Plugins.Mouse.Cnds.OnObjectClicked,
 		C3.Plugins.Clipboard.Acts.CopyText,
-		C3.Plugins.Sprite.Exps.ColorValue
+		C3.Plugins.Mouse.Cnds.IsOverObject,
+		C3.ScriptsInEvents["Main🌈_Event11_Act1"]
 	];
 };
 self.C3_JsPropNameTable = [
 	{Browser: 0},
+	{Clipboard: 0},
 	{Keyboard: 0},
 	{Mouse: 0},
 	{role: 0},
 	{UI_Text: 0},
+	{UI_TextArea: 0},
 	{UI_TextInput: 0},
-	{Button: 0},
+	{UI_Button: 0},
 	{Swatch: 0},
-	{Clipboard: 0},
 	{C_HexDigits: 0},
 	{hex: 0},
 	{firstSwatchX: 0},
@@ -4360,13 +4366,14 @@ self.C3_JsPropNameTable = [
 
 self.InstanceType = {
 	Browser: class extends self.IInstance {},
+	Clipboard: class extends self.IInstance {},
 	Keyboard: class extends self.IInstance {},
 	Mouse: class extends self.IInstance {},
 	UI_Text: class extends self.ITextInstance {},
+	UI_TextArea: class extends self.ITextInputInstance {},
 	UI_TextInput: class extends self.ITextInputInstance {},
-	Button: class extends self.IButtonInstance {},
-	Swatch: class extends self.ISpriteInstance {},
-	Clipboard: class extends self.IInstance {}
+	UI_Button: class extends self.IButtonInstance {},
+	Swatch: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4505,7 +4512,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
-			return () => f0(n1.ExpObject(), "#?([a-f0-9]{6}|[a-f0-9]{3})", "gim");
+			return () => f0(n1.ExpObject(), "#?([a-f0-9]{6})", "gim");
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4513,7 +4520,7 @@ self.C3_ExpressionFuncs = [
 			const f2 = p._GetNode(2).GetBoundMethod();
 			const n3 = p._GetNode(3);
 			const f4 = p._GetNode(4).GetBoundMethod();
-			return () => f0(f1(f2(n3.ExpObject(), "#?([a-f0-9]{6}|[a-f0-9]{3})", "gim", f4())), "#", "");
+			return () => f0(f1(f2(n3.ExpObject(), "#?([a-f0-9]{6})", "gim", f4())), "#", "");
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();

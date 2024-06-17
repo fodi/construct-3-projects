@@ -1,7 +1,7 @@
 {
-	"name": "UI_TextInput",
+	"name": "UI_TextArea",
 	"plugin-id": "TextBox",
-	"sid": 192493238512844,
+	"sid": 419943906803501,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": []

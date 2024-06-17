@@ -7,7 +7,7 @@
 			"subLayers": [],
 			"instances": [
 				{
-					"type": "UI_TextInput",
+					"type": "UI_TextArea",
 					"properties": {
 						"text": "",
 						"placeholder": "Paste hex colors eg. #ff00ff #00ff00 006699 880880",
@@ -40,7 +40,7 @@
 					}
 				},
 				{
-					"type": "Button",
+					"type": "UI_Button",
 					"properties": {
 						"type": "button",
 						"text": "Go!",
@@ -76,12 +76,57 @@
 						"initially-visible": true,
 						"initial-animation": "Animation 1",
 						"initial-frame": 0,
-						"enable-collisions": true,
+						"enable-collisions": false,
 						"live-preview": false
 					},
 					"uid": 6,
 					"instanceVariables": {},
 					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 6,
+						"children": [
+							{
+								"uid": 8,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": false,
+									"w": false,
+									"h": false,
+									"a": false,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
 					"world": {
 						"x": 160,
 						"y": 10,
@@ -102,7 +147,7 @@
 				{
 					"type": "UI_Text",
 					"properties": {
-						"text": "1. Paste a list of hexadecimal colors below\n2. Click Go! to generate swatches\n3. Right click swatches to copy Construct color values to clipboard",
+						"text": "1. Paste hexadecimal color codes below\n2. Click Go! to generate swatches\n3. Click swatches to copy Construct color values to clipboard",
 						"enable-bbcode": false,
 						"font": "sans-serif",
 						"size": 5.5,
@@ -110,9 +155,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							0.8705882352941177,
+							0.8705882352941177,
+							0.8705882352941177,
 							1
 						],
 						"horizontal-alignment": "left",
@@ -147,22 +192,56 @@
 					}
 				},
 				{
-					"type": "Swatch",
+					"type": "UI_TextInput",
 					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
+						"text": "asdf",
+						"placeholder": "",
+						"tooltip": "",
+						"initially-visible": false,
+						"enabled": true,
+						"read-only": true,
+						"spell-check": false,
+						"type": "text",
+						"auto-font-size": false,
+						"id": "",
+						"class": ""
 					},
 					"uid": 8,
 					"instanceVariables": {},
 					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 6,
+						"uid": 8,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": false,
+							"w": false,
+							"h": false,
+							"a": false,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
 					"world": {
-						"x": 160,
-						"y": 70,
-						"width": 50,
-						"height": 50,
+						"x": 162,
+						"y": 44,
+						"width": 46,
+						"height": 12,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -170,9 +249,7 @@
 							1,
 							1,
 							1
-						],
-						"angle": 0,
-						"zElevation": 0
+						]
 					}
 				}
 			],
@@ -188,9 +265,9 @@
 				1
 			],
 			"backgroundColor": [
-				0.3686274509803922,
-				0.3686274509803922,
-				0.3686274509803922,
+				0.12941176470588237,
+				0.12941176470588237,
+				0.12941176470588237,
 				1
 			],
 			"isTransparent": false,

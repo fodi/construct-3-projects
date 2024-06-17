@@ -5,7 +5,7 @@
 			"eventType": "variable",
 			"name": "C_HexColorRegex",
 			"type": "string",
-			"initialValue": "#?([a-f0-9]{6}|[a-f0-9]{3})",
+			"initialValue": "#?([a-f0-9]{6})",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,

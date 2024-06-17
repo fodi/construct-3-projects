@@ -66,14 +66,13 @@
 	"uniqueId": "yvkam1laji5",
 	"objectTypes": {
 		"items": [
-			"Button",
-			"Swatch",
-			"Clipboard"
+			"Swatch"
 		],
 		"subfolders": [
 			{
 				"items": [
-					"Browser"
+					"Browser",
+					"Clipboard"
 				],
 				"subfolders": [],
 				"name": "Utilities"
@@ -87,14 +86,11 @@
 				"name": "Input"
 			},
 			{
-				"items": [],
-				"subfolders": [],
-				"name": "Data"
-			},
-			{
 				"items": [
 					"UI_Text",
-					"UI_TextInput"
+					"UI_TextArea",
+					"UI_TextInput",
+					"UI_Button"
 				],
 				"subfolders": [],
 				"name": "UI"
@@ -246,7 +242,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "1",
+		"version": "2",
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
 		"authorWebsite": "https://lasermagnet.com",
