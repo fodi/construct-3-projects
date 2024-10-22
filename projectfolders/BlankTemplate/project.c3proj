@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 38802,
+	"savedWithRelease": 40702,
 	"name": "FodiTemplate",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -131,7 +131,7 @@
 			},
 			{
 				"items": [
-					"aEnemies 👾"
+					"_aEnemies 👾"
 				],
 				"subfolders": [],
 				"name": "Actions"
@@ -240,7 +240,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "9",
+		"version": "12",
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
 		"authorWebsite": "https://lasermagnet.com",
@@ -276,7 +276,6 @@
 		"gpuPreference": "high-performance",
 		"scriptsType": "module",
 		"framerateMode": "vsync",
-		"compositingMode": "standard",
 		"sampling": "nearest",
 		"downscaling": "medium",
 		"renderingMode": "auto",

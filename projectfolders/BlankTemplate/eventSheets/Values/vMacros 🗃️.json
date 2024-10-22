@@ -2,46 +2,42 @@
 	"name": "vMacros 🗃️",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "NOTHING",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 995028409310032
+		},
+		{
+			"eventType": "variable",
+			"name": "NO",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 346906574628140
+		},
+		{
+			"eventType": "variable",
+			"name": "YES",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 499582822760795
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Templates",
 			"description": "",
 			"isActiveOnStart": false,
 			"children": [
-				{
-					"eventType": "comment",
-					"text": "Basics"
-				},
-				{
-					"eventType": "variable",
-					"name": "NOTHING",
-					"type": "number",
-					"initialValue": "-1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 458778205145273
-				},
-				{
-					"eventType": "variable",
-					"name": "NO",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 714189115847289
-				},
-				{
-					"eventType": "variable",
-					"name": "YES",
-					"type": "number",
-					"initialValue": "1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 839259088565645
-				},
 				{
 					"eventType": "comment",
 					"text": "Animations"
