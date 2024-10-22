@@ -17,7 +17,8 @@
 					},
 					"uid": 6,
 					"instanceVariables": {
-						"movementSpeed": 180
+						"movementSpeed": 180,
+						"damage": 1
 					},
 					"behaviors": {
 						"Physics": {

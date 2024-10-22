@@ -99,19 +99,19 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 894232351270241,
+							"sid": 109231250726457,
 							"parameters": {
 								"instance-variable": "input_moveVectorX",
-								"value": "Gamepad.Axis(0, 0) / 100 * Player.8Direction.MaxSpeed"
+								"value": "Gamepad.Axis(0, 0) * 0.01 * Player.8Direction.MaxSpeed"
 							}
 						},
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 260997131990148,
+							"sid": 716757762773248,
 							"parameters": {
 								"instance-variable": "input_moveVectorY",
-								"value": "Gamepad.Axis(0, 1) / 100 * Player.8Direction.MaxSpeed"
+								"value": "Gamepad.Axis(0, 1) * 0.01 * Player.8Direction.MaxSpeed"
 							}
 						}
 					],
@@ -245,12 +245,12 @@
 							],
 							"actions": [
 								{
-									"id": "add-to-eventvar",
+									"id": "subtract-from-eventvar",
 									"objectClass": "System",
-									"sid": 969194310742431,
+									"sid": 497699548291864,
 									"parameters": {
 										"variable": "vectorY",
-										"value": "-1"
+										"value": "1"
 									}
 								}
 							],
@@ -331,12 +331,12 @@
 							],
 							"actions": [
 								{
-									"id": "add-to-eventvar",
+									"id": "subtract-from-eventvar",
 									"objectClass": "System",
-									"sid": 669370620001040,
+									"sid": 111378387298760,
 									"parameters": {
 										"variable": "vectorX",
-										"value": "-1"
+										"value": "1"
 									}
 								}
 							],

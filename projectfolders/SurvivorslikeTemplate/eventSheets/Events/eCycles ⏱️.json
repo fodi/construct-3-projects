@@ -17,14 +17,12 @@
 				},
 				{
 					"customAction": "tick",
-					"objectClass": "Player",
-					"customActionObjectClass": "Players",
+					"objectClass": "Players",
 					"sid": 807680881693695
 				},
 				{
 					"customAction": "tick",
-					"objectClass": "Enemy",
-					"customActionObjectClass": "Enemies",
+					"objectClass": "Enemies",
 					"sid": 665911476388120
 				},
 				{

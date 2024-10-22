@@ -1,5 +1,5 @@
 {
-	"name": "aPlayer 🧑",
+	"name": "aPlayers 🧑",
 	"events": [
 		{
 			"aceType": "action",
@@ -322,6 +322,21 @@
 					"sid": 706982955551862
 				}
 			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "hit",
+			"objectClass": "Players",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 981755780923146
 		}
 	],
 	"sid": 336846342321076

@@ -6,15 +6,14 @@
 			"conditions": [
 				{
 					"id": "on-created",
-					"objectClass": "Player",
+					"objectClass": "Players",
 					"sid": 307464228334583
 				}
 			],
 			"actions": [
 				{
 					"customAction": "init",
-					"objectClass": "Player",
-					"customActionObjectClass": "Players",
+					"objectClass": "Players",
 					"sid": 706347337347579
 				}
 			],
@@ -25,15 +24,14 @@
 			"conditions": [
 				{
 					"id": "on-created",
-					"objectClass": "Enemy",
+					"objectClass": "Enemies",
 					"sid": 875330319876926
 				}
 			],
 			"actions": [
 				{
 					"customAction": "init",
-					"objectClass": "Enemy",
-					"customActionObjectClass": "Enemies",
+					"objectClass": "Enemies",
 					"sid": 855054105834831
 				}
 			],

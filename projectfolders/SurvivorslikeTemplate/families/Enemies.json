@@ -9,6 +9,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 795397683889511
+		},
+		{
+			"name": "damage",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 296048851030796
 		}
 	],
 	"behaviorTypes": [
