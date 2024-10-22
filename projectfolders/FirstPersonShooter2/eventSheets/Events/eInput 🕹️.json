@@ -2,6 +2,10 @@
 	"name": "eInput 🕹️",
 	"events": [
 		{
+			"eventType": "comment",
+			"text": "todo bugfix: player movement is imprecise at angles that are not divisible by 45"
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Utilities",

@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 39300,
+	"savedWithRelease": 39700,
 	"name": "FirstPersonShooter2",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -100,10 +100,10 @@
 		{
 			"type": "behavior",
 			"id": "mikal_cannon_3d_physics",
-			"name": "Cannon 3D Physics",
+			"name": "Rapier 3D Physics",
 			"author": "Mikal",
 			"bundled": false,
-			"version": "1.19.1"
+			"version": "2.12.0"
 		},
 		{
 			"type": "behavior",

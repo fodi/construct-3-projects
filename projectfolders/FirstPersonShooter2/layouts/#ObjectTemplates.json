@@ -124,7 +124,13 @@
 							"properties": {
 								"enable": false,
 								"immovable": true,
-								"shape": "auto"
+								"shape": "auto",
+								"bodyType": "dynamic",
+								"mass": 1,
+								"size-override": false,
+								"body-size-height": -1,
+								"body-size-width": -1,
+								"body-size-depth": -1
 							}
 						}
 					},
