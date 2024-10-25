@@ -1,0 +1,47 @@
+[
+	{
+		"label": "Audio",
+		"items":
+		[
+			{
+				"label":  "Master volume",
+				"variable": "volumePercent",
+				"min": 0,
+				"max": 100,
+				"step": 10,
+				"default": 50
+			},
+			{
+				"label":  "Music",
+				"variable": "isMusicEnabled",
+				"default": 1
+			}
+		]
+	},
+	{
+		"label": "Input",
+		"items":
+		[
+			{
+				"label":  "Mouse sensitivity",
+				"variable": "mouseSensitivity",
+				"min": 5,
+				"max": 100,
+				"step": 5,
+				"default": 50
+			}
+		]
+	},
+	{
+		"label": "Juice",
+		"items":
+		[
+			{
+				"label":  "Flash sky on kills",
+				"variable": "isKillFlashEnabled",
+				"default": 1
+			}
+		]
+	}
+	
+]

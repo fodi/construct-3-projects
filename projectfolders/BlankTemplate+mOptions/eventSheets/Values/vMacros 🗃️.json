@@ -43,7 +43,21 @@
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 556452912442956
+			"sid": 908432179210440
+		},
+		{
+			"eventType": "comment",
+			"text": "Roles"
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_DevInfo",
+			"type": "string",
+			"initialValue": "DevInfo",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 447901012504601
 		},
 		{
 			"eventType": "group",
@@ -137,20 +151,6 @@
 					"isStatic": false,
 					"isConstant": true,
 					"sid": 122405122541165
-				},
-				{
-					"eventType": "comment",
-					"text": "Roles"
-				},
-				{
-					"eventType": "variable",
-					"name": "ROLE_Role1",
-					"type": "string",
-					"initialValue": "Role1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 414734682659046
 				},
 				{
 					"eventType": "comment",

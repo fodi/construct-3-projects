@@ -1,0 +1,30 @@
+{
+	"name": "UI_TextSF",
+	"plugin-id": "Spritefont2",
+	"sid": 606314865728372,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "role",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 329759890665762
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 570,
+		"height": 150,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 3096556,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

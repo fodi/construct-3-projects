@@ -1,0 +1,77 @@
+{
+	"name": "eInput_Global 🔘",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 153023073262083,
+					"parameters": {
+						"key": 70
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "toggleFullscreen",
+					"sid": 328028325461010
+				}
+			],
+			"sid": 128152007692865
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 459221334281727,
+					"parameters": {
+						"key": 82
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "reload",
+					"objectClass": "Browser",
+					"sid": 250405196920276
+				}
+			],
+			"sid": 898135819987517
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 845341958502801,
+					"parameters": {
+						"key": 79
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "toggleLayer",
+					"sid": 478104350919581,
+					"parameters": [
+						"LAYER_Options"
+					]
+				},
+				{
+					"callFunction": "toggleLayer",
+					"sid": 748881604004488,
+					"parameters": [
+						"LAYER_Main"
+					]
+				}
+			],
+			"sid": 465653902219335
+		}
+	],
+	"sid": 598599693648656
+}

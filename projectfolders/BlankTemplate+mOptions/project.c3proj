@@ -8,8 +8,29 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "AJAX",
+			"name": "AJAX",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Browser",
 			"name": "Browser",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Camera3D",
+			"name": "3D camera",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Json",
+			"name": "JSON",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -22,6 +43,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -29,8 +57,22 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Spritefont2",
+			"name": "Sprite font",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Text",
 			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -49,26 +91,35 @@
 			{
 				"items": [
 					"Browser",
-					"GlobalTimer"
+					"GlobalTimer",
+					"AJAX",
+					"3DCamera"
 				],
 				"subfolders": [],
 				"name": "Utilities"
 			},
 			{
 				"items": [
-					"Keyboard"
+					"Keyboard",
+					"Mouse"
 				],
 				"subfolders": [],
 				"name": "Input"
 			},
 			{
-				"items": [],
+				"items": [
+					"JSON_Options",
+					"JSON_OptionsDefault"
+				],
 				"subfolders": [],
 				"name": "Data"
 			},
 			{
 				"items": [
-					"UI_Text"
+					"UI_Text",
+					"UI_OptionsBackground",
+					"UI_OptionsTextSF",
+					"UI_TextSF"
 				],
 				"subfolders": [],
 				"name": "UI"
@@ -84,7 +135,8 @@
 	"layouts": {
 		"items": [
 			"Level",
-			"#ObjectTemplates"
+			"#ObjectTemplates",
+			"#Options"
 		],
 		"subfolders": []
 	},
@@ -100,11 +152,11 @@
 					"_eCreated ✨",
 					"_eCycles ⏱️",
 					"_eDestroyed 💀",
+					"_eInput_Level 🕹️",
 					"_eMovement 🏃",
 					"_eTimers ⏰",
 					"_eTweens 🌓",
 					"_eSignals 📡",
-					"_eInput_Level 🕹️",
 					"eInput_Global 🔘"
 				],
 				"subfolders": [],
@@ -137,6 +189,13 @@
 				],
 				"subfolders": [],
 				"name": "Actions"
+			},
+			{
+				"items": [
+					"mOptions 💾"
+				],
+				"subfolders": [],
+				"name": "Modules"
 			}
 		]
 	},
@@ -223,7 +282,16 @@
 			"subfolders": []
 		},
 		"general": {
-			"items": [],
+			"items": [
+				{
+					"name": "options.json",
+					"type": "application/json",
+					"sid": 417227212724916,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		}
 	},
@@ -242,7 +310,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "13",
+		"version": "13o",
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
 		"authorWebsite": "https://lasermagnet.com",
@@ -293,7 +361,7 @@
 		"exportFileStructure": "folders",
 		"uidAllocationMode": "increment"
 	},
-	"viewportWidth": 640,
-	"viewportHeight": 360,
+	"viewportWidth": 320,
+	"viewportHeight": 180,
 	"firstLayout": "Level"
 }
