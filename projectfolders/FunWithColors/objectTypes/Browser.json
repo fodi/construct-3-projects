@@ -1,0 +1,12 @@
+{
+	"name": "Browser",
+	"plugin-id": "Browser",
+	"sid": 498382106421102,
+	"singleglobal-inst": {
+		"type": "Browser",
+		"properties": {},
+		"uid": 18,
+		"sid": 955458370500483,
+		"tags": ""
+	}
+}

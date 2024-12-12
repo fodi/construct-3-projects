@@ -1,0 +1,1308 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Macros"
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_SetColor",
+			"type": "string",
+			"initialValue": "SetColor",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 480514043174343
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_TweenColor",
+			"type": "string",
+			"initialValue": "TweenColor",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 233721902879114
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_TweenValueSetColor",
+			"type": "string",
+			"initialValue": "TweenValueSetColor",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 560484789047689
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Red",
+			"type": "string",
+			"initialValue": "Red",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 700213991463639
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Green",
+			"type": "string",
+			"initialValue": "Green",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 243738006080979
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Blue",
+			"type": "string",
+			"initialValue": "Blue",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 845585621756935
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_Color",
+			"type": "string",
+			"initialValue": "Color",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 193074228752847
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_ValueSetColor_Red",
+			"type": "string",
+			"initialValue": "ValueSetColor_Red",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 407009064876695
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_ValueSetColor_Green",
+			"type": "string",
+			"initialValue": "ValueSetColor_Green",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 234144607859967
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_ValueSetColor_Blue",
+			"type": "string",
+			"initialValue": "ValueSetColor_Blue",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 208364818172216
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "Button",
+					"sid": 756822011819748
+				}
+			],
+			"actions": [
+				{
+					"id": "stop-all-tweens",
+					"objectClass": "Sprite",
+					"sid": 193147809507324,
+					"behaviorType": "Tween"
+				},
+				{
+					"id": "stop-all-tweens",
+					"objectClass": "3DShape",
+					"sid": 696445308700904,
+					"behaviorType": "Tween"
+				}
+			],
+			"sid": 115909138088663,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Get color values"
+				},
+				{
+					"eventType": "variable",
+					"name": "red",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 365329247276812
+				},
+				{
+					"eventType": "variable",
+					"name": "green",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 122526936027116
+				},
+				{
+					"eventType": "variable",
+					"name": "blue",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 362706987082539
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "TextInput",
+							"sid": 483045213351105,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Red"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 794987316743919,
+							"parameters": {
+								"variable": "red",
+								"value": "int(TextInput.Text)"
+							}
+						}
+					],
+					"sid": 883915963419036
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "TextInput",
+							"sid": 867072836745044,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Green"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 402337335173692,
+							"parameters": {
+								"variable": "green",
+								"value": "int(TextInput.Text)"
+							}
+						}
+					],
+					"sid": 463657633879803
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "TextInput",
+							"sid": 782675909885985,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Blue"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 918040816776277,
+							"parameters": {
+								"variable": "blue",
+								"value": "int(TextInput.Text)"
+							}
+						}
+					],
+					"sid": 295445305503844
+				},
+				{
+					"eventType": "comment",
+					"text": "Do stuff"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Button",
+							"sid": 130374105884923,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_SetColor"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "_Set color",
+							"objectClass": "Sprite",
+							"sid": 498734006345761,
+							"parameters": [
+								"red",
+								"green",
+								"blue"
+							]
+						},
+						{
+							"customAction": "_Set color",
+							"objectClass": "3DShape",
+							"sid": 839091500391934,
+							"parameters": [
+								"red",
+								"green",
+								"blue"
+							]
+						}
+					],
+					"sid": 386995565346903
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Button",
+							"sid": 271331257883900,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_TweenColor"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-one-property",
+							"objectClass": "Sprite",
+							"sid": 320535976508244,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "TWEEN_Color",
+								"property": "offsetColor",
+								"end-value": "rgbEx255(red, green, blue)",
+								"time": "1",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "3DShape",
+							"sid": 136612108586571,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "TWEEN_Color",
+								"property": "offsetColor",
+								"end-value": "rgbEx255(red, green, blue)",
+								"time": "1",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 182525285088637
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Button",
+							"sid": 614597655090945,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_TweenValueSetColor"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "_Tween color",
+							"objectClass": "Sprite",
+							"sid": 408252826686800,
+							"parameters": [
+								"red",
+								"green",
+								"blue"
+							]
+						},
+						{
+							"customAction": "_Tween color",
+							"objectClass": "3DShape",
+							"sid": 988341092672869,
+							"parameters": [
+								"red",
+								"green",
+								"blue"
+							]
+						}
+					],
+					"sid": 202730792477630
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tweens-finished",
+					"objectClass": "Sprite",
+					"sid": 988089990325765,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_Color"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "_Initialize color",
+					"objectClass": "Sprite",
+					"sid": 923929324915491
+				}
+			],
+			"sid": 723089617946865
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tweens-finished",
+					"objectClass": "3DShape",
+					"sid": 314079564484966,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_Color"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "_Initialize color",
+					"objectClass": "3DShape",
+					"sid": 813613286083347
+				}
+			],
+			"sid": 741371200311443
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "3DShape",
+					"sid": 150006138995008,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Red"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 281950800967952,
+					"parameters": {
+						"instance-variable": "colorRed",
+						"value": "Self.Tween.Value(TWEEN_ValueSetColor_Red)"
+					}
+				}
+			],
+			"sid": 913200430320971
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "3DShape",
+					"sid": 120055368814443,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Green"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 551155550946753,
+					"parameters": {
+						"instance-variable": "colorGreen",
+						"value": "Self.Tween.Value(TWEEN_ValueSetColor_Green)"
+					}
+				}
+			],
+			"sid": 162859843934200
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "3DShape",
+					"sid": 895209012949424,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Blue"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 140366385440015,
+					"parameters": {
+						"instance-variable": "colorBlue",
+						"value": "Self.Tween.Value(TWEEN_ValueSetColor_Blue)"
+					}
+				}
+			],
+			"sid": 450278308788633
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "3DShape",
+					"sid": 208886362573885,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Red"
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "3DShape",
+					"sid": 942166023526930,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Green"
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "3DShape",
+					"sid": 476902577989062,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Blue"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "_Apply color",
+					"objectClass": "3DShape",
+					"sid": 638770114886418
+				}
+			],
+			"sid": 422674106193468,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "Sprite",
+					"sid": 148031935701419,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Red"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 107065976631774,
+					"parameters": {
+						"instance-variable": "colorRed",
+						"value": "Self.Tween.Value(TWEEN_ValueSetColor_Red)"
+					}
+				}
+			],
+			"sid": 548985079006455
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "Sprite",
+					"sid": 261968210760424,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Green"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 660970690122366,
+					"parameters": {
+						"instance-variable": "colorGreen",
+						"value": "Self.Tween.Value(TWEEN_ValueSetColor_Green)"
+					}
+				}
+			],
+			"sid": 432978790184329
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "Sprite",
+					"sid": 331992389630705,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Blue"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 479956582135549,
+					"parameters": {
+						"instance-variable": "colorBlue",
+						"value": "Self.Tween.Value(TWEEN_ValueSetColor_Blue)"
+					}
+				}
+			],
+			"sid": 456945603572275
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "Sprite",
+					"sid": 455366175200837,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Red"
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "Sprite",
+					"sid": 673820430190468,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Green"
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "Sprite",
+					"sid": 357641618682059,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Blue"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "_Apply color",
+					"objectClass": "Sprite",
+					"sid": 774191806372889
+				}
+			],
+			"sid": 224936480994555,
+			"isOrBlock": true
+		},
+		{
+			"functionName": "getColorComponent",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "color",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 447327511081248
+				},
+				{
+					"name": "colorComponent",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 729122217818201
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 824460346137860,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 585494794386976,
+							"parameters": {
+								"variable": "colorComponent",
+								"comparison": 0,
+								"value": "ROLE_Red"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 309207594898014,
+							"parameters": {
+								"value": "round(int(-color / 2 ^ 38) % 2048 * 255/ 1024)"
+							}
+						}
+					],
+					"sid": 296125912064127
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 325959204434843
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 719388519465343,
+							"parameters": {
+								"variable": "colorComponent",
+								"comparison": 0,
+								"value": "ROLE_Green"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 616052151714603,
+							"parameters": {
+								"value": "round(int(-color / 2 ^ 24) % 2048 * 255/ 1024)"
+							}
+						}
+					],
+					"sid": 855065571610437
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 386175533056815
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 302039667615705,
+							"parameters": {
+								"variable": "colorComponent",
+								"comparison": 0,
+								"value": "ROLE_Blue"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 612963637331314,
+							"parameters": {
+								"value": "round(int(-color / 2 ^ 10) % 2048 * 255/ 1024)"
+							}
+						}
+					],
+					"sid": 127601967952075
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Sprite",
+					"sid": 586990730346961
+				}
+			],
+			"actions": [
+				{
+					"customAction": "_Initialize color",
+					"objectClass": "Sprite",
+					"sid": 236200604036615
+				}
+			],
+			"sid": 970106136396337
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "3DShape",
+					"sid": 375554823196267
+				}
+			],
+			"actions": [
+				{
+					"customAction": "_Initialize color",
+					"objectClass": "3DShape",
+					"sid": 809291401359190
+				}
+			],
+			"sid": 575594841277660
+		},
+		{
+			"aceType": "action",
+			"aceName": "_Initialize color",
+			"objectClass": "Sprite",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 784788209865792,
+					"parameters": {
+						"instance-variable": "colorRed",
+						"value": "Functions.getColorComponent(Self.ColorValue, ROLE_Red)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 280246497047742,
+					"parameters": {
+						"instance-variable": "colorGreen",
+						"value": "Functions.getColorComponent(Self.ColorValue, ROLE_Green)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 588837764295692,
+					"parameters": {
+						"instance-variable": "colorBlue",
+						"value": "Functions.getColorComponent(Self.ColorValue, ROLE_Blue)"
+					}
+				}
+			],
+			"sid": 784322681071503
+		},
+		{
+			"aceType": "action",
+			"aceName": "_Initialize color",
+			"objectClass": "3DShape",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 912562086809648,
+					"parameters": {
+						"instance-variable": "colorRed",
+						"value": "Functions.getColorComponent(Self.ColorValue, ROLE_Red)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 972593896576987,
+					"parameters": {
+						"instance-variable": "colorGreen",
+						"value": "Functions.getColorComponent(Self.ColorValue, ROLE_Green)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 487906874969221,
+					"parameters": {
+						"instance-variable": "colorBlue",
+						"value": "Functions.getColorComponent(Self.ColorValue, ROLE_Blue)"
+					}
+				}
+			],
+			"sid": 384051870182229
+		},
+		{
+			"aceType": "action",
+			"aceName": "_Apply color",
+			"objectClass": "Sprite",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-default-color",
+					"objectClass": "Sprite",
+					"sid": 254616026711326,
+					"parameters": {
+						"color": "rgbEx255(Self.colorRed, Self.colorGreen, Self.colorBlue)"
+					}
+				}
+			],
+			"sid": 536262911073256
+		},
+		{
+			"aceType": "action",
+			"aceName": "_Apply color",
+			"objectClass": "3DShape",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-default-color",
+					"objectClass": "3DShape",
+					"sid": 756633163703280,
+					"parameters": {
+						"color": "rgbEx255(Self.colorRed, Self.colorGreen, Self.colorBlue)"
+					}
+				}
+			],
+			"sid": 139573352285913
+		},
+		{
+			"aceType": "action",
+			"aceName": "_Tween color",
+			"objectClass": "Sprite",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "red",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 615759150181512
+				},
+				{
+					"name": "green",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 106667827547496
+				},
+				{
+					"name": "blue",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 271432779510921
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "Sprite",
+					"sid": 634032245532534,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Red",
+						"start-value": "Self.colorRed",
+						"end-value": "red",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-value",
+					"objectClass": "Sprite",
+					"sid": 781043819876789,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Green",
+						"start-value": "Self.colorGreen",
+						"end-value": "green",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-value",
+					"objectClass": "Sprite",
+					"sid": 997206756180737,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Blue",
+						"start-value": "Self.colorBlue",
+						"end-value": "blue",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 643491812612229
+		},
+		{
+			"aceType": "action",
+			"aceName": "_Tween color",
+			"objectClass": "3DShape",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "red",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 483272852599694
+				},
+				{
+					"name": "green",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 988517028223232
+				},
+				{
+					"name": "blue",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 720897677857459
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "3DShape",
+					"sid": 289935634397310,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Red",
+						"start-value": "Self.colorRed",
+						"end-value": "red",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-value",
+					"objectClass": "3DShape",
+					"sid": 743755449697493,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Green",
+						"start-value": "Self.colorGreen",
+						"end-value": "green",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-value",
+					"objectClass": "3DShape",
+					"sid": 330247859989957,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_ValueSetColor_Blue",
+						"start-value": "Self.colorBlue",
+						"end-value": "blue",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 867918970909976
+		},
+		{
+			"aceType": "action",
+			"aceName": "_Set color",
+			"objectClass": "Sprite",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "red",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 458157565334180
+				},
+				{
+					"name": "green",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 631781228179226
+				},
+				{
+					"name": "blue",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 179881286821559
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 367933030454677,
+					"parameters": {
+						"instance-variable": "colorRed",
+						"value": "red"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 202132692459803,
+					"parameters": {
+						"instance-variable": "colorGreen",
+						"value": "green"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Sprite",
+					"sid": 105733600182901,
+					"parameters": {
+						"instance-variable": "colorBlue",
+						"value": "blue"
+					}
+				},
+				{
+					"customAction": "_Apply color",
+					"objectClass": "Sprite",
+					"sid": 196043277081164
+				}
+			],
+			"sid": 963819176945785
+		},
+		{
+			"aceType": "action",
+			"aceName": "_Set color",
+			"objectClass": "3DShape",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "red",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 870962184289501
+				},
+				{
+					"name": "green",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 265985145217455
+				},
+				{
+					"name": "blue",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 869254327409963
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 167267210214652,
+					"parameters": {
+						"instance-variable": "colorRed",
+						"value": "red"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 377636200111719,
+					"parameters": {
+						"instance-variable": "colorGreen",
+						"value": "green"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "3DShape",
+					"sid": 310581694440855,
+					"parameters": {
+						"instance-variable": "colorBlue",
+						"value": "blue"
+					}
+				},
+				{
+					"customAction": "_Apply color",
+					"objectClass": "3DShape",
+					"sid": 157302491852864
+				}
+			],
+			"sid": 815439572626297
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-click",
+					"objectClass": "Mouse",
+					"sid": 581304745204442,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked"
+					}
+				},
+				{
+					"id": "has-tag-at-position",
+					"objectClass": "Text",
+					"sid": 622594643801993,
+					"parameters": {
+						"tag": "\"projecturl\"",
+						"x": "Mouse.X",
+						"y": "Mouse.Y"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "open-url-in-new-window",
+					"objectClass": "Browser",
+					"sid": 290900549983137,
+					"parameters": {
+						"url": "\"https://github.com/fodi/construct-3-projects/tree/main/projectfolders/FunWithColors\"",
+						"tag": "\"NewWindow\""
+					}
+				}
+			],
+			"sid": 969285245122833
+		}
+	],
+	"sid": 387132499726259
+}
