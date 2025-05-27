@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 40702,
+	"savedWithRelease": 44002,
 	"name": "FodiTemplate",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -15,8 +15,22 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Camera3D",
+			"name": "3D camera",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Keyboard",
 			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -29,8 +43,8 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Text",
-			"name": "Text",
+			"id": "Spritefont2",
+			"name": "Sprite font",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -49,14 +63,16 @@
 			{
 				"items": [
 					"Browser",
-					"GlobalTimer"
+					"GlobalTimer",
+					"3DCamera"
 				],
 				"subfolders": [],
 				"name": "Utilities"
 			},
 			{
 				"items": [
-					"Keyboard"
+					"Keyboard",
+					"Mouse"
 				],
 				"subfolders": [],
 				"name": "Input"
@@ -68,13 +84,14 @@
 			},
 			{
 				"items": [
-					"UI_Text"
+					"UI_TextSF"
 				],
 				"subfolders": [],
 				"name": "UI"
 			}
 		]
 	},
+	"functionsName": "Functions",
 	"autosaveData": null,
 	"containers": [],
 	"families": {
@@ -83,14 +100,16 @@
 	},
 	"layouts": {
 		"items": [
+			"Start",
 			"Level",
-			"#ObjectTemplates"
+			"@ Templates"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Level 🗺️"
+			"Level 🗺️",
+			"Start 🔰"
 		],
 		"subfolders": [
 			{
@@ -98,13 +117,13 @@
 					"_eAnimations 🎞️",
 					"_eCollisions 💥",
 					"_eCreated ✨",
-					"_eCycles ⏱️",
+					"eCycles ⏱️",
 					"_eDestroyed 💀",
 					"_eMovement 🏃",
 					"_eTimers ⏰",
 					"_eTweens 🌓",
 					"_eSignals 📡",
-					"_eInput_Level 🕹️",
+					"eInput_Level 🕹️",
 					"eInput_Global 🔘"
 				],
 				"subfolders": [],
@@ -113,7 +132,6 @@
 			{
 				"items": [
 					"_fAudio 🎵",
-					"_fInput 🕹️",
 					"fLevel 🎬",
 					"_fUI 📟",
 					"fUtilities 🧰"
@@ -123,18 +141,16 @@
 			},
 			{
 				"items": [
-					"_vState ♻️",
-					"vMacros 🗃️",
-					"_vConstants 💎"
+					"vState ♻️",
+					"vNames 🗃️",
+					"_vConfig 💎",
+					"vPrimitives 🍞"
 				],
 				"subfolders": [],
 				"name": "Values"
 			},
 			{
-				"items": [
-					"_aEnemies 👾",
-					"_aPlayer 🧑"
-				],
+				"items": [],
 				"subfolders": [],
 				"name": "Actions"
 			}
@@ -242,7 +258,8 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "13",
+		"version": "16",
+		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
 		"authorWebsite": "https://lasermagnet.com",
@@ -289,11 +306,10 @@
 		"preloadSounds": true,
 		"cordovaiOSScheme": "app",
 		"cordovaAndroidScheme": "https",
-		"autoReloadScriptsOnPreview": false,
 		"exportFileStructure": "folders",
 		"uidAllocationMode": "increment"
 	},
 	"viewportWidth": 640,
 	"viewportHeight": 360,
-	"firstLayout": "Level"
+	"firstLayout": "Start"
 }

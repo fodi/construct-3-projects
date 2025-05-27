@@ -1,12 +1,12 @@
 {
-	"name": "#ObjectTemplates",
+	"name": "Start",
 	"layers": [
 		{
-			"name": "Main",
+			"name": "UI",
 			"overriden": 0,
 			"subLayers": [],
 			"instances": [],
-			"sid": 365392521213776,
+			"sid": 276353054316470,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
 			"isInitiallyInteractive": true,
@@ -28,7 +28,7 @@
 			"parallaxY": 1,
 			"scaleRate": 1,
 			"forceOwnTexture": false,
-			"renderingMode": "3d",
+			"renderingMode": "2d",
 			"drawOrder": "z-order",
 			"useRenderCells": false,
 			"blendMode": "normal",
@@ -40,14 +40,14 @@
 		"items": [],
 		"subfolders": []
 	},
-	"sid": 281279063636915,
+	"sid": 790219537226852,
 	"nonworld-instances": [],
 	"effectTypes": [],
-	"width": 320,
-	"height": 180,
+	"width": 640,
+	"height": 360,
 	"unboundedScrolling": false,
 	"vpX": 0.5,
 	"vpY": 0.5,
 	"projection": "perspective",
-	"eventSheet": null
+	"eventSheet": "Start 🔰"
 }

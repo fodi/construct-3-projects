@@ -15,7 +15,7 @@
 		},
 		{
 			"eventType": "include",
-			"includeSheet": "_eCycles ⏱️"
+			"includeSheet": "eCycles ⏱️"
 		},
 		{
 			"eventType": "include",
@@ -27,7 +27,7 @@
 		},
 		{
 			"eventType": "include",
-			"includeSheet": "_eInput_Level 🕹️"
+			"includeSheet": "eInput_Level 🕹️"
 		},
 		{
 			"eventType": "include",
@@ -44,23 +44,6 @@
 		{
 			"eventType": "include",
 			"includeSheet": "_eTweens 🌓"
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-start-of-layout",
-					"objectClass": "System",
-					"sid": 934409235030864
-				}
-			],
-			"actions": [
-				{
-					"callFunction": "initLevel",
-					"sid": 935426248210738
-				}
-			],
-			"sid": 106853073142729
 		}
 	],
 	"sid": 680353853616029

@@ -1,0 +1,27 @@
+{
+	"name": "Start 🔰",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 773106314372003
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 547535555338813,
+					"parameters": {
+						"layout": "Level"
+					}
+				}
+			],
+			"sid": 375259258150390
+		}
+	],
+	"sid": 685083030481328
+}

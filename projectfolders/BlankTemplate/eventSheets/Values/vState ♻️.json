@@ -1,0 +1,16 @@
+{
+	"name": "vState ♻️",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "isPaused",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 492134263969167
+		}
+	],
+	"sid": 756444675677784
+}

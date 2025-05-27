@@ -1,36 +1,6 @@
 {
-	"name": "vMacros 🗃️",
+	"name": "vNames 🗃️",
 	"events": [
-		{
-			"eventType": "variable",
-			"name": "NOTHING",
-			"type": "number",
-			"initialValue": "-1",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 995028409310032
-		},
-		{
-			"eventType": "variable",
-			"name": "NO",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 346906574628140
-		},
-		{
-			"eventType": "variable",
-			"name": "YES",
-			"type": "number",
-			"initialValue": "1",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 499582822760795
-		},
 		{
 			"eventType": "comment",
 			"text": "Layers"
@@ -44,6 +14,34 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 556452912442956
+		},
+		{
+			"eventType": "comment",
+			"text": "Roles"
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_DevLog",
+			"type": "string",
+			"initialValue": "DevLog",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 514423711778769
+		},
+		{
+			"eventType": "comment",
+			"text": "Templates"
+		},
+		{
+			"eventType": "variable",
+			"name": "TEMPLATE_Spawner_Dynamic",
+			"type": "string",
+			"initialValue": "Spawner_Dynamic",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 666287540836049
 		},
 		{
 			"eventType": "group",
@@ -140,20 +138,6 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Roles"
-				},
-				{
-					"eventType": "variable",
-					"name": "ROLE_Role1",
-					"type": "string",
-					"initialValue": "Role1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 414734682659046
-				},
-				{
-					"eventType": "comment",
 					"text": "Signals"
 				},
 				{
@@ -165,20 +149,6 @@
 					"isStatic": false,
 					"isConstant": true,
 					"sid": 774070709637436
-				},
-				{
-					"eventType": "comment",
-					"text": "Templates"
-				},
-				{
-					"eventType": "variable",
-					"name": "TEMPLATE_Template1",
-					"type": "string",
-					"initialValue": "Template1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 107440728008771
 				},
 				{
 					"eventType": "comment",

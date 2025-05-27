@@ -223,7 +223,10 @@
 			"actions": [
 				{
 					"type": "script",
-					"script": "runtime.setReturnValue(runtime.objects[localVars[\"name\"]] ? 1 : 0)"
+					"language": "javascript",
+					"script": [
+						"runtime.setReturnValue(runtime.objects[localVars[\"name\"]] ? 1 : 0)"
+					]
 				}
 			],
 			"sid": 985779994453727
@@ -531,13 +534,50 @@
 				{
 					"id": "set-function-return-value",
 					"objectClass": "Functions",
-					"sid": 956911014940082,
+					"sid": 379954441688701,
 					"parameters": {
-						"value": "StringSub(\"Build {1}{0}{2} FPS{0}{3} CPU{0}{4}% GPU{0}{5}% objects\", divider, projectversion, fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
+						"value": "StringSub(\"Build {1}{0}{2} FPS{0}{3}% CPU{0}{4}% GPU{0}{5} objects\", divider, projectversion, fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
 					}
 				}
 			],
 			"sid": 562801702725526
+		},
+		{
+			"functionName": "roundToDpPad",
+			"functionDescription": "Round to decimal points with padded decimals",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "value",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 809342691811033
+				},
+				{
+					"name": "padding",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 263115614997687
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 711008528960360,
+					"parameters": {
+						"value": "int(value) & \".\" & zeropad(\n  int(\n    (value - int(value)) * padding * 10\n  )\n, padding)"
+					}
+				}
+			],
+			"sid": 576050989151906
 		}
 	],
 	"sid": 622480337843055
