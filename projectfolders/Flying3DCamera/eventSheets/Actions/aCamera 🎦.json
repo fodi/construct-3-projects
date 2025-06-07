@@ -1,0 +1,253 @@
+{
+	"name": "aCamera 🎦",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "init",
+			"objectClass": "Camera",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "look-parallel-to-layout",
+					"objectClass": "3DCamera",
+					"sid": 180106752845589,
+					"parameters": {
+						"cam-x": "Camera.X",
+						"cam-y": "Camera.Y",
+						"cam-z": "Camera.ZElevation",
+						"look-angle": "Camera.Angle"
+					}
+				}
+			],
+			"sid": 201095581796507
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "Camera",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "3DCamera",
+					"sid": 917337752866317,
+					"parameters": {
+						"x": "Camera.X",
+						"y": "Camera.Y",
+						"z": "Camera.ZElevation",
+						"which": "camera"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "Camera",
+					"sid": 210972096941761,
+					"parameters": {
+						"angle": "3DCamera.CameraXRotation"
+					}
+				}
+			],
+			"sid": 643913824742560
+		},
+		{
+			"aceType": "action",
+			"aceName": "move",
+			"objectClass": "Camera",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "movementType",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 390519284613493
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 210401774811873,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 829013358020130,
+							"parameters": {
+								"variable": "movementType",
+								"comparison": 0,
+								"value": "MT_Forward"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Camera",
+							"sid": 840387428787478,
+							"behaviorType": "Car",
+							"parameters": {
+								"control": "accelerate"
+							}
+						}
+					],
+					"sid": 601255221915641
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 823918978239077,
+							"parameters": {
+								"variable": "movementType",
+								"comparison": 0,
+								"value": "MT_Backward"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Camera",
+							"sid": 947257117042230,
+							"behaviorType": "Car",
+							"parameters": {
+								"control": "brake"
+							}
+						}
+					],
+					"sid": 253215256942412
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 592525537372172,
+							"parameters": {
+								"variable": "movementType",
+								"comparison": 0,
+								"value": "MT_StrafeLeft"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-at-angle",
+							"objectClass": "Camera",
+							"sid": 498787308165661,
+							"parameters": {
+								"angle": "Camera.Angle - 90",
+								"distance": "Camera.Car.MaxSpeed * dt"
+							}
+						}
+					],
+					"sid": 192348939030332
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 182211910867586,
+							"parameters": {
+								"variable": "movementType",
+								"comparison": 0,
+								"value": "MT_StrafeRight"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-at-angle",
+							"objectClass": "Camera",
+							"sid": 606078519627787,
+							"parameters": {
+								"angle": "Camera.Angle + 90",
+								"distance": "Camera.Car.MaxSpeed * dt"
+							}
+						}
+					],
+					"sid": 672538706367140
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 958318971410851,
+							"parameters": {
+								"variable": "movementType",
+								"comparison": 0,
+								"value": "MT_Ascend"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-z-elevation",
+							"objectClass": "Camera",
+							"sid": 782717835410929,
+							"parameters": {
+								"z": "Camera.ZElevation + Camera.Car.MaxSpeed * dt"
+							}
+						}
+					],
+					"sid": 796640611364646
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 929277142237688,
+							"parameters": {
+								"variable": "movementType",
+								"comparison": 0,
+								"value": "MT_Descend"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-z-elevation",
+							"objectClass": "Camera",
+							"sid": 323026869556704,
+							"parameters": {
+								"z": "Camera.ZElevation - Camera.Car.MaxSpeed * dt"
+							}
+						}
+					],
+					"sid": 523309009270371
+				}
+			]
+		}
+	],
+	"sid": 243733440667030
+}

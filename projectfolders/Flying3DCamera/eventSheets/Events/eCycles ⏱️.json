@@ -1,0 +1,69 @@
+{
+	"name": "eCycles ⏱️",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 934409235030864
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "initLevel",
+					"sid": 935426248210738
+				}
+			],
+			"sid": 106853073142729
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 552969549724375
+				}
+			],
+			"actions": [
+				{
+					"customAction": "tick",
+					"objectClass": "Camera",
+					"sid": 643839784818685
+				}
+			],
+			"sid": 559613915501580,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_TextSF",
+							"sid": 593958022226840,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_DevLog"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "UI_TextSF",
+							"sid": 447338648480170,
+							"parameters": {
+								"text": "Functions.getDevInfo(\", \") & newline &\nStringSub(\"Position: {0}, {1}, {2}\", round(3DCamera.CameraX), round(3DCamera.CameraY), round(3DCamera.CameraZ)) & newline &\nStringSub(\"Look position: {0}, {1}, {2}\", round(3DCamera.LookX), round(3DCamera.LookY), round(3DCamera.LookZ)) & newline &\nStringSub(\"Look vectors: {0}, {1}, {2}\", roundToDp(3DCamera.LookVectorX, 2), roundToDp(3DCamera.LookVectorY, 2), roundToDp(3DCamera.LookVectorZ, 2)) & newline &\nStringSub(\"Camera rotation: {0}, {1}\", round(3DCamera.CameraXRotation), round(3DCamera.CameraYRotation))"
+							}
+						}
+					],
+					"sid": 417440196871966
+				}
+			]
+		}
+	],
+	"sid": 918958308783690
+}

@@ -1,0 +1,81 @@
+{
+	"name": "Camera",
+	"plugin-id": "Sprite",
+	"sid": 486409816162598,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "R_Movement_Speed_Normal",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 926926640628522
+		},
+		{
+			"name": "R_Movement_Speed_Fast",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 736525126635813
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Car",
+			"name": "Car",
+			"sid": 140718393518036
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 40,
+						"height": 40,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8233045,
+						"collisionPoly": {
+							"points": [
+								0.15,
+								0.15,
+								0.45,
+								0,
+								0.85,
+								0.15,
+								1,
+								0.5,
+								0.85,
+								0.85,
+								0.5,
+								1,
+								0.15,
+								0.85,
+								0,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 689175013320258,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

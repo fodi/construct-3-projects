@@ -1,0 +1,348 @@
+{
+	"name": "eInput_Level 🕹️",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Camera",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 672303398673136,
+							"parameters": {
+								"mouse-button": "left",
+								"click-type": "clicked"
+							}
+						},
+						{
+							"id": "has-pointer-lock",
+							"objectClass": "Mouse",
+							"sid": 437536380615156,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "request-pointer-lock",
+							"objectClass": "Mouse",
+							"sid": 921992846772099,
+							"parameters": {
+								"unadjusted-movement": false
+							}
+						},
+						{
+							"id": "lock-keyboard",
+							"objectClass": "Keyboard",
+							"sid": 922815993139276,
+							"disabled": true,
+							"parameters": {
+								"keys": "\"KeyW,KeyA,KeyS,KeyD\""
+							}
+						}
+					],
+					"sid": 135242739697134
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-movement",
+							"objectClass": "Mouse",
+							"sid": 677345380592868
+						},
+						{
+							"id": "has-pointer-lock",
+							"objectClass": "Mouse",
+							"sid": 853763838082755
+						}
+					],
+					"actions": [
+						{
+							"id": "rotate-camera",
+							"objectClass": "3DCamera",
+							"sid": 761214177602745,
+							"parameters": {
+								"rotate-x": "Mouse.MovementX / 10",
+								"rotate-y": "Mouse.MovementY / 10",
+								"min-polar-angle": "20",
+								"max-polar-angle": "160"
+							}
+						}
+					],
+					"sid": 896145983448693
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 939230723524625,
+							"parameters": {
+								"key": 87
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "move",
+							"objectClass": "Camera",
+							"sid": 665495334946669,
+							"parameters": [
+								"MT_Forward"
+							]
+						}
+					],
+					"sid": 406546044253269
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 330186867847068,
+							"parameters": {
+								"key": 83
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "move",
+							"objectClass": "Camera",
+							"sid": 972821094333294,
+							"parameters": [
+								"MT_Backward"
+							]
+						}
+					],
+					"sid": 837150436226485
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 113384311035723,
+							"parameters": {
+								"key": 65
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "move",
+							"objectClass": "Camera",
+							"sid": 961545324147475,
+							"parameters": [
+								"MT_StrafeLeft"
+							]
+						}
+					],
+					"sid": 350411550429076
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 136372209656510,
+							"parameters": {
+								"key": 68
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "move",
+							"objectClass": "Camera",
+							"sid": 270547415468181,
+							"parameters": [
+								"MT_StrafeRight"
+							]
+						}
+					],
+					"sid": 469943444505261
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 727219897167670,
+							"parameters": {
+								"key": 32
+							}
+						},
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 445754277254089,
+							"parameters": {
+								"mouse-button": "middle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "move",
+							"objectClass": "Camera",
+							"sid": 929996538588335,
+							"parameters": [
+								"MT_Ascend"
+							]
+						}
+					],
+					"sid": 456070308181474,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 967609896761751,
+							"parameters": {
+								"key": 67
+							}
+						},
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 411417500431011,
+							"parameters": {
+								"mouse-button": "right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "move",
+							"objectClass": "Camera",
+							"sid": 707659571948652,
+							"parameters": [
+								"MT_Descend"
+							]
+						}
+					],
+					"sid": 109552225530332,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 782972569526998,
+							"parameters": {
+								"key": 16
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-max-speed",
+							"objectClass": "Camera",
+							"sid": 148324069500665,
+							"behaviorType": "Car",
+							"parameters": {
+								"max-speed": "Self.R_Movement_Speed_Fast"
+							}
+						}
+					],
+					"sid": 180897475712167
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 475612154691173
+						}
+					],
+					"actions": [
+						{
+							"id": "set-max-speed",
+							"objectClass": "Camera",
+							"sid": 808681995628399,
+							"behaviorType": "Car",
+							"parameters": {
+								"max-speed": "Self.R_Movement_Speed_Normal"
+							}
+						}
+					],
+					"sid": 458630485799641
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-mouse-wheel",
+							"objectClass": "Mouse",
+							"sid": 512023382475078,
+							"parameters": {
+								"direction": "any"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-field-of-view",
+							"objectClass": "3DCamera",
+							"sid": 922706935920169,
+							"parameters": {
+								"fov": "3DCamera.FieldOfView + sign(Mouse.WheelDeltaY)"
+							}
+						}
+					],
+					"sid": 197101233225797
+				}
+			],
+			"sid": 180282693388417
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Utilities",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 433818385034177,
+							"parameters": {
+								"key": 80
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "togglePause",
+							"sid": 988621830855482
+						}
+					],
+					"sid": 544754440797560
+				}
+			],
+			"sid": 751382135881760
+		}
+	],
+	"sid": 758821500675486
+}

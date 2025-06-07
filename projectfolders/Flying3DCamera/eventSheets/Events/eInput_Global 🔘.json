@@ -1,0 +1,47 @@
+{
+	"name": "eInput_Global 🔘",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 249387913810699,
+					"parameters": {
+						"key": 70
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "toggleFullscreen",
+					"sid": 371103427352096
+				}
+			],
+			"sid": 848695742537860
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 162735831205834,
+					"parameters": {
+						"key": 82
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "reload",
+					"objectClass": "Browser",
+					"sid": 330741520591011
+				}
+			],
+			"sid": 306261194890782
+		}
+	],
+	"sid": 489983609112987
+}
