@@ -82,7 +82,8 @@
 		"items": [
 			"TiledBackground",
 			"Camera",
-			"3DShape"
+			"3DShape",
+			"Crosshair"
 		],
 		"subfolders": [
 			{
@@ -285,7 +286,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "1",
+		"version": "2",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

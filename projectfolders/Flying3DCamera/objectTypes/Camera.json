@@ -18,6 +18,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 736525126635813
+		},
+		{
+			"name": "hitObjectUID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 586940196261298
 		}
 	],
 	"behaviorTypes": [

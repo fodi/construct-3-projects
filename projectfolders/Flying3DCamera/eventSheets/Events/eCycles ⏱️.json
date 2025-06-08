@@ -54,9 +54,9 @@
 						{
 							"id": "set-text",
 							"objectClass": "UI_TextSF",
-							"sid": 447338648480170,
+							"sid": 562414621289519,
 							"parameters": {
-								"text": "Functions.getDevInfo(\", \") & newline &\nStringSub(\"Position: {0}, {1}, {2}\", round(3DCamera.CameraX), round(3DCamera.CameraY), round(3DCamera.CameraZ)) & newline &\nStringSub(\"Look position: {0}, {1}, {2}\", round(3DCamera.LookX), round(3DCamera.LookY), round(3DCamera.LookZ)) & newline &\nStringSub(\"Look vectors: {0}, {1}, {2}\", roundToDp(3DCamera.LookVectorX, 2), roundToDp(3DCamera.LookVectorY, 2), roundToDp(3DCamera.LookVectorZ, 2)) & newline &\nStringSub(\"Camera rotation: {0}, {1}\", round(3DCamera.CameraXRotation), round(3DCamera.CameraYRotation))"
+								"text": "Functions.getDevInfo(\", \") & newline &\n\"FoV: \" & 3DCamera.FieldOfView & newline &\nStringSub(\"Position: {0}, {1}, {2}\", round(3DCamera.CameraX), round(3DCamera.CameraY), round(3DCamera.CameraZ)) & newline &\nStringSub(\"Look position: {0}, {1}, {2}\", round(3DCamera.LookX), round(3DCamera.LookY), round(3DCamera.LookZ)) & newline &\nStringSub(\"Look vectors: {0}, {1}, {2}\", roundToDp(3DCamera.LookVectorX, 2), roundToDp(3DCamera.LookVectorY, 2), roundToDp(3DCamera.LookVectorZ, 2)) & newline &\nStringSub(\"Camera rotation: {0}, {1}\", round(3DCamera.CameraXRotation), round(3DCamera.CameraYRotation)) & newline &\n(Camera.hitObjectUID = NOTHING ? \"No object focused\" : \"Focused object #\" & Camera.hitObjectUID)"
 							}
 						}
 					],

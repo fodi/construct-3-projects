@@ -1283,21 +1283,26 @@ self.C3_ExpressionFuncs = [
 			const f16 = p._GetNode(16).GetBoundMethod();
 			const f17 = p._GetNode(17).GetBoundMethod();
 			const f18 = p._GetNode(18).GetBoundMethod();
-			return () => ((((((((f0(", ") + "\n") + f1("Position: {0}, {1}, {2}", Math.round(f2()), Math.round(f3()), Math.round(f4()))) + "\n") + f5("Look position: {0}, {1}, {2}", Math.round(f6()), Math.round(f7()), Math.round(f8()))) + "\n") + f9("Look vectors: {0}, {1}, {2}", f10(f11(), 2), f12(f13(), 2), f14(f15(), 2))) + "\n") + f16("Camera rotation: {0}, {1}", Math.round(f17()), Math.round(f18())));
+			const f19 = p._GetNode(19).GetBoundMethod();
+			const n20 = p._GetNode(20);
+			const n21 = p._GetNode(21);
+			return () => ((((((((((and(((f0(", ") + "\n") + "FoV: "), f1()) + "\n") + f2("Position: {0}, {1}, {2}", Math.round(f3()), Math.round(f4()), Math.round(f5()))) + "\n") + f6("Look position: {0}, {1}, {2}", Math.round(f7()), Math.round(f8()), Math.round(f9()))) + "\n") + f10("Look vectors: {0}, {1}, {2}", f11(f12(), 2), f13(f14(), 2), f15(f16(), 2))) + "\n") + f17("Camera rotation: {0}, {1}", Math.round(f18()), Math.round(f19()))) + "\n") + ((((n20.ExpInstVar()) === (-1) ? 1 : 0)) ? ("No object focused") : (and("Focused object #", n21.ExpInstVar()))));
 		},
 		() => "Camera",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0() / 10);
 		},
-		() => 20,
-		() => 160,
-		() => "Forward",
-		() => "Backward",
-		() => "StrafeLeft",
-		() => "StrafeRight",
+		() => 0,
+		() => 179,
+		() => "ForwardXY",
+		() => "BackwardXY",
+		() => "StrafeLeftXY",
+		() => "StrafeRightXY",
 		() => "Ascend",
 		() => "Descend",
+		() => "Forward3D",
+		() => "Backward3D",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
@@ -1313,7 +1318,6 @@ self.C3_ExpressionFuncs = [
 			return () => f0();
 		},
 		() => "#ObjectTemplates",
-		() => 0,
 		() => 1,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -1431,6 +1435,36 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
+		() => -281492157629439,
+		() => -1,
+		() => "LookaheadCurrentStep",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => (f0("LookaheadCurrentStep") * v1.GetValue());
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const v2 = p._GetNode(2).GetVar();
+			return () => (n0.ExpObject() + (f1() * v2.GetValue()));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const v2 = p._GetNode(2).GetVar();
+			return () => (f0() + (f1() * v2.GetValue()));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			return () => (n0.ExpObject() + n1.ExpObject());
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and("Iterations: ", v0.GetValue());
+		},
+		() => -17179870207,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 90);
@@ -1455,6 +1489,34 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			const f2 = p._GetNode(2).GetBoundMethod();
 			return () => (n0.ExpObject() - (n1.ExpBehavior() * f2()));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => (n0.ExpObject() + ((Math.cos(C3.toRadians(f1())) * n2.ExpBehavior()) * f3()));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => (n0.ExpObject() + ((Math.sin(C3.toRadians(f1())) * n2.ExpBehavior()) * f3()));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => (n0.ExpObject() + (((Math.cos(C3.toRadians(f1())) * n2.ExpBehavior()) * f3()) * (-1)));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => (n0.ExpObject() + (((Math.sin(C3.toRadians(f1())) * n2.ExpBehavior()) * f3()) * (-1)));
 		}
 ];
 

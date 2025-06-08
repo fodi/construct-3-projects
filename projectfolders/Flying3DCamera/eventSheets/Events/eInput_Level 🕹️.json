@@ -66,12 +66,12 @@
 						{
 							"id": "rotate-camera",
 							"objectClass": "3DCamera",
-							"sid": 761214177602745,
+							"sid": 883527540050045,
 							"parameters": {
 								"rotate-x": "Mouse.MovementX / 10",
 								"rotate-y": "Mouse.MovementY / 10",
-								"min-polar-angle": "20",
-								"max-polar-angle": "160"
+								"min-polar-angle": "0",
+								"max-polar-angle": "179"
 							}
 						}
 					],
@@ -95,7 +95,7 @@
 							"objectClass": "Camera",
 							"sid": 665495334946669,
 							"parameters": [
-								"MT_Forward"
+								"MT_ForwardXY"
 							]
 						}
 					],
@@ -119,7 +119,7 @@
 							"objectClass": "Camera",
 							"sid": 972821094333294,
 							"parameters": [
-								"MT_Backward"
+								"MT_BackwardXY"
 							]
 						}
 					],
@@ -143,7 +143,7 @@
 							"objectClass": "Camera",
 							"sid": 961545324147475,
 							"parameters": [
-								"MT_StrafeLeft"
+								"MT_StrafeLeftXY"
 							]
 						}
 					],
@@ -167,7 +167,7 @@
 							"objectClass": "Camera",
 							"sid": 270547415468181,
 							"parameters": [
-								"MT_StrafeRight"
+								"MT_StrafeRightXY"
 							]
 						}
 					],
@@ -183,14 +183,6 @@
 							"parameters": {
 								"key": 32
 							}
-						},
-						{
-							"id": "mouse-button-is-down",
-							"objectClass": "Mouse",
-							"sid": 445754277254089,
-							"parameters": {
-								"mouse-button": "middle"
-							}
 						}
 					],
 					"actions": [
@@ -203,8 +195,7 @@
 							]
 						}
 					],
-					"sid": 456070308181474,
-					"isOrBlock": true
+					"sid": 456070308181474
 				},
 				{
 					"eventType": "block",
@@ -215,14 +206,6 @@
 							"sid": 967609896761751,
 							"parameters": {
 								"key": 67
-							}
-						},
-						{
-							"id": "mouse-button-is-down",
-							"objectClass": "Mouse",
-							"sid": 411417500431011,
-							"parameters": {
-								"mouse-button": "right"
 							}
 						}
 					],
@@ -236,7 +219,72 @@
 							]
 						}
 					],
-					"sid": 109552225530332,
+					"sid": 109552225530332
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 825620330119545,
+							"parameters": {
+								"key": 69
+							}
+						},
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 515494941744320,
+							"parameters": {
+								"mouse-button": "right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "move",
+							"objectClass": "Camera",
+							"sid": 605944063732700,
+							"parameters": [
+								"MT_Forward3D"
+							]
+						}
+					],
+					"sid": 795531625991272,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 691154486617288,
+							"parameters": {
+								"key": 81
+							}
+						},
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 942774302671983,
+							"parameters": {
+								"mouse-button": "middle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "move",
+							"objectClass": "Camera",
+							"sid": 585002151650705,
+							"parameters": [
+								"MT_Backward3D"
+							]
+						}
+					],
+					"sid": 109265339890680,
 					"isOrBlock": true
 				},
 				{

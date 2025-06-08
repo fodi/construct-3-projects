@@ -2,6 +2,10 @@
 	"name": "fLevel 🎬",
 	"events": [
 		{
+			"eventType": "comment",
+			"text": "todo_maybe add localstorage support saving/loading camera angles/positions (in multiple presets)"
+		},
+		{
 			"functionName": "initLevel",
 			"functionDescription": "",
 			"functionCategory": "",

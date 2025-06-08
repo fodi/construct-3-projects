@@ -42,26 +42,407 @@
 			"conditions": [],
 			"actions": [
 				{
-					"id": "set-position",
-					"objectClass": "3DCamera",
-					"sid": 917337752866317,
-					"parameters": {
-						"x": "Camera.X",
-						"y": "Camera.Y",
-						"z": "Camera.ZElevation",
-						"which": "camera"
-					}
-				},
-				{
 					"id": "set-angle",
 					"objectClass": "Camera",
 					"sid": 210972096941761,
 					"parameters": {
 						"angle": "3DCamera.CameraXRotation"
 					}
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "3DShape",
+					"sid": 712714320395256,
+					"parameters": {
+						"color": "rgbEx(100, 100, 100)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Camera",
+					"sid": 306671449617702,
+					"parameters": {
+						"instance-variable": "hitObjectUID",
+						"value": "NOTHING"
+					}
 				}
 			],
-			"sid": 643913824742560
+			"sid": 643913824742560,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "lookaheadStepCount",
+					"type": "number",
+					"initialValue": "100",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 131506495357169
+				},
+				{
+					"eventType": "variable",
+					"name": "lookaheadInterval",
+					"type": "number",
+					"initialValue": "4",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 638361978879583
+				},
+				{
+					"eventType": "variable",
+					"name": "lookaheadPickedUID",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 600121199933504
+				},
+				{
+					"eventType": "variable",
+					"name": "currentLookaheadDistance",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 711299724733101
+				},
+				{
+					"eventType": "variable",
+					"name": "stepCount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 433785105337698
+				},
+				{
+					"eventType": "variable",
+					"name": "iterationsTotal",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 114591756753016
+				},
+				{
+					"eventType": "comment",
+					"text": "Very basic, unoptimized and slightly wonky raycasting to \"focus\" an object"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 718334325851780,
+							"parameters": {
+								"name": "LI_LookaheadCurrentStep",
+								"start-index": "1",
+								"end-index": "lookaheadStepCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 159198581498662,
+							"parameters": {
+								"variable": "currentLookaheadDistance",
+								"value": "loopindex(LI_LookaheadCurrentStep) * lookaheadInterval"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 757070685100880,
+							"disabled": true,
+							"parameters": {
+								"variable": "iterationsTotal",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 697754023858384,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Camera",
+									"sid": 534891892700808,
+									"parameters": {
+										"instance-variable": "hitObjectUID",
+										"comparison": 1,
+										"value": "NOTHING"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "stop-loop",
+									"objectClass": "System",
+									"sid": 484700617082454
+								}
+							],
+							"sid": 887573499089953
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 906560160808942
+								},
+								{
+									"id": "for-each-ordered",
+									"objectClass": "System",
+									"sid": 615710553354242,
+									"disabled": true,
+									"parameters": {
+										"object": "3DShape",
+										"expression": "distance(Camera.X, Camera.Y, 3DShape.X, 3DShape.Y)",
+										"order": "ascending"
+									}
+								},
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 214408505416823,
+									"parameters": {
+										"object": "3DShape"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Camera",
+									"sid": 750785098617628,
+									"parameters": {
+										"instance-variable": "hitObjectUID",
+										"comparison": 0,
+										"value": "NOTHING"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 736652639619890,
+									"parameters": {
+										"variable": "iterationsTotal",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 559167922485183,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-overlapping-point",
+											"objectClass": "System",
+											"sid": 832749151708293,
+											"parameters": {
+												"object": "3DShape",
+												"x": "Camera.X + 3DCamera.LookVectorX * currentLookaheadDistance",
+												"y": "Camera.Y + 3DCamera.LookVectorY * currentLookaheadDistance"
+											}
+										},
+										{
+											"id": "is-between-values",
+											"objectClass": "System",
+											"sid": 111470727486555,
+											"parameters": {
+												"value": "3DCamera.CameraZ + 3DCamera.LookVectorZ * currentLookaheadDistance",
+												"lower-bound": "3DShape.ZElevation",
+												"upper-bound": "3DShape.ZElevation + 3DShape.ZHeight"
+											}
+										}
+									],
+									"actions": [
+										{
+											"customAction": "setFocused",
+											"objectClass": "3DShape",
+											"sid": 325743905825343
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Camera",
+											"sid": 928949678684681,
+											"parameters": {
+												"instance-variable": "hitObjectUID",
+												"value": "3DShape.UID"
+											}
+										},
+										{
+											"id": "log",
+											"objectClass": "Browser",
+											"sid": 701639124223957,
+											"disabled": true,
+											"parameters": {
+												"type": "log",
+												"message": "\"Hit @ distance: \" & currentLookaheadDistance"
+											}
+										}
+									],
+									"sid": 944368906003954
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Camera",
+											"sid": 293882633167596,
+											"parameters": {
+												"instance-variable": "hitObjectUID",
+												"comparison": 1,
+												"value": "NOTHING"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-loop",
+											"objectClass": "System",
+											"sid": 672803947092168
+										}
+									],
+									"sid": 650500987518597
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Old version"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each-ordered",
+									"objectClass": "System",
+									"sid": 325295922866435,
+									"parameters": {
+										"object": "3DShape",
+										"expression": "distance(Camera.X, Camera.Y, 3DShape.X, 3DShape.Y)",
+										"order": "ascending"
+									}
+								},
+								{
+									"id": "pick-overlapping-point",
+									"objectClass": "System",
+									"sid": 404196983903045,
+									"parameters": {
+										"object": "3DShape",
+										"x": "Camera.X + cos(3DCamera.CameraXRotation) * currentLookaheadDistance",
+										"y": "Camera.Y + sin(3DCamera.CameraXRotation) * currentLookaheadDistance"
+									}
+								},
+								{
+									"id": "is-between-values",
+									"objectClass": "System",
+									"sid": 444436563512090,
+									"parameters": {
+										"value": "3DCamera.CameraZ + cos(3DCamera.CameraYRotation) * currentLookaheadDistance",
+										"lower-bound": "3DShape.ZElevation",
+										"upper-bound": "3DShape.ZElevation + 3DShape.ZHeight"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "setFocused",
+									"objectClass": "3DShape",
+									"sid": 974712242810259
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 184705478939788,
+									"disabled": true,
+									"parameters": {
+										"type": "log",
+										"message": "\"Hit @ distance: \" & currentLookaheadDistance"
+									}
+								}
+							],
+							"sid": 153302503267398,
+							"disabled": true
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "3DCamera",
+							"sid": 793592604637421,
+							"parameters": {
+								"x": "Camera.X",
+								"y": "Camera.Y",
+								"z": "Camera.ZElevation",
+								"which": "camera"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 634990725638425,
+							"disabled": true,
+							"parameters": {
+								"type": "log",
+								"message": "\"Iterations: \" & iterationsTotal & \", \" & (Camera.hitObjectUID = NOTHING ? \"no hit\" : \"hit object #\" & Camera.hitObjectUID)"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 356708378464672,
+							"parameters": {
+								"type": "log",
+								"message": "\"Iterations: \" & iterationsTotal"
+							}
+						}
+					],
+					"sid": 533963875948281
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "setFocused",
+			"objectClass": "3DShape",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-default-color",
+					"objectClass": "3DShape",
+					"sid": 475208923931190,
+					"parameters": {
+						"color": "rgbEx(0, 100, 0)"
+					}
+				}
+			],
+			"sid": 689714827115645
 		},
 		{
 			"aceType": "action",
@@ -96,7 +477,7 @@
 							"parameters": {
 								"variable": "movementType",
 								"comparison": 0,
-								"value": "MT_Forward"
+								"value": "MT_ForwardXY"
 							}
 						}
 					],
@@ -123,7 +504,7 @@
 							"parameters": {
 								"variable": "movementType",
 								"comparison": 0,
-								"value": "MT_Backward"
+								"value": "MT_BackwardXY"
 							}
 						}
 					],
@@ -150,7 +531,7 @@
 							"parameters": {
 								"variable": "movementType",
 								"comparison": 0,
-								"value": "MT_StrafeLeft"
+								"value": "MT_StrafeLeftXY"
 							}
 						}
 					],
@@ -177,7 +558,7 @@
 							"parameters": {
 								"variable": "movementType",
 								"comparison": 0,
-								"value": "MT_StrafeRight"
+								"value": "MT_StrafeRightXY"
 							}
 						}
 					],
@@ -245,6 +626,90 @@
 						}
 					],
 					"sid": 523309009270371
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 768050603741221,
+							"parameters": {
+								"variable": "movementType",
+								"comparison": 0,
+								"value": "MT_Forward3D"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "Camera",
+							"sid": 383727386529234,
+							"parameters": {
+								"x": "Self.X + cos(3DCamera.CameraXRotation) * Self.Car.MaxSpeed * dt"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "Camera",
+							"sid": 869399916487697,
+							"parameters": {
+								"y": "Self.Y + sin(3DCamera.CameraXRotation) * Self.Car.MaxSpeed * dt"
+							}
+						},
+						{
+							"id": "set-z-elevation",
+							"objectClass": "Camera",
+							"sid": 510234891486947,
+							"parameters": {
+								"z": "Self.ZElevation + cos(3DCamera.CameraYRotation) * Self.Car.MaxSpeed * dt"
+							}
+						}
+					],
+					"sid": 256813369505568
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 357789405619261,
+							"parameters": {
+								"variable": "movementType",
+								"comparison": 0,
+								"value": "MT_Backward3D"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "Camera",
+							"sid": 847866235361434,
+							"parameters": {
+								"x": "Self.X + cos(3DCamera.CameraXRotation) * Self.Car.MaxSpeed * dt * -1"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "Camera",
+							"sid": 921400593650191,
+							"parameters": {
+								"y": "Self.Y + sin(3DCamera.CameraXRotation) * Self.Car.MaxSpeed * dt * -1"
+							}
+						},
+						{
+							"id": "set-z-elevation",
+							"objectClass": "Camera",
+							"sid": 844474524951615,
+							"parameters": {
+								"z": "Self.ZElevation + cos(3DCamera.CameraYRotation) * Self.Car.MaxSpeed * dt * -1"
+							}
+						}
+					],
+					"sid": 851221822732461
 				}
 			]
 		}

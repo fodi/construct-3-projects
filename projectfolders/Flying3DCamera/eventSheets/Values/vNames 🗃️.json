@@ -17,13 +17,27 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "Loop indices"
+		},
+		{
+			"eventType": "variable",
+			"name": "LI_LookaheadCurrentStep",
+			"type": "string",
+			"initialValue": "LookaheadCurrentStep",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 290998441660103
+		},
+		{
+			"eventType": "comment",
 			"text": "Movement types"
 		},
 		{
 			"eventType": "variable",
-			"name": "MT_Forward",
+			"name": "MT_ForwardXY",
 			"type": "string",
-			"initialValue": "Forward",
+			"initialValue": "ForwardXY",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -31,9 +45,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "MT_Backward",
+			"name": "MT_BackwardXY",
 			"type": "string",
-			"initialValue": "Backward",
+			"initialValue": "BackwardXY",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -41,9 +55,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "MT_StrafeLeft",
+			"name": "MT_StrafeLeftXY",
 			"type": "string",
-			"initialValue": "StrafeLeft",
+			"initialValue": "StrafeLeftXY",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -51,9 +65,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "MT_StrafeRight",
+			"name": "MT_StrafeRightXY",
 			"type": "string",
-			"initialValue": "StrafeRight",
+			"initialValue": "StrafeRightXY",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -78,6 +92,26 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 255921068746905
+		},
+		{
+			"eventType": "variable",
+			"name": "MT_Forward3D",
+			"type": "string",
+			"initialValue": "Forward3D",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 812266132040321
+		},
+		{
+			"eventType": "variable",
+			"name": "MT_Backward3D",
+			"type": "string",
+			"initialValue": "Backward3D",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 783999609872400
 		},
 		{
 			"eventType": "comment",
