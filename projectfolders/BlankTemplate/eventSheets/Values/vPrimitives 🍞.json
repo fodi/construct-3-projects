@@ -40,6 +40,36 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 240172924206954
+		},
+		{
+			"eventType": "variable",
+			"name": "COMMA",
+			"type": "string",
+			"initialValue": ",",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 712344315524870
+		},
+		{
+			"eventType": "variable",
+			"name": "UNDERSCORE",
+			"type": "string",
+			"initialValue": "_",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 612535051569896
+		},
+		{
+			"eventType": "variable",
+			"name": "SPACE",
+			"type": "string",
+			"initialValue": " ",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 168429506778591
 		}
 	],
 	"sid": 270962002325427

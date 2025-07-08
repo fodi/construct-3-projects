@@ -3,6 +3,30 @@
 	"events": [
 		{
 			"eventType": "comment",
+			"text": "Audio"
+		},
+		{
+			"eventType": "variable",
+			"name": "AUDIO_BGM",
+			"type": "string",
+			"initialValue": "BGM",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 241819260826883
+		},
+		{
+			"eventType": "variable",
+			"name": "AUDIO_SFX",
+			"type": "string",
+			"initialValue": "SFX",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 712266469713370
+		},
+		{
+			"eventType": "comment",
 			"text": "Layers"
 		},
 		{

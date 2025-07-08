@@ -225,7 +225,7 @@
 					"type": "script",
 					"language": "javascript",
 					"script": [
-						"runtime.setReturnValue(runtime.objects[localVars[\"name\"]] ? 1 : 0)"
+						"runtime.setReturnValue(runtime.objects[localVars.name] ? 1 : 0)"
 					]
 				}
 			],
@@ -437,7 +437,7 @@
 			"sid": 603412078347250
 		},
 		{
-			"functionName": "formatTime",
+			"functionName": "getFormattedTime",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "string",
@@ -578,6 +578,151 @@
 				}
 			],
 			"sid": 576050989151906
+		},
+		{
+			"functionName": "getHammingDistance",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "string1",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 128332856701493
+				},
+				{
+					"name": "string2",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 870515192872343
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "This function is case sensitive."
+				}
+			],
+			"sid": 225898879360065,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "If strings are equal length, count how many characters differ at the same positions"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 362128335644351,
+							"parameters": {
+								"first-value": "len(string1)",
+								"comparison": 0,
+								"second-value": "len(string2)"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 973785140911547,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "hammingDistance",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 805463626845729
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 891879592932081,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "len(string1) - 1"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 656985020264240,
+									"parameters": {
+										"first-value": "mid(string1, loopindex, 1)",
+										"comparison": 1,
+										"second-value": "mid(string2, loopindex, 1)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 707912901605245,
+									"parameters": {
+										"variable": "hammingDistance",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 742751830573440
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-function-return-value",
+									"objectClass": "Functions",
+									"sid": 876887968523896,
+									"parameters": {
+										"value": "hammingDistance"
+									}
+								}
+							],
+							"sid": 900491703147815
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "If strings are different length, return \"nothing\" (-1)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 445236267770319
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 436795710574999,
+							"parameters": {
+								"value": "NOTHING"
+							}
+						}
+					],
+					"sid": 279298993543589
+				}
+			]
 		}
 	],
 	"sid": 622480337843055

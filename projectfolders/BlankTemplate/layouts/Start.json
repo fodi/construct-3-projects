@@ -41,7 +41,24 @@
 		"subfolders": []
 	},
 	"sid": 790219537226852,
-	"nonworld-instances": [],
+	"nonworld-instances": [
+		{
+			"type": "jOverrides",
+			"properties": {},
+			"uid": 8,
+			"sid": 525202140103426,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "jRules",
+			"properties": {},
+			"uid": 9,
+			"sid": 663658748123331,
+			"tags": "",
+			"instanceVariables": {}
+		}
+	],
 	"effectTypes": [],
 	"width": 640,
 	"height": 360,

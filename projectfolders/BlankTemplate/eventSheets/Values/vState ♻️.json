@@ -10,6 +10,26 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 492134263969167
+		},
+		{
+			"eventType": "variable",
+			"name": "volumePercentBGM",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 744078054061743
+		},
+		{
+			"eventType": "variable",
+			"name": "volumePercentSFX",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 398904790499947
 		}
 	],
 	"sid": 756444675677784

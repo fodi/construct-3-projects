@@ -8,6 +8,20 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "AJAX",
+			"name": "AJAX",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Browser",
 			"name": "Browser",
 			"author": "Scirra",
@@ -17,6 +31,13 @@
 			"type": "plugin",
 			"id": "Camera3D",
 			"name": "3D camera",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Json",
+			"name": "JSON",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -64,7 +85,9 @@
 				"items": [
 					"Browser",
 					"GlobalTimer",
-					"3DCamera"
+					"3DCamera",
+					"Audio",
+					"AJAX"
 				],
 				"subfolders": [],
 				"name": "Utilities"
@@ -78,7 +101,10 @@
 				"name": "Input"
 			},
 			{
-				"items": [],
+				"items": [
+					"jOverrides",
+					"jRules"
+				],
 				"subfolders": [],
 				"name": "Data"
 			},
@@ -118,7 +144,6 @@
 					"_eCollisions 💥",
 					"_eCreated ✨",
 					"eCycles ⏱️",
-					"_eDestroyed 💀",
 					"_eMovement 🏃",
 					"_eTimers ⏰",
 					"_eTweens 🌓",
@@ -131,10 +156,10 @@
 			},
 			{
 				"items": [
-					"_fAudio 🎵",
 					"fLevel 🎬",
 					"_fUI 📟",
-					"fUtilities 🧰"
+					"fUtilities 🧰",
+					"fRules 📜"
 				],
 				"subfolders": [],
 				"name": "Functions"
@@ -150,7 +175,9 @@
 				"name": "Values"
 			},
 			{
-				"items": [],
+				"items": [
+					"aAudio 🎵"
+				],
 				"subfolders": [],
 				"name": "Actions"
 			}
@@ -239,7 +266,16 @@
 			"subfolders": []
 		},
 		"general": {
-			"items": [],
+			"items": [
+				{
+					"name": "rules.json",
+					"type": "application/json",
+					"sid": 134453039814913,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		}
 	},
@@ -258,7 +294,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "16",
+		"version": "17",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

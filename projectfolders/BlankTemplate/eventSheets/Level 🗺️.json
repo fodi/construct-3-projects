@@ -19,10 +19,6 @@
 		},
 		{
 			"eventType": "include",
-			"includeSheet": "_eDestroyed 💀"
-		},
-		{
-			"eventType": "include",
 			"includeSheet": "eInput_Global 🔘"
 		},
 		{
