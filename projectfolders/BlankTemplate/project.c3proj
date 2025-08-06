@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 44002,
+	"savedWithRelease": 44902,
 	"name": "FodiTemplate",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -75,6 +75,13 @@
 			"name": "Timer",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
 		}
 	],
 	"uniqueId": "yvkam1laji5",
@@ -84,7 +91,7 @@
 			{
 				"items": [
 					"Browser",
-					"GlobalTimer",
+					"Global",
 					"3DCamera",
 					"Audio",
 					"AJAX"
@@ -143,7 +150,7 @@
 					"_eAnimations 🎞️",
 					"_eCollisions 💥",
 					"_eCreated ✨",
-					"eCycles ⏱️",
+					"eSystem ⏱️",
 					"_eMovement 🏃",
 					"_eTimers ⏰",
 					"_eTweens 🌓",
@@ -294,7 +301,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "17",
+		"version": "18",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

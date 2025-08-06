@@ -1,5 +1,5 @@
 {
-	"name": "GlobalTimer",
+	"name": "Global",
 	"plugin-id": "Sprite",
 	"sid": 783018039270072,
 	"isGlobal": true,
@@ -10,6 +10,11 @@
 			"behaviorId": "Timer",
 			"name": "Timer",
 			"sid": 164536073124222
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 793059086410921
 		}
 	],
 	"effectTypes": [],

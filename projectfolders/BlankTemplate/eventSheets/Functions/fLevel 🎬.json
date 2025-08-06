@@ -12,35 +12,7 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 551882248979971,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 634387291176249,
-							"parameters": {
-								"first-value": "LayoutName",
-								"comparison": 0,
-								"second-value": "\"#ObjectTemplates\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "go-to-layout",
-							"objectClass": "System",
-							"sid": 948102782152673,
-							"parameters": {
-								"layout": "Level"
-							}
-						}
-					],
-					"sid": 393157524293096
-				}
-			]
+			"sid": 551882248979971
 		},
 		{
 			"functionName": "togglePause",

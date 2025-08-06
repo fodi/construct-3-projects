@@ -31,6 +31,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "LAYER_UI",
+			"type": "string",
+			"initialValue": "UI",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 939579265181039
+		},
+		{
+			"eventType": "variable",
 			"name": "LAYER_Main",
 			"type": "string",
 			"initialValue": "Main",
@@ -54,23 +64,9 @@
 			"sid": 514423711778769
 		},
 		{
-			"eventType": "comment",
-			"text": "Templates"
-		},
-		{
-			"eventType": "variable",
-			"name": "TEMPLATE_Spawner_Dynamic",
-			"type": "string",
-			"initialValue": "Spawner_Dynamic",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 666287540836049
-		},
-		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "Templates",
+			"title": "Unused",
 			"description": "",
 			"isActiveOnStart": false,
 			"children": [
@@ -173,6 +169,20 @@
 					"isStatic": false,
 					"isConstant": true,
 					"sid": 774070709637436
+				},
+				{
+					"eventType": "comment",
+					"text": "Templates"
+				},
+				{
+					"eventType": "variable",
+					"name": "TEMPLATE_Template1",
+					"type": "string",
+					"initialValue": "Template1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 115413965121626
 				},
 				{
 					"eventType": "comment",

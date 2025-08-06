@@ -118,7 +118,7 @@
 					}
 				},
 				{
-					"type": "GlobalTimer",
+					"type": "Global",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Animation 1",
@@ -133,6 +133,11 @@
 					"behaviors": {
 						"Timer": {
 							"properties": {}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
 						}
 					},
 					"instanceFolderItem": {
