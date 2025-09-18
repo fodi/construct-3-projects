@@ -2,14 +2,8 @@
 	"name": "vPrimitives 🍞",
 	"events": [
 		{
-			"eventType": "variable",
-			"name": "NOTHING",
-			"type": "number",
-			"initialValue": "-1",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 892808278538339
+			"eventType": "comment",
+			"text": "\"Booleans\""
 		},
 		{
 			"eventType": "variable",
@@ -32,6 +26,24 @@
 			"sid": 779372581909143
 		},
 		{
+			"eventType": "comment",
+			"text": "\"Null\""
+		},
+		{
+			"eventType": "variable",
+			"name": "NOTHING",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 146297860307568
+		},
+		{
+			"eventType": "comment",
+			"text": "Empty string"
+		},
+		{
 			"eventType": "variable",
 			"name": "EMPTY",
 			"type": "string",
@@ -40,6 +52,10 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 240172924206954
+		},
+		{
+			"eventType": "comment",
+			"text": "Characters"
 		},
 		{
 			"eventType": "variable",
@@ -53,13 +69,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "UNDERSCORE",
+			"name": "DOT",
 			"type": "string",
-			"initialValue": "_",
+			"initialValue": ".",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 612535051569896
+			"sid": 571130793329994
 		},
 		{
 			"eventType": "variable",
@@ -69,7 +85,17 @@
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 168429506778591
+			"sid": 336408960928416
+		},
+		{
+			"eventType": "variable",
+			"name": "UNDERSCORE",
+			"type": "string",
+			"initialValue": "_",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 612535051569896
 		}
 	],
 	"sid": 270962002325427

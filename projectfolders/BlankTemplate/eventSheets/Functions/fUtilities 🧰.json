@@ -11,7 +11,12 @@
 			"functionParameters": [],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Toggle between fullscreen and windowed mode"
+				}
+			],
 			"sid": 886938183459389,
 			"children": [
 				{
@@ -74,7 +79,12 @@
 			],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Toggle visibility and interaction of a layer (both on / both off)"
+				}
+			],
 			"sid": 725868792420929,
 			"children": [
 				{
@@ -192,15 +202,28 @@
 			"conditions": [],
 			"actions": [
 				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 660127848899638,
-					"parameters": {
-						"value": "min(max((oldValue - oldRangeMin) * (newRangeMax - newRangeMin) / (oldRangeMax - oldRangeMin) + newRangeMin, newRangeMin) , newRangeMax)"
-					}
+					"type": "comment",
+					"text": "Map a value on a range to a new range"
 				}
 			],
-			"sid": 363416407062200
+			"sid": 363416407062200,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 834095138666702,
+							"parameters": {
+								"value": "min(max((oldValue - oldRangeMin) * (newRangeMax - newRangeMin) / (oldRangeMax - oldRangeMin) + newRangeMin, newRangeMin) , newRangeMax)"
+							}
+						}
+					],
+					"sid": 977342137009355
+				}
+			]
 		},
 		{
 			"functionName": "objectNameExists",
@@ -222,14 +245,27 @@
 			"conditions": [],
 			"actions": [
 				{
-					"type": "script",
-					"language": "javascript",
-					"script": [
-						"runtime.setReturnValue(runtime.objects[localVars.name] ? 1 : 0)"
-					]
+					"type": "comment",
+					"text": "Check whether an object name exists or not"
 				}
 			],
-			"sid": 985779994453727
+			"sid": 985779994453727,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.setReturnValue(runtime.objects[localVars.name] ? 1 : 0)"
+							]
+						}
+					],
+					"sid": 366824299240774
+				}
+			]
 		},
 		{
 			"functionName": "volumePercentToDb",
@@ -251,15 +287,28 @@
 			"conditions": [],
 			"actions": [
 				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 378464548011383,
-					"parameters": {
-						"value": "-log10(100 / (percent)) * 33.2"
-					}
+					"type": "comment",
+					"text": "Convert volume percent (0-100 scale) to decibels"
 				}
 			],
-			"sid": 875967104905781
+			"sid": 875967104905781,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 975655388520262,
+							"parameters": {
+								"value": "-log10(100 / (percent)) * 33.2"
+							}
+						}
+					],
+					"sid": 171471869140675
+				}
+			]
 		},
 		{
 			"functionName": "expDecay",
@@ -296,18 +345,27 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "based on https://www.youtube.com/watch?v=LSNQuFEDOyQ"
-				},
-				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 643918058300636,
-					"parameters": {
-						"value": "to + (from - to) * exp(-decay * dt)"
-					}
+					"text": "An alternative to lerp() based on https://www.youtube.com/watch?v=LSNQuFEDOyQ"
 				}
 			],
-			"sid": 135747702409854
+			"sid": 135747702409854,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 249363451588861,
+							"parameters": {
+								"value": "to + (from - to) * exp(-decay * dt)"
+							}
+						}
+					],
+					"sid": 455884622860513
+				}
+			]
 		},
 		{
 			"functionName": "hex2color",
@@ -331,15 +389,6 @@
 				{
 					"type": "comment",
 					"text": "Function by R0J0hound https://www.construct.net/en/forum/construct-3/how-do-i-8/hex-colour-values-code-179603"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 223438399487418,
-					"parameters": {
-						"variable": "hex",
-						"value": "left(\"000000\", max(0, 6-len(hex)))"
-					}
 				}
 			],
 			"sid": 180752882577265,
@@ -358,6 +407,15 @@
 					"eventType": "block",
 					"conditions": [],
 					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 122739368001325,
+							"parameters": {
+								"variable": "hex",
+								"value": "left(\"000000\", max(0, 6-len(hex)))"
+							}
+						},
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
@@ -426,15 +484,28 @@
 			"conditions": [],
 			"actions": [
 				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 268312568073306,
-					"parameters": {
-						"value": "sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)"
-					}
+					"type": "comment",
+					"text": "Just like distance() but for 3D"
 				}
 			],
-			"sid": 603412078347250
+			"sid": 603412078347250,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 841983815138474,
+							"parameters": {
+								"value": "sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)"
+							}
+						}
+					],
+					"sid": 423290186399368
+				}
+			]
 		},
 		{
 			"functionName": "getFormattedTime",
@@ -454,7 +525,12 @@
 			],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Format seconds as (hours:)(minutes:)seconds"
+				}
+			],
 			"sid": 905055554994244,
 			"children": [
 				{
@@ -532,15 +608,28 @@
 			"conditions": [],
 			"actions": [
 				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 379954441688701,
-					"parameters": {
-						"value": "StringSub(\"Build {1}{0}{2} FPS{0}{3}% CPU{0}{4}% GPU{0}{5} objects\", divider, projectversion, fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
-					}
+					"type": "comment",
+					"text": "Return FPS, CPU, GPU and object count stats as a string with a divider"
 				}
 			],
-			"sid": 562801702725526
+			"sid": 562801702725526,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 878500133118628,
+							"parameters": {
+								"value": "StringSub(\"Build {1}{0}{2} FPS{0}{3}% CPU{0}{4}% GPU{0}{5} objects\", divider, projectversion, fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
+							}
+						}
+					],
+					"sid": 509631647531281
+				}
+			]
 		},
 		{
 			"functionName": "roundToDpPad",
@@ -569,15 +658,28 @@
 			"conditions": [],
 			"actions": [
 				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 711008528960360,
-					"parameters": {
-						"value": "int(value) & \".\" & zeropad(\n  int(\n    (value - int(value)) * padding * 10\n  )\n, padding)"
-					}
+					"type": "comment",
+					"text": "Round and format a number to certain decimal places with zero padding on the fractional part"
 				}
 			],
-			"sid": 576050989151906
+			"sid": 576050989151906,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 801748921606850,
+							"parameters": {
+								"value": "int(value) & \".\" & zeropad(\n  int(\n    (value - int(value)) * padding * 10\n  )\n, padding)"
+							}
+						}
+					],
+					"sid": 811216697542748
+				}
+			]
 		},
 		{
 			"functionName": "getHammingDistance",
