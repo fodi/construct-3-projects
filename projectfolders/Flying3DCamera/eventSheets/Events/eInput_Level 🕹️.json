@@ -357,6 +357,106 @@
 						}
 					],
 					"sid": 197101233225797
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 545226036537087,
+							"parameters": {
+								"key": 73
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layout-vanishing-point",
+							"objectClass": "System",
+							"sid": 595026992084699,
+							"parameters": {
+								"vanishing-point-x": "round(VanishingPointX)",
+								"vanishing-point-y": "round(VanishingPointY + 1)"
+							}
+						}
+					],
+					"sid": 567760849147642
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 258803314934918,
+							"parameters": {
+								"key": 75
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layout-vanishing-point",
+							"objectClass": "System",
+							"sid": 209891428619558,
+							"parameters": {
+								"vanishing-point-x": "round(VanishingPointX)",
+								"vanishing-point-y": "round(VanishingPointY - 1)"
+							}
+						}
+					],
+					"sid": 907244690677853
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 358887236505633,
+							"parameters": {
+								"key": 74
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layout-vanishing-point",
+							"objectClass": "System",
+							"sid": 441758455500344,
+							"parameters": {
+								"vanishing-point-x": "round(VanishingPointX - 1)",
+								"vanishing-point-y": "round(VanishingPointY)"
+							}
+						}
+					],
+					"sid": 565368702595640
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 634478123507269,
+							"parameters": {
+								"key": 76
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layout-vanishing-point",
+							"objectClass": "System",
+							"sid": 901431301949708,
+							"parameters": {
+								"vanishing-point-x": "round(VanishingPointX + 1)",
+								"vanishing-point-y": "round(VanishingPointY)"
+							}
+						}
+					],
+					"sid": 707004601595884
 				}
 			],
 			"sid": 180282693388417
