@@ -1,0 +1,22 @@
+{
+	"name": "fTerrain",
+	"plugin-id": "Tilemap",
+	"sid": 290173810979383,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 971144109576480
+		},
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 541206404919577
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Terrain"
+	]
+}

@@ -1,0 +1,157 @@
+{
+	"name": "fLevel 🎬",
+	"events": [
+		{
+			"functionName": "initLevel",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-collision-cell-size",
+					"objectClass": "System",
+					"sid": 149811239924973,
+					"parameters": {
+						"width": "64",
+						"height": "64"
+					}
+				},
+				{
+					"customAction": "spawnMany",
+					"objectClass": "Terrain",
+					"customActionObjectClass": "fTerrain",
+					"sid": 124153063912472,
+					"parameters": [
+						"10",
+						"0",
+						"0",
+						"LayoutWidth * 0.5",
+						"LayoutHeight",
+						"\"in-out-sine, in-out-cubic, in-out-back\"",
+						"0.1",
+						"0.9"
+					]
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 137852853741590
+				}
+			],
+			"sid": 551882248979971,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-evaluate",
+							"objectClass": "System",
+							"sid": 468478953299616,
+							"parameters": {
+								"object": "Terrain",
+								"expression": "Terrain.IID % 2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "Terrain",
+							"sid": 317560464358011,
+							"parameters": {
+								"color": "rgbEx(80, 80, 80)"
+							}
+						}
+					],
+					"sid": 572024018869680
+				}
+			]
+		},
+		{
+			"functionName": "togglePause",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 809940863427421,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 919876928730091,
+							"parameters": {
+								"variable": "isPaused",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 735846580416898,
+							"parameters": {
+								"variable": "isPaused",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 794453566470112,
+							"parameters": {
+								"time-scale": "0"
+							}
+						}
+					],
+					"sid": 893541940908097
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 639831566345621
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 136729695085155,
+							"parameters": {
+								"variable": "isPaused",
+								"value": "NO"
+							}
+						},
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 755107212905453,
+							"parameters": {
+								"time-scale": "1"
+							}
+						}
+					],
+					"sid": 315146358317456
+				}
+			]
+		}
+	],
+	"sid": 849818322627845
+}

@@ -1,0 +1,26 @@
+{
+	"name": "eInput_Level 🕹️",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 499940701278989,
+					"parameters": {
+						"key": 80
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "togglePause",
+					"sid": 707487279196737
+				}
+			],
+			"sid": 398344611177970
+		}
+	],
+	"sid": 758821500675486
+}

@@ -1,0 +1,210 @@
+{
+	"name": "vNames 🗃️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Audio"
+		},
+		{
+			"eventType": "variable",
+			"name": "AUDIO_BGM",
+			"type": "string",
+			"initialValue": "BGM",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 241819260826883
+		},
+		{
+			"eventType": "variable",
+			"name": "AUDIO_SFX",
+			"type": "string",
+			"initialValue": "SFX",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 712266469713370
+		},
+		{
+			"eventType": "comment",
+			"text": "Layers"
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Main",
+			"type": "string",
+			"initialValue": "Main",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 556452912442956
+		},
+		{
+			"eventType": "comment",
+			"text": "Roles"
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_DevLog",
+			"type": "string",
+			"initialValue": "DevLog",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 514423711778769
+		},
+		{
+			"eventType": "comment",
+			"text": "Templates"
+		},
+		{
+			"eventType": "variable",
+			"name": "TEMPLATE_Spawner_Dynamic",
+			"type": "string",
+			"initialValue": "Spawner_Dynamic",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 666287540836049
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Templates",
+			"description": "",
+			"isActiveOnStart": false,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Animations"
+				},
+				{
+					"eventType": "variable",
+					"name": "ANIM_Animation1",
+					"type": "string",
+					"initialValue": "Animation1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 431026041037994
+				},
+				{
+					"eventType": "comment",
+					"text": "Directions"
+				},
+				{
+					"eventType": "variable",
+					"name": "DIR_Up",
+					"type": "string",
+					"initialValue": "Up",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 124194810173557
+				},
+				{
+					"eventType": "variable",
+					"name": "DIR_Down",
+					"type": "string",
+					"initialValue": "Down",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 990623432833432
+				},
+				{
+					"eventType": "variable",
+					"name": "DIR_Left",
+					"type": "string",
+					"initialValue": "Left",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 210593903454545
+				},
+				{
+					"eventType": "variable",
+					"name": "DIR_Right",
+					"type": "string",
+					"initialValue": "Right",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 181191500187961
+				},
+				{
+					"eventType": "comment",
+					"text": "Effects"
+				},
+				{
+					"eventType": "variable",
+					"name": "EFFECTS_Effect1",
+					"type": "string",
+					"initialValue": "Effect1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 440839480306403
+				},
+				{
+					"eventType": "comment",
+					"text": "Object types"
+				},
+				{
+					"eventType": "variable",
+					"name": "OT_ObjectType1",
+					"type": "string",
+					"initialValue": "ObjectType1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 122405122541165
+				},
+				{
+					"eventType": "comment",
+					"text": "Signals"
+				},
+				{
+					"eventType": "variable",
+					"name": "SIGNAL_Signal1",
+					"type": "string",
+					"initialValue": "Signal1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 774070709637436
+				},
+				{
+					"eventType": "comment",
+					"text": "Timers"
+				},
+				{
+					"eventType": "variable",
+					"name": "TIMER_Timer1",
+					"type": "string",
+					"initialValue": "Timer1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 439965498832037
+				},
+				{
+					"eventType": "comment",
+					"text": "Tweens"
+				},
+				{
+					"eventType": "variable",
+					"name": "TWEEN_Tween1",
+					"type": "string",
+					"initialValue": "Tween1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 187828689669885
+				}
+			],
+			"sid": 731591257483641
+		}
+	],
+	"sid": 359473117755789
+}

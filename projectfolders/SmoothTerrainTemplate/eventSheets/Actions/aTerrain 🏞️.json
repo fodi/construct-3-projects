@@ -1,0 +1,311 @@
+{
+	"name": "aTerrain 🏞️",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "fTerrain",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 981686790068579
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 923995149380540
+				},
+				{
+					"name": "width",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 428806837409738
+				},
+				{
+					"name": "height",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 726370535347569
+				},
+				{
+					"name": "easingName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 139446204965341
+				},
+				{
+					"name": "startPercent",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 784255772373545
+				},
+				{
+					"name": "endPercent",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 203668139969700
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 698783694031490,
+					"parameters": {
+						"object-to-create": "Terrain",
+						"layer": "LAYER_Main",
+						"x": "x",
+						"y": "y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "Terrain",
+					"sid": 214458643019585,
+					"parameters": {
+						"width": "width",
+						"height": "height"
+					}
+				},
+				{
+					"id": "erase-tile-range",
+					"objectClass": "Terrain",
+					"sid": 374584469307540,
+					"parameters": {
+						"tile-x": "0",
+						"tile-y": "0",
+						"width": "Self.MapDisplayWidth",
+						"height": "Self.MapDisplayHeight"
+					}
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "Terrain",
+					"sid": 996976927595556,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "180"
+					}
+				}
+			],
+			"sid": 994166683573835,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "terrainHeightInTiles",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 484632422626357
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 461286254564035,
+							"parameters": {
+								"name": "\"\"",
+								"start-index": "0",
+								"end-index": "Terrain.MapDisplayWidth - 1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 871031967113041,
+							"parameters": {
+								"variable": "terrainHeightInTiles",
+								"value": "Terrain.MapDisplayHeight * startPercent + \nTimelineController.Ease(easingName, loopindex / Terrain.MapDisplayWidth) * Terrain.MapDisplayHeight * (endPercent - startPercent)"
+							}
+						},
+						{
+							"id": "set-tile-range",
+							"objectClass": "Terrain",
+							"sid": 390555552353412,
+							"parameters": {
+								"tile-x": "loopindex",
+								"tile-y": "Self.MapDisplayHeight - terrainHeightInTiles",
+								"width": "1",
+								"height": "terrainHeightInTiles",
+								"tile": "0",
+								"state": "normal"
+							}
+						}
+					],
+					"sid": 926648090889813
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "spawnMany",
+			"objectClass": "fTerrain",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "count",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 179140585429715
+				},
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 553186704739959
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 974763372937670
+				},
+				{
+					"name": "width",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 389501919436430
+				},
+				{
+					"name": "height",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 498952815533472
+				},
+				{
+					"name": "easingNamesCSV",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 987769964363754
+				},
+				{
+					"name": "minStartPercent",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 278611553180260
+				},
+				{
+					"name": "maxEndPercent",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 501060050179594
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 188246922892755,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "startPercent",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 267609163076936
+				},
+				{
+					"eventType": "variable",
+					"name": "endPercent",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 913078761901669
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 242341803719310,
+							"parameters": {
+								"name": "\"\"",
+								"start-index": "0",
+								"end-index": "count - 1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 726672638768592,
+							"parameters": {
+								"variable": "endPercent",
+								"value": "random(minStartPercent, maxEndPercent)"
+							}
+						},
+						{
+							"customAction": "spawn",
+							"objectClass": "Terrain",
+							"customActionObjectClass": "fTerrain",
+							"sid": 588016671858163,
+							"parameters": [
+								"x + width * loopindex",
+								"y",
+								"width",
+								"height",
+								"trim(tokenat(easingNamesCSV, int(random(0, tokencount(easingNamesCSV, COMMA))), COMMA))",
+								"startPercent",
+								"endPercent"
+							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 231488891266323,
+							"parameters": {
+								"variable": "startPercent",
+								"value": "endPercent"
+							}
+						}
+					],
+					"sid": 368367137910434
+				}
+			]
+		}
+	],
+	"sid": 437033384226116
+}

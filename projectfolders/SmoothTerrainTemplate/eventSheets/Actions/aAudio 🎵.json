@@ -1,0 +1,131 @@
+{
+	"name": "aAudio 🎵",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "playSFX",
+			"objectClass": "Audio",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "sfxName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 737790122048564
+				},
+				{
+					"name": "variantCount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 454265100652040
+				},
+				{
+					"name": "volumePercentMultiplier",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 236904099643013
+				},
+				{
+					"name": "isDebounced",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 243499332338422
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 177277109179571,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "fileName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 801158535403435
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 775661155782506,
+							"parameters": {
+								"variable": "fileName",
+								"value": "sfxName & (variantCount > 0 ? int(random(1, variantCount + 1)) : \"\")"
+							}
+						}
+					],
+					"sid": 190034543771817,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 282328089945030,
+									"parameters": {
+										"variable": "isDebounced",
+										"comparison": 0,
+										"value": "NO"
+									}
+								},
+								{
+									"id": "is-tag-playing",
+									"objectClass": "Audio",
+									"sid": 523129148838387,
+									"parameters": {
+										"tag": "fileName"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "play-by-name",
+									"objectClass": "Audio",
+									"sid": 215705257016742,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "fileName",
+										"loop": "not-looping",
+										"volume": "Functions.volumePercentToDb(volumePercentSFX * volumePercentMultiplier)",
+										"stereo-pan": "0",
+										"tag-optional": "AUDIO_SFX & \" \" & fileName"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 268249111999932,
+									"disabled": true,
+									"parameters": {
+										"type": "log",
+										"message": "\"Playing SFX: \" & fileName"
+									}
+								}
+							],
+							"sid": 819890780449510,
+							"isOrBlock": true
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 581452474749190
+}
