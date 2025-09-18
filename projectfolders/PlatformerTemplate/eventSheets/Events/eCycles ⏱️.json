@@ -1,0 +1,122 @@
+{
+	"name": "eCycles ⏱️",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 934409235030864
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "initLevel",
+					"sid": 935426248210738
+				}
+			],
+			"sid": 106853073142729
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 552969549724375
+				}
+			],
+			"actions": [
+				{
+					"customAction": "tick",
+					"objectClass": "Player",
+					"customActionObjectClass": "fPlayer",
+					"sid": 125032562889830
+				}
+			],
+			"sid": 559613915501580,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_TextSF",
+							"sid": 593958022226840,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_DevLog"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "UI_TextSF",
+							"sid": 394644341921319,
+							"parameters": {
+								"text": "Functions.getDevInfo(\", \")"
+							}
+						}
+					],
+					"sid": 417440196871966
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 434702691549402,
+							"parameters": {
+								"object": "Enemy"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "tick",
+							"objectClass": "Enemy",
+							"customActionObjectClass": "fEnemy",
+							"sid": 442072385463192
+						}
+					],
+					"sid": 481400854534827
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 589938050014785,
+					"parameters": {
+						"interval-seconds": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "todo_mn / move"
+				},
+				{
+					"customAction": "spawn",
+					"objectClass": "Enemy",
+					"customActionObjectClass": "fEnemy",
+					"sid": 571310702607760,
+					"parameters": [
+						"random(64, LayoutWidth - 64)",
+						"-64"
+					]
+				}
+			],
+			"sid": 847295802390956
+		}
+	],
+	"sid": 918958308783690
+}

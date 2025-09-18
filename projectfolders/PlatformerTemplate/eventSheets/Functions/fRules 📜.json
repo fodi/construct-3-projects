@@ -1,0 +1,251 @@
+{
+	"name": "fRules 📜",
+	"events": [
+		{
+			"functionName": "Rules_init",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "testSearchParams",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 153437494001051
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 691253788444290,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Load & parse rules.json"
+						},
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 320847534172489,
+							"parameters": {
+								"tag": "\"\"",
+								"file": "rules.json"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 175435133110578
+						},
+						{
+							"id": "parse",
+							"objectClass": "jRules",
+							"sid": 422067824635114,
+							"parameters": {
+								"data": "AJAX.LastData"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Load & parse rule overrides from URL parameters"
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"const paramsString = localVars.testSearchParams ? localVars.testSearchParams : window.location.search",
+								"const searchParams = new URLSearchParams(paramsString)",
+								"runtime.objects.jOverrides.getFirstInstance().setJsonDataCopy(Object.fromEntries(searchParams))"
+							]
+						}
+					],
+					"sid": 247494207014140
+				}
+			]
+		},
+		{
+			"functionName": "Rules_getNumber",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "paramName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 695613454076591
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 533397642661135,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-key",
+							"objectClass": "jOverrides",
+							"sid": 655238036151491,
+							"parameters": {
+								"path": "paramName"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 879791736872941,
+							"disabled": true,
+							"parameters": {
+								"type": "log",
+								"message": "StringSub(\"[config] {0} = {1} (overridden from {2})\", paramName, jOverrides.Get(paramName), jRules.Get(paramName))"
+							}
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 751209052678734,
+							"parameters": {
+								"value": "float(jOverrides.Get(paramName))"
+							}
+						}
+					],
+					"sid": 202956398151501
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 220078370246202
+						}
+					],
+					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 904431202954713,
+							"disabled": true,
+							"parameters": {
+								"type": "log",
+								"message": "StringSub(\"[config] {0} = {1} (default)\", paramName, jRules.Get(paramName))"
+							}
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 662798117796096,
+							"parameters": {
+								"value": "jRules.Get(paramName)"
+							}
+						}
+					],
+					"sid": 507092199024757
+				}
+			]
+		},
+		{
+			"functionName": "Rules_getString",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "paramName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 672384449520094
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 762537364063034,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-key",
+							"objectClass": "jOverrides",
+							"sid": 897525330585740,
+							"parameters": {
+								"path": "paramName"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 616388304466236,
+							"disabled": true,
+							"parameters": {
+								"type": "log",
+								"message": "StringSub(\"[config] {0} = {1} (overridden from {2})\", paramName, jOverrides.Get(paramName), jRules.Get(paramName))"
+							}
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 281779408056067,
+							"parameters": {
+								"value": "jOverrides.Get(paramName)"
+							}
+						}
+					],
+					"sid": 198243579803513
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 319027651039652
+						}
+					],
+					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 986370467547615,
+							"disabled": true,
+							"parameters": {
+								"type": "log",
+								"message": "StringSub(\"[config] {0} = {1} (default)\", paramName, jRules.Get(paramName))"
+							}
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 357583862080323,
+							"parameters": {
+								"value": "jRules.Get(paramName)"
+							}
+						}
+					],
+					"sid": 144092434562267
+				}
+			]
+		}
+	],
+	"sid": 967987983366739
+}

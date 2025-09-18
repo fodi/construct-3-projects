@@ -1,0 +1,61 @@
+{
+	"name": "eMovement 🏃",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-landed",
+					"objectClass": "Player",
+					"sid": 460348156674799,
+					"behaviorType": "Platform"
+				}
+			],
+			"actions": [
+				{
+					"customAction": "resetJumps",
+					"objectClass": "Player",
+					"customActionObjectClass": "fPlayer",
+					"sid": 361159157369698
+				}
+			],
+			"sid": 927749012298548,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-timer-running",
+							"objectClass": "Player",
+							"sid": 836055831280220,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_JumpBuffering"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "spawnBlurb",
+							"objectClass": "UI_TextSF",
+							"sid": 192915820473719,
+							"parameters": [
+								"fPlayer.ImagePointX(IP_Blurb)",
+								"fPlayer.ImagePointY(IP_Blurb)",
+								"\"Buffered jump\""
+							]
+						},
+						{
+							"customAction": "jump",
+							"objectClass": "Player",
+							"customActionObjectClass": "fPlayer",
+							"sid": 730291690816280
+						}
+					],
+					"sid": 887461054350099
+				}
+			]
+		}
+	],
+	"sid": 429853565634089
+}

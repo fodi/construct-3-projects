@@ -1,0 +1,46 @@
+{
+	"name": "Level 🗺️",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "_eAnimations 🎞️"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eCollisions 💥"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "_eCreated ✨"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eCycles ⏱️"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eInput_Global 🔘"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eInput_Level 🕹️"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eMovement 🏃"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "_eSignals 📡"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eTimers ⏰"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "_eTweens 🌓"
+		}
+	],
+	"sid": 680353853616029
+}

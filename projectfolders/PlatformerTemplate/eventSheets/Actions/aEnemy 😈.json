@@ -1,0 +1,444 @@
+{
+	"name": "aEnemy 😈",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "fEnemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 652004030198136
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 414856023669148
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 787342917090115,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 637254400627844,
+							"parameters": {
+								"object-to-create": "fEnemy",
+								"layer": "LAYER_Main",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"customAction": "init",
+							"objectClass": "fEnemy",
+							"sid": 666889491708852
+						}
+					],
+					"sid": 431550412181567
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "init",
+			"objectClass": "fEnemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 673457301785091,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Choose a movement direction randomly"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fEnemy",
+							"sid": 310935020620956,
+							"parameters": {
+								"instance-variable": "movementDirection",
+								"value": "choose(DIR_Left, DIR_Right)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Initialize variables"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fEnemy",
+							"sid": 614399322247541,
+							"parameters": {
+								"instance-variable": "health",
+								"value": "Self.R_Health"
+							}
+						}
+					],
+					"sid": 702164075440217
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "fEnemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 625780862061734,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fEnemy",
+							"sid": 269467761763283,
+							"parameters": {
+								"instance-variable": "isDead",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 258355628175479,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Move & mirror enemies based on their current direction"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-floor",
+									"objectClass": "fEnemy",
+									"sid": 407556174972574,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [],
+							"sid": 538275089140274,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "fEnemy",
+											"sid": 154312848680172,
+											"parameters": {
+												"instance-variable": "movementDirection",
+												"comparison": 0,
+												"value": "DIR_Left"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "fEnemy",
+											"sid": 198158189848248,
+											"behaviorType": "Platform",
+											"parameters": {
+												"control": "left"
+											}
+										},
+										{
+											"id": "set-mirrored",
+											"objectClass": "fEnemy",
+											"sid": 364071654310379,
+											"parameters": {
+												"state": "mirrored"
+											}
+										}
+									],
+									"sid": 965440363814117
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 422863285103339
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "fEnemy",
+											"sid": 232052810910358,
+											"behaviorType": "Platform",
+											"parameters": {
+												"control": "right"
+											}
+										},
+										{
+											"id": "set-mirrored",
+											"objectClass": "fEnemy",
+											"sid": 874305457025452,
+											"parameters": {
+												"state": "not-mirrored"
+											}
+										}
+									],
+									"sid": 489255990737273
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Kill fallen enemies"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-y",
+									"objectClass": "fEnemy",
+									"sid": 782042892788575,
+									"parameters": {
+										"comparison": 4,
+										"y-co-ordinate": "LayoutHeight"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "fEnemy",
+									"sid": 598633095102577
+								}
+							],
+							"sid": 676110440982015
+						}
+					]
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "reverseDirection",
+			"objectClass": "fEnemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 769150547269325,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fEnemy",
+							"sid": 515899359776886,
+							"parameters": {
+								"instance-variable": "isDead",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fEnemy",
+							"sid": 275221440766878,
+							"parameters": {
+								"instance-variable": "movementDirection",
+								"value": "Self.movementDirection = DIR_Left ? DIR_Right : DIR_Left"
+							}
+						}
+					],
+					"sid": 647533447372521
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "changeHealth",
+			"objectClass": "fEnemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "amount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 641094936391528
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 212349042718803,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fEnemy",
+							"sid": 380469271730231,
+							"parameters": {
+								"instance-variable": "isDead",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 744494750352935,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Change health (hurt/heal)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "fEnemy",
+									"sid": 336517556577684,
+									"parameters": {
+										"instance-variable": "health",
+										"value": "max(0, Self.health + amount)"
+									}
+								}
+							],
+							"sid": 999397357850051
+						},
+						{
+							"eventType": "comment",
+							"text": "If enemy's dead..."
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "fEnemy",
+									"sid": 589475665296255,
+									"parameters": {
+										"instance-variable": "health",
+										"comparison": 3,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "fEnemy",
+									"sid": 829348644182270,
+									"parameters": {
+										"instance-variable": "isDead",
+										"value": "YES"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "fEnemy",
+									"sid": 931106739772617,
+									"behaviorType": "Platform",
+									"parameters": {
+										"state": "disabled"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "todo_mn"
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "fEnemy",
+									"sid": 210750506292548,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_Opacity_Dead",
+										"property": "offsetOpacity",
+										"end-value": "0",
+										"time": "0.5",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "yes",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 620344659412252
+						},
+						{
+							"eventType": "comment",
+							"text": "If enemy's not dead yet..."
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 946801880192460
+								}
+							],
+							"actions": [],
+							"sid": 551812788744495
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 328310683904028
+}

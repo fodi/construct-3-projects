@@ -1,0 +1,470 @@
+{
+	"name": "vNames 🗃️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Animations"
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Climbing",
+			"type": "string",
+			"initialValue": "Climbing",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 373302689739123
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Duck",
+			"type": "string",
+			"initialValue": "Duck",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 886879262973197
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Hit",
+			"type": "string",
+			"initialValue": "Hit",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 317523769358473
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Idle",
+			"type": "string",
+			"initialValue": "Idle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 366850035813079
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Jumping",
+			"type": "string",
+			"initialValue": "Jumping",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 399351233667571
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Falling",
+			"type": "string",
+			"initialValue": "Falling",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 313206130464501
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Walking",
+			"type": "string",
+			"initialValue": "Walking",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 880645257044724
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Inactive",
+			"type": "string",
+			"initialValue": "Inactive",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 415001204384361
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Active",
+			"type": "string",
+			"initialValue": "Active",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 533874363555822
+		},
+		{
+			"eventType": "comment",
+			"text": "Audio"
+		},
+		{
+			"eventType": "variable",
+			"name": "AUDIO_BGM",
+			"type": "string",
+			"initialValue": "BGM",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 241819260826883
+		},
+		{
+			"eventType": "variable",
+			"name": "AUDIO_SFX",
+			"type": "string",
+			"initialValue": "SFX",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 712266469713370
+		},
+		{
+			"eventType": "comment",
+			"text": "Directions"
+		},
+		{
+			"eventType": "variable",
+			"name": "DIR_Left",
+			"type": "string",
+			"initialValue": "Left",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 456780913923043
+		},
+		{
+			"eventType": "variable",
+			"name": "DIR_Right",
+			"type": "string",
+			"initialValue": "Right",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 968544181784072
+		},
+		{
+			"eventType": "comment",
+			"text": "Image points"
+		},
+		{
+			"eventType": "variable",
+			"name": "IP_BumpCheck1",
+			"type": "string",
+			"initialValue": "BumpCheck1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 356721551168129
+		},
+		{
+			"eventType": "variable",
+			"name": "IP_BumpCheck2",
+			"type": "string",
+			"initialValue": "BumpCheck2",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 181582005209442
+		},
+		{
+			"eventType": "variable",
+			"name": "IP_Blurb",
+			"type": "string",
+			"initialValue": "Blurb",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 609003741768667
+		},
+		{
+			"eventType": "variable",
+			"name": "IP_Item",
+			"type": "string",
+			"initialValue": "Item",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 642222635279368
+		},
+		{
+			"eventType": "comment",
+			"text": "Layers"
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Main",
+			"type": "string",
+			"initialValue": "Main",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 556452912442956
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_UI",
+			"type": "string",
+			"initialValue": "UI",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 937004104353399
+		},
+		{
+			"eventType": "comment",
+			"text": "Loops"
+		},
+		{
+			"eventType": "variable",
+			"name": "LOOP_X",
+			"type": "string",
+			"initialValue": "X",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 651503340093231
+		},
+		{
+			"eventType": "variable",
+			"name": "LOOP_Y",
+			"type": "string",
+			"initialValue": "Y",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 452966531758756
+		},
+		{
+			"eventType": "comment",
+			"text": "Roles"
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_DevLog",
+			"type": "string",
+			"initialValue": "DevLog",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 514423711778769
+		},
+		{
+			"eventType": "comment",
+			"text": "Solids"
+		},
+		{
+			"eventType": "variable",
+			"name": "SOLID_Enemy",
+			"type": "string",
+			"initialValue": "Enemy",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 573544195503632
+		},
+		{
+			"eventType": "comment",
+			"text": "Templates"
+		},
+		{
+			"eventType": "variable",
+			"name": "TEMPLATE_Blurb",
+			"type": "string",
+			"initialValue": "Blurb",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 537438449172566
+		},
+		{
+			"eventType": "comment",
+			"text": "Tiles"
+		},
+		{
+			"eventType": "variable",
+			"name": "TILE_Block",
+			"type": "number",
+			"initialValue": "143",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 274496556478379
+		},
+		{
+			"eventType": "comment",
+			"text": "Timers"
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Invincibility",
+			"type": "string",
+			"initialValue": "Invincibility",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 498903168565035
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_CoyoteTime",
+			"type": "string",
+			"initialValue": "CoyoteTime",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 903734916417831
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_JumpBuffering",
+			"type": "string",
+			"initialValue": "JumpBuffering",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 151169074374296
+		},
+		{
+			"eventType": "comment",
+			"text": "Tweens"
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_Color_Hurt",
+			"type": "string",
+			"initialValue": "Hurt",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 423312064402468
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_Color_Healed",
+			"type": "string",
+			"initialValue": "Healed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 201594296104631
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_Opacity_Dead",
+			"type": "string",
+			"initialValue": "Opacity_Dead",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 845207975451467
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Beat",
+			"type": "string",
+			"initialValue": "Beat",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 199862402706886
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Destroy",
+			"type": "string",
+			"initialValue": "Destroy",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 272462068348577
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Templates",
+			"description": "",
+			"isActiveOnStart": false,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Animations"
+				},
+				{
+					"eventType": "variable",
+					"name": "ANIM_Animation1",
+					"type": "string",
+					"initialValue": "Animation1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 431026041037994
+				},
+				{
+					"eventType": "variable",
+					"name": "DIR_Up",
+					"type": "string",
+					"initialValue": "Up",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 124194810173557
+				},
+				{
+					"eventType": "variable",
+					"name": "DIR_Down",
+					"type": "string",
+					"initialValue": "Down",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 990623432833432
+				},
+				{
+					"eventType": "comment",
+					"text": "Effects"
+				},
+				{
+					"eventType": "variable",
+					"name": "EFFECTS_Effect1",
+					"type": "string",
+					"initialValue": "Effect1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 440839480306403
+				},
+				{
+					"eventType": "comment",
+					"text": "Object types"
+				},
+				{
+					"eventType": "variable",
+					"name": "OT_ObjectType1",
+					"type": "string",
+					"initialValue": "ObjectType1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 122405122541165
+				},
+				{
+					"eventType": "comment",
+					"text": "Signals"
+				},
+				{
+					"eventType": "variable",
+					"name": "SIGNAL_Signal1",
+					"type": "string",
+					"initialValue": "Signal1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 774070709637436
+				}
+			],
+			"sid": 731591257483641
+		}
+	],
+	"sid": 359473117755789
+}

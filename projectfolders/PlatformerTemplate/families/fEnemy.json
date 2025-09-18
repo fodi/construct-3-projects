@@ -1,0 +1,56 @@
+{
+	"name": "fEnemy",
+	"plugin-id": "Sprite",
+	"sid": 190209597602714,
+	"instanceVariables": [
+		{
+			"name": "R_Health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 628168510751464
+		},
+		{
+			"name": "movementDirection",
+			"type": "string",
+			"desc": "",
+			"show": false,
+			"sid": 489250132836456
+		},
+		{
+			"name": "health",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 482136858644178
+		},
+		{
+			"name": "isDead",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 866877736463158
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Platform",
+			"name": "Platform",
+			"sid": 789342327519514
+		},
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 227256869638063
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 813831826696118
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Enemy"
+	]
+}

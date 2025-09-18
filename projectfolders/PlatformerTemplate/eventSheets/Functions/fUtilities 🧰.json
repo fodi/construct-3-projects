@@ -1,0 +1,729 @@
+{
+	"name": "fUtilities 🧰",
+	"events": [
+		{
+			"functionName": "toggleFullscreen",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 886938183459389,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-fullscreen",
+							"objectClass": "Browser",
+							"sid": 673139129491414
+						}
+					],
+					"actions": [
+						{
+							"id": "cancel-fullscreen",
+							"objectClass": "Browser",
+							"sid": 460028958641810
+						}
+					],
+					"sid": 783256117940843
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 240506212898677
+						}
+					],
+					"actions": [
+						{
+							"id": "request-fullscreen",
+							"objectClass": "Browser",
+							"sid": 332860445881325,
+							"parameters": {
+								"mode": "stretch-letterbox-scale",
+								"navigation-ui": "hide"
+							}
+						}
+					],
+					"sid": 678419407173315
+				}
+			]
+		},
+		{
+			"functionName": "toggleLayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "layerName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 383761321401365
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 725868792420929,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "layer-is-visible",
+							"objectClass": "System",
+							"sid": 908801748603377,
+							"parameters": {
+								"layer": "layerName"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 281814701868354,
+							"parameters": {
+								"layer": "layerName",
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 157471086757443,
+							"parameters": {
+								"layer": "layerName",
+								"interactive": false
+							}
+						}
+					],
+					"sid": 922971262908364
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 739332937534315
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 137848120911428,
+							"parameters": {
+								"layer": "layerName",
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 186163961158381,
+							"parameters": {
+								"layer": "layerName",
+								"interactive": true
+							}
+						}
+					],
+					"sid": 899862841752459
+				}
+			]
+		},
+		{
+			"functionName": "mapValue",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "oldValue",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 290320810502483
+				},
+				{
+					"name": "oldRangeMin",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 128645604443553
+				},
+				{
+					"name": "oldRangeMax",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 208697590330768
+				},
+				{
+					"name": "newRangeMin",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 402742176822800
+				},
+				{
+					"name": "newRangeMax",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 876741298571593
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 660127848899638,
+					"parameters": {
+						"value": "min(max((oldValue - oldRangeMin) * (newRangeMax - newRangeMin) / (oldRangeMax - oldRangeMin) + newRangeMin, newRangeMin) , newRangeMax)"
+					}
+				}
+			],
+			"sid": 363416407062200
+		},
+		{
+			"functionName": "objectNameExists",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "name",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 977797587973872
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"runtime.setReturnValue(runtime.objects[localVars.name] ? 1 : 0)"
+					]
+				}
+			],
+			"sid": 985779994453727
+		},
+		{
+			"functionName": "volumePercentToDb",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "percent",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 552900222084880
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 378464548011383,
+					"parameters": {
+						"value": "-log10(100 / (percent)) * 33.2"
+					}
+				}
+			],
+			"sid": 875967104905781
+		},
+		{
+			"functionName": "expDecay",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "from",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 660941667729529
+				},
+				{
+					"name": "to",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 657549916212738
+				},
+				{
+					"name": "decay",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "useful range is 1 - 25",
+					"sid": 734892184369619
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "based on https://www.youtube.com/watch?v=LSNQuFEDOyQ"
+				},
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 643918058300636,
+					"parameters": {
+						"value": "to + (from - to) * exp(-decay * dt)"
+					}
+				}
+			],
+			"sid": 135747702409854
+		},
+		{
+			"functionName": "hex2color",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "hex",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 683275630346362
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Function by R0J0hound https://www.construct.net/en/forum/construct-3/how-do-i-8/hex-colour-values-code-179603"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 223438399487418,
+					"parameters": {
+						"variable": "hex",
+						"value": "left(\"000000\", max(0, 6-len(hex)))"
+					}
+				}
+			],
+			"sid": 180752882577265,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "C_HexDigits",
+					"type": "string",
+					"initialValue": "0123456789ABCDEF",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 535102081963566
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 196480844336830,
+							"parameters": {
+								"value": "rgbEx255(find(C_HexDigits, mid(hex,0,1))*16+find(C_HexDigits, mid(hex,1,1)), find(C_HexDigits, mid(hex,2,1))*16+find(C_HexDigits, mid(hex,3,1)), find(C_HexDigits, mid(hex,4,1))*16+find(C_HexDigits, mid(hex,5,1)))"
+							}
+						}
+					],
+					"sid": 117563489929905
+				}
+			]
+		},
+		{
+			"functionName": "distance3D",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x1",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 590421255056591
+				},
+				{
+					"name": "y1",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 643921034614564
+				},
+				{
+					"name": "z1",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 121037892189490
+				},
+				{
+					"name": "x2",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 511290319926693
+				},
+				{
+					"name": "y2",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 988772735295340
+				},
+				{
+					"name": "z2",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 356084965613438
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 268312568073306,
+					"parameters": {
+						"value": "sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)"
+					}
+				}
+			],
+			"sid": 603412078347250
+		},
+		{
+			"functionName": "getFormattedTime",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "seconds",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 522193307353509
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 905055554994244,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "hours",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 702372864472884
+				},
+				{
+					"eventType": "variable",
+					"name": "minutes",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 873362813365633
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 923326540158736,
+							"parameters": {
+								"variable": "hours",
+								"value": "seconds / 3600"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 790445611546321,
+							"parameters": {
+								"variable": "minutes",
+								"value": "seconds / 60"
+							}
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 454702085137188,
+							"parameters": {
+								"value": "(hours >= 1 ? int(hours) & \":\" : \"\") & (minutes >= 1 ? zeropad(int(minutes), 2) & \":\" : \"\") & zeropad((seconds % 60), 2)"
+							}
+						}
+					],
+					"sid": 456305179917809
+				}
+			]
+		},
+		{
+			"functionName": "getDevInfo",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "divider",
+					"type": "string",
+					"initialValue": " | ",
+					"comment": "",
+					"sid": 843055132204122
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 379954441688701,
+					"parameters": {
+						"value": "StringSub(\"Build {1}{0}{2} FPS{0}{3}% CPU{0}{4}% GPU{0}{5} objects\", divider, projectversion, fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
+					}
+				}
+			],
+			"sid": 562801702725526
+		},
+		{
+			"functionName": "roundToDpPad",
+			"functionDescription": "Round to decimal points with padded decimals",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "value",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 809342691811033
+				},
+				{
+					"name": "padding",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 263115614997687
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 711008528960360,
+					"parameters": {
+						"value": "int(value) & \".\" & zeropad(\n  int(\n    (value - int(value)) * padding * 10\n  )\n, padding)"
+					}
+				}
+			],
+			"sid": 576050989151906
+		},
+		{
+			"functionName": "getHammingDistance",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "string1",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 128332856701493
+				},
+				{
+					"name": "string2",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 870515192872343
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "This function is case sensitive."
+				}
+			],
+			"sid": 225898879360065,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "If strings are equal length, count how many characters differ at the same positions"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 362128335644351,
+							"parameters": {
+								"first-value": "len(string1)",
+								"comparison": 0,
+								"second-value": "len(string2)"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 973785140911547,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "hammingDistance",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 805463626845729
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 891879592932081,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "len(string1) - 1"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 656985020264240,
+									"parameters": {
+										"first-value": "mid(string1, loopindex, 1)",
+										"comparison": 1,
+										"second-value": "mid(string2, loopindex, 1)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 707912901605245,
+									"parameters": {
+										"variable": "hammingDistance",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 742751830573440
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-function-return-value",
+									"objectClass": "Functions",
+									"sid": 876887968523896,
+									"parameters": {
+										"value": "hammingDistance"
+									}
+								}
+							],
+							"sid": 900491703147815
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "If strings are different length, return \"nothing\" (-1)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 445236267770319
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 436795710574999,
+							"parameters": {
+								"value": "NOTHING"
+							}
+						}
+					],
+					"sid": 279298993543589
+				}
+			]
+		}
+	],
+	"sid": 622480337843055
+}

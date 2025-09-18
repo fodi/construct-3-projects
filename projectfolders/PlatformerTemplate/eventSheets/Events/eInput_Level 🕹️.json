@@ -1,0 +1,319 @@
+{
+	"name": "eInput_Level 🕹️",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player 1",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 905974554965955,
+							"parameters": {
+								"key": 87
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 315930153202827,
+							"parameters": {
+								"gamepad": "0",
+								"button": "button-a"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 697914766107689,
+							"parameters": {
+								"instance-variable": "IN_Jump",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 433910257301993,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 273467316965305
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 455507989078262,
+							"parameters": {
+								"instance-variable": "IN_Jump",
+								"value": "NO"
+							}
+						}
+					],
+					"sid": 737918041049650
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 597069241162936,
+							"parameters": {
+								"key": 65
+							}
+						},
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 389347218240901,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "left-analog-x-axis",
+								"comparison": 2,
+								"value": "0"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 581633587641250,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-left"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 766513225756735,
+							"parameters": {
+								"instance-variable": "IN_Left",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 461237255128773,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 353195348518508
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 919019767901574,
+							"parameters": {
+								"instance-variable": "IN_Left",
+								"value": "NO"
+							}
+						}
+					],
+					"sid": 804574184931015
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 530080619776878,
+							"parameters": {
+								"key": 68
+							}
+						},
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 310682140499429,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "left-analog-x-axis",
+								"comparison": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 614614597253747,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 585109066116190,
+							"parameters": {
+								"instance-variable": "IN_Right",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 484783237027644,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 502316045240732
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 663609440050028,
+							"parameters": {
+								"instance-variable": "IN_Right",
+								"value": "NO"
+							}
+						}
+					],
+					"sid": 207516959401981
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 548898058133979,
+							"parameters": {
+								"key": 87
+							}
+						},
+						{
+							"id": "on-button-pressed",
+							"objectClass": "Gamepad",
+							"sid": 385592114987196,
+							"parameters": {
+								"gamepad": "0",
+								"button": "button-a"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "onJumpInput",
+							"objectClass": "fPlayer",
+							"sid": 158056980025474
+						}
+					],
+					"sid": 734619492671909,
+					"isOrBlock": true
+				}
+			],
+			"sid": 299346862697422
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Level",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 197502420697174,
+							"parameters": {
+								"key": 80
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "togglePause",
+							"sid": 772338098356266
+						}
+					],
+					"sid": 185539928780962
+				}
+			],
+			"sid": 998825984920673
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Dev",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 149701373677836,
+							"parameters": {
+								"key": 82
+							}
+						},
+						{
+							"id": "on-button-pressed",
+							"objectClass": "Gamepad",
+							"sid": 933258528903588,
+							"parameters": {
+								"gamepad": "0",
+								"button": "start-menu"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "reset-global-variables",
+							"objectClass": "System",
+							"sid": 922836935160962,
+							"parameters": {
+								"reset-static": false
+							}
+						},
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 795271648988214
+						}
+					],
+					"sid": 595875708705833,
+					"isOrBlock": true
+				}
+			],
+			"sid": 994499235451194
+		}
+	],
+	"sid": 758821500675486
+}

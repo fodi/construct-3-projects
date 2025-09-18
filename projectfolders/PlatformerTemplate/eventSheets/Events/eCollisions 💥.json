@@ -1,0 +1,252 @@
+{
+	"name": "eCollisions 💥",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Enemy + Enemy"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Enemy",
+					"sid": 930942063782366,
+					"parameters": {
+						"object": "fEnemy"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 598192149342506,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "Enemy",
+							"sid": 778569330717624,
+							"parameters": {
+								"object": "fEnemy",
+								"offset-x": "1",
+								"offset-y": "0"
+							}
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "Enemy",
+							"sid": 896517244108051,
+							"parameters": {
+								"object": "fEnemy",
+								"offset-x": "-1",
+								"offset-y": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "reverseDirection",
+							"objectClass": "Enemy",
+							"customActionObjectClass": "fEnemy",
+							"sid": 957818860618980
+						},
+						{
+							"customAction": "reverseDirection",
+							"objectClass": "fEnemy",
+							"sid": 162753141801896
+						}
+					],
+					"sid": 242830330602384,
+					"isOrBlock": true
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Enemy + Walls"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Enemy",
+					"sid": 121732261556857,
+					"parameters": {
+						"object": "Wall"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 248867609205679,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Reverse enemy movement direction"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "Enemy",
+							"sid": 706591550558737,
+							"parameters": {
+								"object": "Wall",
+								"offset-x": "1",
+								"offset-y": "0"
+							}
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "Enemy",
+							"sid": 864416633825011,
+							"parameters": {
+								"object": "Wall",
+								"offset-x": "-1",
+								"offset-y": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "reverseDirection",
+							"objectClass": "Enemy",
+							"customActionObjectClass": "fEnemy",
+							"sid": 307390968793722
+						}
+					],
+					"sid": 829948464223048,
+					"isOrBlock": true
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Enemy + Player"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 760478537438535,
+					"parameters": {
+						"object": "Enemy"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 695497347036482,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 749075772240722,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 485242156832275,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "If player jumped on the enemy..."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-jumping",
+							"objectClass": "Player",
+							"sid": 181979336755472,
+							"disabled": true,
+							"behaviorType": "Platform",
+							"isInverted": true
+						},
+						{
+							"id": "is-falling",
+							"objectClass": "Player",
+							"sid": 393513301831943,
+							"behaviorType": "Platform"
+						},
+						{
+							"id": "compare-y",
+							"objectClass": "Player",
+							"sid": 152132085631696,
+							"parameters": {
+								"comparison": 2,
+								"y-co-ordinate": "Enemy.Y"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "bump",
+							"objectClass": "Player",
+							"customActionObjectClass": "fPlayer",
+							"sid": 471380477876178
+						},
+						{
+							"customAction": "changeHealth",
+							"objectClass": "Enemy",
+							"customActionObjectClass": "fEnemy",
+							"sid": 371449302405730,
+							"parameters": [
+								"-Self.health"
+							]
+						}
+					],
+					"sid": 525038300366786
+				},
+				{
+					"eventType": "comment",
+					"text": "If enemy hurt the player"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 222416921619917
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "todo_mn"
+						},
+						{
+							"customAction": "changeHealth",
+							"objectClass": "Player",
+							"customActionObjectClass": "fPlayer",
+							"sid": 943776727590214,
+							"parameters": [
+								"-1"
+							]
+						}
+					],
+					"sid": 292217454835620
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Item + Player"
+		}
+	],
+	"sid": 441405412204844
+}

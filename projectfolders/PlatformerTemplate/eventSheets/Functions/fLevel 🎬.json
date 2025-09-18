@@ -1,0 +1,154 @@
+{
+	"name": "fLevel 🎬",
+	"events": [
+		{
+			"functionName": "initLevel",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"callFunction": "Rules_init",
+					"sid": 390594116730061,
+					"parameters": [
+						"EMPTY"
+					]
+				},
+				{
+					"id": "set-collision-cell-size",
+					"objectClass": "System",
+					"sid": 423401238670198,
+					"parameters": {
+						"width": "128",
+						"height": "128"
+					}
+				},
+				{
+					"customAction": "spawn",
+					"objectClass": "Player",
+					"customActionObjectClass": "fPlayer",
+					"sid": 329453364501944,
+					"parameters": [
+						"LayoutWidth * 0.5",
+						"LayoutHeight * 0.5"
+					]
+				}
+			],
+			"sid": 551882248979971,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 634387291176249,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"#ObjectTemplates\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 948102782152673,
+							"parameters": {
+								"layout": "Level"
+							}
+						}
+					],
+					"sid": 393157524293096
+				}
+			]
+		},
+		{
+			"functionName": "togglePause",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 809940863427421,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 919876928730091,
+							"parameters": {
+								"variable": "isPaused",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 735846580416898,
+							"parameters": {
+								"variable": "isPaused",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 794453566470112,
+							"parameters": {
+								"time-scale": "0"
+							}
+						}
+					],
+					"sid": 893541940908097
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 639831566345621
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 136729695085155,
+							"parameters": {
+								"variable": "isPaused",
+								"value": "NO"
+							}
+						},
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 755107212905453,
+							"parameters": {
+								"time-scale": "1"
+							}
+						}
+					],
+					"sid": 315146358317456
+				}
+			]
+		}
+	],
+	"sid": 849818322627845
+}

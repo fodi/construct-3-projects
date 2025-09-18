@@ -1,0 +1,64 @@
+{
+	"name": "eTimers ⏰",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-timer",
+					"objectClass": "Player",
+					"sid": 298944731428036,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_CoyoteTime"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 991461519107445,
+					"parameters": {
+						"object": "Player"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 758160444359889,
+					"parameters": {
+						"instance-variable": "R_ExtraJumps",
+						"comparison": 4,
+						"value": "1"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 329854279684629,
+					"parameters": {
+						"instance-variable": "normalJumpsLeft",
+						"comparison": 4,
+						"value": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "If multi jump is enabled and coyote timer expired, subtract one jump"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 138009617630032,
+					"parameters": {
+						"instance-variable": "normalJumpsLeft",
+						"value": "max(0, Self.normalJumpsLeft - 1)"
+					}
+				}
+			],
+			"sid": 806930130478723
+		}
+	],
+	"sid": 750823255495774
+}

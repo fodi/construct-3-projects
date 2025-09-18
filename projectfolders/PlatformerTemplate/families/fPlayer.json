@@ -1,0 +1,124 @@
+{
+	"name": "fPlayer",
+	"plugin-id": "Sprite",
+	"sid": 732931693731571,
+	"instanceVariables": [
+		{
+			"name": "R_Health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 516461695791194
+		},
+		{
+			"name": "R_InvincibilityTime",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 274771261871667
+		},
+		{
+			"name": "R_ExtraJumps",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 683766632917221
+		},
+		{
+			"name": "R_CoyoteTime",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 940547917753383
+		},
+		{
+			"name": "R_JumpBufferingTime",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 922087730510843
+		},
+		{
+			"name": "IN_Left",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 562621567367908
+		},
+		{
+			"name": "IN_Right",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 435853755169570
+		},
+		{
+			"name": "IN_Jump",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 375847566808092
+		},
+		{
+			"name": "health",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 789276514600445
+		},
+		{
+			"name": "isDead",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 972384928879901
+		},
+		{
+			"name": "normalJumpsLeft",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 224517067335946
+		},
+		{
+			"name": "extraJumpsLeft",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 326825265321605
+		},
+		{
+			"name": "carriedItemUID",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 548143418809342
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Platform",
+			"name": "Platform",
+			"sid": 924200421075513
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 138229619713436
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 450291487055474
+		},
+		{
+			"behaviorId": "wrap",
+			"name": "Wrap",
+			"sid": 533531034550768
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Player"
+	]
+}

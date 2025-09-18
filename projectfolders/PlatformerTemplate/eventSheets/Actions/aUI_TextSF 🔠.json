@@ -1,0 +1,81 @@
+{
+	"name": "aUI_TextSF 🔠",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawnBlurb",
+			"objectClass": "UI_TextSF",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 699369496481707
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 245728594204407
+				},
+				{
+					"name": "text",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 204019615085727
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Player",
+					"sid": 671012398099009,
+					"parameters": {
+						"object": "UI_TextSF",
+						"layer": "LAYER_UI",
+						"image-point": "IP_Blurb",
+						"create-hierarchy": false,
+						"template-name": "TEMPLATE_Blurb"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_TextSF",
+					"sid": 259753177548847,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetY",
+						"end-value": "Self.Y - 50",
+						"time": "1.5",
+						"ease": "easeoutquint",
+						"destroy-on-complete": "yes",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF",
+					"sid": 361261872159544,
+					"parameters": {
+						"text": "text"
+					}
+				}
+			],
+			"sid": 393221130326607
+		}
+	],
+	"sid": 134719457517996
+}

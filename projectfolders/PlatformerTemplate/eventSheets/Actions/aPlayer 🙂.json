@@ -1,0 +1,1290 @@
+{
+	"name": "aPlayer 🙂",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 825898355180890
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 113417010397913
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 280875688716324,
+					"parameters": {
+						"object-to-create": "fPlayer",
+						"layer": "LAYER_Main",
+						"x": "x",
+						"y": "y",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"customAction": "init",
+					"objectClass": "fPlayer",
+					"sid": 426924506864408
+				}
+			],
+			"sid": 620668841153509
+		},
+		{
+			"aceType": "action",
+			"aceName": "init",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 899848898046965,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-solid-collision-filter",
+							"objectClass": "fPlayer",
+							"sid": 796997999859985,
+							"parameters": {
+								"mode": "exclusive",
+								"tags": "SOLID_Enemy"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 424569019641066,
+							"parameters": {
+								"instance-variable": "health",
+								"value": "Self.R_Health"
+							}
+						}
+					],
+					"sid": 257940537030089
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 218711875622774,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 308555518980144,
+							"parameters": {
+								"instance-variable": "isDead",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 922014378509905,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "Input / movement"
+								}
+							],
+							"sid": 408370005981492,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "fPlayer",
+											"sid": 387272000018882,
+											"parameters": {
+												"instance-variable": "IN_Left",
+												"comparison": 0,
+												"value": "YES"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "fPlayer",
+											"sid": 123367907177984,
+											"behaviorType": "Platform",
+											"parameters": {
+												"control": "left"
+											}
+										},
+										{
+											"id": "set-mirrored",
+											"objectClass": "fPlayer",
+											"sid": 711220332876091,
+											"parameters": {
+												"state": "mirrored"
+											}
+										}
+									],
+									"sid": 271901382192782
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "fPlayer",
+											"sid": 471206242442240,
+											"parameters": {
+												"instance-variable": "IN_Right",
+												"comparison": 0,
+												"value": "YES"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "fPlayer",
+											"sid": 145527166979168,
+											"behaviorType": "Platform",
+											"parameters": {
+												"control": "right"
+											}
+										},
+										{
+											"id": "set-mirrored",
+											"objectClass": "fPlayer",
+											"sid": 363350555820014,
+											"parameters": {
+												"state": "not-mirrored"
+											}
+										}
+									],
+									"sid": 790260589322278
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "fPlayer",
+											"sid": 244276481214161,
+											"parameters": {
+												"instance-variable": "IN_Jump",
+												"comparison": 0,
+												"value": "YES"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "fPlayer",
+											"sid": 281443231338546,
+											"behaviorType": "Platform",
+											"parameters": {
+												"control": "jump"
+											}
+										}
+									],
+									"sid": 422071974937355,
+									"disabled": true
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "Animations"
+								}
+							],
+							"sid": 320811191759730,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-jumping",
+											"objectClass": "fPlayer",
+											"sid": 242801549818926,
+											"behaviorType": "Platform"
+										}
+									],
+									"actions": [],
+									"sid": 977402254552517,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "Switch to jumping animation if not yet playing"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-animation-playing",
+													"objectClass": "fPlayer",
+													"sid": 238537453324950,
+													"parameters": {
+														"animation": "ANIM_Jumping"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "fPlayer",
+													"sid": 846427526928541,
+													"parameters": {
+														"animation": "ANIM_Jumping",
+														"from": "beginning"
+													}
+												}
+											],
+											"sid": 979904475056934
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 212229681520277
+										},
+										{
+											"id": "is-falling",
+											"objectClass": "fPlayer",
+											"sid": 469348648089629,
+											"behaviorType": "Platform"
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "fPlayer",
+											"sid": 447821703681966,
+											"parameters": {
+												"animation": "ANIM_Falling",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 995624287369791
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 261860445151489
+										},
+										{
+											"id": "is-on-floor",
+											"objectClass": "fPlayer",
+											"sid": 226753575293862,
+											"behaviorType": "Platform"
+										}
+									],
+									"actions": [],
+									"sid": 396738272859215,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-moving",
+													"objectClass": "fPlayer",
+													"sid": 503618713405392,
+													"behaviorType": "Platform"
+												}
+											],
+											"actions": [],
+											"sid": 743275749525857,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-animation-playing",
+															"objectClass": "fPlayer",
+															"sid": 570527816683999,
+															"parameters": {
+																"animation": "ANIM_Walking"
+															},
+															"isInverted": true
+														}
+													],
+													"actions": [
+														{
+															"id": "set-animation",
+															"objectClass": "fPlayer",
+															"sid": 539308007948197,
+															"parameters": {
+																"animation": "ANIM_Walking",
+																"from": "beginning"
+															}
+														}
+													],
+													"sid": 585681132860750
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 519485783451248
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "fPlayer",
+													"sid": 819246930127585,
+													"parameters": {
+														"animation": "ANIM_Idle",
+														"from": "beginning"
+													}
+												}
+											],
+											"sid": 421942682134310
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "fPlayer",
+											"sid": 610048748663160,
+											"parameters": {
+												"animation": "ANIM_Walking"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "todo_mn"
+										},
+										{
+											"id": "set-animation-speed",
+											"objectClass": "fPlayer",
+											"sid": 114043887823565,
+											"parameters": {
+												"speed": "max(fPlayer.Platform.Speed, 250) / fPlayer.Platform.MaxSpeed * 13"
+											}
+										}
+									],
+									"sid": 377906958254239
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "While on the floor, (re)start coyote timer"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-floor",
+									"objectClass": "fPlayer",
+									"sid": 984779649098884,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "start-timer",
+									"objectClass": "fPlayer",
+									"sid": 951910508116202,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "Self.R_CoyoteTime",
+										"type": "once",
+										"tag": "TIMER_CoyoteTime"
+									}
+								}
+							],
+							"sid": 531038349773078
+						}
+					]
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "changeHealth",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "amount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 669495472034301
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 335485820392242,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 854378879450017,
+							"parameters": {
+								"instance-variable": "isDead",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 673132029007404,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Hurting player (if they are not invincible)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 907178989808901,
+									"parameters": {
+										"variable": "amount",
+										"comparison": 2,
+										"value": "0"
+									}
+								},
+								{
+									"id": "is-timer-running",
+									"objectClass": "fPlayer",
+									"sid": 341261622185107,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "TIMER_Invincibility"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "fPlayer",
+									"sid": 465038367657158,
+									"parameters": {
+										"instance-variable": "health",
+										"value": "max(Self.health + amount, 0)"
+									}
+								},
+								{
+									"customAction": "spawnBlurb",
+									"objectClass": "UI_TextSF",
+									"sid": 654080216862919,
+									"parameters": [
+										"fPlayer.ImagePointX(IP_Blurb)",
+										"fPlayer.ImagePointY(IP_Blurb)",
+										"\"Ouch!\""
+									]
+								}
+							],
+							"sid": 971223397823853,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "If player is dead..."
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "fPlayer",
+											"sid": 143227905459294,
+											"parameters": {
+												"instance-variable": "health",
+												"comparison": 3,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "fPlayer",
+											"sid": 705687208462155,
+											"parameters": {
+												"instance-variable": "isDead",
+												"value": "YES"
+											}
+										},
+										{
+											"id": "set-enabled",
+											"objectClass": "fPlayer",
+											"sid": 748593223008640,
+											"behaviorType": "Platform",
+											"parameters": {
+												"state": "disabled"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "todo_mn"
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "fPlayer",
+											"sid": 176068721351087,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "TWEEN_Opacity_Dead",
+												"property": "offsetOpacity",
+												"end-value": "0",
+												"time": "0.5",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 199192243936675
+								},
+								{
+									"eventType": "comment",
+									"text": "If player is not dead yet..."
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 665361202101971
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-tweens",
+											"objectClass": "fPlayer",
+											"sid": 785289542952129,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "TWEEN_Color_Hurt"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "fPlayer",
+											"sid": 466983326274440,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "TWEEN_Color_Healed"
+											}
+										},
+										{
+											"id": "set-default-color",
+											"objectClass": "fPlayer",
+											"sid": 286253895846968,
+											"parameters": {
+												"color": "rgbEx(100, 0, 0)"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "todo_mn"
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "fPlayer",
+											"sid": 562863016278662,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "TWEEN_Color_Hurt",
+												"property": "offsetColor",
+												"end-value": "rgbEx(100, 100, 100)",
+												"time": "Self.R_InvincibilityTime",
+												"ease": "easeincubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "start-timer",
+											"objectClass": "fPlayer",
+											"sid": 776825596032465,
+											"behaviorType": "Timer",
+											"parameters": {
+												"duration": "Self.R_InvincibilityTime",
+												"type": "once",
+												"tag": "TIMER_Invincibility"
+											}
+										}
+									],
+									"sid": 627578018004938
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Healing player"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 209158349356159,
+									"parameters": {
+										"variable": "amount",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "fPlayer",
+									"sid": 918038329536363,
+									"parameters": {
+										"instance-variable": "health",
+										"value": "Self.health + amount"
+									}
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "fPlayer",
+									"sid": 105907801339532,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_Color_Hurt"
+									}
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "fPlayer",
+									"sid": 786110202958589,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_Color_Healed"
+									}
+								},
+								{
+									"id": "set-default-color",
+									"objectClass": "fPlayer",
+									"sid": 840794676122510,
+									"parameters": {
+										"color": "rgbEx(0, 100, 0)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "fPlayer",
+									"sid": 646395181087265,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_Color_Healed",
+										"property": "offsetColor",
+										"end-value": "rgbEx(100, 100, 100)",
+										"time": "1",
+										"ease": "easeincubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"customAction": "spawnBlurb",
+									"objectClass": "UI_TextSF",
+									"sid": 805272418423877,
+									"parameters": [
+										"fPlayer.ImagePointX(IP_Blurb)",
+										"fPlayer.ImagePointY(IP_Blurb)",
+										"\"D.E.D.\""
+									]
+								}
+							],
+							"sid": 198069746390824
+						}
+					]
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "resetJumps",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "fPlayer",
+					"sid": 481032731232363,
+					"parameters": {
+						"instance-variable": "normalJumpsLeft",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "fPlayer",
+					"sid": 417644797301005,
+					"parameters": {
+						"instance-variable": "extraJumpsLeft",
+						"value": "Self.R_ExtraJumps"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 995813919757547,
+					"parameters": {
+						"type": "log",
+						"message": "\"Jumps reset, total jumps left: \" & (fPlayer.normalJumpsLeft + fPlayer.extraJumpsLeft)"
+					}
+				}
+			],
+			"sid": 775084843059798
+		},
+		{
+			"aceType": "action",
+			"aceName": "bump",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"customAction": "resetJumps",
+					"objectClass": "fPlayer",
+					"sid": 533801403748892
+				},
+				{
+					"customAction": "jump",
+					"objectClass": "fPlayer",
+					"sid": 334910768168734
+				},
+				{
+					"customAction": "spawnBlurb",
+					"objectClass": "UI_TextSF",
+					"sid": 771469876881823,
+					"parameters": [
+						"fEnemy.ImagePointX(IP_Blurb)",
+						"fEnemy.ImagePointY(IP_Blurb)",
+						"\"Bump\""
+					]
+				}
+			],
+			"sid": 242657499806721
+		},
+		{
+			"aceType": "action",
+			"aceName": "jump",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 478034006299270,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 547057172518566,
+							"parameters": {
+								"instance-variable": "normalJumpsLeft",
+								"comparison": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 813272715715911,
+							"parameters": {
+								"instance-variable": "extraJumpsLeft",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "stop-timer",
+							"objectClass": "fPlayer",
+							"sid": 825864247725663,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_CoyoteTime"
+							}
+						},
+						{
+							"id": "stop-timer",
+							"objectClass": "fPlayer",
+							"sid": 833758499168264,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_JumpBuffering"
+							}
+						},
+						{
+							"id": "set-vector-y",
+							"objectClass": "fPlayer",
+							"sid": 109990510331950,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-y": "-Self.Platform.JumpStrength"
+							}
+						}
+					],
+					"sid": 458953218714657,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "fPlayer",
+									"sid": 578709645477189,
+									"parameters": {
+										"instance-variable": "normalJumpsLeft",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "fPlayer",
+									"sid": 322865988828026,
+									"parameters": {
+										"instance-variable": "normalJumpsLeft",
+										"value": "max(0, Self.normalJumpsLeft - 1)"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 257139631268332,
+									"parameters": {
+										"type": "log",
+										"message": "\"Normal jump spent\""
+									}
+								}
+							],
+							"sid": 719320460843683
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 312542919090377
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "fPlayer",
+									"sid": 372991430905151,
+									"parameters": {
+										"instance-variable": "extraJumpsLeft",
+										"value": "max(0, Self.extraJumpsLeft - 1)"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 470321244905072,
+									"parameters": {
+										"type": "log",
+										"message": "\"Extra jump spent\""
+									}
+								}
+							],
+							"sid": 448974299806748
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 492372178241082,
+									"parameters": {
+										"type": "log",
+										"message": "\"Total jumps left: \" & (fPlayer.normalJumpsLeft + fPlayer.extraJumpsLeft)"
+									}
+								}
+							],
+							"sid": 834010492892810
+						}
+					],
+					"isOrBlock": true
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "onJumpInput",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 789727906851172,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 577189749013156,
+							"parameters": {
+								"instance-variable": "isDead",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 655305352097377,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "canJump",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 830494620618496
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "fPlayer",
+									"sid": 922208939965754,
+									"parameters": {
+										"instance-variable": "normalJumpsLeft",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "fPlayer",
+									"sid": 789480336321199,
+									"parameters": {
+										"instance-variable": "extraJumpsLeft",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 741975833263410,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "Normal jump (on floor)"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-on-floor",
+											"objectClass": "fPlayer",
+											"sid": 502553586956545,
+											"behaviorType": "Platform"
+										}
+									],
+									"actions": [
+										{
+											"customAction": "resetJumps",
+											"objectClass": "fPlayer",
+											"sid": 819370992379847,
+											"disabled": true
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 681926754130087,
+											"parameters": {
+												"variable": "canJump",
+												"value": "YES"
+											}
+										},
+										{
+											"customAction": "spawnBlurb",
+											"objectClass": "UI_TextSF",
+											"sid": 817285028561053,
+											"parameters": [
+												"fPlayer.ImagePointX(IP_Blurb)",
+												"fPlayer.ImagePointY(IP_Blurb)",
+												"\"Floor jump\""
+											]
+										}
+									],
+									"sid": 427887989469974
+								},
+								{
+									"eventType": "comment",
+									"text": "Coyote jump"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 695236911175110
+										},
+										{
+											"id": "is-timer-running",
+											"objectClass": "fPlayer",
+											"sid": 976960477612795,
+											"behaviorType": "Timer",
+											"parameters": {
+												"tag": "TIMER_CoyoteTime"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 776268099908661,
+											"parameters": {
+												"variable": "canJump",
+												"value": "YES"
+											}
+										},
+										{
+											"id": "stop-timer",
+											"objectClass": "fPlayer",
+											"sid": 389817936580396,
+											"behaviorType": "Timer",
+											"parameters": {
+												"tag": "TIMER_CoyoteTime"
+											}
+										},
+										{
+											"customAction": "spawnBlurb",
+											"objectClass": "UI_TextSF",
+											"sid": 550417096903644,
+											"parameters": [
+												"fPlayer.ImagePointX(IP_Blurb)",
+												"fPlayer.ImagePointY(IP_Blurb)",
+												"\"Coyote jump\""
+											]
+										}
+									],
+									"sid": 223991318144206
+								},
+								{
+									"eventType": "comment",
+									"text": "Extra jump"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 406968123666193
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "fPlayer",
+											"sid": 941465894692620,
+											"parameters": {
+												"instance-variable": "extraJumpsLeft",
+												"comparison": 4,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 840194518241627,
+											"parameters": {
+												"variable": "canJump",
+												"value": "YES"
+											}
+										},
+										{
+											"customAction": "spawnBlurb",
+											"objectClass": "UI_TextSF",
+											"sid": 797388159533716,
+											"parameters": [
+												"fPlayer.ImagePointX(IP_Blurb)",
+												"fPlayer.ImagePointY(IP_Blurb)",
+												"\"Extra jump\""
+											]
+										}
+									],
+									"sid": 530512597716173
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 541289640531218,
+									"parameters": {
+										"variable": "canJump",
+										"comparison": 0,
+										"value": "YES"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "jump",
+									"objectClass": "fPlayer",
+									"sid": 329504350552479
+								}
+							],
+							"sid": 174699725636211
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 355645058725103
+								}
+							],
+							"actions": [
+								{
+									"id": "start-timer",
+									"objectClass": "fPlayer",
+									"sid": 321234803901114,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "Self.R_JumpBufferingTime",
+										"type": "once",
+										"tag": "TIMER_JumpBuffering"
+									}
+								}
+							],
+							"sid": 666671958303550
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 880590437968751
+}
