@@ -301,12 +301,12 @@
 					],
 					"actions": [
 						{
-							"id": "set-max-speed",
+							"id": "set-instvar-value",
 							"objectClass": "Camera",
-							"sid": 148324069500665,
-							"behaviorType": "Car",
+							"sid": 971144164271435,
 							"parameters": {
-								"max-speed": "Self.R_Movement_Speed_Fast"
+								"instance-variable": "maxSpeed",
+								"value": "Self.R_Movement_Speed_Fast"
 							}
 						}
 					],
@@ -323,12 +323,12 @@
 					],
 					"actions": [
 						{
-							"id": "set-max-speed",
+							"id": "set-instvar-value",
 							"objectClass": "Camera",
-							"sid": 808681995628399,
-							"behaviorType": "Car",
+							"sid": 787551388051897,
 							"parameters": {
-								"max-speed": "Self.R_Movement_Speed_Normal"
+								"instance-variable": "maxSpeed",
+								"value": "Self.R_Movement_Speed_Normal"
 							}
 						}
 					],

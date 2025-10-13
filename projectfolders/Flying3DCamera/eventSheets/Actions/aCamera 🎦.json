@@ -483,12 +483,12 @@
 					],
 					"actions": [
 						{
-							"id": "simulate-control",
+							"id": "move-at-angle",
 							"objectClass": "Camera",
-							"sid": 840387428787478,
-							"behaviorType": "Car",
+							"sid": 641766318687622,
 							"parameters": {
-								"control": "accelerate"
+								"angle": "Camera.Angle",
+								"distance": "Self.maxSpeed * dt"
 							}
 						}
 					],
@@ -510,12 +510,12 @@
 					],
 					"actions": [
 						{
-							"id": "simulate-control",
+							"id": "move-at-angle",
 							"objectClass": "Camera",
-							"sid": 947257117042230,
-							"behaviorType": "Car",
+							"sid": 973754880413851,
 							"parameters": {
-								"control": "brake"
+								"angle": "Camera.Angle + 180",
+								"distance": "Self.maxSpeed * dt"
 							}
 						}
 					],
@@ -539,10 +539,10 @@
 						{
 							"id": "move-at-angle",
 							"objectClass": "Camera",
-							"sid": 498787308165661,
+							"sid": 451021985978236,
 							"parameters": {
 								"angle": "Camera.Angle - 90",
-								"distance": "Camera.Car.MaxSpeed * dt"
+								"distance": "Self.maxSpeed * dt"
 							}
 						}
 					],
@@ -566,10 +566,10 @@
 						{
 							"id": "move-at-angle",
 							"objectClass": "Camera",
-							"sid": 606078519627787,
+							"sid": 118221326344777,
 							"parameters": {
 								"angle": "Camera.Angle + 90",
-								"distance": "Camera.Car.MaxSpeed * dt"
+								"distance": "Self.maxSpeed * dt"
 							}
 						}
 					],
@@ -593,9 +593,9 @@
 						{
 							"id": "set-z-elevation",
 							"objectClass": "Camera",
-							"sid": 782717835410929,
+							"sid": 720737640406092,
 							"parameters": {
-								"z": "Camera.ZElevation + Camera.Car.MaxSpeed * dt"
+								"z": "Camera.ZElevation + Self.maxSpeed * dt"
 							}
 						}
 					],
@@ -619,9 +619,9 @@
 						{
 							"id": "set-z-elevation",
 							"objectClass": "Camera",
-							"sid": 323026869556704,
+							"sid": 810539835514645,
 							"parameters": {
-								"z": "Camera.ZElevation - Camera.Car.MaxSpeed * dt"
+								"z": "Camera.ZElevation - Self.maxSpeed * dt"
 							}
 						}
 					],
@@ -645,25 +645,25 @@
 						{
 							"id": "set-x",
 							"objectClass": "Camera",
-							"sid": 383727386529234,
+							"sid": 240183344114512,
 							"parameters": {
-								"x": "Self.X + cos(3DCamera.CameraXRotation) * Self.Car.MaxSpeed * dt"
+								"x": "Self.X + cos(3DCamera.CameraXRotation) * Self.maxSpeed * dt"
 							}
 						},
 						{
 							"id": "set-y",
 							"objectClass": "Camera",
-							"sid": 869399916487697,
+							"sid": 936175343314435,
 							"parameters": {
-								"y": "Self.Y + sin(3DCamera.CameraXRotation) * Self.Car.MaxSpeed * dt"
+								"y": "Self.Y + sin(3DCamera.CameraXRotation) * Self.maxSpeed * dt"
 							}
 						},
 						{
 							"id": "set-z-elevation",
 							"objectClass": "Camera",
-							"sid": 510234891486947,
+							"sid": 103854864403898,
 							"parameters": {
-								"z": "Self.ZElevation + cos(3DCamera.CameraYRotation) * Self.Car.MaxSpeed * dt"
+								"z": "Self.ZElevation + cos(3DCamera.CameraYRotation) * Self.maxSpeed * dt"
 							}
 						}
 					],
@@ -687,25 +687,25 @@
 						{
 							"id": "set-x",
 							"objectClass": "Camera",
-							"sid": 847866235361434,
+							"sid": 101498320500853,
 							"parameters": {
-								"x": "Self.X + cos(3DCamera.CameraXRotation) * Self.Car.MaxSpeed * dt * -1"
+								"x": "Self.X + cos(3DCamera.CameraXRotation) * Self.maxSpeed * dt * -1"
 							}
 						},
 						{
 							"id": "set-y",
 							"objectClass": "Camera",
-							"sid": 921400593650191,
+							"sid": 368883640457205,
 							"parameters": {
-								"y": "Self.Y + sin(3DCamera.CameraXRotation) * Self.Car.MaxSpeed * dt * -1"
+								"y": "Self.Y + sin(3DCamera.CameraXRotation) * Self.maxSpeed * dt * -1"
 							}
 						},
 						{
 							"id": "set-z-elevation",
 							"objectClass": "Camera",
-							"sid": 844474524951615,
+							"sid": 911734830644305,
 							"parameters": {
-								"z": "Self.ZElevation + cos(3DCamera.CameraYRotation) * Self.Car.MaxSpeed * dt * -1"
+								"z": "Self.ZElevation + cos(3DCamera.CameraYRotation) * Self.maxSpeed * dt * -1"
 							}
 						}
 					],

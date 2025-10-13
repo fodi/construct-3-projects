@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 44002,
+	"savedWithRelease": 44902,
 	"name": "Flying3DCamera",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -59,13 +59,6 @@
 			"type": "plugin",
 			"id": "TiledBg",
 			"name": "Tiled Background",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Car",
-			"name": "Car",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -140,15 +133,7 @@
 		"subfolders": [
 			{
 				"items": [
-					"_eAnimations 🎞️",
-					"_eCollisions 💥",
-					"_eCreated ✨",
-					"eCycles ⏱️",
-					"_eDestroyed 💀",
-					"_eMovement 🏃",
-					"_eTimers ⏰",
-					"_eTweens 🌓",
-					"_eSignals 📡",
+					"eSystem ⏱️",
 					"eInput_Level 🕹️",
 					"eInput_Global 🔘"
 				],
@@ -157,9 +142,7 @@
 			},
 			{
 				"items": [
-					"_fAudio 🎵",
 					"fLevel 🎬",
-					"_fUI 📟",
 					"fUtilities 🧰"
 				],
 				"subfolders": [],
@@ -286,7 +269,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "3",
+		"version": "4",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

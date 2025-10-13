@@ -3,23 +3,7 @@
 	"events": [
 		{
 			"eventType": "include",
-			"includeSheet": "_eAnimations 🎞️"
-		},
-		{
-			"eventType": "include",
-			"includeSheet": "_eCollisions 💥"
-		},
-		{
-			"eventType": "include",
-			"includeSheet": "_eCreated ✨"
-		},
-		{
-			"eventType": "include",
-			"includeSheet": "eCycles ⏱️"
-		},
-		{
-			"eventType": "include",
-			"includeSheet": "_eDestroyed 💀"
+			"includeSheet": "eSystem ⏱️"
 		},
 		{
 			"eventType": "include",
@@ -28,22 +12,6 @@
 		{
 			"eventType": "include",
 			"includeSheet": "eInput_Level 🕹️"
-		},
-		{
-			"eventType": "include",
-			"includeSheet": "_eMovement 🏃"
-		},
-		{
-			"eventType": "include",
-			"includeSheet": "_eSignals 📡"
-		},
-		{
-			"eventType": "include",
-			"includeSheet": "_eTimers ⏰"
-		},
-		{
-			"eventType": "include",
-			"includeSheet": "_eTweens 🌓"
 		}
 	],
 	"sid": 680353853616029

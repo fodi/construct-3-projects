@@ -25,15 +25,16 @@
 			"desc": "",
 			"show": true,
 			"sid": 586940196261298
-		}
-	],
-	"behaviorTypes": [
+		},
 		{
-			"behaviorId": "Car",
-			"name": "Car",
-			"sid": 140718393518036
+			"name": "maxSpeed",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 556197379188611
 		}
 	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
