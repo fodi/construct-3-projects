@@ -215,9 +215,9 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 834095138666702,
+							"sid": 635594584346365,
 							"parameters": {
-								"value": "min(max((oldValue - oldRangeMin) * (newRangeMax - newRangeMin) / (oldRangeMax - oldRangeMin) + newRangeMin, newRangeMin) , newRangeMax)"
+								"value": "clamp((oldValue - oldRangeMin) * (newRangeMax - newRangeMin) / (oldRangeMax - oldRangeMin) + newRangeMin, newRangeMin, newRangeMax)"
 							}
 						}
 					],

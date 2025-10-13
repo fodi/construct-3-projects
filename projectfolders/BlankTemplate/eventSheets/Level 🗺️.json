@@ -31,10 +31,6 @@
 		},
 		{
 			"eventType": "include",
-			"includeSheet": "_eSignals 📡"
-		},
-		{
-			"eventType": "include",
 			"includeSheet": "_eTimers ⏰"
 		},
 		{
