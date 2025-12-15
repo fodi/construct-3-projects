@@ -671,9 +671,9 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 801748921606850,
+							"sid": 838439578557111,
 							"parameters": {
-								"value": "int(value) & \".\" & zeropad(\n  int(\n    (value - int(value)) * padding * 10\n  )\n, padding)"
+								"value": "int(value) & \".\" & zeropad(\r\n  int(\r\n    (value - int(value)) * 10 ^ padding\r\n  )\r\n, padding)"
 							}
 						}
 					],
