@@ -1,0 +1,44 @@
+{
+	"name": "vPrimitives 🍞",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "\"Booleans\""
+		},
+		{
+			"eventType": "variable",
+			"name": "NO",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 147922381208928
+		},
+		{
+			"eventType": "variable",
+			"name": "YES",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 779372581909143
+		},
+		{
+			"eventType": "comment",
+			"text": "\"Null\""
+		},
+		{
+			"eventType": "variable",
+			"name": "NOTHING",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 146297860307568
+		}
+	],
+	"sid": 270962002325427
+}

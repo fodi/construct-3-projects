@@ -1,0 +1,81 @@
+{
+	"name": "fPlayer",
+	"plugin-id": "Sprite",
+	"sid": 211472061325342,
+	"instanceVariables": [
+		{
+			"name": "IN_Left",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 617047836037917
+		},
+		{
+			"name": "IN_Right",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 403761196178508
+		},
+		{
+			"name": "IN_Up",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 811391053118975
+		},
+		{
+			"name": "IN_Down",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 271084185596330
+		},
+		{
+			"name": "IN_Analog_Movement_Angle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 725600661802779
+		},
+		{
+			"name": "isMoving",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 162361850838681
+		},
+		{
+			"name": "movementVectorX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 629573403527197
+		},
+		{
+			"name": "movementVectorY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 839279706278494
+		},
+		{
+			"name": "movementAngle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 847209033146021
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction",
+			"sid": 810927032615063
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Player"
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"name": "Main 🗺️",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "eInput_Level 🕹️"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eSystem ⏱️"
+		},
+		{
+			"eventType": "comment",
+			"text": "Hi there! This is a template project made by Fodi (fodi.be)."
+		},
+		{
+			"eventType": "comment",
+			"text": "It's a fairly simple top-down player \"controller\" template using the 8 Direction behaviour.\nIt supports 8 direction (WASD, arrows & gamepad D-pad), and 360° input as well. It with a simple player following camera utilizing the Move To behaviour."
+		},
+		{
+			"eventType": "comment",
+			"text": "Recommended usage:\n1. Copy the Player & Camera object types from the project tree and paste it in your project (this should create the fPlayer family automatically\n2. Copy the Player & Camera object instances from the @ Templates layout to your templates / repo layout\n3. Make sure you have the Gamepad, Keyboard, Mouse and Touch \"object types\" (plugins) in your project (you can copy or create them). \"Use mouse input\" on Touch should be disabled.\n4. Copy sheets or their contents from this project to yours. If you're using my blank template, you don't need to copy the vNames and vPrimitives sheets.\n5. Make sure you have a layer named \"Main\", or change the layer name in the \"spawn\" custom action."
+		},
+		{
+			"eventType": "comment",
+			"text": "The project is licensed under CC0 (Public Domain), so you can essentially do whatever you want with it and don't have to credit me."
+		},
+		{
+			"eventType": "comment",
+			"text": "Have fun! If you have questions or feedback, find me in the Construct Community Discord."
+		}
+	],
+	"sid": 680353853616029
+}

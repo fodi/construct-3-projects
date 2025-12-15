@@ -1,0 +1,301 @@
+{
+	"name": "aPlayer 🧑",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 249548651908326
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 775898888627083
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Spawn player and camera"
+				}
+			],
+			"sid": 206107109775604,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 180522983715333,
+							"parameters": {
+								"object-to-create": "fPlayer",
+								"layer": "LAYER_Main",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": true,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 372209625474711,
+							"parameters": {
+								"object-to-create": "Camera",
+								"layer": "LAYER_Main",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 624097324359222
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "fPlayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Handle input, move camera & player"
+				}
+			],
+			"sid": 514944245696248,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Reset \"is moving\" property"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 901873523456039,
+							"parameters": {
+								"instance-variable": "isMoving",
+								"value": "NO"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Move camera toward player"
+						},
+						{
+							"id": "move-to-object",
+							"objectClass": "Camera",
+							"sid": 620704555635001,
+							"behaviorType": "MoveTo",
+							"parameters": {
+								"object": "Player",
+								"image-point": "0",
+								"mode": "direct"
+							}
+						}
+					],
+					"sid": 571496365797949
+				},
+				{
+					"eventType": "comment",
+					"text": "Handle digital movement input"
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 490890937826932,
+							"parameters": {
+								"instance-variable": "movementVectorX",
+								"value": "Self.IN_Right - Self.IN_Left"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 217605554155172,
+							"parameters": {
+								"instance-variable": "movementVectorY",
+								"value": "Self.IN_Down - Self.IN_Up"
+							}
+						}
+					],
+					"sid": 537391681343884
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 860793466635398,
+							"parameters": {
+								"instance-variable": "movementVectorX",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 363021836242068,
+							"parameters": {
+								"instance-variable": "movementVectorY",
+								"comparison": 1,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 459730933294719,
+							"parameters": {
+								"instance-variable": "movementAngle",
+								"value": "angle(0, 0, Self.movementVectorX, Self.movementVectorY)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 908406708385872,
+							"parameters": {
+								"instance-variable": "isMoving",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 187159505946135,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Handle analog movement input"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 139232882433551,
+							"parameters": {
+								"instance-variable": "IN_Analog_Movement_Angle",
+								"comparison": 1,
+								"value": "NOTHING"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 688424631417102,
+							"parameters": {
+								"instance-variable": "movementAngle",
+								"value": "Self.IN_Analog_Movement_Angle"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "fPlayer",
+							"sid": 911095264547127,
+							"parameters": {
+								"instance-variable": "isMoving",
+								"value": "YES"
+							}
+						}
+					],
+					"sid": 872487894965741
+				},
+				{
+					"eventType": "comment",
+					"text": "Move if needed"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "fPlayer",
+							"sid": 655613270679762,
+							"parameters": {
+								"instance-variable": "isMoving",
+								"comparison": 0,
+								"value": "YES"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Note that specifying the vectors means the acceleration property of the 8 Direction behaviour is ignored, the player will start moving instantly at max speed."
+						},
+						{
+							"id": "set-vector-x",
+							"objectClass": "fPlayer",
+							"sid": 999075460666245,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"vector-x": "cos(Self.movementAngle) * Self.8Direction.MaxSpeed"
+							}
+						},
+						{
+							"id": "set-vector-y",
+							"objectClass": "fPlayer",
+							"sid": 273714088061443,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"vector-y": "sin(Self.movementAngle) * Self.8Direction.MaxSpeed"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "fPlayer",
+							"sid": 760631397201937,
+							"parameters": {
+								"angle": "Self.movementAngle"
+							}
+						}
+					],
+					"sid": 972837425142391
+				}
+			]
+		}
+	],
+	"sid": 625828637788680
+}

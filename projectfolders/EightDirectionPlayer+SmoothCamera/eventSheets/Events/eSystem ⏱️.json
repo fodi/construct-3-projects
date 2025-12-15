@@ -1,0 +1,48 @@
+{
+	"name": "eSystem ⏱️",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 331949391903092
+				}
+			],
+			"actions": [
+				{
+					"customAction": "spawn",
+					"objectClass": "Player",
+					"customActionObjectClass": "fPlayer",
+					"sid": 492101115261765,
+					"parameters": [
+						"LayoutWidth * 0.25",
+						"LayoutHeight * 0.25"
+					]
+				}
+			],
+			"sid": 136962526449226
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 491648844475960
+				}
+			],
+			"actions": [
+				{
+					"customAction": "tick",
+					"objectClass": "Player",
+					"customActionObjectClass": "fPlayer",
+					"sid": 165224498197089
+				}
+			],
+			"sid": 655267027744036
+		}
+	],
+	"sid": 918958308783690
+}

@@ -1,0 +1,20 @@
+{
+	"name": "vNames 🗃️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Layers"
+		},
+		{
+			"eventType": "variable",
+			"name": "LAYER_Main",
+			"type": "string",
+			"initialValue": "Main",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 556452912442956
+		}
+	],
+	"sid": 359473117755789
+}
