@@ -1,5 +1,5 @@
 # Fodi's Construct 3 templates / example projects
-This monorepo contains a bunch of Construct 3 projects I'd like to share with the community. Most of them are examples, some provide integrations with 3rd party libraries or services.
+This monorepo contains a bunch of Construct 3 projects I wanted to share with the community. It has my blank template project, a bunch of examples, some of them provide integrations with 3rd party libraries or services.
 
 ## Usage
 Clone the repo or [download the ZIP archive](https://github.com/fodi/construct-3-projects/archive/refs/heads/main.zip), then find the project you're looking for in the `projectfolders` folder & open it as a project folder in Construct 3.
@@ -12,7 +12,7 @@ You can visit this URL to browse and run the exported projects in your browser (
 https://fodi.github.io/construct-3-projects/
 
 ## License
-All code in this repo is available under the MIT License. Projects might contain assets that have different licenses (mostly public domain / CC0, but please double check if you want to use the assets).
+All code in this repo is available under the MIT License unless stated otherwise (some projects are CC0 Public Domain). Projects might contain assets that have different licenses (mostly public domain / CC0, but please double check if you want to use the assets).
 
 ## Wanna buy me a coffee?
 If you find any of this useful and would like to buy me a coffee, you can :) (but please feel no pressure to do so).
