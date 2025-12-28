@@ -1,0 +1,23 @@
+{
+	"name": "UI_TextSF_DevLog",
+	"plugin-id": "Spritefont2",
+	"sid": 830861829356238,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 570,
+		"height": 150,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 8799774,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

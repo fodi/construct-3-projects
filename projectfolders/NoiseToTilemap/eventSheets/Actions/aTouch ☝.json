@@ -1,0 +1,205 @@
+{
+	"name": "aTouch ☝",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "onScroll_start",
+			"objectClass": "Touch",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 615606388705569,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 303352085926827,
+							"parameters": {
+								"variable": "touch0StartX",
+								"value": "Touch.XAt(0)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 270325634472807,
+							"parameters": {
+								"variable": "touch0StartY",
+								"value": "Touch.YAt(0)"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "TouchCursor",
+							"sid": 694175630465130,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "TouchCursor",
+							"sid": 677837831685528,
+							"parameters": {
+								"x": "Touch.XAt(0)",
+								"y": "Touch.YAt(0)"
+							}
+						}
+					],
+					"sid": 571573774329593
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "onScroll_tick",
+			"objectClass": "Touch",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 101872421733595,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "touchAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 270108098882556
+				},
+				{
+					"eventType": "variable",
+					"name": "vectorX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 705434793541854
+				},
+				{
+					"eventType": "variable",
+					"name": "vectorY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 936368927428251
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 261606417494048,
+							"parameters": {
+								"first-value": "distance(touch0StartX, touch0StartY, Touch.XAt(0), Touch.YAt(0))",
+								"comparison": 4,
+								"second-value": "30"
+							}
+						},
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 877265905905777,
+							"parameters": {
+								"interval-seconds": "C_Offset_Scroll_Cooldown"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 181668177142565,
+							"parameters": {
+								"variable": "touchAngle",
+								"value": "round((angle(touch0StartX, touch0StartY, Touch.XAt(0), Touch.YAt(0))) / 45) * 45"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "TouchCursor",
+							"sid": 772047887030418,
+							"parameters": {
+								"angle": "touchAngle"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 623298902667345,
+							"parameters": {
+								"variable": "vectorX",
+								"value": "round(cos(touchAngle))"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 900856115025542,
+							"parameters": {
+								"variable": "vectorY",
+								"value": "round(sin(touchAngle))"
+							}
+						},
+						{
+							"callFunction": "scrollAndRun",
+							"sid": 475723241052216,
+							"parameters": [
+								"vectorX",
+								"vectorY"
+							]
+						}
+					],
+					"sid": 913683016206772
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "onScroll_end",
+			"objectClass": "Touch",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "TouchCursor",
+					"sid": 835892808502180,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 141360700548356
+		}
+	],
+	"sid": 237428107731601
+}

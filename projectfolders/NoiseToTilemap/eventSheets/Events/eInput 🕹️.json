@@ -1,0 +1,610 @@
+{
+	"name": "eInput 🕹️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "UI"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "UI_Button",
+					"sid": 355331187226865
+				}
+			],
+			"actions": [],
+			"sid": 971006620607359,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button",
+							"sid": 116634572766686,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Run"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "runGeneration",
+							"sid": 331534230553610
+						}
+					],
+					"sid": 428060943320062
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button",
+							"sid": 937823735007953,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_Reset"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "reset-global-variables",
+							"objectClass": "System",
+							"sid": 739712234987977,
+							"parameters": {
+								"reset-static": false
+							}
+						},
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 411155917760215
+						}
+					],
+					"sid": 802941854474970
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button",
+							"sid": 473455290125116,
+							"parameters": {
+								"instance-variable": "role",
+								"comparison": 0,
+								"value": "ROLE_RandomSeed"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "UI_TextInput_Seed",
+							"sid": 819213903776703,
+							"parameters": {
+								"text": "Functions.getRandomString(C_Seed_Length, C_Seed_Allowed_Characters)"
+							}
+						}
+					],
+					"sid": 447783774103557,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 802521152810836,
+									"parameters": {
+										"variable": "autoUpdate",
+										"comparison": 0,
+										"value": "YES"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "runGeneration",
+									"sid": 989272516007864
+								}
+							],
+							"sid": 234066596404661
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-selection-changed",
+					"objectClass": "UI_List_Mode",
+					"sid": 592119318354515
+				},
+				{
+					"id": "on-selection-changed",
+					"objectClass": "UI_List_AutoUpdate",
+					"sid": 911680375065949
+				},
+				{
+					"id": "on-selection-changed",
+					"objectClass": "UI_List_InvertRange",
+					"sid": 771390023142312
+				},
+				{
+					"id": "on-text-changed",
+					"objectClass": "UI_TextInput_Seed",
+					"sid": 112983098386192
+				},
+				{
+					"id": "on-text-changed",
+					"objectClass": "UI_TextInput_OffsetX",
+					"sid": 197411656546182
+				},
+				{
+					"id": "on-text-changed",
+					"objectClass": "UI_TextInput_OffsetY",
+					"sid": 685996098979010
+				},
+				{
+					"id": "on-text-changed",
+					"objectClass": "UI_TextInput_ZoomOutFactor",
+					"sid": 426387969352262
+				},
+				{
+					"id": "on-changing",
+					"objectClass": "UI_Slider_Octaves_todo",
+					"sid": 917739826535610
+				},
+				{
+					"id": "on-changing",
+					"objectClass": "UI_Slider_Range1",
+					"sid": 273440173867580
+				},
+				{
+					"id": "on-changing",
+					"objectClass": "UI_Slider_Range2",
+					"sid": 205327564344006
+				},
+				{
+					"id": "on-changing",
+					"objectClass": "UI_Slider_Range3",
+					"sid": 656135827644426
+				}
+			],
+			"actions": [],
+			"sid": 801459797929508,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 537499863715289,
+							"parameters": {
+								"variable": "autoUpdate",
+								"comparison": 0,
+								"value": "YES"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "runGeneration",
+							"sid": 627625867959880
+						}
+					],
+					"sid": 807249902245026
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-selection-changed",
+					"objectClass": "UI_List_AutoUpdate",
+					"sid": 245668585861028
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 342141885879843,
+					"parameters": {
+						"variable": "autoUpdate",
+						"value": "1 - UI_List_AutoUpdate.SelectedIndex"
+					}
+				},
+				{
+					"callFunction": "runGeneration",
+					"sid": 860966996263267
+				}
+			],
+			"sid": 725217605026965
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-changing",
+					"objectClass": "UI_Sliders",
+					"sid": 806194315884867
+				}
+			],
+			"actions": [
+				{
+					"customAction": "onUpdate",
+					"objectClass": "UI_Sliders",
+					"sid": 927771070087531
+				}
+			],
+			"sid": 753567249305647
+		},
+		{
+			"eventType": "comment",
+			"text": "\"Movement\" (offset control via keyboard)"
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [],
+			"sid": 282532049654588,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "vectorX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 743913749841785
+				},
+				{
+					"eventType": "variable",
+					"name": "vectorY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 487810324238532
+				},
+				{
+					"eventType": "comment",
+					"text": "Check if any of the directional keys are pressed and adjust vectorX/vectorY variables accordingly"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 436050743600037,
+							"parameters": {
+								"key": 65
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 356644100468245,
+							"parameters": {
+								"key": 37
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 706612715413172,
+							"parameters": {
+								"variable": "vectorX",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 520407591924903,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 491444263440936,
+							"parameters": {
+								"key": 68
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 133257418074704,
+							"parameters": {
+								"key": 39
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 410257789542988,
+							"parameters": {
+								"variable": "vectorX",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 605876220659896,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 847899122135145,
+							"parameters": {
+								"key": 87
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 389518111015727,
+							"parameters": {
+								"key": 38
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 253654409987838,
+							"parameters": {
+								"variable": "vectorY",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 862192221924740,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 394703641390819,
+							"parameters": {
+								"key": 83
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 859471450128380,
+							"parameters": {
+								"key": 40
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 731005771645507,
+							"parameters": {
+								"variable": "vectorY",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 682829515495063,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "If no directional keys are pressed... don't do anything :)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 758202557962137,
+							"parameters": {
+								"variable": "vectorX",
+								"comparison": 0,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 975186770148441,
+							"parameters": {
+								"variable": "vectorY",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 164582572896147
+				},
+				{
+					"eventType": "comment",
+					"text": "Otherwise, do movement at a fixed interval"
+				},
+				{
+					"eventType": "comment",
+					"text": "todo rewrite (blergh)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 412463925824512
+						},
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 102158345441139,
+							"parameters": {
+								"interval-seconds": "C_Offset_Scroll_Cooldown"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "scrollAndRun",
+							"sid": 722252372238221,
+							"parameters": [
+								"vectorX",
+								"vectorY"
+							]
+						}
+					],
+					"sid": 588428500346521
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Utilities: full screen & reload"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 249387913810699,
+					"parameters": {
+						"key": 70
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "toggleFullscreen",
+					"sid": 371103427352096
+				}
+			],
+			"sid": 848695742537860
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 162735831205834,
+					"parameters": {
+						"key": 82
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "reload",
+					"objectClass": "Browser",
+					"sid": 330741520591011
+				}
+			],
+			"sid": 306261194890782
+		},
+		{
+			"eventType": "comment",
+			"text": "todo add octaves for Billow, Classic (Perlin) & Ridged functions"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-nth-touch-start",
+					"objectClass": "Touch",
+					"sid": 642127081977835,
+					"parameters": {
+						"touch-number": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "onScroll_start",
+					"objectClass": "Touch",
+					"sid": 178290117610930
+				}
+			],
+			"sid": 482105563825479
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "has-nth-touch",
+					"objectClass": "Touch",
+					"sid": 390286523739564,
+					"parameters": {
+						"touch-number": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "onScroll_tick",
+					"objectClass": "Touch",
+					"sid": 594806311419559
+				}
+			],
+			"sid": 511443587368379
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-nth-touch-end",
+					"objectClass": "Touch",
+					"sid": 324046166651336,
+					"parameters": {
+						"touch-number": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "onScroll_end",
+					"objectClass": "Touch",
+					"sid": 549544640263858
+				}
+			],
+			"sid": 194160484139285
+		}
+	],
+	"sid": 758821500675486
+}

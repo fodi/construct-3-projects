@@ -1,0 +1,17 @@
+{
+	"name": "UI_TextInput_Seed",
+	"plugin-id": "TextBox",
+	"sid": 644117223942505,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "role",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 447234041197431
+		}
+	],
+	"behaviorTypes": []
+}

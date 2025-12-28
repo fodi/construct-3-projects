@@ -1,0 +1,403 @@
+{
+	"projectFormatVersion": 1,
+	"savedWithRelease": 46600,
+	"name": "NoiseToTilemap",
+	"runtime": "c3",
+	"useWorker": "auto",
+	"bundleAddons": false,
+	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "AJAX",
+			"name": "AJAX",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "AdvancedRandom",
+			"name": "Advanced Random",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Browser",
+			"name": "Browser",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Button",
+			"name": "Button",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Camera3D",
+			"name": "3D camera",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Json",
+			"name": "JSON",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "List",
+			"name": "List",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Spritefont2",
+			"name": "Sprite font",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TextBox",
+			"name": "Text input",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Tilemap",
+			"name": "Tilemap",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "sliderbar",
+			"name": "Slider bar",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		}
+	],
+	"uniqueId": "yvkam1laji5",
+	"objectTypes": {
+		"items": [
+			"Tilemap",
+			"TouchCursor"
+		],
+		"subfolders": [
+			{
+				"items": [
+					"Browser",
+					"Global",
+					"3DCamera",
+					"Audio",
+					"AJAX",
+					"AdvancedRandom"
+				],
+				"subfolders": [],
+				"name": "Utilities"
+			},
+			{
+				"items": [
+					"Keyboard",
+					"Touch"
+				],
+				"subfolders": [],
+				"name": "Input"
+			},
+			{
+				"items": [
+					"jOverrides",
+					"jRules"
+				],
+				"subfolders": [],
+				"name": "Data"
+			},
+			{
+				"items": [
+					"UI_TextSF",
+					"UI_Button",
+					"UI_List_Mode",
+					"UI_TextInput_Seed",
+					"UI_Slider_Octaves_todo",
+					"UI_List_InvertRange",
+					"UI_List_AutoUpdate",
+					"UI_TextInput_OffsetX",
+					"UI_TextInput_OffsetY",
+					"UI_TextInput_ZoomOutFactor",
+					"UI_TextSF_DevLog",
+					"UI_Slider_Range1",
+					"UI_Slider_Range2",
+					"UI_Slider_Range3"
+				],
+				"subfolders": [],
+				"name": "UI"
+			}
+		]
+	},
+	"functionsName": "Functions",
+	"autosaveData": null,
+	"containers": [],
+	"families": {
+		"items": [
+			"UI_Sliders"
+		],
+		"subfolders": []
+	},
+	"layouts": {
+		"items": [
+			"Start",
+			"Level",
+			"@ Templates"
+		],
+		"subfolders": []
+	},
+	"eventSheets": {
+		"items": [
+			"Level 🗺️",
+			"Start 🔰"
+		],
+		"subfolders": [
+			{
+				"items": [
+					"eSystem ⏱️",
+					"eInput 🕹️",
+					"eUI 📃"
+				],
+				"subfolders": [],
+				"name": "Events"
+			},
+			{
+				"items": [
+					"fLevel 🎬",
+					"fUtilities 🧰"
+				],
+				"subfolders": [],
+				"name": "Functions"
+			},
+			{
+				"items": [
+					"vState ♻️",
+					"vNames 🗃️",
+					"vConfig 💎",
+					"vPrimitives 🍞"
+				],
+				"subfolders": [],
+				"name": "Values"
+			},
+			{
+				"items": [
+					"aTilemap 🌐",
+					"aTouch ☝"
+				],
+				"subfolders": [],
+				"name": "Actions"
+			}
+		]
+	},
+	"rootFileFolders": {
+		"script": {
+			"items": [],
+			"subfolders": []
+		},
+		"sound": {
+			"items": [],
+			"subfolders": []
+		},
+		"music": {
+			"items": [],
+			"subfolders": []
+		},
+		"video": {
+			"items": [],
+			"subfolders": []
+		},
+		"font": {
+			"items": [],
+			"subfolders": []
+		},
+		"icon": {
+			"items": [
+				{
+					"name": "icon-16.png",
+					"type": "image/png",
+					"sid": 709870290183983,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-32.png",
+					"type": "image/png",
+					"sid": 962804187293751,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-64.png",
+					"type": "image/png",
+					"sid": 258681379999604,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-256.png",
+					"type": "image/png",
+					"sid": 202624918624652,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-128.png",
+					"type": "image/png",
+					"sid": 855281270015712,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-512.png",
+					"type": "image/png",
+					"sid": 229543303023142,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "loading-logo.png",
+					"type": "image/png",
+					"sid": 885257710353898,
+					"icon-info": {
+						"purpose": "loading-logo"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"general": {
+			"items": [],
+			"subfolders": []
+		}
+	},
+	"timelines": {
+		"items": [],
+		"subfolders": [
+			{
+				"items": [],
+				"subfolders": []
+			}
+		]
+	},
+	"flowcharts": {
+		"items": [],
+		"subfolders": []
+	},
+	"properties": {
+		"description": "",
+		"version": "6",
+		"autoIncrementVersion": false,
+		"author": "Lasermagnet Games",
+		"authorEmail": "games@lasermagnet.com",
+		"authorWebsite": "https://lasermagnet.com",
+		"appId": "",
+		"pixelRounding": false,
+		"zAxisScale": "regular",
+		"fov": 0.7853981633974483,
+		"useLoaderLayout": false,
+		"fullscreenMode": "letterbox-scale",
+		"fullscreenQuality": "high",
+		"viewportFit": "auto",
+		"backgroundColor": [
+			0,
+			0,
+			0,
+			0
+		],
+		"splashColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"useThemeColor": false,
+		"themeColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"orientations": "landscape",
+		"webgpu": "auto",
+		"multitexturing": "auto",
+		"gpuPreference": "high-performance",
+		"framerateMode": "vsync",
+		"sampling": "nearest",
+		"downscaling": "medium",
+		"renderingMode": "auto",
+		"anisotropicFiltering": "auto",
+		"zNear": 1,
+		"zFar": 10000,
+		"maxSpriteSheetSize": 2048,
+		"loaderStyle": "progress",
+		"preloadSounds": true,
+		"uidAllocationMode": "increment",
+		"cordovaiOSScheme": "app",
+		"cordovaAndroidScheme": "https",
+		"exportFileStructure": "folders",
+		"scriptsType": "module"
+	},
+	"viewportWidth": 1280,
+	"viewportHeight": 720,
+	"firstLayout": "Start"
+}

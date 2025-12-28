@@ -1,0 +1,156 @@
+{
+	"name": "fLevel 🎬",
+	"events": [
+		{
+			"functionName": "init",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 551882248979971,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Initialize the text elements that display slider values"
+						},
+						{
+							"customAction": "onUpdate",
+							"objectClass": "UI_Sliders",
+							"sid": 200214988381563
+						},
+						{
+							"type": "comment",
+							"text": "Generate starting seed"
+						},
+						{
+							"id": "set-text",
+							"objectClass": "UI_TextInput_Seed",
+							"sid": 551224847505074,
+							"parameters": {
+								"text": "Functions.getRandomString(C_Seed_Length, C_Seed_Allowed_Characters)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Generate starting map"
+						},
+						{
+							"callFunction": "runGeneration",
+							"sid": 366119479951591
+						}
+					],
+					"sid": 973124682877831
+				}
+			]
+		},
+		{
+			"functionName": "runGeneration",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 313426679513280,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Run the Generate custom action with the parameters gathered from the UI to update the tilemap"
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"customAction": "generate",
+							"objectClass": "Tilemap",
+							"sid": 333753252904142,
+							"parameters": [
+								"UI_List_Mode.SelectedText",
+								"UI_TextInput_Seed.Text",
+								"float(UI_TextInput_OffsetX.Text)",
+								"float(UI_TextInput_OffsetY.Text)",
+								"float(UI_TextInput_ZoomOutFactor.Text)",
+								"UI_List_InvertRange.SelectedIndex",
+								"UI_Slider_Range1.Value",
+								"UI_Slider_Range2.Value",
+								"UI_Slider_Range3.Value"
+							]
+						}
+					],
+					"sid": 617128274581624
+				}
+			]
+		},
+		{
+			"functionName": "scrollAndRun",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "vectorX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 304650589736424
+				},
+				{
+					"name": "vectorY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 783370887158283
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Update the input fields for offset X and offset Y according to the movement vector and the zoom out factor, so steps are always occurring at one tile intervals"
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextInput_OffsetX",
+					"sid": 373518978126364,
+					"parameters": {
+						"text": "float(Self.Text) + vectorX * float(UI_TextInput_ZoomOutFactor.Text)"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextInput_OffsetY",
+					"sid": 686701465117527,
+					"parameters": {
+						"text": "float(Self.Text) + vectorY * float(UI_TextInput_ZoomOutFactor.Text)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Request new generation"
+				},
+				{
+					"callFunction": "runGeneration",
+					"sid": 662061405902508
+				}
+			],
+			"sid": 785113836784250
+		}
+	],
+	"sid": 849818322627845
+}

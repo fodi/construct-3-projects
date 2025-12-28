@@ -1,0 +1,17 @@
+{
+	"name": "UI_Button",
+	"plugin-id": "Button",
+	"sid": 160158094897634,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "role",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 545007216893987
+		}
+	],
+	"behaviorTypes": []
+}

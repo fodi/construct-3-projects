@@ -1,0 +1,40 @@
+{
+	"name": "eUI 📃",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "onUpdate",
+			"objectClass": "UI_Sliders",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "pick-children",
+					"objectClass": "UI_Sliders",
+					"sid": 184988586415065,
+					"parameters": {
+						"child": "UI_TextSF",
+						"which": "own"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF",
+					"sid": 709200236256474,
+					"parameters": {
+						"text": "Functions.roundToDpPad(UI_Sliders.Value, 2)"
+					}
+				}
+			],
+			"sid": 231695900550736
+		}
+	],
+	"sid": 448870610682326
+}

@@ -1,0 +1,13 @@
+{
+	"name": "UI_Sliders",
+	"plugin-id": "sliderbar",
+	"sid": 134128314240699,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"members": [
+		"UI_Slider_Octaves_todo",
+		"UI_Slider_Range1",
+		"UI_Slider_Range2",
+		"UI_Slider_Range3"
+	]
+}

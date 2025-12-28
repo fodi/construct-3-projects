@@ -1,0 +1,44 @@
+{
+	"name": "eSystem ⏱️",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 934409235030864
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "init",
+					"sid": 935426248210738
+				}
+			],
+			"sid": 106853073142729
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 552969549724375
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_DevLog",
+					"sid": 650365859371938,
+					"parameters": {
+						"text": "Functions.getDevInfo(\", \")"
+					}
+				}
+			],
+			"sid": 559613915501580
+		}
+	],
+	"sid": 918958308783690
+}

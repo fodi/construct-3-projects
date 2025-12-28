@@ -1,0 +1,467 @@
+{
+	"name": "aTilemap 🌐",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "generate",
+			"objectClass": "Tilemap",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "mode",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 730324342518573
+				},
+				{
+					"name": "seed",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 668280079888369
+				},
+				{
+					"name": "offsetX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 656084493506392
+				},
+				{
+					"name": "offsetY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 547784393571333
+				},
+				{
+					"name": "zoomOutFactor",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 277210165175812
+				},
+				{
+					"name": "invertRange",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "\"boolean\": set to 1 to invert range",
+					"sid": 476590520497091
+				},
+				{
+					"name": "range1",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 540266195201406
+				},
+				{
+					"name": "range2",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 200594504745071
+				},
+				{
+					"name": "range3",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 398081728010551
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "This custom action updates the contents of the Tilemap object based on the arguments"
+				}
+			],
+			"sid": 379957682123151,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Pass the seed to the Advanced Random plugin"
+						},
+						{
+							"id": "seed",
+							"objectClass": "AdvancedRandom",
+							"sid": 903677264649320,
+							"parameters": {
+								"seed": "seed"
+							}
+						}
+					],
+					"sid": 814981007522159
+				},
+				{
+					"eventType": "comment",
+					"text": "Iterate through all tiles of the Tilemap object (X axis first, Y axis second) one by one using two for-loops"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 101571033853867,
+							"parameters": {
+								"name": "LOOP_X",
+								"start-index": "0",
+								"end-index": "Tilemap.MapDisplayWidth - 1"
+							}
+						},
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 857798030057774,
+							"parameters": {
+								"name": "LOOP_Y",
+								"start-index": "0",
+								"end-index": "Tilemap.MapDisplayHeight - 1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 322259808143098,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Calculate coordinates used in the noise function"
+						},
+						{
+							"eventType": "variable",
+							"name": "x",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 172454457696504
+						},
+						{
+							"eventType": "variable",
+							"name": "y",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 577441108502804
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 644450634565027,
+									"parameters": {
+										"variable": "x",
+										"value": "loopindex(LOOP_X) * zoomOutFactor + offsetX"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 639804338382367,
+									"parameters": {
+										"variable": "y",
+										"value": "loopindex(LOOP_Y) * zoomOutFactor + offsetY"
+									}
+								}
+							],
+							"sid": 535455708111368
+						},
+						{
+							"eventType": "comment",
+							"text": "Get value from the specified noise function"
+						},
+						{
+							"eventType": "variable",
+							"name": "noiseValue",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 831957435224698
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 368901452591316,
+									"parameters": {
+										"variable": "mode",
+										"comparison": 0,
+										"value": "MODE_Billow"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 352069591460937,
+									"parameters": {
+										"variable": "noiseValue",
+										"value": "AdvancedRandom.Billow2d(x, y)"
+									}
+								}
+							],
+							"sid": 584365088683963
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 226888304799302,
+									"parameters": {
+										"variable": "mode",
+										"comparison": 0,
+										"value": "MODE_Cellular"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 392930416190498,
+									"parameters": {
+										"variable": "noiseValue",
+										"value": "AdvancedRandom.Cellular2d(x, y)"
+									}
+								}
+							],
+							"sid": 409214691178396
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 340046955961237,
+									"parameters": {
+										"variable": "mode",
+										"comparison": 0,
+										"value": "MODE_Perlin"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 696483157672621,
+									"parameters": {
+										"variable": "noiseValue",
+										"value": "AdvancedRandom.Classic2d(x, y)"
+									}
+								}
+							],
+							"sid": 435976450088710
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 412987865213593,
+									"parameters": {
+										"variable": "mode",
+										"comparison": 0,
+										"value": "MODE_Ridged"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 349857374886405,
+									"parameters": {
+										"variable": "noiseValue",
+										"value": "AdvancedRandom.Ridged2d(x, y)"
+									}
+								}
+							],
+							"sid": 114783269360071
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 544346271335077,
+									"parameters": {
+										"variable": "mode",
+										"comparison": 0,
+										"value": "MODE_Voronoi"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 112372649895878,
+									"parameters": {
+										"variable": "noiseValue",
+										"value": "AdvancedRandom.Voronoi2d(x, y)"
+									}
+								}
+							],
+							"sid": 224514471505874
+						},
+						{
+							"eventType": "comment",
+							"text": "Set tile according to the range parameters (water, beach, grass, or swamp)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 860924632250810,
+									"parameters": {
+										"variable": "noiseValue",
+										"comparison": 2,
+										"value": "range1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-tile",
+									"objectClass": "Tilemap",
+									"sid": 499426416757486,
+									"parameters": {
+										"tile-x": "loopindex(LOOP_X)",
+										"tile-y": "loopindex(LOOP_Y)",
+										"tile": "invertRange ? 3 : 0",
+										"state": "normal"
+									}
+								}
+							],
+							"sid": 855109451910551
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 972632779128123
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 565481122951800,
+									"parameters": {
+										"variable": "noiseValue",
+										"comparison": 2,
+										"value": "range2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-tile",
+									"objectClass": "Tilemap",
+									"sid": 409715523393448,
+									"parameters": {
+										"tile-x": "loopindex(LOOP_X)",
+										"tile-y": "loopindex(LOOP_Y)",
+										"tile": "invertRange ? 2 : 1",
+										"state": "normal"
+									}
+								}
+							],
+							"sid": 430990160622907
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 261382931547809
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 538246202154705,
+									"parameters": {
+										"variable": "noiseValue",
+										"comparison": 2,
+										"value": "range3"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-tile",
+									"objectClass": "Tilemap",
+									"sid": 364816549233362,
+									"parameters": {
+										"tile-x": "loopindex(LOOP_X)",
+										"tile-y": "loopindex(LOOP_Y)",
+										"tile": "invertRange ? 1 : 2",
+										"state": "normal"
+									}
+								}
+							],
+							"sid": 448702263491661
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 209039800511245
+								}
+							],
+							"actions": [
+								{
+									"id": "set-tile",
+									"objectClass": "Tilemap",
+									"sid": 962666923791776,
+									"parameters": {
+										"tile-x": "loopindex(LOOP_X)",
+										"tile-y": "loopindex(LOOP_Y)",
+										"tile": "invertRange ? 0 : 3",
+										"state": "normal"
+									}
+								}
+							],
+							"sid": 395877309722686
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 546262619234227
+}

@@ -1,0 +1,36 @@
+{
+	"name": "vConfig 💎",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "C_Seed_Length",
+			"type": "number",
+			"initialValue": "8",
+			"comment": "Random seeds are this many characters long",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 932590367966533
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Seed_Allowed_Characters",
+			"type": "string",
+			"initialValue": "0123456789abcdefghijklmnopqrstuvwxyz",
+			"comment": "Random seeds only contain these characters",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 992261560830014
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Offset_Scroll_Cooldown",
+			"type": "number",
+			"initialValue": "0.06",
+			"comment": "Keyboard offset scrolling happens at this time interval if directional buttons are pressed",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 987696535994415
+		}
+	],
+	"sid": 344291072955141
+}

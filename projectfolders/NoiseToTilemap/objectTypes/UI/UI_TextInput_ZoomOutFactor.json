@@ -1,0 +1,9 @@
+{
+	"name": "UI_TextInput_ZoomOutFactor",
+	"plugin-id": "TextBox",
+	"sid": 472518562403274,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

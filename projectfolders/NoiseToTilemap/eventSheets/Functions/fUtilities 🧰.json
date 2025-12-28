@@ -1,0 +1,332 @@
+{
+	"name": "fUtilities 🧰",
+	"events": [
+		{
+			"functionName": "toggleFullscreen",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Toggle between fullscreen and windowed mode"
+				}
+			],
+			"sid": 886938183459389,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-fullscreen",
+							"objectClass": "Browser",
+							"sid": 673139129491414
+						}
+					],
+					"actions": [
+						{
+							"id": "cancel-fullscreen",
+							"objectClass": "Browser",
+							"sid": 460028958641810
+						}
+					],
+					"sid": 783256117940843
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 240506212898677
+						}
+					],
+					"actions": [
+						{
+							"id": "request-fullscreen",
+							"objectClass": "Browser",
+							"sid": 332860445881325,
+							"parameters": {
+								"mode": "stretch-letterbox-scale",
+								"navigation-ui": "hide"
+							}
+						}
+					],
+					"sid": 678419407173315
+				}
+			]
+		},
+		{
+			"functionName": "toggleLayer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "layerName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 383761321401365
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Toggle visibility and interaction of a layer (both on / both off)"
+				}
+			],
+			"sid": 725868792420929,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "layer-is-visible",
+							"objectClass": "System",
+							"sid": 908801748603377,
+							"parameters": {
+								"layer": "layerName"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 281814701868354,
+							"parameters": {
+								"layer": "layerName",
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 157471086757443,
+							"parameters": {
+								"layer": "layerName",
+								"interactive": false
+							}
+						}
+					],
+					"sid": 922971262908364
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 739332937534315
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 137848120911428,
+							"parameters": {
+								"layer": "layerName",
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 186163961158381,
+							"parameters": {
+								"layer": "layerName",
+								"interactive": true
+							}
+						}
+					],
+					"sid": 899862841752459
+				}
+			]
+		},
+		{
+			"functionName": "getDevInfo",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "divider",
+					"type": "string",
+					"initialValue": " | ",
+					"comment": "",
+					"sid": 843055132204122
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Return FPS, CPU, GPU and object count stats as a string with a divider"
+				}
+			],
+			"sid": 562801702725526,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 878500133118628,
+							"parameters": {
+								"value": "StringSub(\"Build {1}{0}{2} FPS{0}{3}% CPU{0}{4}% GPU{0}{5} objects\", divider, projectversion, fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount)"
+							}
+						}
+					],
+					"sid": 509631647531281
+				}
+			]
+		},
+		{
+			"functionName": "roundToDpPad",
+			"functionDescription": "Round to decimal points with padded decimals",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "value",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 809342691811033
+				},
+				{
+					"name": "padding",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 263115614997687
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Round and format a number to certain decimal places with zero padding on the fractional part"
+				}
+			],
+			"sid": 576050989151906,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 345632075501381,
+							"parameters": {
+								"value": "int(value) & \".\" & zeropad(\n  int(\n    (value - int(value)) * 10 ^ padding\n  )\n, padding)"
+							}
+						}
+					],
+					"sid": 811216697542748
+				}
+			]
+		},
+		{
+			"functionName": "getRandomString",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "length",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 329508391232141
+				},
+				{
+					"name": "allowedCharacters",
+					"type": "string",
+					"initialValue": "0123456789abcdefghijklmnopqrstuvwxyz",
+					"comment": "",
+					"sid": 696976909574789
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 252086626638813,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "randomString",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 496185532151101
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 798764553803939,
+							"parameters": {
+								"count": "length"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 818458040891203,
+							"parameters": {
+								"variable": "randomString",
+								"value": "mid(allowedCharacters, int(random(len(allowedCharacters))), 1)"
+							}
+						}
+					],
+					"sid": 250932706981469
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 624849523141296,
+							"parameters": {
+								"value": "randomString"
+							}
+						}
+					],
+					"sid": 206068094031781
+				}
+			]
+		}
+	],
+	"sid": 622480337843055
+}
