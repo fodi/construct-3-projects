@@ -5,7 +5,7 @@
 	"instanceVariables": [],
 	"behaviorTypes": [],
 	"members": [
-		"UI_Slider_Octaves_todo",
+		"UI_Slider_Octaves",
 		"UI_Slider_Range1",
 		"UI_Slider_Range2",
 		"UI_Slider_Range3"

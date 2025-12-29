@@ -76,10 +76,11 @@
 						{
 							"customAction": "generate",
 							"objectClass": "Tilemap",
-							"sid": 333753252904142,
+							"sid": 619011854425970,
 							"parameters": [
 								"UI_List_Mode.SelectedText",
 								"UI_TextInput_Seed.Text",
+								"UI_Slider_Octaves.Value",
 								"float(UI_TextInput_OffsetX.Text)",
 								"float(UI_TextInput_OffsetY.Text)",
 								"float(UI_TextInput_ZoomOutFactor.Text)",

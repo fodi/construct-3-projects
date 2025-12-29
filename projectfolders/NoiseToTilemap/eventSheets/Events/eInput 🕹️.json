@@ -162,7 +162,7 @@
 				},
 				{
 					"id": "on-changing",
-					"objectClass": "UI_Slider_Octaves_todo",
+					"objectClass": "UI_Slider_Octaves",
 					"sid": 917739826535610
 				},
 				{
@@ -459,10 +459,6 @@
 					"text": "Otherwise, do movement at a fixed interval"
 				},
 				{
-					"eventType": "comment",
-					"text": "todo rewrite (blergh)"
-				},
-				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -537,10 +533,6 @@
 				}
 			],
 			"sid": 306261194890782
-		},
-		{
-			"eventType": "comment",
-			"text": "todo add octaves for Billow, Classic (Perlin) & Ridged functions"
 		},
 		{
 			"eventType": "block",

@@ -26,6 +26,13 @@
 					"sid": 668280079888369
 				},
 				{
+					"name": "octaves",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 523440142991992
+				},
+				{
 					"name": "offsetX",
 					"type": "number",
 					"initialValue": "0",
@@ -99,6 +106,14 @@
 							"sid": 903677264649320,
 							"parameters": {
 								"seed": "seed"
+							}
+						},
+						{
+							"id": "octaves",
+							"objectClass": "AdvancedRandom",
+							"sid": 821708557090324,
+							"parameters": {
+								"count": "octaves"
 							}
 						}
 					],

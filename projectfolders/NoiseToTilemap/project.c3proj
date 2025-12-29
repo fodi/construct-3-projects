@@ -167,7 +167,7 @@
 					"UI_Button",
 					"UI_List_Mode",
 					"UI_TextInput_Seed",
-					"UI_Slider_Octaves_todo",
+					"UI_Slider_Octaves",
 					"UI_List_InvertRange",
 					"UI_List_AutoUpdate",
 					"UI_TextInput_OffsetX",
@@ -345,7 +345,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "6",
+		"version": "7",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
